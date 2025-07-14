@@ -1,4 +1,14 @@
-# GT-IMPACTO: Plataforma de Capacitação em Cibersegurança Baseada em Modelagem e Simulação de Aspectos e Impactos Econômicos de Ciberataques
+# IMPACTO: Plataforma de Capacitação em Cibersegurança Baseada em Simulação de Aspectos Econômicos de Ciberataques
+
+O planejamento em cibersegurança representa um desafio para empresas que operam com recursos técnicos e financeiros limitados, especialmente diante do crescimento de ataques cibernéticos e de seus impactos econômicos. Nesse contexto, a plataforma IMPACTO foi desenvolvida para apoiar a formação de estudantes e profissionais da área, com foco na análise de riscos e no planejamento de investimentos em cibersegurança. A plataforma integra aspectos técnicos e econômicos por meio de simulações baseadas em cenários realistas, utilizando dados de relatórios públicos e modelos econômicos do estado da arte. A plataforma IMPACTO promove um aprendizado aplicado e estruturado, permitindo ao usuário compreender o impacto financeiro de diferentes estratégias de proteção, bem como os riscos em diferentes contextos. Avaliações de usabilidade e funcionalidade foram realizadas, e os resultados indicam uma alta eficácia como ferramenta educacional e de apoio à tomada de decisão.
+
+## Selos considerados para a submissão do Salão de Ferramentas SBSeg25
+
+Os selos considerados são: Disponíveis e Funcionais.
+
+## Servidor de testes
+
+Caso você deseje apenas testar a plataforma IMPACTO, um servidor de testes está disponível em https://gt-impacto.inf.ufrgs.br. Caso você deseje fazer o deploy local da aplicação, siga as instruções abaixo.
 
 ## Pré-requisitos (para a execução de run.sh)
 
