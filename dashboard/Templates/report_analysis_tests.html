@@ -1,0 +1,157 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n %}
+
+{% block page_content %}
+
+{% include 'dashboard/Templates/includes/styles_charts.html' %}
+
+<style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .documentation-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--ct-primary);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .documentation-btn:hover {
+        background-color: var(--ct-primary-lighten-10);
+        color: var(--ct-primary-darken-10);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .documentation-btn i {
+        font-size: 20px;
+    }
+
+    .modal {
+        display: none; /* Esconde o modal por padrão */
+        position: fixed; 
+        z-index: 9999; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+        position: relative;
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        text-align: center;
+        border-radius: 8px;
+        }
+        .close {
+        position: absolute;
+        top: 10px; 
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        }
+</style>
+
+<div class="container-fluid">
+    
+    <!-- Botão para abrir o modal, com ID único -->
+    <div class="row mb-3">
+        <div class="col-12 page-title-box d-flex justify-content-between align-items-center">
+            <h2>{% trans "Database Overview" %}</h2>
+            <a onclick="openModaldoc()" class="documentation-btn">
+                <i class="mdi mdi-help-circle-outline"
+                data-bs-toggle="tooltip" 
+                   data-bs-placement="left" title="{% trans 'Database Overview Documentation' %}"></i>
+            </a>
+        </div>
+    </div>
+
+<!-- Modal -->
+<div id="meuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModaldoc()">&times;</span>
+      <h2>{% trans "Database Overview" %}</h2>
+      <h5 style="max-width: 450px; margin: 0 auto; margin-top: 20px; text-align: justify; font-weight: normal;">
+        {% trans "The Database Overview presents a compilation of data collected from cybersecurity attack risk reports, divided by Region and Sector." %}
+      </h5>
+  
+    {% if company %}
+        {% url 'dashboard:platform_guide_company' pk=company.pk as guide_url %}
+    {% else %}
+        {% url 'dashboard:platform_guide' as guide_url %}
+    {% endif %}
+    <a href="{{ guide_url }}#data-source"
+        class="btn btn-primary"
+        style="max-width: 300px; display: block; margin: 0 auto; margin-top: 20px;"
+        title="{% trans 'Database Overview Documentation' %}">
+        {% trans "View Documentation" %}
+    </a>
+
+    </div>
+  </div>
+    
+    <!--
+    <div class="page-header">
+        <h2>{% trans "Database Overview" %}</h2>
+        <a href="{% url 'dashboard:platform_guide' %}#data-source" 
+           class="documentation-btn" 
+           data-bs-toggle="tooltip" 
+           data-bs-placement="left" 
+           title="{% trans 'Database Overview Documentation' %}">
+            <i class="mdi mdi-help-circle-outline"></i>
+        </a>
+    </div>-->
+
+    <div class="row mb-4">
+        <div class="col-12">
+            {% include 'dashboard/Templates/charts/continents_bar_charts.html' with attack_data=continent_attack_data %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {% include 'dashboard/Templates/charts/sectors_bar_charts.html' with attack_data=sector_attack_data %}
+        </div>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<script>
+    function openModaldoc() {
+        document.getElementById("meuModal").style.display = "block";
+    }
+    
+    function closeModaldoc() {
+        document.getElementById("meuModal").style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById("meuModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+{% endblock %}

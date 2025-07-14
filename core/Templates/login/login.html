@@ -1,0 +1,274 @@
+{% load static %}
+{% load i18n %}
+{% load form_tags %}
+
+<!DOCTYPE html>
+<html lang="en" data-menu-color="brand">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>{% trans "GT-IMPACTO - Simulation of Economic Aspects of Cybersecurity" %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="GT-IMPACTO." name="Plataforma para Simulação de Comportamentos Aspectos Econômicos de Cibersegurança" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href={% static "assets/images/favicon.ico" %}>
+
+        <!-- Plugins css -->
+        <link href={% static "assets/libs/flatpickr/flatpickr.min.css" %} rel="stylesheet" type="text/css" />
+        <link href={% static "assets/libs/selectize/css/selectize.bootstrap3.css" %} rel="stylesheet" type="text/css" />
+        
+        <!-- Theme Config Js -->
+        <script src={% static "assets/js/head.js" %}></script>
+
+        <!-- Bootstrap css -->
+        <link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+
+        <!-- App css -->
+        <link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+        <!-- Icons css -->
+        <link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+        
+       <style>
+            a:link {
+              color: white;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:visited {
+              color: gray;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:hover {
+              color: #373737;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+
+            a:active {
+              color: yellow;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+            
+            .auth-fluid-right {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              height: 100vh; /* Use viewport height */
+              padding: 2rem 0;
+              box-sizing: border-box;
+            }
+            
+            .video-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 30px;
+              width: 100%;
+              flex: 1; /* Allow flex growing */
+            }
+            
+            .video-container iframe {
+              max-width: 90%;
+              max-height: 60vh; /* Limit height to 60% of viewport */
+            }
+            
+            .logos-container {
+              background-color: white;
+              padding: 20px;
+              border-radius: 8px;
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              margin: 0 auto;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+              width: auto;
+              max-width: 90%;
+            }
+            
+            .logos-container img {
+              height: 80px;
+              object-fit: contain;
+            }
+            
+            /* Mobile adjustments */
+            @media (max-width: 768px) {
+              .auth-fluid {
+                flex-direction: column;
+              }
+              
+              .auth-fluid-right, .auth-fluid-form-box {
+                width: 100%;
+                max-width: 100%;
+                padding: 20px 10px;
+              }
+              
+              .auth-fluid-right {
+                height: auto;
+                min-height: auto;
+                padding: 30px 15px;
+                order: 2; /* Coloca o conteúdo da direita abaixo do formulário */
+              }
+              
+              .auth-fluid-form-box {
+                order: 1; /* Coloca o formulário acima */
+              }
+              
+              .logos-container {
+                flex-wrap: wrap;
+                padding: 15px;
+                margin-top: 20px;
+                justify-content: center;
+              }
+              
+              .logos-container img {
+                height: 50px;
+                margin: 5px;
+              }
+              
+              .video-container {
+                margin-bottom: 20px;
+                width: 100%;
+              }
+              
+              .video-container iframe {
+                width: 100%;
+                height: 215px;
+              }
+              
+              .auth-brand img {
+                height: 180px;
+              }
+            }
+            
+            /* Pequenos dispositivos móveis */
+            @media (max-width: 480px) {
+              .logos-container img {
+                height: 40px;
+              }
+              
+              .video-container iframe {
+                height: 180px;
+              }
+            }
+		</style> 
+    </head>
+
+    <body class="auth-fluid-pages pb-0">
+
+        <div class="auth-fluid">
+            <!--Auth fluid left content -->
+            <div class="auth-fluid-form-box">
+                <div class="align-items-center d-flex h-100">
+                    <div class="p-3">
+
+                        <!-- Logo -->
+                        <div class="auth-brand text-center text-lg-start">
+                            <div class="auth-brand">
+                                <a class="logo logo-dark text-center">
+                                    <span class="logo-lg">
+                                        <img src={% static "assets/images/logo-dark.png" %} alt="GT-IMPACTO" height="240">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Language flags - simplified version -->
+                        <div class="mb-3 text-center">
+                            <div class="language-selector d-inline-flex justify-content-center">
+                                <form action="{% url 'set_language' %}" method="post" class="mx-2">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="language" value="en">
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    <button type="submit" class="btn btn-link p-0" style="{% if request.LANGUAGE_CODE == 'en' %}opacity: 1{% else %}opacity: 0.6{% endif %}">
+                                        <img src="{% static 'assets/images/flags/gb.png' %}" alt="English" height="24">
+                                    </button>
+                                </form>
+                                <form action="{% url 'set_language' %}" method="post" class="mx-2">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="language" value="pt-br">
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    <button type="submit" class="btn btn-link p-0" style="{% if request.LANGUAGE_CODE == 'pt-br' %}opacity: 1{% else %}opacity: 0.6{% endif %}">
+                                        <img src="{% static 'assets/images/flags/br.png' %}" alt="Português" height="24">
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- title-->
+                        <h4 class="mt-0">{% trans "Entrar"%}</h4>
+                        <p class="text-muted mb-4">{% trans "Type your username and password to access the platform" %}</p>
+
+
+                        <!-- form -->
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <!-- Creates the form with the fields needed -->
+                                {% for field in form %}
+                                    <label for="{{ field.id_for_label }}" class="form-label">{% trans field.label %}:</label>
+                                    {{ field|add_class:'form-control' }} <br> 
+                                    {% if field.errors %}
+                                        <small>{{ field.errors|striptags }}</small> 
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="checkbox-signin">
+                                    <label class="form-check-label" for="checkbox-signin">{% trans "Remember" %}</label>
+                                </div>
+                            </div>
+                            <div class="text-center d-grid">
+                                <button class="btn btn-primary" type="submit">{% trans "Enter" %} </button>
+                            </div>
+                        </form>
+
+                        <!-- Footer -->
+                        <footer class="footer footer-alt">
+                            <p class="text-muted">
+                                {% trans "Don't have an account?" %}
+                                <a href="{% url 'register' %}" class="text-muted ms-1">
+                                    <b>{% trans "Register" %}</b>
+                                </a>
+                            </p>
+                        </footer>
+
+                    </div> <!-- end .card-body -->
+                </div> <!-- end .align-items-center.d-flex.h-100-->
+            </div>
+            <!-- end auth-fluid-form-box-->
+
+            <!-- Auth fluid right content -->
+            <div class="auth-fluid-right text-center">
+                <div class="video-container">
+                    <iframe width="860" height="485" 
+                            src="https://www.youtube.com/embed/xUUlH8CGrjs" 
+                            title="Tutorial da plataforma" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+           
+                <div class="logos-container">
+                    <img src={% static "assets/images/logo-ufrgs.png" %} alt="Universidade Federal do Rio Grande do Sul (UFRGS)">
+                    <img src={% static "assets/images/logo-hackers.png" %} alt="Programa Hackers do Bem">
+                    <img src={% static "assets/images/logo-rnp.png" %} alt="Rede Nacional de Pesquisa (RNP)">
+                </div>
+            </div>
+            <!-- end Auth fluid right content -->
+        </div>
+        <!-- end auth-fluid-->
+
+        <!-- Authentication js -->
+        <script src={% static "assets/js/pages/authentication.init.js" %}></script>
+
+    </body>
+</html>

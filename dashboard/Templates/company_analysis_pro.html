@@ -1,0 +1,1187 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n custom_filters %}
+
+{% block page_content %}
+
+{% include 'dashboard/Templates/includes/styles_charts.html' %}
+<style>
+    /* Base Variables */
+    :root {
+        --primary-color: var(--ct-primary);
+        --primary-light: var(--ct-primary-lighten-10);
+        --primary-dark: var(--ct-primary-darken-10);
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+        --gray-100: #f8f9fa;
+        --gray-200: #dee2e6;
+        --gray-600: #666;
+        --company-brand: #F77A3F;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 6px 8px rgba(0, 0, 0, 0.15);
+        --transition-default: all 0.3s ease;
+        --color-risk-1: #FF4D4D; 
+        --color-risk-2: #FFA857; 
+        --color-risk-3: #FFD84D; 
+        --color-risk-4: #2EA043; 
+        --color-risk-5: #39A0ED; 
+        --bar-color: #8c8c8c; 
+        --bar-color-light: #f0f0f0; 
+    }
+
+    /* Layout & Common Components */
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 1.5rem;
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .page-title {
+        margin: 0;
+    }
+
+    .company-name {
+        color: var(--company-brand);
+    }
+
+    /* Documentation Button */
+    .documentation-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition-default);
+        text-decoration: none;
+    }
+
+    .documentation-btn:hover {
+        background-color: var(--primary-light);
+        color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .documentation-btn i {
+        font-size: 20px;
+    }
+
+    /* Risk Analysis Components */
+    .risk-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 1rem;
+    }
+    
+    .risk-table th {
+        text-align: left;
+        padding: 0.75rem;
+        font-weight: 600;
+        color: var(--gray-600);
+    }
+    
+    .risk-table td {
+        padding: 0.75rem;
+        vertical-align: top;
+    }
+
+    /* Risk Bar Components */
+    .risk-bar-container {
+        height: 30px;
+        background-color: var(--bar-color-light);
+        border: 1px solid #dedede; /* Borda mais suave */
+        position: relative;
+        margin-bottom: 0.5rem;
+        display: flex;
+        border-radius: 4px;
+    }
+
+
+    .risk-segment {
+        flex: 1;
+        border-right: 1px solid #ffffff; 
+        position: relative;
+        background-color: transparent;
+    }
+    
+    .risk-segment:last-child {
+        border-right: none;
+    }
+    
+    .risk-bar {
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        width: 100%;
+    }
+    
+
+    .risk-bar[data-value="1"] .risk-segment:nth-child(-n+1),
+    .risk-bar[data-value="2"] .risk-segment:nth-child(-n+2),
+    .risk-bar[data-value="3"] .risk-segment:nth-child(-n+3),
+    .risk-bar[data-value="4"] .risk-segment:nth-child(-n+4),
+    .risk-bar[data-value="5"] .risk-segment:nth-child(-n+5) {
+        background-color: var(--bar-color);
+    }
+    
+    .risk-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.25rem;
+    }
+    
+    .risk-labels span {
+        font-size: 0.75rem;
+        color: var(--gray-600);
+        flex: 1;
+        text-align: center;
+    }
+    
+
+    /* Legend */
+    .risk-legend {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .legend-color {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 4px;
+    }
+
+    .legend-color-1 { background-color: var(--color-risk-1); }
+    .legend-color-2 { background-color: var(--color-risk-2); }
+    .legend-color-3 { background-color: var(--color-risk-3); }
+    .legend-color-4 { background-color: var(--color-risk-4); }
+    .legend-color-5 { background-color: var(--color-risk-5); }
+
+    .legend-text {
+        font-size: 0.875rem;
+        color: var(--gray-600);
+    }
+
+    .modal {
+        display: none; /* Esconde o modal por padrão */
+        position: fixed; 
+        z-index: 9999; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+        position: relative;
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        text-align: center;
+        border-radius: 8px;
+        }
+        .close {
+        position: absolute;
+        top: 10px; 
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        }
+
+
+    /* Tooltip */
+    .tooltip-inner {
+        max-width: 200px;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    .traffic-light-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--gray-100);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        box-shadow: var(--shadow-md);
+    }
+    
+    .traffic-light-signal {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        transition: var(--transition-default);
+        position: relative;
+    }
+    
+    /* Usando as variáveis de cor originais */
+    .signal-critical {
+        background: var(--color-risk-1);
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    }
+    
+    .signal-danger {
+        background: var(--color-risk-2);
+        box-shadow: 0 0 20px rgba(255, 165, 0, 0.3);
+    }
+    
+    .signal-alert {
+        background: var(--color-risk-3);
+        box-shadow: 0 0 20px rgba(255, 220, 0, 0.3);
+        color: #333; /* Texto escuro para fundo claro */
+    }
+    
+    .signal-normal {
+        background: var(--color-risk-4);
+        box-shadow: 0 0 20px rgba(0, 128, 0, 0.3);
+    }
+    
+    .signal-healthy {
+        background: var(--color-risk-5);
+        box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+    }
+    
+    .threat-label {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .score-value {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    
+    /* Estilos para a pontuação final */
+    .final-score-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .final-score-display {
+        padding: 30px 50px;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        position: relative;
+        transition: var(--transition-default);
+    }
+    
+    .score-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .score-number {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .score-indicator {
+        font-size: 24px;
+    }
+
+    .score-critical {
+        background: linear-gradient(135deg, var(--color-risk-1), #D93D3D);
+    }
+    
+    .score-danger {
+        background: linear-gradient(135deg, var(--color-risk-2), #E68B3E); 
+    }
+    
+    .score-alert {
+        background: linear-gradient(135deg, var(--color-risk-3), #E6C341); 
+        color: #333;
+    }
+    
+    .score-normal {
+        background: linear-gradient(135deg, var(--color-risk-4), #247033);
+    }
+    
+    .score-healthy {
+        background: linear-gradient(135deg, var(--color-risk-5), #2B7FBD);
+    }
+
+    /* Efeitos hover */
+    .traffic-light-signal:hover {
+        transform: scale(1.1);
+    }
+
+    .final-score-display:hover {
+        transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+        .risk-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+    
+        .risk-table th,
+        .risk-table td {
+            padding: 0.5rem;
+            min-width: 200px; /* Ensures minimum width for content */
+        }
+    
+        .risk-table td:first-child {
+            position: sticky;
+            left: 0;
+            background: white;
+            z-index: 1;
+            border-right: 1px solid var(--gray-200);
+            min-width: 120px;
+        }
+    
+        .risk-bar-container {
+            height: 20px; /* Smaller height for mobile */
+        }
+    
+        .risk-labels {
+            font-size: 0.65rem; /* Smaller font for labels */
+        }
+    
+        .risk-labels span {
+            font-size: 0.65rem;
+            white-space: normal;
+            line-height: 1.2;
+        }
+    
+        /* Adjust page header for mobile */
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    
+        .page-title {
+            font-size: 1.5rem;
+        }
+    
+        /* Adjust buttons for mobile */
+        .btn {
+            margin-bottom: 0.5rem;
+            width: 100%;
+            display: block;
+        }
+    
+        .card-body {
+            padding: 1rem;
+        }
+    
+        .header-title {
+            font-size: 1.2rem;
+        }
+        .traffic-light-container {
+            flex-direction: column;
+            gap: 15px;
+        }
+    
+        .traffic-light-signal {
+            width: 80px;
+            height: 80px;
+        }
+    
+        .final-score-display {
+            padding: 20px 30px;
+        }
+    
+        .score-number {
+            font-size: 36px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .risk-table th,
+        .risk-table td {
+            min-width: 160px; /* Even smaller for very small screens */
+        }
+    
+        .risk-table td:first-child {
+            min-width: 100px;
+        }
+    
+        .risk-labels span {
+            font-size: 0.6rem;
+        }
+        .traffic-light-signal {
+            width: 70px;
+            height: 70px;
+        }
+    
+        .score-number {
+            font-size: 32px;
+        }
+    }
+
+    /* Estilos para a Tabela de Dimensão Técnica */
+    .tech-dimension-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .tech-dimension-table th, .tech-dimension-table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: center;
+    }
+    .tech-dimension-table th {
+        background-color: #f8f9fa;
+    }
+    .tech-dimension-table .active-row {
+        background-color: #d4edda; /* Verde claro para ativo */
+    }
+    .tech-dimension-table .inactive-row {
+        background-color: #f8d7da; /* Vermelho claro para inativo */
+    }
+    .tech-dimension-table .cia-column {
+        width: 33.33%;
+    }
+    .cia-icon {
+        font-size: 1.2rem;
+    }
+    /* Container geral de pontuação de risco */
+    .risk-score-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%; /* Garante que respeite a largura da coluna */
+    }
+    
+    /* Alinhamento das bolhas de risco */
+    .risk-score-bubbles {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+    
+    /* Estilo das bolhas */
+    .risk-score-bubble {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #ffffff;
+        width: 90px;
+        height: 90px;
+        text-align: center;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+        font-size: 0.85rem;
+    }
+    
+    .risk-score-bubble.large-bubble {
+        width: 120px;
+        height: 120px;
+        font-size: 1rem;
+    }
+    
+    /* Efeito hover para as bolhas */
+    .risk-score-bubble:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Estilo dos títulos e pontuações */
+    .bubble-title {
+        font-weight: bold;
+        margin-bottom: 0.2rem;
+    }
+    
+    .bubble-score {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    /* Cores das bolhas conforme a pontuação */
+    .bg-critical-bub {
+        background-color: #FF0000;
+    }
+    
+    .bg-danger-bub {
+        background-color: #FFA500;
+    }
+    
+    .bg-alert-bub {
+        background-color: #FFDC00;
+        color: #333;
+    }
+    
+    .bg-normal-bub {
+        background-color: #008000;
+    }
+    
+    .bg-healthy-bub {
+        background-color: #00A8FF;
+    }
+    
+    /* Estilo da legenda */
+    .risk-legend {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+        margin-top: 1rem;
+        text-align: left;
+    }
+    
+    .risk-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .risk-legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    
+    .legend-text {
+        font-size: 0.85rem;
+        color: #333;
+    }
+    
+    /* Estilos para a escala de risco */
+.risk-scale-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--gray-100);
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+.risk-scale-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: white;
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.risk-scale-item:hover {
+    transform: translateY(-2px);
+}
+
+.scale-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.scale-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.scale-label {
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--gray-600);
+}
+
+.scale-value {
+    font-size: 0.7rem;
+    color: var(--gray-600);
+    opacity: 0.8;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .risk-scale-container {
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    .risk-scale-item {
+        padding: 0.4rem 0.6rem;
+        flex: 1 1 calc(50% - 0.5rem); /* 2 itens por linha em tablets */
+        min-width: 120px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .risk-scale-item {
+        flex: 1 1 100%; /* 1 item por linha em mobile */
+    }
+}
+
+</style>
+
+<div class="container-fluid">
+
+    <div class="row mb-3">
+        <div class="col-12 page-title-box d-flex justify-content-between align-items-center">
+            <h2>{% trans "Report of" %} <span class="company-name">{{ company.name }}</span></h2>
+            <a onclick="openModaldoc()" class="documentation-btn">
+                <i class="mdi mdi-help-circle-outline"
+                data-bs-toggle="tooltip" 
+                   data-bs-placement="left" title="{% trans 'Risk Dashboard' %}"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="meuModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModaldoc()">&times;</span>
+          <h2>{% trans "Risk Analysis - Report" %}</h2>
+
+          <h5 style="max-width: 450px; margin: 0 auto; margin-top: 20px; text-align: justify; font-weight: normal;">
+            {% trans "The Risk Analysis Dashboard - Report presents a diagnosis of the company's cybersecurity health, using risk scores to demonstrate the system's defense capabilities and highlight existing vulnerabilities." %}
+          </h5>
+      
+          <a href="{% url 'dashboard:platform_guide_company' pk=company.pk %}#risk-analysis-report" 
+             class="btn btn-primary"
+             style="max-width: 300px; display: block; margin: 0 auto; margin-top: 20px;"
+             title="{% trans 'Risk Analysis Report' %}">
+             {% trans "View Documentation" %}
+          </a>
+        </div>
+    </div>
+    
+<!--
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="page-header">
+                <h2 class="page-title">{% trans "Report of" %} <span class="company-name">{{ company.name }}</span></h2>
+                <a href="{% url 'dashboard:platform_guide_company' pk=company.pk %}#economic-planning" 
+                    class="documentation-btn" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-placement="left" 
+                    title="{% trans 'Economic Dashboard Documentation' %}">
+                        <i class="mdi mdi-help-circle-outline"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+-->
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="button-group">
+                <!-- Botão de Perfil -->
+                <a href="{% url 'dashboard:company_profile_detail' pk=company.pk %}" 
+                   class="btn btn-soft-primary waves-effect waves-light me-2 {% if request.resolver_match.url_name == 'company_profile_detail' %}active{% endif %}">
+                    <i class="mdi mdi-office-building-outline font-16 me-1"></i>
+                    {% trans "Company Profile" %}
+                </a>
+    
+                <!-- Dropdown de Análise de Risco -->
+                <div class="btn-group me-2">
+                    <button type="button" 
+                            class="btn btn-soft-primary dropdown-toggle waves-effect waves-light {% if 'analysis' in request.resolver_match.url_name %}active{% endif %}"
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                        <i class="mdi mdi-chart-line font-16 me-1"></i>
+                        {% trans "Risk Analysis" %}
+                        <i class="mdi mdi-chevron-down ms-1"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'dashboard:company_analysis' pk=company.pk %}">
+                            <i class="mdi mdi-chart-line font-16 me-1"></i>
+                            {% trans "Overview" %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'dashboard:company_analysis_pro' pk=company.pk %}">
+                            <i class="mdi mdi-chart-bar font-16 me-1"></i>
+                            {% trans "Report" %}
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Botão de Planejamento Econômico -->
+                <a href="{% url 'dashboard:economic_planning' pk=company.pk %}" 
+                   class="btn btn-soft-primary waves-effect waves-light me-2 {% if request.resolver_match.url_name == 'economic_planning' %}active{% endif %}">
+                    <i class="mdi mdi-cash-multiple font-16 me-1"></i>
+                    {% trans "Economic Planning" %}
+                </a>
+    
+                <!-- Grupo de Ações -->
+                <div class="float-end">
+                    <a href="{% url 'dashboard:edit_company_profile' pk=company.pk %}" 
+                       class="btn btn-soft-info waves-effect waves-light me-2">
+                        <i class="mdi mdi-pencil font-16 me-1"></i>
+                        {% trans "Edit" %}
+                    </a>
+                    
+                    {% if not is_copy %}
+                    <form action="{% url 'dashboard:copy_company_profile' company.pk %}" 
+                          method="post" 
+                          class="d-inline-block">
+                        {% csrf_token %}
+                        <button type="submit" 
+                                class="btn btn-soft-secondary waves-effect waves-light">
+                            <i class="mdi mdi-content-copy font-16 me-1"></i>
+                            {% trans "Copy" %}
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    .button-group {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    .btn-soft-primary.active {
+        background-color: var(--ct-primary) !important;
+        color: #fff !important;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 1.5rem;
+    }
+    
+    .dropdown-item i {
+        margin-right: 0.5rem;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .button-group {
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        .button-group .btn,
+        .button-group .btn-group {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+    
+        .float-end {
+            float: none !important;
+            width: 100%;
+            display: flex;
+            gap: 0.5rem;
+        }
+    
+        .float-end .btn,
+        .float-end form {
+            flex: 1;
+        }
+    }
+    </style>
+    <!-- Seção de Análise de Risco -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">{% trans "Risk Analysis" %}</h4>
+                    
+                    <table class="risk-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>{% trans "REGION RISK" %}</th>
+                                <th>{% trans "SECTOR RISK" %}</th>
+                                <th>{% trans "COMPANY RESILIENCE" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for threat, data in risk_data.items %}
+                                <tr>
+                                    <td width="20%"><strong>{{ threat|upper }}</strong></td>
+                                    <td width="26.66%">
+                                        {% with value=data.region_value|floatformat:"0"|add:"0" %}
+                                        <div class="risk-bar-container">
+                                            <div class="risk-bar" data-value="{{ value }}">
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                            </div>
+                                        </div>
+                                        <div class="risk-labels">
+                                            <span>{% trans "LOW" %}</span>
+                                            <span></span>
+                                            <span>{% trans "MODERATE" %}</span>
+                                            <span></span>
+                                            <span>{% trans "HIGH" %}</span>
+                                        </div>
+                                        {% endwith %}
+                                    </td>
+                                    <td width="26.66%">
+                                        {% with value=data.sector_value|floatformat:"0"|add:"0" %}
+                                        <div class="risk-bar-container">
+                                            <div class="risk-bar" data-value="{{ value }}">
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                            </div>
+                                        </div>
+                                        <div class="risk-labels">
+                                            <span>{% trans "LOW" %}</span>
+                                            <span></span>
+                                            <span>{% trans "MODERATE" %}</span>
+                                            <span></span>
+                                            <span>{% trans "HIGH" %}</span>
+                                        </div>
+                                        {% endwith %}
+                                    </td>
+                                    <td width="26.66%">
+                                        {% with value=data.resilience_value|floatformat:"0"|add:"0" %}
+                                        <div class="risk-bar-container">
+                                            <div class="risk-bar" data-value="{{ value }}">
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                                <div class="risk-segment"></div>
+                                            </div>
+                                        </div>
+                                        <div class="risk-labels">
+                                            <span>{% trans "LOW" %}</span>
+                                            <span></span>
+                                            <span>{% trans "MODERATE" %}</span>
+                                            <span></span>
+                                            <span>{% trans "HIGH" %}</span>
+                                        </div>
+                                        {% endwith %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .scale-indicators-row th {
+            padding-bottom: 1rem !important;
+        }
+        
+        .scale-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            padding: 0.5rem;
+            background-color: var(--gray-100);
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        
+        .scale-label i {
+            font-size: 1.2rem;
+        }
+        
+        /* Ajuste responsivo */
+        @media (max-width: 768px) {
+            .scale-label {
+                font-size: 0.75rem;
+                padding: 0.25rem;
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            .scale-indicators-row th {
+                padding-bottom: 0.5rem !important;
+            }
+        }
+    </style>
+    <!-- Fim da Seção de Análise de Risco -->
+    <!-- Seção de Pontuação de Risco -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3"><i class="mdi mdi-security me-1"></i>{% trans "Risk Score" %}</h4>
+                    <div class="risk-score-container">
+                        <!-- Semáforo horizontal com as três ameaças -->
+                        <div class="traffic-light-container">
+                            {% for threat, data in risk_data.items %}
+                                <div class="traffic-light-signal 
+                                    {% if data.risk_score_normalized >= 8 %}signal-critical
+                                    {% elif data.risk_score_normalized >= 6 %}signal-danger
+                                    {% elif data.risk_score_normalized >= 4 %}signal-alert
+                                    {% elif data.risk_score_normalized >= 2 %}signal-normal
+                                    {% else %}signal-healthy{% endif %}">
+                                    <div class="threat-label">{{ threat|upper }}</div>
+                                    <div class="score-value">{{ data.risk_score_normalized|floatformat:1 }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Pontuação final estilizada -->
+                        <div class="final-score-container">
+                            <div class="final-score-display 
+                                {% if final_score >= 8 %}score-critical
+                                {% elif final_score >= 6 %}score-danger
+                                {% elif final_score >= 4 %}score-alert
+                                {% elif final_score >= 2 %}score-normal
+                                {% else %}score-healthy{% endif %}">
+                                <div class="score-title">{% trans "Final Score" %}</div>
+                                <div class="score-number">{{ final_score|floatformat:1 }}</div>
+                                <div class="score-indicator">
+                                    <i class="mdi {% if final_score >= 8 %}mdi-alert-octagon
+                                        {% elif final_score >= 6 %}mdi-alert
+                                        {% elif final_score >= 4 %}mdi-alert-circle
+                                        {% elif final_score >= 2 %}mdi-shield-check
+                                        {% else %}mdi-shield-check-outline{% endif %}"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- final-score-container -->
+                        <div class="risk-scale-container">
+                            <div class="risk-scale-item">
+                                <div class="scale-color" style="background: var(--color-risk-1)"></div>
+                                <div class="scale-info">
+                                    <span class="scale-label">{% trans "CRITICAL" %}</span>
+                                    <span class="scale-value">>= 8.0</span>
+                                </div>
+                            </div>
+                            <div class="risk-scale-item">
+                                <div class="scale-color" style="background: var(--color-risk-2)"></div>
+                                <div class="scale-info">
+                                    <span class="scale-label">{% trans "DANGEROUS" %}</span>
+                                    <span class="scale-value">>= 6.0</span>
+                                </div>
+                            </div>
+                            <div class="risk-scale-item">
+                                <div class="scale-color" style="background: var(--color-risk-3)"></div>
+                                <div class="scale-info">
+                                    <span class="scale-label">{% trans "ALERT" %}</span>
+                                    <span class="scale-value">>= 4.0</span>
+                                </div>
+                            </div>
+                            <div class="risk-scale-item">
+                                <div class="scale-color" style="background: var(--color-risk-4)"></div>
+                                <div class="scale-info">
+                                    <span class="scale-label">{% trans "NORMAL" %}</span>
+                                    <span class="scale-value">>= 2.0</span>
+                                </div>
+                            </div>
+                            <div class="risk-scale-item">
+                                <div class="scale-color" style="background: var(--color-risk-5)"></div>
+                                <div class="scale-info">
+                                    <span class="scale-label">{% trans "HEALTHY" %}</span>
+                                    <span class="scale-value">< 2.0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabela de Dimensão Técnica Adicionada Apenas para Perfis Avançados -->
+    {% if is_advanced %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">
+                        {% trans "Technical Dimension Analysis" %}
+                        <button type="button" class="btn btn-sm btn-outline-info ms-2" data-bs-toggle="modal" data-bs-target="#explanationModal">
+                            <i class="mdi mdi-information-outline"></i> {% trans "Explanation" %}
+                        </button>
+                    </h4>
+                    
+                    <table class="tech-dimension-table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Defense" %}</th>
+                                {% for cia in triad_cia %}
+                                    <th>{{ cia }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in tech_dimension_table %}
+                                <tr class="{% if item.enabled %}active-row{% else %}inactive-row{% endif %}">
+                                    <td>{{ item.name }}</td>
+                                    <td>
+                                        {% if item.confidentiality %}
+                                            {% if item.enabled %}
+                                                <span class="text-success cia-icon">&#10004;</span>
+                                            {% else %}
+                                                <span class="text-danger cia-icon">&#10008;</span>
+                                            {% endif %}
+                                        {% else %}
+                                            
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.integrity %}
+                                            {% if item.enabled %}
+                                                <span class="text-success cia-icon">&#10004;</span>
+                                            {% else %}
+                                                <span class="text-danger cia-icon">&#10008;</span>
+                                            {% endif %}
+                                        {% else %}
+                                            
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.availability %}
+                                            {% if item.enabled %}
+                                                <span class="text-success cia-icon">&#10004;</span>
+                                            {% else %}
+                                                <span class="text-danger cia-icon">&#10008;</span>
+                                            {% endif %}
+                                        {% else %}
+                                           
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            {% if is_advanced and not tech_dimension_table %}
+                                <tr>
+                                    <td colspan="4">{% trans "No technical defenses data available." %}</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Explicação -->
+    <div class="modal fade" id="explanationModal" tabindex="-1" aria-labelledby="explanationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="explanationModalLabel">{% trans "Understanding the Technical Dimension Analysis" %}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title"><i class="mdi mdi-lock-outline text-primary me-2"></i>{% trans "Confidentiality" %}</h6>
+                                    <p class="card-text">{% trans "Security measures that control access to confidential data, ensuring only authorized individuals can view sensitive information." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title"><i class="mdi mdi-shield-check-outline text-success me-2"></i>{% trans "Integrity" %}</h6>
+                                    <p class="card-text">{% trans "Security measures that ensure data authenticity and prevent unauthorized alterations, maintaining the accuracy and consistency of information." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6 class="card-title"><i class="mdi mdi-server-network text-info me-2"></i>{% trans "Availability" %}</h6>
+                                    <p class="card-text">{% trans "Security measures that ensure data access, adding resilience and redundancy to the system to maintain continuous operations." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <p><strong>{% trans "How to read the table:" %}</strong></p>
+                        <ul>
+                            <li>{% trans "Green checkmark (&#10004;): The defense is active and contributing to the security aspect." %}</li>
+                            <li>{% trans "Red cross (&#10008;): The defense is relevant but not currently active." %}</li>
+                            <li>{% trans "Empty cell: The defense is not applicable to that security aspect." %}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- Fim da Tabela de Dimensão Técnica -->
+
+</div>
+
+<script>
+    function openModaldoc() {
+        console.log("AAAAAA");
+        document.getElementById("meuModal").style.display = "block";
+    }
+    
+    function closeModaldoc() {
+        document.getElementById("meuModal").style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById("meuModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Inicializa os tooltips do Bootstrap
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    });
+</script>
+
+
+
+{% endblock %}

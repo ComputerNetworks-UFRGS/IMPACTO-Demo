@@ -1,0 +1,71 @@
+{% load i18n %}
+<style>
+    .company-locations-container {
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        padding: 0.5rem;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    
+    .company-locations-search {
+        margin-bottom: 0.5rem;
+    }
+    
+    .company-locations-list {
+        margin-bottom: 0.5rem;
+    }
+    
+    .company-location-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.25rem;
+    }
+    
+    .company-location-item input[type="checkbox"] {
+        margin-right: 0.5rem;
+    }
+</style>
+<div class="mb-3">
+    <label for="{{ form.company_locations.id_for_label }}" class="form-label">
+        {{ form.company_locations.label }}
+        <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ form.company_locations.label }}" data-bs-content="{{ form.company_locations.help_text }}">
+            <i class="fas fa-question-circle"></i>
+        </a>
+    </label>
+    <div class="company-locations-container">
+        <div class="company-locations-search">
+            <input type="text" class="form-control" placeholder="{% trans 'Search locations' %}" id="company-locations-search">
+        </div>
+        <div class="company-locations-list">
+            {% for location in form.company_locations.field.queryset %}
+                <div class="company-location-item">
+                    <input type="checkbox" name="company_locations" value="{{ location.pk }}" {% if location in form.company_locations.value %}checked{% endif %} id="location-{{ location.pk }}">
+                    <label for="location-{{ location.pk }}">{{ location.name }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if form.company_locations.errors %}
+        <div class="text-danger">{{ form.company_locations.errors.as_text }}</div>
+    {% endif %}
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var locationSearch = document.getElementById('company-locations-search');
+        var locationItems = document.querySelectorAll('.company-location-item');
+
+        locationSearch.addEventListener('input', function() {
+            var searchTerm = this.value.toLowerCase();
+
+            locationItems.forEach(function(item) {
+                var locationName = item.querySelector('label').textContent.toLowerCase();
+                if (locationName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

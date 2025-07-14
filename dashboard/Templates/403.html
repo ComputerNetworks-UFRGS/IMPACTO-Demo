@@ -1,0 +1,93 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n %}
+{% block page_content %}
+<style>
+    .card {
+        border: 1px solid var(--ct-border-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .feature-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #F77A3F;
+    }
+    .btn-primary {
+        background-color: #F77A3F;
+        border-color: #F77A3F;
+    }
+    .btn-primary:hover {
+        background-color: #e56a2f;
+        border-color: #e56a2f;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <i class="bi bi-shield-exclamation feature-icon"></i>
+                    <h1 class="display-4 mb-4">{% trans "403 - Access Denied" %}</h1>
+                    <p class="lead mb-4">
+                        {% trans "Sorry, you don't have permission to access this page." %}
+                    </p>
+                    <a href="{% url 'dashboard:index' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-house-door me-2"></i>{% trans "Return to Homepage" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-question-circle feature-icon"></i>
+                    <h4 class="card-title">{% trans "Need Help?" %}</h4>
+                    <p class="card-text">{% trans "If you believe this is an error, please contact our support team." %}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-arrow-left-circle feature-icon"></i>
+                    <h4 class="card-title">{% trans "Go Back" %}</h4>
+                    <p class="card-text">{% trans "Return to the previous page you were viewing." %}</p>
+                    <button onclick="history.back()" class="btn btn-outline-primary">{% trans "Previous Page" %}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-person-badge feature-icon"></i>
+                    <h4 class="card-title">{% trans "Your Access Type" %}</h4>
+                    <p class="card-text">
+                        {% trans "You are currently logged in as a" %} 
+                        <span class="user-type">
+                            {% if is_instructor %}
+                                {% trans "Instructor" %}
+                            {% elif is_student %}
+                                {% trans "Student" %}
+                            {% else %}
+                                {% trans "User" %}
+                            {% endif %}
+                        </span>
+                    </p>
+                    <p class="card-text">
+                        {% trans "This page requires different access rights." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

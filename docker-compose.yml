@@ -1,0 +1,58 @@
+
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres_setup.sql:/docker-entrypoint-initdb.d/1-postgres_setup.sql
+      - ./reset_db.sql:/docker-entrypoint-initdb.d/2-reset_db.sql
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "5432:5432"
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.django
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=db
+      - DB_PORT=${DB_PORT}
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+    ports:
+      - "8000:8000"
+    command: ["./docker-entrypoint-django.sh"]
+
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    depends_on:
+      - db
+      - django
+    volumes:
+      - .:/app
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=db
+      - DB_PORT=${DB_PORT}
+    ports:
+      - "5000:5000"
+
+volumes:
+  postgres_data:
+  static_volume:

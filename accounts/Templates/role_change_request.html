@@ -1,0 +1,66 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ block.super }} | {% trans "Role Change Request" %}{% endblock %}
+
+{% block breadcrumb %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'accounts:index' %}">{% trans "My Account" %}</a></li>
+<li class="breadcrumb-item active">{% trans "Role Change Request" %}</li>
+{% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-user-edit me-2"></i>{% trans "Request Role Change" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        {% trans "Current Role" %}: <strong>{{ user.get_user_type_display }}</strong>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ form.requested_role.id_for_label }}" class="form-label">
+                                {{ form.requested_role.label }}
+                            </label>
+                            <select name="{{ form.requested_role.name }}" id="{{ form.requested_role.id_for_label }}" class="form-control">
+                                {% for value, label in form.requested_role.field.choices %}
+                                    <option value="{{ value }}"{% if form.requested_role.value == value %} selected{% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                            {% if form.requested_role.errors %}
+                                <div class="text-danger">{{ form.requested_role.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.justification.id_for_label }}" class="form-label">
+                                {{ form.justification.label }}
+                            </label>
+                            <textarea name="{{ form.justification.name }}" id="{{ form.justification.id_for_label }}" class="form-control" rows="5" placeholder="{% trans 'Please explain why you want to change your role...' %}">{{ form.justification.value|default_if_none:"" }}</textarea>
+                            {% if form.justification.errors %}
+                                <div class="text-danger">{{ form.justification.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'dashboard:user_profile' %}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>{% trans "Back" %}
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>{% trans "Submit Request" %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

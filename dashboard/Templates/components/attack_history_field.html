@@ -1,0 +1,144 @@
+{% load form_tags %}
+{% load i18n %}
+
+<div class="mb-3">
+    <label class="form-label">{% trans "Attack History" %}</label>
+    {{ formset.management_form }}
+    <div id="attack-history-container">
+        {% for form in formset %}
+            <div class="attack-history-entry mb-2 d-flex align-items-center">
+                {% if form.instance.pk %}
+                    {{ form.id }}
+                {% endif %}
+                <span class="me-1">{% trans "Attack Type" %}:</span>
+                {% if form.attack_type.field.widget %}
+                    {{ form.attack_type|add_class:'form-control me-2' }}
+                {% else %}
+                    <select name="{{ form.prefix }}-attack_type" class="form-control me-2">
+                        {% for value, label in form.fields.attack_type.choices %}
+                            <option value="{{ value }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+                <span class="me-1">{% trans "Year" %}:</span>
+                {% if form.year.field.widget %}
+                    {{ form.year|add_class:'form-control me-2' }}
+                {% else %}
+                    <input type="number" name="{{ form.prefix }}-year" class="form-control me-2">
+                {% endif %}
+                <span class="me-1">{% trans "Count" %}:</span>
+                {% if form.count.field.widget %}
+                    {{ form.count|add_class:'form-control me-2' }}
+                {% else %}
+                    <input type="number" name="{{ form.prefix }}-count" class="form-control me-2">
+                {% endif %}
+                {% if not pode_deletar %}
+                    <button type="button" class="btn btn-danger remove-entry" data-formset-prefix="attack_history">{% trans "Remove" %}</button>
+                {% endif %}
+                {% if form.non_field_errors %}
+                    <div class="text-danger">{{ form.non_field_errors }}</div>
+                {% endif %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        <div class="text-danger">{{ field.errors }}</div>
+                    {% endif %}
+                {% endfor %}
+                {% if formset.can_delete and pode_deletar %}
+                    <div class="form-check ms-2">
+                        {{ form.DELETE }}
+                        <label class="form-check-label" for="{{ form.DELETE.id_for_label }}">
+                            {% trans "Delete" %}
+                        </label>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn-success mt-2" id="add-attack-history">{% trans "Add Attack History" %}</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('attack-history-container');
+        const addButton = document.getElementById('add-attack-history');
+        const totalForms = document.getElementById('id_attack_history-TOTAL_FORMS');
+        const prefix = 'attack_history';
+        const podeDeletar = {{ pode_deletar|yesno:"true,false" }};
+    
+        function addEntry() {
+            const formCount = parseInt(totalForms.value);
+            
+            const newForm = document.createElement('div');
+            newForm.classList.add('attack-history-entry', 'mb-2', 'd-flex', 'align-items-center');
+            newForm.innerHTML = `
+                <span class="me-1">{% trans "Attack Type" %}:</span>
+                <select name="${prefix}-${formCount}-attack_type" class="form-control me-2">
+                    {% for value, label in formset.empty_form.fields.attack_type.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+                <span class="me-1">{% trans "Year" %}:</span>
+                <input type="number" name="${prefix}-${formCount}-year" class="form-control me-2">
+                <span class="me-1">{% trans "Count" %}:</span>
+                <input type="number" name="${prefix}-${formCount}-count" class="form-control me-2">
+                <button type="button" class="btn btn-danger remove-entry" data-formset-prefix="attack_history">{% trans "Remove" %}</button>
+            `;
+    
+            container.appendChild(newForm);
+    
+            totalForms.value = formCount + 1;
+    
+            updateRemoveButtons();
+        }
+    
+        function updateRemoveButtons() {
+            const removeButtons = container.querySelectorAll('.remove-entry');
+            removeButtons.forEach((button, index) => {
+                if (!podeDeletar && index === 0 && container.children.length === 1) {
+                    button.style.display = 'none';
+                } else {
+                    button.style.display = 'inline-block';
+                }
+            });
+        }
+    
+        addButton.addEventListener('click', addEntry);
+    
+        container.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-entry')) {
+                const entry = e.target.closest('.attack-history-entry');
+                if (container.children.length > 1) {
+                    container.removeChild(entry);
+                    updateRemoveButtons();
+                    
+                    // Update form indices
+                    const forms = container.querySelectorAll('.attack-history-entry');
+                    forms.forEach((form, index) => {
+                        form.querySelectorAll('select, input').forEach(input => {
+                            input.name = input.name.replace(/\d+/, index);
+                        });
+                    });
+                    
+                    totalForms.value = forms.length;
+                } else {
+                    alert("You can't remove the last entry. Clear the fields instead.");
+                    entry.querySelectorAll('input, select').forEach(input => {
+                        if (input.type !== 'checkbox') {
+                            input.value = '';
+                        } else {
+                            input.checked = false;
+                        }
+                    });
+                }
+            }
+        });
+    
+        // Initialize remove buttons
+        updateRemoveButtons();
+        
+        // If there are no forms, add an initial empty form
+        if (container.children.length === 0) {
+            addEntry();
+        }
+    });
+</script>

@@ -1,0 +1,44 @@
+{% load i18n %}
+<div class="mb-3">
+    <label class="form-label">{{ field.label }}</label>
+    <div class="form-group">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" id="location-search" placeholder="{% trans 'Search locations' %}">
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+        </div>
+        <div class="location-list" style="max-height: 200px; overflow-y: auto;">
+            {% for country in field.field.choices %}
+                <div class="form-check location-item">
+                    <input type="checkbox" class="form-check-input" id="{{ field.id_for_label }}-{{ forloop.counter0 }}" name="{{ field.html_name }}" value="{{ country.0 }}" {% if country.0 in field.value %}checked{% endif %}>
+                    <label class="form-check-label" for="{{ field.id_for_label }}-{{ forloop.counter0 }}">{{ country.1 }}</label>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if field.errors %}
+        <div class="text-danger">{{ field.errors.as_text }}</div>
+    {% endif %}
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var locationSearch = document.getElementById('location-search');
+        var locationList = document.querySelector('.location-list');
+        var locationItems = locationList.querySelectorAll('.location-item');
+
+        locationSearch.addEventListener('input', function() {
+            var searchTerm = this.value.toLowerCase();
+
+            locationItems.forEach(function(item) {
+                var locationLabel = item.querySelector('.form-check-label').textContent.toLowerCase();
+                if (locationLabel.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

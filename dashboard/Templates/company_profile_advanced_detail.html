@@ -1,0 +1,670 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load form_tags %}
+{% load i18n %}
+{% load humanize %}
+{% load custom_filters %}
+
+{% block page_content %}
+    <style>
+        .advanced-profile-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 8px;
+            background-color: rgba(247, 122, 63, 0.1);
+            color: #F77A3F;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .advanced-profile-badge:before {
+            content: '\F0766';
+            font-family: 'Material Design Icons';
+            margin-right: 4px;
+            font-size: 1rem;
+        }
+
+        .advanced-profile-badge:hover {
+            background-color: #F77A3F;
+            color: white;
+        }
+
+        .documentation-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--ct-primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .documentation-btn:hover {
+            background-color: var(--ct-primary-lighten-10);
+            color: var(--ct-primary-darken-10);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .documentation-btn i {
+            font-size: 20px;
+        }
+
+        .tooltip-inner {
+            max-width: 200px;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer {
+            padding-left: 250px; /* Ajuste conforme a largura da sidebar */
+        }
+        .modal {
+    display: none; /* Esconde o modal por padrão */
+    position: fixed; 
+    z-index: 9999; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+    border-radius: 8px;
+}
+.close {
+    position: absolute;
+    top: 10px; 
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+    </style>
+
+
+<div class="row mb-3">
+<div class="col-12 page-title-box d-flex justify-content-between align-items-center">
+    <h2 class="d-flex align-items-center">
+        <span class="me-2">{% trans "Company Profile of" %}</span>
+        <span style="color: var(--theme-color, #F77A3F);" class="me-2">{{ company.name }}</span>
+        <span class="advanced-profile-badge" data-bs-toggle="tooltip" title="{% trans 'Advanced profile with more detailed information' %}">
+            {% trans "Advanced" %}
+        </span>
+    </h2>
+    <a onclick="openModaldoc()" class="documentation-btn">
+        <i class="mdi mdi-help-circle-outline"
+        data-bs-toggle="tooltip" 
+           data-bs-placement="left" title="{% trans 'Risk Dashboard' %}"></i>
+    </a>
+</div>
+</div>
+
+<div id="meuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModaldoc()">&times;</span>
+      <h2>{% trans "Company Profile" %}</h2>
+      <h5 style="max-width: 450px; margin: 0 auto; margin-top: 20px; text-align: justify; font-weight: normal;">
+        A tela de Perfil de Empresa apresenta os dados da empresa que foram cadastrados na plataforma, podendo ser perfil Básico ou Avançado.
+  
+      <a href="{% url 'dashboard:platform_guide_company' pk=company.pk %}#{% if is_copy %}company-copies{% else %}company-profiles{% endif %}" 
+         class="btn btn-primary"
+         style="max-width: 300px; display: block; margin: 0 auto; margin-top: 20px;"
+         title="{% trans 'Company Profile Documentation' %}">
+         Ir para Documentação
+      </a>
+    </div>
+  </div>
+   <!-- <div class="row mb-3">
+        <div class="col-12">
+            <div class="page-header">
+                <h2 class="d-flex align-items-center">
+                    <span class="me-2">{% trans "Company Profile of" %}</span>
+                    <span style="color: var(--theme-color, #F77A3F);" class="me-2">{{ company.name }}</span>
+                    <span class="advanced-profile-badge" data-bs-toggle="tooltip" title="{% trans 'Advanced profile with more detailed information' %}">
+                        {% trans "Advanced" %}
+                    </span>
+                </h2>
+                <a href="{% url 'dashboard:platform_guide_company' pk=company.pk %}#{% if is_copy %}company-copies{% else %}company-profiles{% endif %}" 
+                   class="documentation-btn" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="left" 
+                   title="{% if is_copy %}{% trans 'Company Copies Documentation' %}{% else %}{% trans 'Company Profiles Documentation' %}{% endif %}">
+                    <i class="mdi mdi-help-circle-outline"></i>
+                </a>
+            </div>
+        </div>
+    </div>      --> 
+
+    {% if is_copy %}
+        <div class="alert alert-info mt-3 mb-4" role="alert">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{% trans "Este é um perfil copiado." %}</strong> {% trans "As alterações feitas aqui não afetarão o perfil original." %}
+                </div>
+                {% if original_company_name and original_company_pk %}
+                    <a href="{% url 'dashboard:company_profile_detail' pk=original_company_pk %}" class="btn btn-outline-primary btn-sm">
+                        <i class="mdi mdi-arrow-left-circle me-1"></i>{% trans "Ver empresa original:"%} {{ original_company_name }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="button-group">
+                <!-- Botão de Perfil -->
+                <a href="{% url 'dashboard:company_profile_detail' pk=company.pk %}" 
+                   class="btn btn-soft-primary waves-effect waves-light me-2 {% if request.resolver_match.url_name == 'company_profile_detail' %}active{% endif %}">
+                    <i class="mdi mdi-office-building-outline font-16 me-1"></i>
+                    {% trans "Company Profile" %}
+                </a>
+    
+                <!-- Dropdown de Análise de Risco -->
+                <div class="btn-group me-2">
+                    <button type="button" 
+                            class="btn btn-soft-primary dropdown-toggle waves-effect waves-light {% if 'analysis' in request.resolver_match.url_name %}active{% endif %}"
+                            data-bs-toggle="dropdown" 
+                            aria-haspopup="true" 
+                            aria-expanded="false">
+                        <i class="mdi mdi-chart-line font-16 me-1"></i>
+                        {% trans "Risk Analysis" %}
+                        <i class="mdi mdi-chevron-down ms-1"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'dashboard:company_analysis' pk=company.pk %}">
+                            <i class="mdi mdi-chart-line font-16 me-1"></i>
+                            {% trans "Overview" %}
+                        </a>
+                        <a class="dropdown-item" href="{% url 'dashboard:company_analysis_pro' pk=company.pk %}">
+                            <i class="mdi mdi-chart-bar font-16 me-1"></i>
+                            {% trans "Report" %}
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Botão de Planejamento Econômico -->
+                <a href="{% url 'dashboard:economic_planning' pk=company.pk %}" 
+                   class="btn btn-soft-primary waves-effect waves-light me-2 {% if request.resolver_match.url_name == 'economic_planning' %}active{% endif %}">
+                    <i class="mdi mdi-cash-multiple font-16 me-1"></i>
+                    {% trans "Economic Planning" %}
+                </a>
+    
+                <!-- Grupo de Ações -->
+                <div class="float-end">
+                    <a href="{% url 'dashboard:edit_company_profile' pk=company.pk %}" 
+                       class="btn btn-soft-info waves-effect waves-light me-2">
+                        <i class="mdi mdi-pencil font-16 me-1"></i>
+                        {% trans "Edit" %}
+                    </a>
+                    
+                    {% if not is_copy %}
+                    <form action="{% url 'dashboard:copy_company_profile' company.pk %}" 
+                          method="post" 
+                          class="d-inline-block">
+                        {% csrf_token %}
+                        <button type="submit" 
+                                class="btn btn-soft-secondary waves-effect waves-light">
+                            <i class="mdi mdi-content-copy font-16 me-1"></i>
+                            {% trans "Copy" %}
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    .button-group {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    .btn-soft-primary.active {
+        background-color: var(--ct-primary) !important;
+        color: #fff !important;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 1.5rem;
+    }
+    
+    .dropdown-item i {
+        margin-right: 0.5rem;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .button-group {
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        .button-group .btn,
+        .button-group .btn-group {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+    
+        .float-end {
+            float: none !important;
+            width: 100%;
+            display: flex;
+            gap: 0.5rem;
+        }
+    
+        .float-end .btn,
+        .float-end form {
+            flex: 1;
+        }
+    }
+    </style>
+    <!-- Company Information -->
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title"><i class="mdi mdi-office-building me-1"></i>{% trans "Company Information" %}</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <tbody>
+                                <tr>
+                                    <td><i class="mdi mdi-domain text-muted me-1"></i><strong>{% trans "Company Name" %}</strong></td>
+                                    <td>{{ company.name }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-map-marker text-muted me-1"></i><strong>{% trans "Headquarters Country" %}</strong></td>
+                                    <td>{{ company.localized_country }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-briefcase text-muted me-1"></i><strong>{% trans "Industry Type" %}</strong></td>
+                                    <td>{{ company.get_industry_type_display }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-account-group text-muted me-1"></i><strong>{% trans "Employee Count" %}</strong></td>
+                                    <td>{{ company.employee_count|intcomma }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-resize text-muted me-1"></i><strong>{% trans "Company Size" %}</strong></td>
+                                    <td>{{ company.get_company_size_display }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-laptop text-muted me-1"></i><strong>{% trans "Remote Work Rate" %}</strong></td>
+                                    <td>{{ company.remote_work_rate }}%</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-earth text-muted me-1"></i><strong>{% trans "Global Presence" %}</strong></td>
+                                    <td>{% if company.global_presence %}<span class="badge bg-success">{% trans "Yes" %}</span>{% else %}<span class="badge bg-danger">{% trans "No" %}</span>{% endif %}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title mb-3"><i class="mdi mdi-information-outline me-1"></i>{% trans "Technical Information" %}</h4>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <tbody>
+                                <tr>
+                                    <td><i class="mdi mdi-clipboard-list text-muted me-1"></i><strong>{% trans "Updated Inventory" %}</strong></td>
+                                    <td>{% if company.updated_inventory %}<span class="badge bg-success"><i class="mdi mdi-check"></i> {% trans "Yes" %}</span>{% else %}<span class="badge bg-danger"><i class="mdi mdi-close"></i> {% trans "No" %}</span>{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-backup-restore text-muted me-1"></i><strong>{% trans "Backup Maintenance" %}</strong></td>
+                                    <td>{% if company.backup_maintenance %}<span class="badge bg-success"><i class="mdi mdi-check"></i> {% trans "Yes" %}</span>{% else %}<span class="badge bg-danger"><i class="mdi mdi-close"></i> {% trans "No" %}</span>{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-priority-high text-muted me-1"></i><strong>{% trans "Risk Prioritization" %}</strong></td>
+                                    <td>{% if company.risk_prioritization %}<span class="badge bg-success"><i class="mdi mdi-check"></i> {% trans "Yes" %}</span>{% else %}<span class="badge bg-danger"><i class="mdi mdi-close"></i> {% trans "No" %}</span>{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-shield-account text-muted me-1"></i><strong>{% trans "Authentication Factors" %}</strong></td>
+                                    <td>{{ company.authentication_factors }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="mdi mdi-cloud text-muted me-1"></i><strong>{% trans "Cloud Solution Type" %}</strong></td>
+                                    <td>{{ company.get_cloud_solution_type_display }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Company Locations 
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title"><i class="mdi mdi-map-marker-multiple me-1"></i>{% trans "Company Locations" %}</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "Region" %}</th>
+                                    <th>{% trans "Type" %}</th>
+                                    <th>{% trans "Continent" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for location in company.company_locations.all %}
+                                <tr>
+                                    <td><i class="mdi mdi-map-marker text-muted me-1"></i>{{ location.name }}</td>
+                                    <td><i class="mdi mdi-earth text-info me-1"></i>{{ location.get_type_display }}</td>
+                                    <td>
+                                        {% if location.continent %}
+                                            <i class="mdi mdi-globe-model text-primary me-1"></i>{{ location.get_continent_display }}
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="3" class="text-center">{% trans "No locations found" %}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    <!-- Cybersecurity Measures -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title"><i class="mdi mdi-shield-check me-1"></i>{% trans "Cybersecurity Measures" %}</h4>
+                        <button id="toggleCybersecurityBtn" class="btn btn-sm btn-outline-primary">
+                            <i class="mdi mdi-chevron-down"></i>
+                            <span>{% trans "Show All" %}</span>
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <tbody id="relevantMeasures">
+                                <!-- Apenas defesas relevantes (ativas ou não) -->
+                            </tbody>
+                            <tbody id="allMeasures" style="display: none;">
+                                <!-- Todas as defesas (inclusive não relevantes) -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lista de campos relevantes para esta empresa/setor
+            const relevantFields = [
+                {% for field, label in company.get_relevant_fields %}
+                    "{{ field }}",
+                {% endfor %}
+            ];
+            // Todas as defesas possíveis
+            const allMeasures = [
+                { field: 'it_system_monitoring', label: '{% trans "IT System Monitoring" %}', active: {% if company.it_system_monitoring %}true{% else %}false{% endif %} },
+                { field: 'periodic_system_updates', label: '{% trans "Periodic System Updates" %}', active: {% if company.periodic_system_updates %}true{% else %}false{% endif %} },
+                { field: 'data_encryption_in_storage', label: '{% trans "Data Encryption in Storage" %}', active: {% if company.data_encryption_in_storage %}true{% else %}false{% endif %} },
+                { field: 'data_encryption_in_transit', label: '{% trans "Data Encryption in Transit" %}', active: {% if company.data_encryption_in_transit %}true{% else %}false{% endif %} },
+                { field: 'vpn_for_remote_access', label: '{% trans "VPN for Remote Access" %}', active: {% if company.vpn_for_remote_access %}true{% else %}false{% endif %} },
+                { field: 'cybersecurity_awareness_and_training', label: '{% trans "Cybersecurity Awareness and Training" %}', active: {% if company.cybersecurity_awareness_and_training %}true{% else %}false{% endif %} },
+                { field: 'documented_response_plan', label: '{% trans "Documented Response Plan" %}', active: {% if company.documented_response_plan %}true{% else %}false{% endif %} },
+                { field: 'response_plan_update', label: '{% trans "Response Plan Update" %}', active: {% if company.response_plan_update %}true{% else %}false{% endif %} },
+                { field: 'operational_recovery_capacity', label: '{% trans "Operational Recovery Capacity" %}', active: {% if company.operational_recovery_capacity %}true{% else %}false{% endif %} },
+                { field: 'credentials_maintenance', label: '{% trans "Credentials Maintenance" %}', active: {% if company.credentials_maintenance %}true{% else %}false{% endif %} },
+                { field: 'vulnerability_identification', label: '{% trans "Vulnerability Identification" %}', active: {% if company.vulnerability_identification %}true{% else %}false{% endif %} },
+                { field: 'network_systems_traffic_monitoring', label: '{% trans "Network Systems Traffic Monitoring" %}', active: {% if company.network_systems_traffic_monitoring %}true{% else %}false{% endif %} },
+                { field: 'threat_identification_process', label: '{% trans "Threat Identification Process" %}', active: {% if company.threat_identification_process %}true{% else %}false{% endif %} },
+                { field: 'it_records_presence', label: '{% trans "IT Records Presence" %}', active: {% if company.it_records_presence %}true{% else %}false{% endif %} },
+                { field: 'antivirus', label: '{% trans "Antivirus" %}', active: {% if company.antivirus %}true{% else %}false{% endif %} },
+                { field: 'firewall', label: '{% trans "Firewall" %}', active: {% if company.firewall %}true{% else %}false{% endif %} },
+                { field: 'intrusion_detection_system', label: '{% trans "Intrusion Detection System (IDS)" %}', active: {% if company.intrusion_detection_system %}true{% else %}false{% endif %} },
+                { field: 'endpoint_detection_and_response', label: '{% trans "Endpoint Detection and Response (EDR)" %}', active: {% if company.endpoint_detection_and_response %}true{% else %}false{% endif %} },
+                { field: 'it_security_team', label: '{% trans "IT Security Team" %}', active: {% if company.it_security_team %}true{% else %}false{% endif %} }
+            ];
+            const relevantMeasuresElement = document.getElementById('relevantMeasures');
+            const allMeasuresElement = document.getElementById('allMeasures');
+            const toggleBtn = document.getElementById('toggleCybersecurityBtn');
+            // Cria linha de defesa
+            function createMeasureRow(measure) {
+                const row = document.createElement('tr');
+                const labelCell = document.createElement('td');
+                const labelText = document.createElement('strong');
+                labelText.textContent = measure.label;
+                labelCell.appendChild(labelText);
+                const valueCell = document.createElement('td');
+                const badge = document.createElement('span');
+                badge.className = measure.active ? 'badge bg-success' : 'badge bg-danger';
+                const icon = document.createElement('i');
+                icon.className = measure.active ? 'mdi mdi-check' : 'mdi mdi-close';
+                badge.appendChild(icon);
+                const text = document.createTextNode(measure.active ? ' {% trans "Yes" %}' : ' {% trans "No" %}');
+                badge.appendChild(text);
+                valueCell.appendChild(badge);
+                row.appendChild(labelCell);
+                row.appendChild(valueCell);
+                return row;
+            }
+            // Preenche apenas as relevantes inicialmente
+            allMeasures.forEach(measure => {
+                if (relevantFields.includes(measure.field)) {
+                    relevantMeasuresElement.appendChild(createMeasureRow(measure));
+                }
+            });
+            // Preenche todas as defesas (inclusive não relevantes)
+            allMeasures.forEach(measure => {
+                if (!relevantFields.includes(measure.field)) {
+                    allMeasuresElement.appendChild(createMeasureRow(measure));
+                }
+            });
+            // Esconde botão se não houver extras
+            if (allMeasuresElement.children.length === 0) {
+                toggleBtn.style.display = 'none';
+            }
+            // Toggle
+            toggleBtn.addEventListener('click', function() {
+                const isHidden = allMeasuresElement.style.display === 'none';
+                allMeasuresElement.style.display = isHidden ? 'table-row-group' : 'none';
+                const icon = toggleBtn.querySelector('i');
+                const text = toggleBtn.querySelector('span');
+                if (isHidden) {
+                    icon.className = 'mdi mdi-chevron-up';
+                    text.textContent = '{% trans "Show Less" %}';
+                } else {
+                    icon.className = 'mdi mdi-chevron-down';
+                    text.textContent = '{% trans "Show All" %}';
+                }
+            });
+        });
+    </script>
+
+    <!-- Financial Information -->
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title"><i class="mdi mdi-currency-usd me-1"></i>{% trans "Annual Revenue" %}</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "Year" %}</th>
+                                    <th>{% trans "Amount" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for revenue in company.annual_revenues.all %}
+                                <tr>
+                                    <td><i class="mdi mdi-calendar text-muted me-1"></i>{{ revenue.year }}</td>
+                                    <td><i class="mdi mdi-cash text-success me-1"></i>{{ revenue.amount|intcomma }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title"><i class="mdi mdi-shield-lock me-1"></i>{% trans "Cybersecurity Investment" %}</h4>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "Year" %}</th>
+                                    <th>{% trans "Amount" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for spending in company.cybersecurity_spendings.all %}
+                                <tr>
+                                    <td><i class="mdi mdi-calendar text-muted me-1"></i>{{ spending.year }}</td>
+                                    <td><i class="mdi mdi-cash-multiple text-primary me-1"></i>{{ spending.amount|intcomma }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Assets -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title"><i class="mdi mdi-package-variant me-1"></i>{% trans "Company Assets" %}</h4>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "Item" %}</th>
+                                    <th>{% trans "Value" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for asset in company.company_assets.all %}
+                                <tr>
+                                    <td><i class="mdi mdi-package text-muted me-1"></i>{{ asset.get_item_display }}</td>
+                                    <td><i class="mdi mdi-cash text-success me-1"></i>{{ asset.value|intcomma }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attack History -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="header-title"><i class="mdi mdi-shield-alert me-1"></i>{% trans "Attack History" %}</h4>
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap mb-0">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "Year" %}</th>
+                                    <th>{% trans "Attack Type" %}</th>
+                                    <th>{% trans "Count" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for attack in company.attack_histories.all %}
+                                <tr>
+                                    <td><i class="mdi mdi-calendar text-muted me-1"></i>{{ attack.year }}</td>
+                                    <td><i class="mdi mdi-alert-circle text-danger me-1"></i>{{ attack.attack_type.get_attack_type_display }}</td>
+                                    <td><i class="mdi mdi-numeric text-warning me-1"></i>{{ attack.count }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    function openModaldoc() {
+        document.getElementById("meuModal").style.display = "block";
+    }
+    
+    function closeModaldoc() {
+        document.getElementById("meuModal").style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById("meuModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+{% endblock %}

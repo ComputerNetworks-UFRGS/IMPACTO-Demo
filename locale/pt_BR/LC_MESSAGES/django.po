@@ -1,0 +1,5136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-10 20:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: accounts/Templates/index.html:7 accounts/Templates/index.html:18
+#: accounts/Templates/role_change_request.html:8
+msgid "My Account"
+msgstr "Minha Conta"
+
+#: accounts/Templates/index.html:13 dashboard/Templates/index.html:140
+msgid "Welcome"
+msgstr "Bem vindo"
+
+#: accounts/Templates/index.html:21
+#: accounts/Templates/role_change_request.html:18
+#: dashboard/Templates/user_profile.html:74
+msgid "Request Role Change"
+msgstr "Solicitar Mudança de Função"
+
+#: accounts/Templates/index.html:25
+#: accounts/Templates/manage_role_requests.html:4
+#: accounts/Templates/manage_role_requests.html:8
+#: dashboard/Templates/user_profile.html:79
+msgid "Manage Role Requests"
+msgstr "Gerenciar Solicitações de Função"
+
+# Esse funciona
+#: accounts/Templates/index.html:33
+msgid "Change Profile"
+msgstr "Adicionar Empresa"
+
+#: accounts/Templates/index.html:53
+msgid "Change Password"
+msgstr "Mudar Senha"
+
+#: accounts/Templates/index.html:67
+#: dashboard/Templates/add_advanced_company_profile.html:282
+#: dashboard/Templates/add_company_profile.html:198
+#: dashboard/Templates/company_economic_planning.html:323
+#: dashboard/Templates/edit_advanced_company_profile.html:179
+#: dashboard/Templates/edit_company_profile.html:111
+msgid "Save"
+msgstr "Salvar"
+
+#: accounts/Templates/manage_role_requests.html:13
+msgid "Manage Role Change Requests"
+msgstr "Gerenciar Solicitações de Mudança de Função"
+
+#: accounts/Templates/manage_role_requests.html:18
+msgid "Pending Requests"
+msgstr "Solicitações Pendentes"
+
+#: accounts/Templates/manage_role_requests.html:26
+#: accounts/Templates/manage_role_requests.html:71
+#: dashboard/Templates/403.html:81 dashboard/Templates/index.html:138
+#: dashboard/models.py:233 dashboard/models.py:811
+msgid "User"
+msgstr "Usuário"
+
+#: accounts/Templates/manage_role_requests.html:27
+#: accounts/Templates/role_change_request.html:23 accounts/models.py:122
+msgid "Current Role"
+msgstr "Função Atual"
+
+#: accounts/Templates/manage_role_requests.html:28 accounts/forms.py:95
+#: accounts/models.py:121
+msgid "Requested Role"
+msgstr "Função Solicitada"
+
+#: accounts/Templates/manage_role_requests.html:29 accounts/forms.py:96
+#: accounts/models.py:123
+msgid "Justification"
+msgstr "Justificativa"
+
+#: accounts/Templates/manage_role_requests.html:30
+#: accounts/Templates/manage_role_requests.html:75
+msgid "Date"
+msgstr "Data"
+
+#: accounts/Templates/manage_role_requests.html:31
+msgid "Actions"
+msgstr "Ações"
+
+#: accounts/Templates/manage_role_requests.html:44
+#: accounts/Templates/manage_role_requests.html:122
+msgid "Approve"
+msgstr "Aprovar"
+
+#: accounts/Templates/manage_role_requests.html:47
+#: accounts/Templates/manage_role_requests.html:148
+msgid "Reject"
+msgstr "Rejeitar"
+
+#: accounts/Templates/manage_role_requests.html:56
+msgid "No pending requests."
+msgstr "Nenhuma solicitação pendente."
+
+#: accounts/Templates/manage_role_requests.html:64
+msgid "Recent Requests"
+msgstr "Solicitações Recentes"
+
+#: accounts/Templates/manage_role_requests.html:72
+msgid "Request"
+msgstr "Solicitação"
+
+#: accounts/Templates/manage_role_requests.html:73 accounts/models.py:124
+#: dashboard/Templates/company_economic_planning.html:331
+#: dashboard/Templates/company_economic_planning.html:448
+#: dashboard/Templates/platform_guide.html:410
+msgid "Status"
+msgstr "Status"
+
+#: accounts/Templates/manage_role_requests.html:74
+msgid "Reviewed By"
+msgstr "Revisado Por"
+
+#: accounts/Templates/manage_role_requests.html:108
+msgid "Approve Request"
+msgstr "Aprovar Solicitação"
+
+#: accounts/Templates/manage_role_requests.html:114
+msgid "Are you sure you want to approve this role change request for"
+msgstr ""
+"Tem certeza de que deseja aprovar esta solicitação de mudança de função para"
+
+#: accounts/Templates/manage_role_requests.html:116 accounts/models.py:128
+msgid "Admin Notes"
+msgstr "Notas do Administrador"
+
+#: accounts/Templates/manage_role_requests.html:121
+#: accounts/Templates/manage_role_requests.html:147
+#: dashboard/Templates/edit_user_profile.html:23
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: accounts/Templates/manage_role_requests.html:134
+msgid "Reject Request"
+msgstr "Rejeitar Solicitação"
+
+#: accounts/Templates/manage_role_requests.html:140
+msgid "Are you sure you want to reject this role change request for"
+msgstr ""
+"Tem certeza de que deseja rejeitar esta solicitação de mudança de função para"
+
+#: accounts/Templates/manage_role_requests.html:142
+msgid "Reason for Rejection"
+msgstr "Motivo da Rejeição"
+
+#: accounts/Templates/role_change_request.html:4
+#: accounts/Templates/role_change_request.html:9 accounts/models.py:131
+msgid "Role Change Request"
+msgstr "Solicitação de Mudança de Função"
+
+#: accounts/Templates/role_change_request.html:46
+msgid "Please explain why you want to change your role..."
+msgstr "Por favor, explique por que você deseja mudar sua função..."
+
+#: accounts/Templates/role_change_request.html:54
+msgid "Back"
+msgstr "Voltar"
+
+#: accounts/Templates/role_change_request.html:57
+msgid "Submit Request"
+msgstr "Enviar Solicitação"
+
+#: accounts/admin.py:32
+msgid "Personal info"
+msgstr "Informações pessoais"
+
+#: accounts/admin.py:35
+msgid "User type"
+msgstr "Tipo de Usuário"
+
+#: accounts/admin.py:38
+msgid "Permissions"
+msgstr "Permissões"
+
+#: accounts/admin.py:41
+msgid "Important dates"
+msgstr "Datas Importantes"
+
+#: accounts/forms.py:38
+msgid "Password"
+msgstr "Senha"
+
+#: accounts/forms.py:42
+msgid "Repeat the password"
+msgstr "Repita a mesma senha"
+
+#: accounts/forms.py:44
+msgid "Repeat the same password for verification."
+msgstr "Repita a mesma senha para verificação."
+
+#: accounts/forms.py:86
+msgid "Senha"
+msgstr "Senha"
+
+#: accounts/forms.py:99
+msgid "Please explain why you want to change your role."
+msgstr "Por favor, explique por que você deseja mudar sua função."
+
+#: accounts/models.py:15 dashboard/Templates/user_profile.html:29
+msgid "Username"
+msgstr "Usuário"
+
+#: accounts/models.py:21
+msgid ""
+"Enter a valid username. This value may contain only letters, numbers, and "
+"@/./+/-/_ characters."
+msgstr ""
+"Digite um nome de usuário válido. Este valor pode conter apenas letras, "
+"números e os caracteres @/./+/-/_."
+
+#: accounts/models.py:25
+msgid ""
+"A username that will be used for identification and login on the platform."
+msgstr ""
+"Um nome de usuário que será usado para identificação e login na plataforma"
+
+#: accounts/models.py:27 dashboard/Templates/user_profile.html:30
+#: dashboard/models.py:23 dashboard/models.py:252 dashboard/models.py:279
+msgid "Name"
+msgstr "Nome"
+
+#: accounts/models.py:28 dashboard/Templates/user_profile.html:31
+msgid "E-mail"
+msgstr "E-mail"
+
+#: accounts/models.py:29 dashboard/Templates/user_profile.html:38
+msgid "Staff Status"
+msgstr "Status Administrador"
+
+#: accounts/models.py:30 dashboard/Templates/user_profile.html:45
+msgid "Active Status"
+msgstr "Status de Atividade"
+
+#: accounts/models.py:31 dashboard/Templates/user_profile.html:52
+msgid "Date Joined"
+msgstr "Data Registro"
+
+#: accounts/models.py:32 dashboard/Templates/user_profile.html:32
+msgid "Institution"
+msgstr "Instituição"
+
+#: accounts/models.py:33 dashboard/Templates/user_profile.html:33
+msgid "Job"
+msgstr "Cargo"
+
+#: accounts/models.py:34 dashboard/Templates/user_profile.html:34
+msgid "Role"
+msgstr "Função"
+
+#: accounts/models.py:38 dashboard/Templates/403.html:79
+#: dashboard/Templates/index.html:132 dashboard/Templates/user_profile.html:17
+msgid "Student"
+msgstr "Estudante"
+
+#: accounts/models.py:39 dashboard/Templates/403.html:77
+#: dashboard/Templates/index.html:135 dashboard/Templates/user_profile.html:20
+msgid "Instructor"
+msgstr "Instrutor"
+
+#: accounts/models.py:42 dashboard/Templates/user_profile.html:37
+msgid "User Type"
+msgstr "Tipo de Usuário"
+
+#: accounts/models.py:54
+msgid "user"
+msgstr "usuário"
+
+#: accounts/models.py:55
+msgid "users"
+msgstr "usuários"
+
+#: accounts/models.py:115
+msgid "Pending"
+msgstr "Pendente"
+
+#: accounts/models.py:116
+msgid "Approved"
+msgstr "Aprovado"
+
+#: accounts/models.py:117
+msgid "Rejected"
+msgstr "Rejeitado"
+
+#: accounts/models.py:123
+msgid "Please explain why you want to change your role"
+msgstr "Por favor, explique por que você deseja mudar sua função"
+
+#: accounts/models.py:125
+msgid "Created At"
+msgstr "Criado Em"
+
+#: accounts/models.py:126
+msgid "Updated At"
+msgstr "Atualizado Em"
+
+#: accounts/models.py:132
+msgid "Role Change Requests"
+msgstr "Solicitações de Mudança de Função"
+
+#: accounts/views.py:27
+msgid "Profile has been updated!"
+msgstr "Perfil foi atualizado!"
+
+#: accounts/views.py:29 accounts/views.py:36
+msgid "Input Error"
+msgstr "Erro de Entrada"
+
+#: accounts/views.py:34
+msgid "Password has been changed!"
+msgstr "Senha foi alterada!"
+
+#: accounts/views.py:51
+msgid "You already have a pending role change request."
+msgstr "Você já possui uma solicitação de mudança de função pendente."
+
+#: accounts/views.py:61
+msgid "Your role change request has been submitted successfully!"
+msgstr "Sua solicitação de mudança de função foi enviada com sucesso!"
+
+#: accounts/views.py:88
+#, python-format
+msgid "Role change request for %(username)s has been approved."
+msgstr "Solicitação de mudança de função para %(username)s foi aprovada."
+
+#: accounts/views.py:102
+#, python-format
+msgid "Role change request for %(username)s has been rejected."
+msgstr "Solicitação de mudança de função para %(username)s foi rejeitada."
+
+#: core/Templates/assets/login/login.html:10
+#: core/Templates/assets/login/register.html:8
+#: core/Templates/login/login.html:10 core/Templates/login/register.html:8
+#: dashboard/Templates/base.html:7
+msgid "GT-IMPACTO - Simulation of Economic Aspects of Cybersecurity"
+msgstr "GT-IMPACTO - Simulação de Aspectos Econômicos de Cibersegurança"
+
+#: core/Templates/assets/login/login.html:90
+#: core/Templates/login/login.html:132
+msgid "Entrar"
+msgstr "Entrar"
+
+#: core/Templates/assets/login/login.html:91
+#: core/Templates/login/login.html:133
+msgid "Type your username and password to access the platform"
+msgstr "Entre com o usuário e senha para acessar a plataforma."
+
+#: core/Templates/assets/login/login.html:111
+#: core/Templates/login/login.html:153
+msgid "Remember"
+msgstr "Lembrar"
+
+#: core/Templates/assets/login/login.html:115
+#: core/Templates/login/login.html:157
+msgid "Enter"
+msgstr "Entrar"
+
+#: core/Templates/assets/login/login.html:121
+#: core/Templates/login/login.html:164
+msgid "Don't have an account?"
+msgstr "Não possui uma conta?"
+
+#: core/Templates/assets/login/login.html:123
+#: core/Templates/login/login.html:166
+msgid "Register"
+msgstr "Registrar-se"
+
+#: core/Templates/assets/login/register.html:52
+#: core/Templates/login/register.html:120
+msgid "Register in the platform"
+msgstr "Registrar-se na plataforma"
+
+#: core/Templates/assets/login/register.html:53
+#: core/Templates/login/register.html:121
+msgid ""
+"Don't have an account to access the platform? Create one now. It's quick :)"
+msgstr ""
+"Não possui uma conta para acessar a plataforma? Crie agora mesmo. É rápido :)"
+
+#: core/Templates/assets/login/register.html:131
+#: core/Templates/login/register.html:190
+msgid "Create account"
+msgstr "Criar conta"
+
+#: core/Templates/assets/login/register.html:138
+#: core/Templates/login/register.html:196
+msgid "Already have an account?"
+msgstr "Já possui uma conta?"
+
+#: core/Templates/assets/login/register.html:140
+#: core/Templates/login/register.html:198
+msgid "Login"
+msgstr "Faça o login"
+
+#: core/settings.py:135
+msgid "English"
+msgstr ""
+
+#: core/settings.py:136
+msgid "Português"
+msgstr ""
+
+#: dashboard/Templates/403.html:34
+msgid "403 - Access Denied"
+msgstr "403 - Acesso Negado"
+
+#: dashboard/Templates/403.html:36
+msgid "Sorry, you don't have permission to access this page."
+msgstr "Desculpe, você não tem permissão para acessar esta página."
+
+#: dashboard/Templates/403.html:39 dashboard/Templates/404.html:39
+msgid "Return to Homepage"
+msgstr "Voltar para a Página Inicial"
+
+#: dashboard/Templates/403.html:51
+msgid "Need Help?"
+msgstr "Precisa de Ajuda?"
+
+#: dashboard/Templates/403.html:52
+msgid "If you believe this is an error, please contact our support team."
+msgstr ""
+"Se você acredita que isso é um erro, por favor, entre em contato com nossa "
+"equipe de suporte."
+
+#: dashboard/Templates/403.html:61
+msgid "Go Back"
+msgstr "Voltar"
+
+#: dashboard/Templates/403.html:62
+msgid "Return to the previous page you were viewing."
+msgstr "Retorne à página anterior que você estava visualizando."
+
+#: dashboard/Templates/403.html:63
+msgid "Previous Page"
+msgstr "Página Anterior"
+
+#: dashboard/Templates/403.html:72
+msgid "Your Access Type"
+msgstr "Seu Tipo de Acesso"
+
+#: dashboard/Templates/403.html:74
+msgid "You are currently logged in as a"
+msgstr "Você está atualmente logado como um"
+
+#: dashboard/Templates/403.html:86
+msgid "This page requires different access rights."
+msgstr "Esta página requer direitos de acesso diferentes."
+
+#: dashboard/Templates/404.html:34
+msgid "404 - Page Not Found"
+msgstr "404 - Página Não Encontrada"
+
+#: dashboard/Templates/404.html:36
+msgid "Oops! The page you're looking for doesn't exist."
+msgstr "Ops! A página que você está procurando não existe."
+
+#: dashboard/Templates/add_advanced_company_profile.html:74
+msgid "Add Advanced Company Profile"
+msgstr "Adicionar Perfil de Empresa Avançado"
+
+#: dashboard/Templates/add_advanced_company_profile.html:78
+#: dashboard/Templates/add_company_profile.html:95
+#: dashboard/Templates/company_analysis.html:99
+#: dashboard/Templates/company_analysis_pro.html:667
+#: dashboard/Templates/company_profile_advanced_detail.html:120
+#: dashboard/Templates/company_profile_detail.html:81
+#: dashboard/Templates/company_profile_list.html:126
+#: dashboard/Templates/user_company_copies.html:135
+msgid "Risk Dashboard"
+msgstr "Dashboard de Risco"
+
+# Esse funciona
+#: dashboard/Templates/add_advanced_company_profile.html:86
+#: dashboard/Templates/add_company_profile.html:103
+#: dashboard/Templates/company_profile_list.html:122
+#: dashboard/Templates/company_profile_list.html:134
+#: dashboard/Templates/company_profile_list.html:151
+#: dashboard/Templates/index.html:171
+#: dashboard/Templates/platform_guide.html:152
+#: dashboard/Templates/platform_guide.html:214 dashboard/models.py:105
+msgid "Company Profiles"
+msgstr "Perfis de Empresa"
+
+#: dashboard/Templates/add_advanced_company_profile.html:88
+#: dashboard/Templates/add_company_profile.html:105
+#: dashboard/Templates/company_profile_list.html:136
+msgid ""
+"The Company Profiles screen presents the companies that were registered on "
+"the platform for consultation, which can be Basic or Advanced profile. To "
+"edit a company, create a copy."
+msgstr ""
+"A tela de Perfis de Empresas apresenta as empresas que foram registradas na "
+"plataforma para consulta, que podem ser de perfil Básico ou Avançado. Para "
+"editar uma empresa, crie uma cópia."
+
+# Esse funciona
+#: dashboard/Templates/add_advanced_company_profile.html:94
+#: dashboard/Templates/add_company_profile.html:111
+#: dashboard/Templates/company_profile_advanced_detail.html:135
+#: dashboard/Templates/company_profile_detail.html:97
+#: dashboard/Templates/company_profile_list.html:142
+msgid "Company Profile Documentation"
+msgstr "Documentação dos Perfis de Empresa"
+
+# Esse funciona
+#: dashboard/Templates/add_advanced_company_profile.html:95
+#: dashboard/Templates/add_company_profile.html:112
+#: dashboard/Templates/company_analysis.html:116
+#: dashboard/Templates/company_analysis_pro.html:685
+#: dashboard/Templates/company_profile_detail.html:98
+#: dashboard/Templates/company_profile_list.html:143
+#: dashboard/Templates/report_analysis_tests.html:102
+msgid "View Documentation"
+msgstr "Ir para a Documentação"
+
+#: dashboard/Templates/add_advanced_company_profile.html:102
+msgid "Switch to Standard Company Profile"
+msgstr "Mudar para o Perfil de Empresa Básico"
+
+#: dashboard/Templates/add_advanced_company_profile.html:106
+msgid ""
+"The extra fields in the Advanced Company Profile enable a greater range of "
+"calculations and inferences."
+msgstr ""
+"Os campos extras no Perfil Avançado de Empresa possibilitam uma gama maior "
+"de cálculos e inferências."
+
+#: dashboard/Templates/add_advanced_company_profile.html:117
+#: dashboard/Templates/add_company_profile.html:133
+#: dashboard/Templates/edit_advanced_company_profile.html:22
+#: dashboard/Templates/platform_guide.html:256 dashboard/admin.py:42
+msgid "Business Dimension"
+msgstr "Dimensão de Negócios"
+
+#: dashboard/Templates/add_advanced_company_profile.html:196
+#: dashboard/Templates/add_company_profile.html:173
+#: dashboard/Templates/edit_advanced_company_profile.html:97
+#: dashboard/Templates/platform_guide.html:259 dashboard/admin.py:45
+msgid "Technical Dimension"
+msgstr "Dimensão Técnica"
+
+#: dashboard/Templates/add_advanced_company_profile.html:258
+#: dashboard/Templates/add_company_profile.html:159
+msgid "Economic Dimension"
+msgstr "Dimensão Economica"
+
+#: dashboard/Templates/add_advanced_company_profile.html:273
+#: dashboard/Templates/company_profile_advanced_detail.html:624
+#: dashboard/Templates/components/attack_history_field.html:5
+#: dashboard/Templates/platform_guide.html:262 dashboard/models.py:634
+msgid "Attack History"
+msgstr "Histórico de Ataques"
+
+#: dashboard/Templates/add_company_profile.html:76
+#: dashboard/Templates/add_company_profile.html:91
+msgid "Add Basic Company Profile"
+msgstr "Adicionar Perfil de Empresa Básico"
+
+#: dashboard/Templates/add_company_profile.html:81
+msgid "Basic Company Profiles Documentation"
+msgstr "Documentação dos Perfis Básicos de Empresa"
+
+#: dashboard/Templates/add_company_profile.html:118
+msgid "Switch to Advanced Company Profile"
+msgstr "Mudar para o Perfil de Empresa Avançado"
+
+#: dashboard/Templates/add_company_profile.html:122
+msgid ""
+"The Basic Company Profile is simpler, but with fewer fields, calculations "
+"will not be as specific and precise."
+msgstr ""
+"O Perfil Básico de Empresa é mais simples, mas, com menos campos, os "
+"cálculos não serão tão específicos e precisos."
+
+#: dashboard/Templates/base.html:58
+msgid "Configurations"
+msgstr "Configurações"
+
+#: dashboard/Templates/base.html:64 dashboard/Templates/base.html:306
+msgid "Log out"
+msgstr "Sair"
+
+#: dashboard/Templates/base.html:73
+msgid "Menu"
+msgstr "Menu"
+
+#: dashboard/Templates/base.html:79 dashboard/Templates/base.html:84
+msgid "Home"
+msgstr "Início"
+
+# Esse funciona
+#: dashboard/Templates/base.html:92 dashboard/Templates/base.html:134
+#: dashboard/Templates/company_analysis.html:128
+#: dashboard/Templates/company_analysis_pro.html:713
+#: dashboard/Templates/company_economic_planning.html:160
+#: dashboard/Templates/company_profile_advanced_detail.html:128
+#: dashboard/Templates/company_profile_advanced_detail.html:183
+#: dashboard/Templates/company_profile_detail.html:77
+#: dashboard/Templates/company_profile_detail.html:89
+#: dashboard/Templates/company_profile_detail.html:141 dashboard/admin.py:56
+#: dashboard/models.py:104
+msgid "Company Profile"
+msgstr "Perfil de Empresa"
+
+# Esse funciona
+#: dashboard/Templates/base.html:99
+msgid "View Companies"
+msgstr "Visualizar Empresas"
+
+# Esse funciona
+#: dashboard/Templates/base.html:104 dashboard/Templates/index.html:207
+msgid "My Company Copies"
+msgstr "Minhas Cópias"
+
+#: dashboard/Templates/base.html:110
+msgid "Add Basic Profile"
+msgstr "Adicionar Perfil Básico"
+
+#: dashboard/Templates/base.html:115
+msgid "Add Advanced Profile"
+msgstr "Adicionar Perfil Avançado"
+
+#: dashboard/Templates/base.html:140
+#: dashboard/Templates/company_analysis.html:139
+#: dashboard/Templates/company_analysis_pro.html:724
+#: dashboard/Templates/company_analysis_pro.html:823
+#: dashboard/Templates/company_economic_planning.html:171
+#: dashboard/Templates/company_profile_advanced_detail.html:194
+#: dashboard/Templates/company_profile_detail.html:152
+#: dashboard/Templates/index.html:182
+msgid "Risk Analysis"
+msgstr "Análise de Risco"
+
+#: dashboard/Templates/base.html:148
+#: dashboard/Templates/company_analysis.html:145
+#: dashboard/Templates/company_analysis_pro.html:730
+#: dashboard/Templates/company_economic_planning.html:177
+#: dashboard/Templates/company_profile_advanced_detail.html:200
+#: dashboard/Templates/company_profile_detail.html:158
+msgid "Overview"
+msgstr "Visão Geral"
+
+#: dashboard/Templates/base.html:154
+#: dashboard/Templates/company_analysis.html:149
+#: dashboard/Templates/company_analysis_pro.html:734
+#: dashboard/Templates/company_economic_planning.html:181
+#: dashboard/Templates/company_profile_advanced_detail.html:204
+#: dashboard/Templates/company_profile_detail.html:162 dashboard/models.py:902
+#: dashboard/models.py:952
+msgid "Report"
+msgstr "Relatório"
+
+#: dashboard/Templates/base.html:163
+#: dashboard/Templates/company_analysis.html:158
+#: dashboard/Templates/company_analysis_pro.html:743
+#: dashboard/Templates/company_economic_planning.html:190
+#: dashboard/Templates/company_profile_advanced_detail.html:213
+#: dashboard/Templates/company_profile_detail.html:171
+#: dashboard/Templates/platform_guide.html:155
+#: dashboard/Templates/platform_guide.html:315
+#: dashboard/Templates/platform_guide.html:400
+#: dashboard/Templates/platform_guide.html:549
+msgid "Economic Planning"
+msgstr "Gestão Econômica"
+
+# Esse funciona
+#: dashboard/Templates/base.html:170
+msgid "Edit Company"
+msgstr "Editar Empresa"
+
+#: dashboard/Templates/base.html:182
+#: dashboard/Templates/charts/continents_bar_charts.html:8
+#: dashboard/Templates/charts/sectors_bar_charts.html:8
+#: dashboard/Templates/platform_guide.html:157
+#: dashboard/Templates/platform_guide.html:583
+msgid "Data Source"
+msgstr "Fonte de Dados"
+
+#: dashboard/Templates/base.html:190 dashboard/Templates/base.html:194
+msgid "Reports Analysis"
+msgstr "Análise dos Relatórios"
+
+#: dashboard/Templates/base.html:292
+msgid "My account"
+msgstr "Minha Conta"
+
+#: dashboard/Templates/base.html:298
+msgid "Settings"
+msgstr "Configurações"
+
+#: dashboard/Templates/base.html:365
+msgid "About"
+msgstr "Sobre"
+
+#: dashboard/Templates/base.html:366
+msgid "Project"
+msgstr "Projeto"
+
+#: dashboard/Templates/base.html:367
+msgid "Team"
+msgstr "Equipe"
+
+#: dashboard/Templates/base.html:368
+msgid "Contact"
+msgstr "Contato"
+
+#: dashboard/Templates/charts/continents_bar_charts.html:7
+msgid "Cyber Attack Risk Levels by Regions"
+msgstr "Níveis de Risco de Ataques Cibernéticos por Regiões"
+
+#: dashboard/Templates/charts/continents_bar_charts.html:8
+#: dashboard/Templates/charts/sectors_bar_charts.html:8
+msgid "Data obtained and analyzed from cybersecurity reports."
+msgstr "Dados obtidos e analisados de relatórios de cibersegurança"
+
+#: dashboard/Templates/charts/continents_bar_charts.html:71
+#: dashboard/admin.py:121 dashboard/models.py:325
+msgid "Regions"
+msgstr "Regiões"
+
+#: dashboard/Templates/charts/continents_bar_charts.html:82
+#: dashboard/Templates/charts/sectors_bar_charts.html:82
+#, python-format
+msgid "Probability (%%)"
+msgstr "Probabilidade (%%)"
+
+#: dashboard/Templates/charts/continents_bar_charts.html:99
+#: dashboard/Templates/charts/sectors_bar_charts.html:99
+msgid "Insufficient data"
+msgstr "Dados Insuficientes"
+
+#: dashboard/Templates/charts/continents_bar_charts.html:101
+#: dashboard/Templates/company_profile_advanced_detail.html:633
+#: dashboard/Templates/components/attack_history_field.html:29
+#: dashboard/Templates/components/attack_history_field.html:82
+#: dashboard/models.py:627
+msgid "Count"
+msgstr "Contagem"
+
+#: dashboard/Templates/charts/cyber_attack_risks.html:7
+#: dashboard/Templates/charts/cyber_attack_risks.html:8
+msgid "Cyber Attack Risk Levels"
+msgstr "Níveis de Risco de Ataques Cibernéticos"
+
+#: dashboard/Templates/charts/cyber_attack_risks.html:8
+msgid "This chart shows the risk level for different types of cyber attacks."
+msgstr ""
+"Este gráfico mostra os níveis de risco para diferentes tipos de ataques "
+"cibernéticos."
+
+#: dashboard/Templates/charts/cyber_attack_risks.html:14
+#, python-format
+msgid ""
+"\n"
+"            Risk for companies in the <span class=\"theme-"
+"color\">%(industry)s</span> sector, located in <span class=\"theme-"
+"color\">%(country)s</span>.\n"
+"            "
+msgstr ""
+"\n"
+"            Risco para empresas do setor de <span class=\"theme-"
+"color\">%(industry)s</span>, localizadas em <span class=\"theme-"
+"color\">%(country)s</span>.\n"
+"            "
+
+#: dashboard/Templates/charts/monthly_attacks.html:7
+#: dashboard/Templates/charts/monthly_attacks.html:8
+msgid "Estimated attacks per month"
+msgstr "Ataques estimados por mês"
+
+#: dashboard/Templates/charts/monthly_attacks.html:8
+msgid "This chart displays the estimated number of cyber attacks each month."
+msgstr ""
+"Este gráfico mostra o número estimado de ataques cibernéticos a cada mês."
+
+#: dashboard/Templates/charts/monthly_attacks.html:16
+#, python-format
+msgid ""
+"\n"
+"            Estimated attacks for companies in the <span class=\"theme-"
+"color\">%(industry)s</span> sector, located in <span class=\"theme-"
+"color\">%(country)s</span>.\n"
+"            "
+msgstr ""
+"\n"
+"            Ataques estimados para empresas do setor de <span class=\"theme-"
+"color\">%(industry)s</span>, localizadas em <span class=\"theme-"
+"color\">%(country)s</span>.\n"
+"            "
+
+#: dashboard/Templates/charts/prob_num_attacks.html:7
+#: dashboard/Templates/charts/prob_num_attacks.html:8
+msgid "Probability of Number of Attacks"
+msgstr "Probabilidade de ocorrência da quantidade de ataques"
+
+#: dashboard/Templates/charts/prob_num_attacks.html:8
+msgid ""
+"This chart displays the estimated probabilities of the number of attacks."
+msgstr ""
+"Este gráfico mostra a probabilidade estimada do número de ataques "
+"cibernéticos a cada mês."
+
+#: dashboard/Templates/charts/prob_num_attacks.html:14
+#, python-format
+msgid ""
+"\n"
+"            Analysis based on historical data for companies in the <span "
+"class=\"theme-color\">%(industry)s</span> sector, located in <span "
+"class=\"theme-color\">%(country)s</span>.\n"
+"            "
+msgstr ""
+"\n"
+"            Análise baseada em dados históricos para empresas do setor de "
+"<span class=\"theme-color\">%(industry)s</span>, localizadas em <span "
+"class=\"theme-color\">%(country)s</span>.\n"
+"            "
+
+#: dashboard/Templates/charts/region_risk_chart.html:6
+#: dashboard/Templates/charts/region_risk_chart.html:7
+msgid "Region Risks"
+msgstr "Riscos da Região"
+
+#: dashboard/Templates/charts/region_risk_chart.html:7
+msgid ""
+"This chart shows the estimated risk levels for different types of attacks in "
+"the region."
+msgstr ""
+"Este gráfico mostra os níveis de risco estimados para diferentes tipos de "
+"ataques na região."
+
+#: dashboard/Templates/charts/region_risk_chart.html:15
+#, python-format
+msgid ""
+"\n"
+"            Risk analysis for companies in the <span class=\"theme-"
+"color\">%(region)s</span> region based on historical data obtained from "
+"cybersecurity reports.\n"
+"            "
+msgstr ""
+"\n"
+"            Análise de riscos para empresas na região de <span class=\"theme-"
+"color\">%(region)s</span> a partir de dados históricos obtidos de relatórios "
+"de cibersegurança.\n"
+"            "
+
+#: dashboard/Templates/charts/region_risk_chart.html:54
+#: dashboard/Templates/charts/sector_risk_chart.html:54
+msgid "Risk Level"
+msgstr "Nível de Risco"
+
+#: dashboard/Templates/charts/region_risk_chart.html:69
+#: dashboard/Templates/charts/sector_risk_chart.html:69
+#, python-format
+msgid "Risk Level (%%)"
+msgstr "Nível de Risco (%%)"
+
+#: dashboard/Templates/charts/sector_risk_chart.html:6
+#: dashboard/Templates/charts/sector_risk_chart.html:7
+msgid "Sector Risks"
+msgstr "Riscos do Setor"
+
+#: dashboard/Templates/charts/sector_risk_chart.html:7
+msgid ""
+"This chart shows the estimated risk levels for different types of attacks in "
+"the sector."
+msgstr ""
+"Este gráfico mostra os níveis de risco estimados para diferentes tipos de "
+"ataques no setor."
+
+#: dashboard/Templates/charts/sector_risk_chart.html:15
+#, python-format
+msgid ""
+"\n"
+"            Risk analysis for companies in the <span class=\"theme-"
+"color\">%(industry_type)s</span> sector based on historical data obtained "
+"from cybersecurity reports.\n"
+"            "
+msgstr ""
+"\n"
+"            Análise de riscos para empresas do setor de <span class=\"theme-"
+"color\">%(industry_type)s</span> a partir de dados históricos obtidos de "
+"relatórios de cibersegurança.\n"
+"            "
+
+#: dashboard/Templates/charts/sectors_bar_charts.html:7
+msgid "Cyber Attack Risk Levels by Sector"
+msgstr "Níveis de Risco de Ataques Cibernéticos por Setores"
+
+#: dashboard/Templates/charts/sectors_bar_charts.html:71 dashboard/admin.py:124
+msgid "Sectors"
+msgstr "Setores"
+
+#: dashboard/Templates/company_analysis.html:95
+msgid "Risk Dashboard of"
+msgstr "Dashboard de Risco de"
+
+#: dashboard/Templates/company_analysis.html:107
+msgid "Risk Analysis - Overview"
+msgstr "Análise de Risco - Visão Geral"
+
+#: dashboard/Templates/company_analysis.html:109
+msgid ""
+"The Risk Analysis Dashboard - Overview presents the possible risks of cyber "
+"attacks using data collected from real reports filtered by the company's "
+"sector and region of operation."
+msgstr ""
+"A Dashboard de Análise de Risco - Visão Geral apresenta os possíveis riscos "
+"de ataques cibernéticos usando dados coletados de relatórios reais filtrados "
+"pelo setor da empresa e região de operação."
+
+#: dashboard/Templates/company_analysis.html:115
+#: dashboard/Templates/platform_guide.html:153
+#: dashboard/Templates/platform_guide.html:287
+#: dashboard/Templates/platform_guide.html:496
+#: dashboard/Templates/platform_guide.html:548
+#: dashboard/Templates/user_company_copies.html:150
+msgid "Risk Analysis Overview"
+msgstr "Análise de Risco: Visão Geral"
+
+#: dashboard/Templates/company_analysis.html:166
+#: dashboard/Templates/company_analysis_pro.html:751
+#: dashboard/Templates/company_economic_planning.html:198
+#: dashboard/Templates/company_profile_advanced_detail.html:221
+#: dashboard/Templates/company_profile_detail.html:179
+msgid "Edit"
+msgstr "Editar"
+
+#: dashboard/Templates/company_analysis.html:177
+#: dashboard/Templates/company_analysis_pro.html:762
+#: dashboard/Templates/company_economic_planning.html:209
+#: dashboard/Templates/company_profile_advanced_detail.html:232
+#: dashboard/Templates/company_profile_detail.html:190
+msgid "Copy"
+msgstr "Cópia"
+
+# Esse funciona
+#: dashboard/Templates/company_analysis.html:247
+#: dashboard/Templates/company_profile_advanced_detail.html:294
+#: dashboard/Templates/company_profile_detail.html:252
+#: dashboard/Templates/edit_company_profile.html:22
+#: dashboard/Templates/platform_guide.html:230
+msgid "Company Information"
+msgstr "Informações da Empresa"
+
+# Esse funciona
+#: dashboard/Templates/company_analysis.html:252
+#: dashboard/Templates/company_profile_advanced_detail.html:300
+#: dashboard/Templates/company_profile_detail.html:259
+msgid "Company Name"
+msgstr "Nome da Empresa"
+
+#: dashboard/Templates/company_analysis.html:256
+#: dashboard/Templates/company_profile_advanced_detail.html:304
+#: dashboard/Templates/company_profile_detail.html:263 dashboard/models.py:29
+msgid "Headquarters Country"
+msgstr "País da Sede"
+
+#: dashboard/Templates/company_analysis.html:260
+#: dashboard/Templates/company_profile_advanced_detail.html:308
+#: dashboard/Templates/company_profile_detail.html:267 dashboard/models.py:41
+msgid "Industry Type"
+msgstr "Setor de Atuação"
+
+#: dashboard/Templates/company_analysis.html:264
+#: dashboard/Templates/company_profile_advanced_detail.html:312
+#: dashboard/Templates/company_profile_detail.html:271 dashboard/models.py:49
+msgid "Employee Count"
+msgstr "Número de Funcionários"
+
+#: dashboard/Templates/company_analysis.html:270
+msgid "Headquarters Location"
+msgstr "País da Sede"
+
+#: dashboard/Templates/company_analysis_pro.html:663
+#: dashboard/Templates/company_analysis_pro.html:694
+msgid "Report of"
+msgstr "Relatório de"
+
+#: dashboard/Templates/company_analysis_pro.html:675
+msgid "Risk Analysis - Report"
+msgstr "Análise de Risco - Relatório"
+
+#: dashboard/Templates/company_analysis_pro.html:678
+msgid ""
+"The Risk Analysis Dashboard - Report presents a diagnosis of the company's "
+"cybersecurity health, using risk scores to demonstrate the system's defense "
+"capabilities and highlight existing vulnerabilities."
+msgstr ""
+"A Dashboard de Análise de Risco - Relatório apresenta um diagnóstico da "
+"saúde cibernética da empresa, usando pontuações de risco para demonstrar as "
+"capacidades de defesa do sistema e destacar vulnerabilidades existentes."
+
+#: dashboard/Templates/company_analysis_pro.html:684
+#: dashboard/Templates/platform_guide.html:154
+#: dashboard/Templates/platform_guide.html:325
+msgid "Risk Analysis Report"
+msgstr "Análise de Risco: Relatório"
+
+#: dashboard/Templates/company_analysis_pro.html:699
+#: dashboard/Templates/company_economic_planning.html:127
+#: dashboard/Templates/company_economic_planning.html:146
+#: dashboard/Templates/company_profile_detail.html:112
+msgid "Economic Dashboard Documentation"
+msgstr "Documentaçãod da Dashboard de Economia"
+
+#: dashboard/Templates/company_analysis_pro.html:829
+msgid "REGION RISK"
+msgstr "RISCO DA REGIÃO"
+
+#: dashboard/Templates/company_analysis_pro.html:830
+msgid "SECTOR RISK"
+msgstr "RISCO DO SETOR"
+
+#: dashboard/Templates/company_analysis_pro.html:831
+msgid "COMPANY RESILIENCE"
+msgstr "RESILIÊNCIA DA EMPRESA"
+
+#: dashboard/Templates/company_analysis_pro.html:850
+#: dashboard/Templates/company_analysis_pro.html:870
+#: dashboard/Templates/company_analysis_pro.html:890
+msgid "LOW"
+msgstr "BAIXO"
+
+#: dashboard/Templates/company_analysis_pro.html:852
+#: dashboard/Templates/company_analysis_pro.html:872
+#: dashboard/Templates/company_analysis_pro.html:892
+msgid "MODERATE"
+msgstr "MODERADO"
+
+#: dashboard/Templates/company_analysis_pro.html:854
+#: dashboard/Templates/company_analysis_pro.html:874
+#: dashboard/Templates/company_analysis_pro.html:894
+msgid "HIGH"
+msgstr "ALTO"
+
+#: dashboard/Templates/company_analysis_pro.html:949
+msgid "Risk Score"
+msgstr "Pontuação de Risco"
+
+#: dashboard/Templates/company_analysis_pro.html:973 dashboard/models.py:662
+msgid "Final Score"
+msgstr "Pontuação Final"
+
+#: dashboard/Templates/company_analysis_pro.html:989
+msgid "CRITICAL"
+msgstr "CRÍTICO"
+
+#: dashboard/Templates/company_analysis_pro.html:996
+msgid "DANGEROUS"
+msgstr "PERIGOSO"
+
+#: dashboard/Templates/company_analysis_pro.html:1003
+msgid "ALERT"
+msgstr "ALERTA"
+
+#: dashboard/Templates/company_analysis_pro.html:1010
+msgid "NORMAL"
+msgstr "NORMAL"
+
+#: dashboard/Templates/company_analysis_pro.html:1017
+msgid "HEALTHY"
+msgstr "SAUDÁVEL"
+
+#: dashboard/Templates/company_analysis_pro.html:1035
+#: dashboard/Templates/platform_guide.html:370
+msgid "Technical Dimension Analysis"
+msgstr "Análise da Dimensão Técnica"
+
+#: dashboard/Templates/company_analysis_pro.html:1037
+msgid "Explanation"
+msgstr "Explicação"
+
+#: dashboard/Templates/company_analysis_pro.html:1044
+msgid "Defense"
+msgstr "Defesa"
+
+#: dashboard/Templates/company_analysis_pro.html:1091
+msgid "No technical defenses data available."
+msgstr "Nenhum dado de defesas técnicas disponível."
+
+#: dashboard/Templates/company_analysis_pro.html:1106
+msgid "Understanding the Technical Dimension Analysis"
+msgstr "Entendendo a Análise da Dimensão Técnica"
+
+#: dashboard/Templates/company_analysis_pro.html:1114
+#: dashboard/Templates/platform_guide.html:381 dashboard/views.py:1133
+msgid "Confidentiality"
+msgstr "Confidencialidade"
+
+#: dashboard/Templates/company_analysis_pro.html:1115
+msgid ""
+"Security measures that control access to confidential data, ensuring only "
+"authorized individuals can view sensitive information."
+msgstr ""
+"Medidas de segurança que controlam o acesso a dados confidenciais, "
+"garantindo que apenas indivíduos autorizados possam visualizar informações "
+"sensíveis."
+
+#: dashboard/Templates/company_analysis_pro.html:1122
+#: dashboard/Templates/platform_guide.html:382 dashboard/views.py:1133
+msgid "Integrity"
+msgstr "Integridade"
+
+#: dashboard/Templates/company_analysis_pro.html:1123
+msgid ""
+"Security measures that ensure data authenticity and prevent unauthorized "
+"alterations, maintaining the accuracy and consistency of information."
+msgstr ""
+"Medidas de segurança que garantem a autenticidade dos dados e previnem "
+"alterações não autorizadas, mantendo a precisão e consistência das "
+"informações."
+
+#: dashboard/Templates/company_analysis_pro.html:1130
+#: dashboard/Templates/platform_guide.html:383 dashboard/views.py:1133
+msgid "Availability"
+msgstr "Disponibilidade"
+
+#: dashboard/Templates/company_analysis_pro.html:1131
+msgid ""
+"Security measures that ensure data access, adding resilience and redundancy "
+"to the system to maintain continuous operations."
+msgstr ""
+"Medidas de segurança que garantem o acesso aos dados, adicionando "
+"resiliência e redundância ao sistema para manter operações contínuas."
+
+#: dashboard/Templates/company_analysis_pro.html:1137
+msgid "How to read the table:"
+msgstr "Como ler a tabela:"
+
+#: dashboard/Templates/company_analysis_pro.html:1139
+msgid ""
+"Green checkmark (&#10004;): The defense is active and contributing to the "
+"security aspect."
+msgstr ""
+"Marca de seleção verde (&#10004;): A defesa está ativa e contribuindo para o "
+"aspecto de segurança."
+
+#: dashboard/Templates/company_analysis_pro.html:1140
+msgid "Red cross (&#10008;): The defense is relevant but not currently active."
+msgstr ""
+"Cruz vermelha (&#10008;): A defesa é relevante, mas não está atualmente "
+"ativa."
+
+#: dashboard/Templates/company_analysis_pro.html:1141
+#: dashboard/Templates/platform_guide.html:391
+msgid "Empty cell: The defense is not applicable to that security aspect."
+msgstr "Célula vazia: A defesa não é aplicável a esse aspecto de segurança."
+
+#: dashboard/Templates/company_analysis_pro.html:1146
+msgid "Close"
+msgstr "Fechar"
+
+#: dashboard/Templates/company_economic_planning.html:122
+msgid "Economic Dashboard of"
+msgstr "Dashboard Econômica de"
+
+#: dashboard/Templates/company_economic_planning.html:138
+msgid "Gestão Econômica"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:140
+msgid ""
+"A Dashboard de Gestão Econômica simula os cenários de investimentos em "
+"cibersegurança utilizando dados de relatórios reais para prever quais os "
+"possíveis danos causados por ciberataques e orientar sobre quais as melhores "
+"abordagens de investimento."
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:147
+msgid "Ir para Documentação"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:223
+msgid "Ir para Simulação Básica"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:229
+msgid "Ir para Simulação Avançada"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:287
+msgid "Selecione o Asset:"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:298
+msgid "Selecionar Asset"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:316
+msgid "Gordon-Loeb"
+msgstr "Simulações de Gordon-Loeb"
+
+#: dashboard/Templates/company_economic_planning.html:316
+#: dashboard/Templates/platform_guide.html:470
+msgid "Simulations"
+msgstr "Simulações"
+
+#: dashboard/Templates/company_economic_planning.html:316
+msgid "Alpha"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:324
+msgid "Load"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:331
+#: dashboard/Templates/company_economic_planning.html:448
+msgid "Status do investimento"
+msgstr " "
+
+#: dashboard/Templates/company_economic_planning.html:332
+#: dashboard/Templates/company_economic_planning.html:449
+msgid "Tipo de ataque"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:332
+#: dashboard/Templates/company_profile_advanced_detail.html:384
+#: dashboard/Templates/platform_guide.html:413
+msgid "Type"
+msgstr "Tipo"
+
+#: dashboard/Templates/company_economic_planning.html:333
+#: dashboard/Templates/company_economic_planning.html:450
+msgid "Dano de ataque com sucesso"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:333
+#: dashboard/Templates/platform_guide.html:416
+msgid "Damage"
+msgstr "Dano"
+
+#: dashboard/Templates/company_economic_planning.html:334
+#: dashboard/Templates/company_economic_planning.html:451
+msgid "Probabilidade de ataque com sucesso"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:334
+#: dashboard/Templates/platform_guide.html:419
+msgid "Probability"
+msgstr "Probabilidade"
+
+#: dashboard/Templates/company_economic_planning.html:335
+#: dashboard/Templates/company_economic_planning.html:452
+msgid "Perda estimada pelo ataque sem segurança"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:335
+msgid "Expected loss"
+msgstr "Perda esperada"
+
+#: dashboard/Templates/company_economic_planning.html:336
+#: dashboard/Templates/company_economic_planning.html:453
+msgid "Valor investido"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:336
+msgid "Current invest."
+msgstr "Invest. atual"
+
+#: dashboard/Templates/company_economic_planning.html:337
+#: dashboard/Templates/company_economic_planning.html:454
+msgid "Investimento ótimo"
+msgstr "nvestimento ótimo"
+
+#: dashboard/Templates/company_economic_planning.html:337
+#: dashboard/Templates/company_economic_planning.html:454
+msgid "Invest. ótimo"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:338
+#: dashboard/Templates/company_economic_planning.html:455
+msgid "Investimento aceitável"
+msgstr "Investimento aceitável"
+
+#: dashboard/Templates/company_economic_planning.html:338
+#: dashboard/Templates/company_economic_planning.html:455
+msgid "Invest. aceitável"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:339
+msgid "EBIS atual - efetividade atual na redução dos danos"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:339
+msgid "EBIS atual"
+msgstr "EBIS atual"
+
+#: dashboard/Templates/company_economic_planning.html:340
+msgid "EBIS ótimo - efetividade do investimento ótimo na redução dos danos"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:340
+msgid "EBIS ótimo"
+msgstr "EBIS ótimo"
+
+#: dashboard/Templates/company_economic_planning.html:341
+#, fuzzy
+msgid "ENBIS atual"
+msgstr "ENBIS Ótimo"
+
+#: dashboard/Templates/company_economic_planning.html:342
+#, fuzzy
+#| msgid "ENBIS Optimal"
+msgid "ENBIS ótimo"
+msgstr "ENBIS Ótimo"
+
+#: dashboard/Templates/company_economic_planning.html:343
+msgid "Eficiência do investimento atual em relação ao ótimo"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:343
+#, fuzzy
+#| msgid "Efficiency"
+msgid "Eficiência"
+msgstr "Eficiência"
+
+#: dashboard/Templates/company_economic_planning.html:344
+#: dashboard/Templates/company_economic_planning.html:456
+#, fuzzy
+#| msgid "Current investment"
+msgid "Ajuste em investimento"
+msgstr "Investimento atual"
+
+#: dashboard/Templates/company_economic_planning.html:344
+#: dashboard/Templates/company_economic_planning.html:456
+#, fuzzy
+#| msgid "Adjustment"
+msgid "Ajuste"
+msgstr "Ajuste"
+
+#: dashboard/Templates/company_economic_planning.html:345
+#: dashboard/Templates/company_economic_planning.html:457
+msgid "Lucro após ajuste"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:345
+#: dashboard/Templates/company_economic_planning.html:457
+msgid "Lucro"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:394
+msgid "Calcular"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:399
+msgid "Simulações de Gordon-Loeb "
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:401
+#, fuzzy
+#| msgid "Impact"
+msgid "Impactos"
+msgstr "Impacto"
+
+#: dashboard/Templates/company_economic_planning.html:409
+#, fuzzy
+#| msgid "Configurations"
+msgid "Configurar Impactos"
+msgstr "Configurações"
+
+#: dashboard/Templates/company_economic_planning.html:421
+#, fuzzy
+#| msgid "Direct"
+msgid "Diretos:"
+msgstr "Direto"
+
+#: dashboard/Templates/company_economic_planning.html:423
+#: dashboard/Templates/company_economic_planning.html:431
+#: dashboard/models.py:270
+msgid "Alto"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:424
+#: dashboard/Templates/company_economic_planning.html:432
+msgid "Médio"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:425
+#: dashboard/Templates/company_economic_planning.html:433
+#: dashboard/models.py:272
+msgid "Baixo"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:429
+#, fuzzy
+#| msgid "Indirect"
+msgid "Indiretos:"
+msgstr "Indireto"
+
+#: dashboard/Templates/company_economic_planning.html:439
+msgid "Calcular Impactos"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:449
+msgid "Tipo"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:450
+msgid "Possível dano"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:451
+#, fuzzy
+#| msgid "Probability"
+msgid "Probabilidade"
+msgstr "Probabilidade"
+
+#: dashboard/Templates/company_economic_planning.html:452
+msgid "Perda estimada"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:453
+#, fuzzy
+#| msgid "Investment"
+msgid "Invest. atual"
+msgstr "Investimento"
+
+#: dashboard/Templates/company_economic_planning.html:515
+msgid "Gráfico do EBIS para ataque selecionado"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:516
+msgid "EBIS (Expected Benefit of Information Security)"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:516
+msgid "The financial benefit derived from investing in cybersecurity measures."
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:530
+#, fuzzy
+#| msgid "Efficiency"
+msgid "Eficiência aceitável:"
+msgstr "Eficiência"
+
+#: dashboard/Templates/company_economic_planning.html:597
+#: dashboard/Templates/company_economic_planning.html:686
+#, fuzzy
+#| msgid "Investment"
+msgid "Investimento"
+msgstr "Investimento"
+
+#: dashboard/Templates/company_economic_planning.html:605
+msgid "EBIS"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:651
+msgid "Linha de eficiência marginal"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:660
+msgid "Prejuízo esperado"
+msgstr ""
+
+#: dashboard/Templates/company_economic_planning.html:702
+#, fuzzy
+#| msgid "Status do investimento"
+msgid "Benefício do investimento"
+msgstr " "
+
+#: dashboard/Templates/company_economic_planning.html:722
+#, fuzzy
+#| msgid "Investment"
+msgid "EBIS com investimento aceitável"
+msgstr "Investimento"
+
+# Esse funciona
+#: dashboard/Templates/company_profile_advanced_detail.html:111
+#: dashboard/Templates/company_profile_advanced_detail.html:144
+#: dashboard/Templates/company_profile_detail.html:107
+msgid "Company Profile of"
+msgstr "Perfil de Empresa de"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:113
+#: dashboard/Templates/company_profile_advanced_detail.html:146
+#: dashboard/Templates/company_profile_list.html:186
+#: dashboard/Templates/user_company_copies.html:182
+msgid "Advanced profile with more detailed information"
+msgstr "Perfil Avançado, com informações mais detalhadas"
+
+# Esse funciona
+#: dashboard/Templates/company_profile_advanced_detail.html:114
+#: dashboard/Templates/company_profile_advanced_detail.html:147
+#: dashboard/Templates/company_profile_list.html:188
+#: dashboard/Templates/user_company_copies.html:184
+msgid "Advanced"
+msgstr "Avançado"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:154
+#: dashboard/Templates/user_company_copies.html:163
+msgid "Company Copies Documentation"
+msgstr "Documentação das Cópias de Empresas"
+
+# Esse funciona
+#: dashboard/Templates/company_profile_advanced_detail.html:154
+#: dashboard/Templates/company_profile_list.html:156
+msgid "Company Profiles Documentation"
+msgstr "Documentação dos Perfis de Empresa"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:165
+#: dashboard/Templates/company_profile_detail.html:123
+msgid "Este é um perfil copiado."
+msgstr ""
+
+#: dashboard/Templates/company_profile_advanced_detail.html:165
+#: dashboard/Templates/company_profile_detail.html:123
+msgid "As alterações feitas aqui não afetarão o perfil original."
+msgstr ""
+
+# Esse funciona
+#: dashboard/Templates/company_profile_advanced_detail.html:316
+#: dashboard/models.py:354
+msgid "Company Size"
+msgstr "Tamanho da Empresa"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:320
+#: dashboard/models.py:360
+msgid "Remote Work Rate"
+msgstr "Taxa de Trabalho Remoto"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:324
+#: dashboard/models.py:364
+msgid "Global Presence"
+msgstr "Presença Global"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:325
+#: dashboard/Templates/company_profile_advanced_detail.html:346
+#: dashboard/Templates/company_profile_advanced_detail.html:350
+#: dashboard/Templates/company_profile_advanced_detail.html:354
+#: dashboard/Templates/company_profile_advanced_detail.html:486
+#: dashboard/Templates/user_profile.html:40
+#: dashboard/Templates/user_profile.html:47
+msgid "Yes"
+msgstr "Sim"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:325
+#: dashboard/Templates/company_profile_advanced_detail.html:346
+#: dashboard/Templates/company_profile_advanced_detail.html:350
+#: dashboard/Templates/company_profile_advanced_detail.html:354
+#: dashboard/Templates/company_profile_advanced_detail.html:486
+#: dashboard/Templates/user_profile.html:42
+#: dashboard/Templates/user_profile.html:49
+msgid "No"
+msgstr "Não"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:338
+#: dashboard/Templates/company_profile_detail.html:285
+#: dashboard/Templates/edit_company_profile.html:56
+msgid "Technical Information"
+msgstr "Dimensão Técnica"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:345
+#: dashboard/Templates/company_profile_detail.html:293
+#: dashboard/Templates/company_profile_list.html:248
+#: dashboard/Templates/user_company_copies.html:248 dashboard/models.py:55
+#: dashboard/utils.py:247
+msgid "Updated Inventory"
+msgstr "Inventário Atualizado"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:349
+#: dashboard/Templates/company_profile_detail.html:297
+#: dashboard/Templates/company_profile_list.html:253
+#: dashboard/Templates/user_company_copies.html:253 dashboard/models.py:61
+#: dashboard/utils.py:254
+msgid "Backup Maintenance"
+msgstr "Manutenção de Backups"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:353
+#: dashboard/Templates/company_profile_detail.html:301
+#: dashboard/Templates/company_profile_list.html:258
+#: dashboard/Templates/user_company_copies.html:258 dashboard/models.py:67
+#: dashboard/utils.py:261
+msgid "Risk Prioritization"
+msgstr "Priorização de Riscos"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:357
+#: dashboard/models.py:371 dashboard/utils.py:268
+msgid "Authentication Factors"
+msgstr "Fatores de Autenticação"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:361
+#: dashboard/models.py:375 dashboard/utils.py:275
+msgid "Cloud Solution Type"
+msgstr "Tipo de Solução em Nuvem"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:377
+msgid "Company Locations"
+msgstr "Localizações da Empresa"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:383
+#: dashboard/models.py:307 dashboard/models.py:324
+msgid "Region"
+msgstr "Região"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:385
+#: dashboard/models.py:312
+msgid "Continent"
+msgstr "Continente"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:403
+msgid "No locations found"
+msgstr "Nenhuma localização encontrada"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:420
+msgid "Cybersecurity Measures"
+msgstr "Medidas de Cibersegurança"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:423
+#: dashboard/Templates/company_profile_advanced_detail.html:520
+msgid "Show All"
+msgstr "Mostrar tudo"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:450
+#: dashboard/models.py:381 dashboard/models.py:566 dashboard/utils.py:282
+msgid "IT System Monitoring"
+msgstr "Monitoramento dos Sistemas de TI"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:451
+#: dashboard/models.py:386 dashboard/models.py:540 dashboard/utils.py:289
+msgid "Periodic System Updates"
+msgstr "Atualizações Periódicas do Sistema"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:452
+#: dashboard/models.py:391 dashboard/models.py:545 dashboard/utils.py:296
+msgid "Data Encryption in Storage"
+msgstr "Criptografia de Dados Armazenados"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:453
+#: dashboard/models.py:396 dashboard/models.py:546 dashboard/models.py:563
+#: dashboard/utils.py:303
+msgid "Data Encryption in Transit"
+msgstr "Criptografia de Dados em Trânsito"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:454
+#: dashboard/models.py:401 dashboard/models.py:557 dashboard/utils.py:310
+msgid "VPN for Remote Access"
+msgstr "VPN para Acesso Remoto"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:455
+#: dashboard/models.py:406 dashboard/models.py:560 dashboard/utils.py:317
+msgid "Cybersecurity Awareness and Training"
+msgstr "Conscientização e Treinamento em Segurança Cibernética"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:456
+#: dashboard/models.py:411 dashboard/models.py:558 dashboard/utils.py:324
+msgid "Documented Response Plan"
+msgstr "Plano de Resposta Documentado"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:457
+#: dashboard/models.py:416 dashboard/utils.py:331
+msgid "Response Plan Update"
+msgstr "Atualização do Plano de Resposta"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:458
+#: dashboard/models.py:421 dashboard/models.py:548 dashboard/utils.py:338
+msgid "Operational Recovery Capacity"
+msgstr "Capacidade de Recuperação Operacional"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:459
+#: dashboard/models.py:426 dashboard/models.py:547 dashboard/utils.py:345
+msgid "Credentials Maintenance"
+msgstr "Manutenção de Credenciais"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:460
+#: dashboard/models.py:431 dashboard/models.py:564 dashboard/models.py:572
+#: dashboard/utils.py:352
+msgid "Vulnerability Identification"
+msgstr "Identificação de Vulnerabilidades"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:461
+#: dashboard/models.py:436 dashboard/models.py:553 dashboard/models.py:565
+#: dashboard/utils.py:359
+msgid "Network Systems Traffic Monitoring"
+msgstr "Monitoramento do Tráfego de Sistemas de Rede"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:462
+#: dashboard/models.py:441 dashboard/models.py:559 dashboard/models.py:571
+#: dashboard/utils.py:366
+msgid "Threat Identification Process"
+msgstr "Processo de Identificação de Ameaças"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:463
+#: dashboard/models.py:446 dashboard/utils.py:373
+msgid "IT Records Presence"
+msgstr "Presença de Registros de TI"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:464
+#: dashboard/models.py:451 dashboard/models.py:539 dashboard/utils.py:380
+msgid "Antivirus"
+msgstr "Antivírus"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:465
+#: dashboard/models.py:456 dashboard/models.py:538 dashboard/utils.py:387
+msgid "Firewall"
+msgstr "Firewall"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:466
+#: dashboard/models.py:461 dashboard/models.py:551 dashboard/utils.py:394
+msgid "Intrusion Detection System (IDS)"
+msgstr "Sistema de Detecção de Intrusão (IDS)"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:467
+#: dashboard/models.py:466 dashboard/models.py:552 dashboard/models.py:569
+#: dashboard/utils.py:401
+msgid "Endpoint Detection and Response (EDR)"
+msgstr "Detecção e Resposta de Endpoint (EDR)"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:468
+#: dashboard/models.py:471 dashboard/models.py:554 dashboard/models.py:570
+#: dashboard/utils.py:408
+msgid "IT Security Team"
+msgstr "Equipe de Segurança de TI"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:517
+msgid "Show Less"
+msgstr "Mostrar Menos"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:532
+#: dashboard/Templates/company_profile_detail.html:318
+#: dashboard/Templates/components/annual_revenue_component.html:5
+#: dashboard/models.py:111 dashboard/models.py:127
+msgid "Annual Revenue"
+msgstr "Receita Anual"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:538
+#: dashboard/Templates/company_profile_advanced_detail.html:567
+#: dashboard/Templates/company_profile_advanced_detail.html:631
+#: dashboard/Templates/company_profile_detail.html:325
+#: dashboard/Templates/company_profile_detail.html:354
+#: dashboard/Templates/components/annual_revenue_component.html:11
+#: dashboard/Templates/components/annual_revenue_component.html:48
+#: dashboard/Templates/components/attack_history_field.html:23
+#: dashboard/Templates/components/attack_history_field.html:80
+#: dashboard/Templates/components/cybersecurity_spending_component.html:11
+#: dashboard/Templates/components/cybersecurity_spending_component.html:37
+#: dashboard/models.py:110 dashboard/models.py:142 dashboard/models.py:623
+msgid "Year"
+msgstr "Ano"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:539
+#: dashboard/Templates/company_profile_advanced_detail.html:568
+#: dashboard/Templates/company_profile_detail.html:326
+#: dashboard/Templates/company_profile_detail.html:355
+#: dashboard/Templates/components/annual_revenue_component.html:13
+#: dashboard/Templates/components/annual_revenue_component.html:50
+#: dashboard/Templates/components/cybersecurity_spending_component.html:13
+#: dashboard/Templates/components/cybersecurity_spending_component.html:39
+msgid "Amount"
+msgstr "Valor"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:560
+#: dashboard/Templates/company_profile_detail.html:347
+#: dashboard/Templates/components/cybersecurity_spending_component.html:5
+msgid "Cybersecurity Investment"
+msgstr "Investimento em Cibersegurança"
+
+# Esse funciona
+#: dashboard/Templates/company_profile_advanced_detail.html:592
+#: dashboard/Templates/company_profile_detail.html:379
+#: dashboard/Templates/components/company_assets_component.html:5
+#: dashboard/models.py:207
+msgid "Company Assets"
+msgstr "Ativos da Empresa"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:599
+#: dashboard/Templates/company_profile_detail.html:386
+#: dashboard/Templates/components/company_assets_component.html:11
+#: dashboard/Templates/components/company_assets_component.html:37
+#: dashboard/models.py:189
+msgid "Item"
+msgstr "Item"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:600
+#: dashboard/Templates/company_profile_detail.html:387
+#: dashboard/Templates/components/company_assets_component.html:13
+#: dashboard/Templates/components/company_assets_component.html:39
+#: dashboard/models.py:190 dashboard/models.py:280
+msgid "Value"
+msgstr "Valor"
+
+#: dashboard/Templates/company_profile_advanced_detail.html:632
+#: dashboard/Templates/components/attack_history_field.html:13
+#: dashboard/Templates/components/attack_history_field.html:74
+#: dashboard/models.py:591 dashboard/models.py:598
+msgid "Attack Type"
+msgstr "Tipo de Ataque"
+
+#: dashboard/Templates/company_profile_detail.html:91
+msgid ""
+"The Company Profile screen presents the company data that was registered on "
+"the platform, which can be Basic or Advanced profile."
+msgstr ""
+"A tela de Perfil de Empresa apresenta os dados da empresa que foram "
+"registrados na plataforma, que podem ser de perfil Básico ou Avançado."
+
+#: dashboard/Templates/company_profile_list.html:203
+#: dashboard/Templates/user_company_copies.html:203
+msgid "employees"
+msgstr "funcionários"
+
+#: dashboard/Templates/company_profile_list.html:240
+msgid "Added"
+msgstr "Adicionada em"
+
+#: dashboard/Templates/company_profile_list.html:268
+msgid "No companies found."
+msgstr "Nenhuma empresa encontrada"
+
+#: dashboard/Templates/components/annual_revenue_component.html:16
+#: dashboard/Templates/components/annual_revenue_component.html:53
+#: dashboard/Templates/components/attack_history_field.html:36
+#: dashboard/Templates/components/attack_history_field.html:84
+#: dashboard/Templates/components/company_assets_component.html:16
+#: dashboard/Templates/components/company_assets_component.html:42
+#: dashboard/Templates/components/cybersecurity_spending_component.html:16
+#: dashboard/Templates/components/cybersecurity_spending_component.html:42
+msgid "Remove"
+msgstr "Remover"
+
+#: dashboard/Templates/components/annual_revenue_component.html:30
+#: dashboard/Templates/components/attack_history_field.html:50
+#: dashboard/Templates/components/company_assets_component.html:30
+#: dashboard/Templates/components/cybersecurity_spending_component.html:30
+msgid "Delete"
+msgstr "Excluir"
+
+#: dashboard/Templates/components/annual_revenue_component.html:37
+msgid "Add Annual Revenue"
+msgstr "Adicionar Receita Anual"
+
+#: dashboard/Templates/components/annual_revenue_component.html:103
+#: dashboard/Templates/components/company_assets_component.html:134
+#: dashboard/Templates/components/cybersecurity_spending_component.html:134
+msgid "You can't remove the last entry. Clear the fields instead."
+msgstr "Você não pode remover a última entrada."
+
+#: dashboard/Templates/components/attack_history_field.html:57
+msgid "Add Attack History"
+msgstr "Adicionar Histórico de Ataque"
+
+#: dashboard/Templates/components/company_assets_component.html:50
+msgid "Add Company Assets"
+msgstr "Adicionar Ativo da Empresa"
+
+#: dashboard/Templates/components/company_locations_component.html:38
+#: dashboard/Templates/components/location_field.html:6
+msgid "Search locations"
+msgstr "Pesquisar localizações"
+
+#: dashboard/Templates/components/cybersecurity_spending_component.html:50
+msgid "Add Cybersecurity Spending"
+msgstr "Adicionar Gastos em Cibersegurança"
+
+#: dashboard/Templates/components/form_field.html:13
+msgid "Select an industry"
+msgstr "Selecione uma indústria"
+
+#: dashboard/Templates/edit_advanced_company_profile.html:11
+msgid "Edit Advanced Company Profile"
+msgstr "Editar Perfil de Empresa Avançado"
+
+# Esse funciona
+#: dashboard/Templates/edit_company_profile.html:11
+msgid "Edit Company Profile"
+msgstr "Editar Perfil de Empresa"
+
+# Esse funciona
+#: dashboard/Templates/edit_user_profile.html:6
+msgid "Editing User Profile of "
+msgstr "Editando o Perfil de Usuário de "
+
+#: dashboard/Templates/edit_user_profile.html:22
+msgid "Save Changes"
+msgstr "Salvar Alterações"
+
+#: dashboard/Templates/index.html:119
+msgid ""
+"Plataforma de Capacitação em Cibersegurança Baseada em Modelagem e Simulação "
+"de Aspectos e Impactos Econômicos de Ciberataques"
+msgstr ""
+
+#: dashboard/Templates/index.html:148
+msgid "Your Capabilities"
+msgstr "Suas Permissões"
+
+#: dashboard/Templates/index.html:151
+msgid "View and analyze company profiles"
+msgstr "Visualizar e analisar perfis de empresas"
+
+#: dashboard/Templates/index.html:152
+msgid "Create local copies of company profiles"
+msgstr "Criar cópias locais de perfis de empresas"
+
+#: dashboard/Templates/index.html:153
+msgid "Edit and analyze your copied profiles"
+msgstr "Editar e analisar seus perfis copiados"
+
+#: dashboard/Templates/index.html:154
+msgid "Access risk analysis reports"
+msgstr "Acessar relatórios de análise de risco"
+
+#: dashboard/Templates/index.html:155
+msgid "Use the economic management tools"
+msgstr "Utilizar as ferramentas de gestão econômica"
+
+#: dashboard/Templates/index.html:158
+msgid "Create base company profiles for all users"
+msgstr "Criar perfis de empresas base para todos os usuários"
+
+#: dashboard/Templates/index.html:172
+msgid "Create, view, and analyze company cybersecurity profiles."
+msgstr "Criar, visualizar e analisar perfis de cibersegurança de empresas."
+
+#: dashboard/Templates/index.html:173
+msgid "Explore Profiles"
+msgstr "Explorar Perfis"
+
+#: dashboard/Templates/index.html:183
+msgid "Generate reports on cybersecurity risks and get recommendations."
+msgstr "Gerar relatórios sobre riscos de cibersegurança e obter recomendações."
+
+#: dashboard/Templates/index.html:184
+msgid "Analyze Risks"
+msgstr "Analisar Riscos"
+
+#: dashboard/Templates/index.html:193
+msgid "Economic Management"
+msgstr "Gestão Econômica"
+
+#: dashboard/Templates/index.html:194
+msgid "Optimize investments using Gordon-Loeb model and risk assessments."
+msgstr ""
+"Otimizar investimentos usando o modelo Gordon-Loeb e avaliações de risco."
+
+#: dashboard/Templates/index.html:195
+msgid "Manage Economics"
+msgstr "Gerenciar Economia"
+
+#: dashboard/Templates/index.html:208
+msgid "Access and manage your personal copies of company profiles."
+msgstr "Acessar e gerenciar suas cópias pessoais de perfis de empresas."
+
+#: dashboard/Templates/index.html:209
+msgid "View My Copies"
+msgstr "Visualizar Minhas Cópias"
+
+#: dashboard/Templates/index.html:217 dashboard/Templates/index.html:230
+#: dashboard/views.py:1486
+msgid "Platform Guide"
+msgstr "Guia da Plataforma"
+
+#: dashboard/Templates/index.html:218 dashboard/Templates/index.html:231
+msgid "Learn how to use all features of the GT-IMPACTO platform effectively."
+msgstr ""
+"Aprenda a usar todos os recursos da plataforma GT-IMPACTO de forma eficaz."
+
+#: dashboard/Templates/index.html:219 dashboard/Templates/index.html:232
+msgid "View Guide"
+msgstr "Ver Guia"
+
+#: dashboard/Templates/platform_guide.html:132
+msgid "GT-IMPACTO Documentation"
+msgstr "Documentação GT-IMPACTO"
+
+#: dashboard/Templates/platform_guide.html:136
+msgid ""
+"Welcome to the GT-IMPACTO Platform, your resource for cybersecurity training "
+"focused on modeling and simulating the economic impacts of cyberattacks. "
+"Find guides and explanations organized by category in this page."
+msgstr ""
+"Bem-vindo à Plataforma GT-IMPACTO, dedicada ao treinamento em "
+"cibersegurança, com foco na modelagem e simulação dos impactos econômicos de "
+"ataques cibernéticos. Explore guias e explicações organizados por categoria "
+"nesta página."
+
+#: dashboard/Templates/platform_guide.html:149
+msgid "Table of Contents"
+msgstr "Índice"
+
+#: dashboard/Templates/platform_guide.html:151
+#: dashboard/Templates/platform_guide.html:168
+msgid "Getting Started"
+msgstr "Primeiros Passos"
+
+# Esse funciona
+#: dashboard/Templates/platform_guide.html:156
+#: dashboard/Templates/platform_guide.html:274
+#: dashboard/Templates/platform_guide.html:515
+#: dashboard/Templates/user_company_copies.html:131
+#: dashboard/Templates/user_company_copies.html:143
+msgid "Company Copies"
+msgstr "Cópias de Empresas"
+
+#: dashboard/Templates/platform_guide.html:171
+msgid ""
+"Welcome to GT-IMPACTO, a platform dedicated to enhancing cybersecurity "
+"skills through the simulation of cyberattack impacts. Discover tools and "
+"features that aid in analyzing risks, optimizing economic investments, and "
+"managing company profiles efficiently."
+msgstr ""
+"Bem-vindo ao GT-IMPACTO, uma plataforma dedicada a aprimorar habilidades de "
+"cibersegurança através da simulação de impactos de ciberataques. Descubra "
+"ferramentas e recursos que auxiliam na análise de riscos, otimização de "
+"investimentos econômicos e gerenciamento eficiente de perfis de empresas."
+
+#: dashboard/Templates/platform_guide.html:174
+msgid ""
+"Students and Instructors are assigned distinct roles, each with specific "
+"capabilities to maximize the platform's effectiveness:"
+msgstr ""
+"Alunos e Instrutores recebem funções distintas, cada uma com capacidades "
+"específicas:"
+
+#: dashboard/Templates/platform_guide.html:178
+msgid "Students"
+msgstr "Estudantes"
+
+#: dashboard/Templates/platform_guide.html:178
+msgid ""
+"Can view and analyze company profiles, create local copies for personal "
+"analysis, access risk analysis reports, and utilize economic management "
+"tools."
+msgstr ""
+"Podem visualizar e analisar perfis de empresas, criar cópias locais para "
+"análise pessoal, acessar relatórios de análise de risco e utilizar "
+"ferramentas de gestão econômica."
+
+#: dashboard/Templates/platform_guide.html:181
+msgid "Instructors"
+msgstr "Instrutores"
+
+#: dashboard/Templates/platform_guide.html:181
+msgid ""
+"Have all the capabilities of students and can additionally create base "
+"company profiles that can be accessed by all users."
+msgstr ""
+"Têm todas as capacidades dos alunos e, adicionalmente, podem criar perfis "
+"base de empresas que podem ser acessados por todos os usuários."
+
+#: dashboard/Templates/platform_guide.html:184
+msgid "Navigating the Sidebar"
+msgstr "Navegando pela Barra Lateral"
+
+#: dashboard/Templates/platform_guide.html:186
+msgid ""
+"The sidebar is designed to streamline your interaction with GT-IMPACTO's "
+"features. Follow these steps to navigate effectively:"
+msgstr ""
+"A barra lateral foi projetada para simplificar sua interação com os recursos "
+"do GT-IMPACTO. Siga estes passos para navegar efetivamente:"
+
+#: dashboard/Templates/platform_guide.html:189
+msgid "Identify the section you wish to access from the sidebar menu."
+msgstr "Identifique a seção que deseja acessar no menu da barra lateral."
+
+#: dashboard/Templates/platform_guide.html:190
+msgid "Click on the desired section to expand and view available options."
+msgstr ""
+"Clique na seção desejada para expandir e visualizar as opções disponíveis."
+
+#: dashboard/Templates/platform_guide.html:191
+msgid ""
+"Select a specific function or tool within the expanded section to begin "
+"utilizing it."
+msgstr ""
+"Selecione uma função ou ferramenta específica dentro da seção expandida para "
+"começar a utilizá-la."
+
+#: dashboard/Templates/platform_guide.html:194
+msgid ""
+"Efficient use of the sidebar will enhance your overall navigation "
+"experience, enabling you to fully leverage all features GT-IMPACTO has to "
+"offer."
+msgstr ""
+"O uso eficiente da barra lateral aprimorará sua experiência geral de "
+"navegação, permitindo que você aproveite ao máximo todos os recursos que o "
+"GT-IMPACTO tem a oferecer."
+
+#: dashboard/Templates/platform_guide.html:196
+msgid "Is this your first time on the platform?"
+msgstr "É sua primeira vez na plataforma?"
+
+#: dashboard/Templates/platform_guide.html:199
+msgid ""
+"We recommend starting by exploring the Company Profiles available in the "
+"sidebar. Navigate to the 'Company Profiles' section and select one that "
+"interests you. There, you'll find detailed information about the company's "
+"cybersecurity posture and can access its risk and economic analyses."
+msgstr ""
+"Recomendamos começar explorando os Perfis de Empresas disponíveis na barra "
+"lateral. Navegue até a seção 'Perfil de Empresa' e clique em 'Visualisar "
+"Empresas'. Após isso, selecione um perfil que lhe interesse. Lá, você "
+"encontrará informações detalhadas sobre a postura de cibersegurança da "
+"empresa e poderá acessar suas análises de risco e econômicas."
+
+#: dashboard/Templates/platform_guide.html:202
+msgid ""
+"If you're curious about the provided modeling or want to see how changes in "
+"cybersecurity strategies could impact the data, feel free to create a copy "
+"of that profile. With your own copy, you can modify parameters and explore "
+"the outcomes as you wish!"
+msgstr ""
+"Se você está curioso sobre a modelagem fornecida ou quer ver como mudanças "
+"nas estratégias de cibersegurança poderiam impactar os dados, sinta-se à "
+"vontade para criar uma cópia desse perfil. Com sua própria cópia, você pode "
+"modificar parâmetros e explorar os resultados como desejar!"
+
+#: dashboard/Templates/platform_guide.html:205
+msgid ""
+"Additionally, when you modify the data of modeled companies, the changes are "
+"reflected in real-time within the economic and risk modules. This dynamic "
+"interaction allows you to instantly assess the implications of your "
+"adjustments, facilitating informed decision-making and comprehensive "
+"analysis."
+msgstr ""
+"Além disso, quando você modifica os dados das empresas modeladas, as "
+"mudanças são refletidas em tempo real nos módulos econômicos e de risco. "
+"Essa interação permite que você avalie as implicações de seus ajustes, "
+"facilitando uma análise abrangente."
+
+#: dashboard/Templates/platform_guide.html:217
+msgid ""
+"Company Profiles are central to the GT-IMPACTO platform, providing detailed "
+"information about organizations' cybersecurity postures. These profiles are "
+"categorized into two types: Basic and Advanced. Each type serves different "
+"purposes and offers varying levels of detail to support comprehensive risk "
+"assessments and economic impact simulations."
+msgstr ""
+"Os Perfis de Empresas são centrais para a plataforma GT-IMPACTO, fornecendo "
+"informações detalhadas sobre as posturas de cibersegurança das organizações. "
+"Esses perfis são categorizados em dois tipos: Básico e Avançado. Cada tipo "
+"serve a propósitos diferentes e oferece níveis variados de detalhes para "
+"apoiar avaliações abrangentes de risco e simulações de impacto econômico."
+
+#: dashboard/Templates/platform_guide.html:221
+msgid "Basic Company Profiles"
+msgstr "Perfis de Empresas Básicos"
+
+#: dashboard/Templates/platform_guide.html:223
+msgid ""
+"Basic Company Profiles capture essential data about a company, forming the "
+"foundation for initial cybersecurity risk assessments and economic analyses. "
+"Only Instructors have the permission to create and add new Basic Company "
+"Profiles to the platform."
+msgstr ""
+"Os Perfis de Empresas Básicos capturam dados essenciais sobre uma empresa, "
+"formando a base para avaliações iniciais de risco de cibersegurança e "
+"análises econômicas. Apenas os Instrutores têm permissão para criar e "
+"adicionar novos Perfis de Empresas Básicos à plataforma."
+
+#: dashboard/Templates/platform_guide.html:226
+msgid "Key Features of Basic Company Profiles:"
+msgstr "Características Principais dos Perfis de Empresas Básicos:"
+
+#: dashboard/Templates/platform_guide.html:230
+msgid ""
+"Includes the company's name, headquarters country, industry type, and "
+"employee count."
+msgstr ""
+"Inclui o nome da empresa, país da sede, tipo de indústria e número de "
+"funcionários."
+
+#: dashboard/Templates/platform_guide.html:233
+msgid "Cybersecurity Practices"
+msgstr "Práticas de Cibersegurança"
+
+#: dashboard/Templates/platform_guide.html:233
+msgid ""
+"Details about the company's inventory management, backup maintenance, and "
+"risk prioritization practices."
+msgstr ""
+"Detalhes sobre as práticas de gestão de inventário, manutenção de backups e "
+"priorização de riscos da empresa."
+
+#: dashboard/Templates/platform_guide.html:236
+msgid "Economic Data"
+msgstr "Dados Econômicos"
+
+#: dashboard/Templates/platform_guide.html:236
+msgid "Basic financial metrics like annual revenue and cybersecurity spending."
+msgstr ""
+"Métricas financeiras básicas como receita anual e gastos com cibersegurança."
+
+#: dashboard/Templates/platform_guide.html:239
+msgid "Assets"
+msgstr "Ativos"
+
+#: dashboard/Templates/platform_guide.html:239
+msgid ""
+"Information about the company's key assets such as servers, databases, and "
+"websites."
+msgstr ""
+"Informações sobre os principais ativos da empresa, como servidores, bancos "
+"de dados e websites."
+
+#: dashboard/Templates/platform_guide.html:243
+msgid ""
+"These elements are crucial as they provide the necessary data points for "
+"evaluating the company's cybersecurity risks and economic resilience against "
+"potential cyberattacks."
+msgstr ""
+"Esses elementos são cruciais, pois fornecem os pontos de dados necessários "
+"para avaliar os riscos de cibersegurança da empresa e sua resiliência "
+"econômica contra possíveis ciberataques."
+
+#: dashboard/Templates/platform_guide.html:247 dashboard/models.py:478
+msgid "Advanced Company Profiles"
+msgstr "Perfis de Empresas Avançados"
+
+#: dashboard/Templates/platform_guide.html:249
+msgid ""
+"Advanced Company Profiles build upon the foundational data in Basic profiles "
+"by incorporating additional dimensions that offer a more in-depth analysis "
+"of an organization's cybersecurity stance. These profiles are exclusively "
+"created by Instructors and include comprehensive data to enhance risk "
+"assessment accuracy and economic impact projections."
+msgstr ""
+"Os Perfis de Empresas Avançados se baseiam nos dados fundamentais dos perfis "
+"Básicos, incorporando dimensões adicionais que oferecem uma análise mais "
+"aprofundada da postura de cibersegurança de uma organização. Esses perfis "
+"são criados exclusivamente por Instrutores e incluem dados abrangentes para "
+"melhorar a precisão da avaliação de riscos e as projeções de impacto "
+"econômico."
+
+#: dashboard/Templates/platform_guide.html:252
+msgid "Additional Features of Advanced Company Profiles:"
+msgstr "Características Adicionais dos Perfis de Empresas Avançados:"
+
+#: dashboard/Templates/platform_guide.html:256
+msgid ""
+"Includes detailed information about company locations, size, remote work "
+"rates, and global presence."
+msgstr ""
+"Inclui informações detalhadas sobre as localizações da empresa, tamanho, "
+"taxas de trabalho remoto e presença global."
+
+#: dashboard/Templates/platform_guide.html:259
+msgid ""
+"Encompasses advanced cybersecurity measures such as authentication factors, "
+"cloud solution types, IT system monitoring, and data encryption practices."
+msgstr ""
+"Abrange medidas avançadas de cibersegurança, como fatores de autenticação, "
+"tipos de soluções em nuvem, monitoramento de sistemas de TI e práticas de "
+"criptografia de dados."
+
+#: dashboard/Templates/platform_guide.html:262
+msgid ""
+"Records of past cyberattacks, including types of attacks, years they "
+"occurred, and their frequency."
+msgstr ""
+"Registros de ciberataques passados, incluindo tipos de ataques, anos em que "
+"ocorreram e sua frequência."
+
+#: dashboard/Templates/platform_guide.html:267
+msgid ""
+"The enriched data in Advanced Company Profiles allows for more precise risk "
+"scoring and economic impact simulations, taking into account both historical "
+"attack data and current cybersecurity investments. This depth of information "
+"facilitates a nuanced understanding of a company's vulnerability and "
+"resilience against cyber threats."
+msgstr ""
+"Os dados enriquecidos nos Perfis de Empresas Avançados permitem pontuações "
+"de risco e simulações de impacto econômico mais precisas, levando em "
+"consideração tanto os dados históricos de ataques quanto os investimentos "
+"atuais em cibersegurança. Essa profundidade de informações facilita uma "
+"compreensão nuançada da vulnerabilidade e resiliência de uma empresa contra "
+"ameaças cibernéticas."
+
+#: dashboard/Templates/platform_guide.html:273
+msgid ""
+"Only Instructors have the authority to create and manage both Basic and "
+"Advanced Company Profiles. Students who wish to edit existing profiles must "
+"create a copy through the "
+msgstr ""
+"Apenas os Instrutores têm autoridade para criar e gerenciar Perfis de "
+"Empresas Básicos e Avançados. Estudantes que desejam editar perfis "
+"existentes devem criar uma cópia através da seção"
+
+#: dashboard/Templates/platform_guide.html:275
+msgid ""
+" section. This ensures that the original profiles remain intact while "
+"allowing Students to customize and analyze data based on their specific "
+"needs."
+msgstr ""
+". Isso garante que os perfis originais permaneçam intactos, permitindo que "
+"os Estudantes personalizem e analisem dados com base em suas necessidades "
+"específicas."
+
+#: dashboard/Templates/platform_guide.html:278
+msgid ""
+"Creating a copy enables Students to alter data points and observe real-time "
+"changes in risk and economic modules, fostering a hands-on learning "
+"environment where decision-making and analysis can be conducted safely and "
+"effectively."
+msgstr ""
+"Criar uma cópia permite que os Estudantes alterem pontos de dados e observem "
+"mudanças em tempo real nos módulos de risco e econômicos, promovendo um "
+"ambiente de aprendizagem prático onde a tomada de decisões e análises podem "
+"ser conduzidas de forma eficaz."
+
+#: dashboard/Templates/platform_guide.html:290
+msgid ""
+"The Risk Analysis section within the GT-IMPACTO platform provides "
+"comprehensive data visualization tools to assess annual cyberattack risks. "
+"This section includes various graphs that categorize risks by sector, by the "
+"company's specific region, and by a combination of sector and country."
+msgstr ""
+"A seção de Análise de Riscos na plataforma GT-IMPACTO fornece ferramentas "
+"abrangentes de visualização de dados para avaliar os riscos anuais de "
+"ciberataques. Esta seção inclui vários gráficos que categorizam riscos por "
+"setor, pela região específica da empresa e por uma combinação de setor e "
+"país."
+
+#: dashboard/Templates/platform_guide.html:294
+msgid "Risk Graphs by Sector"
+msgstr "Gráficos de Risco por Setor"
+
+#: dashboard/Templates/platform_guide.html:296
+msgid ""
+"These graphs display the annual risk probabilities of cyberattacks within "
+"each industry sector. They show the frequency and likelihood of different "
+"types of attacks such as Malware, Phishing, and DDoS within each sector."
+msgstr ""
+"Estes gráficos mostram as probabilidades anuais de risco de ciberataques em "
+"cada setor industrial. Eles mostram a frequência e probabilidade de "
+"diferentes tipos de ataques, como Malware, Phishing e DDoS em cada setor."
+
+#: dashboard/Templates/platform_guide.html:300
+msgid "Risk Graphs by Region"
+msgstr "Gráficos de Risco por Região"
+
+#: dashboard/Templates/platform_guide.html:302
+msgid ""
+"These graphs illustrate the annual risk probabilities of cyberattacks within "
+"the company's specific geographical region. They provide insights into how "
+"cyberattack risks are distributed within the designated region."
+msgstr ""
+"Estes gráficos ilustram as probabilidades anuais de risco de ciberataques na "
+"região geográfica específica da empresa. Eles fornecem insights sobre como "
+"os riscos de ciberataques estão distribuídos dentro da região designada."
+
+#: dashboard/Templates/platform_guide.html:306
+msgid "Risk Graphs by Sector and Country"
+msgstr "Gráficos de Risco por Setor e País"
+
+#: dashboard/Templates/platform_guide.html:308
+msgid ""
+"These graphs offer a detailed analysis by combining sector and country data. "
+"They show how risks are associated with specific sectors within particular "
+"countries, allowing for a more nuanced understanding of cyberattack risks."
+msgstr ""
+"Esses gráficos oferecem uma análise detalhada combinando dados de setor e "
+"país. Eles mostram como os riscos estão associados a setores específicos "
+"dentro de países particulares, permitindo uma compreensão mais nuançada dos "
+"riscos de ciberataques."
+
+#: dashboard/Templates/platform_guide.html:312
+#: dashboard/Templates/platform_guide.html:493
+msgid "Data Integration"
+msgstr "Integração de Dados"
+
+#: dashboard/Templates/platform_guide.html:314
+msgid ""
+"The risk data presented in the Risk Analysis section is utilized in the "
+msgstr ""
+"Os dados de risco apresentados na seção de Análise de Riscos são utilizados "
+"na seção"
+
+#: dashboard/Templates/platform_guide.html:316
+msgid ""
+" section. This integration ensures that economic impact simulations are "
+"informed by accurate and relevant risk assessments."
+msgstr ""
+". Essa integração garante que as simulações de impacto econômico sejam "
+"informadas por avaliações de risco precisas e relevantes."
+
+#: dashboard/Templates/platform_guide.html:328
+msgid ""
+"The Risk Analysis Report provides a evaluation of the company's exposure to "
+"various cyber threats. It combines data on regional and sector-specific "
+"risks with the company's own resilience measures to present a risk profile."
+msgstr ""
+"O Relatório de Análise de Riscos fornece uma avaliação da exposição da "
+"empresa a várias ameaças cibernéticas. Ele combina dados sobre riscos "
+"regionais e específicos do setor com as próprias medidas de resiliência da "
+"empresa para apresentar um perfil de risco."
+
+#: dashboard/Templates/platform_guide.html:332
+msgid "Risk Analysis Table"
+msgstr "Tabela de Análise de Risco"
+
+#: dashboard/Templates/platform_guide.html:334
+msgid ""
+"This table displays the risk levels associated with different types of cyber "
+"threats, categorized into Region Risk, Sector Risk, and Company Resilience. "
+"Each threat (Malware, Phishing and DDoS) is evaluated across these "
+"dimensions to provide a understanding of the risk landscape."
+msgstr ""
+"Esta tabela exibe os níveis de risco associados a diferentes tipos de "
+"ameaças cibernéticas, categorizados em Risco Regional, Risco Setorial e "
+"Resiliência da Empresa. Cada ameaça (Malware, Phishing e DDoS) é avaliada "
+"através dessas dimensões para fornecer uma compreensão do panorama de riscos."
+
+#: dashboard/Templates/platform_guide.html:337
+msgid ""
+"The risk levels are visualized using risk bars, which are color-coded "
+"indicators showing the degree of risk from 'Excellent' to 'Poor'. For Region "
+"Risk and Sector Risk, the bars are inverted, indicating that lower values "
+"represent lower risk. For Company Resilience, higher values indicate "
+"stronger resilience against threats."
+msgstr ""
+"Os níveis de risco são visualizados usando barras de risco, que são "
+"indicadores coloridos mostrando o grau de risco de 'Ótimo' a 'Péssimo'. Para "
+"Risco Regional e Risco Setorial, as barras são invertidas, indicando que "
+"valores mais baixos representam menor risco. Para Resiliência da Empresa, "
+"valores mais altos indicam maior resiliência contra ameaças."
+
+#: dashboard/Templates/platform_guide.html:341
+msgid "Interpreting the Risk Bars"
+msgstr "Interpretando as Barras de Risco"
+
+#: dashboard/Templates/platform_guide.html:343
+msgid ""
+"Region Risk and Sector Risk: The bars indicate the inherent risk associated "
+"with the company's geographical region and industry sector, respectively. A "
+"bar leaning towards 'Poor' signifies a higher inherent risk in that category."
+msgstr ""
+"Risco Regional e Risco Setorial: As barras indicam o risco inerente "
+"associado à região geográfica da empresa e ao setor da indústria, "
+"respectivamente. Uma barra tendendo para 'Ruim' significa um risco inerente "
+"maior nessa categoria."
+
+#: dashboard/Templates/platform_guide.html:344
+msgid ""
+"Company Resilience: This bar reflects the company's own measures to "
+"withstand cyber threats. A bar towards 'Excellent' indicates strong "
+"resilience due to effective security measures."
+msgstr ""
+"Resiliência da Empresa: Esta barra reflete as próprias medidas da empresa "
+"para resistir a ameaças cibernéticas. Uma barra tendendo para 'Excelente' "
+"indica forte resiliência devido a medidas de segurança eficazes."
+
+#: dashboard/Templates/platform_guide.html:348
+msgid "Risk Score Visualization"
+msgstr "Visualização das pontuações de risco"
+
+#: dashboard/Templates/platform_guide.html:350
+msgid ""
+"This section features a displat of the risk scores for each threat type, "
+"alongside a final consolidated risk score. The colors and values indicate "
+"the level of risk, ranging from 'Healthy' to 'Critical'."
+msgstr ""
+"Esta seção apresenta uma exibição das pontuações de risco para cada tipo de "
+"ameaça, junto com uma pontuação de risco final. As cores e valores indicam o "
+"nível de risco, variando de 'Saudável' a 'Crítico'."
+
+#: dashboard/Templates/platform_guide.html:354
+msgid "Understanding the Risk Indicators"
+msgstr "Entendendo os Indicadores de Risco"
+
+#: dashboard/Templates/platform_guide.html:356
+msgid ""
+"Color Score Indicators: Three circular indicators show the risk score for "
+"each threat type (Malware, Phishing, DDoS). The score ranges from 0 to 10, "
+"with higher scores indicating higher risk."
+msgstr ""
+"Indicadores de Pontuação por Cor: Três indicadores circulares mostram a "
+"pontuação de risco para cada tipo de ameaça (Malware, Phishing, DDoS). A "
+"pontuação varia de 0 a 10, com pontuações mais altas indicando maior risco."
+
+#: dashboard/Templates/platform_guide.html:357
+msgid ""
+"Final Score Display: Below the color score system, a score card shows the "
+"company's overall risk assessment, combining all threat evaluations into a "
+"single metric."
+msgstr ""
+"Exibição da Pontuação Final: Abaixo do sistema de pontuação por cores, um "
+"cartão de pontuação mostra a avaliação geral de risco da empresa, combinando "
+"todas as avaliações de ameaças em uma única métrica."
+
+#: dashboard/Templates/platform_guide.html:358
+msgid ""
+"Color Scale: The indicators use a consistent color scheme to represent risk "
+"levels:"
+msgstr ""
+"Escala de Cores: Os indicadores usam um esquema de cores consistente para "
+"representar níveis de risco:"
+
+#: dashboard/Templates/platform_guide.html:360
+msgid "Red (Critical): Risk score >= 8.0"
+msgstr "Vermelho (Crítico): Pontuação de risco >= 8.0"
+
+#: dashboard/Templates/platform_guide.html:361
+msgid "Orange (Dangerous): Risk score >= 6.0"
+msgstr "Laranja (Perigoso): Pontuação de risco >= 6.0"
+
+#: dashboard/Templates/platform_guide.html:362
+msgid "Yellow (Alert): Risk score >= 4.0"
+msgstr "Amarelo (Alerta): Pontuação de risco >= 4.0"
+
+#: dashboard/Templates/platform_guide.html:363
+msgid "Green (Normal): Risk score >= 2.0"
+msgstr "Verde (Normal): Pontuação de risco >= 2.0"
+
+#: dashboard/Templates/platform_guide.html:364
+msgid "Blue (Healthy): Risk score < 2.0"
+msgstr "Azul (Saudável): Pontuação de risco < 2.0"
+
+#: dashboard/Templates/platform_guide.html:372
+msgid ""
+"For advanced profiles, the report includes a Technical Dimension Analysis, "
+"which examines the company's security defenses in terms of the "
+"Confidentiality, Integrity, and Availability (CIA) triad. This analysis "
+"helps identify strengths and weaknesses in the company's technical security "
+"measures."
+msgstr ""
+"Para perfis avançados, o relatório inclui uma Análise de Dimensão Técnica, "
+"que examina as defesas de segurança da empresa em termos da tríade "
+"Confidencialidade, Integridade e Disponibilidade (CID). Esta análise ajuda a "
+"identificar pontos fortes e fracos nas medidas de segurança técnica da "
+"empresa."
+
+#: dashboard/Templates/platform_guide.html:376
+msgid "Understanding the Technical Dimension Table"
+msgstr "Entendendo a Tabela de Dimensão Técnica"
+
+#: dashboard/Templates/platform_guide.html:378
+msgid ""
+"The table lists various security defenses and indicates their applicability "
+"and activation status across the CIA dimensions:"
+msgstr ""
+"A tabela lista várias defesas de segurança e indica sua aplicabilidade e "
+"status de ativação nas dimensões CID:"
+
+#: dashboard/Templates/platform_guide.html:381
+msgid "Measures that prevent unauthorized access to sensitive information."
+msgstr "Medidas que previnem acesso não autorizado a informações sensíveis."
+
+#: dashboard/Templates/platform_guide.html:382
+msgid ""
+"Measures that ensure data is accurate and unaltered by unauthorized parties."
+msgstr ""
+"Medidas que garantem que os dados estejam precisos e inalterados por partes "
+"não autorizadas."
+
+#: dashboard/Templates/platform_guide.html:383
+msgid "Measures that ensure reliable access to data and services when needed."
+msgstr ""
+"Medidas que garantem acesso confiável a dados e serviços quando necessário."
+
+#: dashboard/Templates/platform_guide.html:386
+msgid ""
+"Icons are used to represent whether a defense is active and contributing to "
+"a particular security aspect:"
+msgstr ""
+"Ícones são usados para representar se uma defesa está ativa e contribuindo "
+"para um aspecto específico de segurança:"
+
+#: dashboard/Templates/platform_guide.html:389
+msgid ""
+"Green checkmark (✔): The defense is active and contributing to that security "
+"aspect."
+msgstr ""
+"Marca de seleção verde (✔): A defesa está ativa e contribuindo para esse "
+"aspecto de segurança."
+
+#: dashboard/Templates/platform_guide.html:390
+msgid "Red cross (✘): The defense is relevant but not currently active."
+msgstr ""
+"Cruz vermelha (✘): A defesa é relevante, mas não está atualmente ativa."
+
+#: dashboard/Templates/platform_guide.html:403
+msgid ""
+"The Economic Planning screen offers simulations and analyses to optimize "
+"cybersecurity investments and assess their economic impacts. This section "
+"includes interactive tables and charts that display investment scenarios and "
+"their effects on economic metrics."
+msgstr ""
+"A tela de Planejamento Econômico oferece simulações e análises para otimizar "
+"investimentos em cibersegurança e avaliar os seus impactos econômicos. Esta "
+"seção inclui tabelas e gráficos que exibem cenários de investimento e seus "
+"efeitos em métricas econômicas."
+
+#: dashboard/Templates/platform_guide.html:407
+msgid "Understanding the Terms"
+msgstr "Entendendo os Termos"
+
+#: dashboard/Templates/platform_guide.html:410
+msgid ""
+"Indicates whether the investment amount is within the acceptable investment "
+"window."
+msgstr ""
+"Indica se o valor do investimento está dentro da janela de investimento "
+"aceitável."
+
+#: dashboard/Templates/platform_guide.html:413
+msgid "Indicates the type of cyberattack, such as Malware, Phishing, or DDoS."
+msgstr "Indica o tipo de ciberataque, como Malware, Phishing ou DDoS."
+
+#: dashboard/Templates/platform_guide.html:416
+msgid ""
+"Represents the expected monetary loss for a particular type of attack. "
+"Customizable through Impacts modal."
+msgstr ""
+"Representa a perda monetária esperada para um tipo específico de ataque. "
+"Personalizável através do modal de Impactos."
+
+#: dashboard/Templates/platform_guide.html:419
+msgid "Shows the likelihood of a successful attack of a particular type."
+msgstr ""
+"Mostra a probabilidade de um ataque bem-sucedido de um tipo particular."
+
+#: dashboard/Templates/platform_guide.html:422
+msgid "Investment"
+msgstr "Investimento"
+
+#: dashboard/Templates/platform_guide.html:422
+msgid ""
+"The amount currently invested in cybersecurity measures for the asset "
+"against a certain type of attack."
+msgstr ""
+"O valor atualmente investido em medidas de cibersegurança para o ativo "
+"contra um determinado tipo de ataque."
+
+#: dashboard/Templates/platform_guide.html:425
+msgid "Optimal Investment"
+msgstr "Investimento Ótimo"
+
+#: dashboard/Templates/platform_guide.html:425
+msgid "The recommended investment level for maximizing cost-benefit."
+msgstr "O nível de investimento recomendado para maximizar o custo-benefício."
+
+#: dashboard/Templates/platform_guide.html:428
+msgid "Acceptable Investment"
+msgstr "Investimento Aceitável"
+
+#: dashboard/Templates/platform_guide.html:428
+msgid "Ihe investment range where efficiency approaches optimal levels."
+msgstr ""
+"A faixa de investimento onde a eficiência se aproxima dos níveis ótimos."
+
+#: dashboard/Templates/platform_guide.html:431
+msgid "EBIS Current"
+msgstr "EBIS Atual"
+
+#: dashboard/Templates/platform_guide.html:431
+msgid ""
+"The current Economic Benefit Impact Score based on existing investments and "
+"its effectiveness on reducing damage."
+msgstr ""
+"A Pontuação de Impacto do Benefício Econômico atual com base nos "
+"investimentos existentes e sua eficácia na redução de danos."
+
+#: dashboard/Templates/platform_guide.html:434
+msgid "EBIS Optimal"
+msgstr "EBIS Ótimo"
+
+#: dashboard/Templates/platform_guide.html:434
+msgid ""
+"The Economic Benefit Impact Score calculated after applying the optimal "
+"investment levels and its effectiveness on reducing damage."
+msgstr ""
+"A Pontuação de Impacto do Benefício Econômico calculada após aplicar os "
+"níveis de investimento ótimos e sua eficácia na redução de danos."
+
+#: dashboard/Templates/platform_guide.html:437
+msgid "ENBIS Current"
+msgstr "ENBIS Atual"
+
+#: dashboard/Templates/platform_guide.html:437
+msgid ""
+"The current Economic Net Benefit Impact Score based on existing investments."
+msgstr ""
+"A Pontuação de Impacto do Benefício Econômico Líquido atual com base nos "
+"investimentos existentes."
+
+#: dashboard/Templates/platform_guide.html:440
+msgid "ENBIS Optimal"
+msgstr "ENBIS Ótimo"
+
+#: dashboard/Templates/platform_guide.html:440
+msgid ""
+"The Economic Net Benefit Impact Score calculated after applying the optimal "
+"investment levels."
+msgstr ""
+"A Pontuação de Impacto do Benefício Econômico Líquido calculada após aplicar "
+"os níveis de investimento ótimos."
+
+#: dashboard/Templates/platform_guide.html:443
+msgid "Efficiency"
+msgstr "Eficiência"
+
+#: dashboard/Templates/platform_guide.html:443
+msgid "The current score of the investment compared to the optimal investment"
+msgstr ""
+"A pontuação atual do investimento em comparação com o investimento ótimo"
+
+#: dashboard/Templates/platform_guide.html:446
+msgid "Adjustment"
+msgstr "Ajuste"
+
+#: dashboard/Templates/platform_guide.html:446
+msgid "The required adjustment to reach the optimal investment level."
+msgstr "O ajuste necessário para atingir o nível de investimento ótimo."
+
+#: dashboard/Templates/platform_guide.html:449
+msgid "Profit"
+msgstr "Lucro"
+
+#: dashboard/Templates/platform_guide.html:449
+msgid "The expected profit after making the investment adjustments."
+msgstr "O lucro esperado após fazer os ajustes de investimento."
+
+#: dashboard/Templates/platform_guide.html:453
+msgid ""
+"In addition to the previously mentioned attacks, the 'General' line provides "
+"an overview that aggregates data from the other attacks. These values are "
+"calculated using data from the aforementioned attack types, offering a "
+"simplified view of the asset's cybersecurity investment status. All "
+"calculations utilize an alpha value of 0.001."
+msgstr ""
+"Além dos ataques mencionados anteriormente, a linha 'Geral' fornece uma "
+"visão geral que agrega dados dos outros ataques. Esses valores são "
+"calculados usando dados dos tipos de ataque mencionados, oferecendo uma "
+"visão simplificada do status do investimento em cibersegurança do ativo. "
+"Todos os cálculos utilizam um valor alfa de 0,001."
+
+#: dashboard/Templates/platform_guide.html:457
+msgid "Impacts modal"
+msgstr "Modal de Impactos"
+
+#: dashboard/Templates/platform_guide.html:459
+msgid ""
+"This tool is responsible for configuring the 'Damage' parameters, enabling "
+"the user to set both direct and indirect damage levels for the respective "
+"asset. Each can be categorized as Low, Medium, or High, based on the "
+"potential economic loss associated with various types of attacks affecting "
+"that asset."
+msgstr ""
+"Esta ferramenta é responsável por configurar os parâmetros de 'Dano', "
+"permitindo que o usuário defina os níveis de dano direto e indireto para o "
+"respectivo ativo. Cada um pode ser categorizado como Baixo, Médio ou Alto, "
+"com base na perda econômica potencial associada a vários tipos de ataques "
+"que afetam esse ativo."
+
+#: dashboard/Templates/platform_guide.html:463
+msgid "Direct"
+msgstr "Direto"
+
+#: dashboard/Templates/platform_guide.html:463
+msgid ""
+"Represents the immediate and easily attributable damage that results "
+"directly from the attack. Examples include data loss, service disruption, "
+"recovery costs, and risks to data integrity."
+msgstr ""
+"Representa o dano imediato e facilmente atribuível que resulta diretamente "
+"do ataque. Os exemplos incluem perda de dados, interrupção de serviço, "
+"custos de recuperação e riscos à integridade dos dados."
+
+#: dashboard/Templates/platform_guide.html:466
+msgid "Indirect"
+msgstr "Indireto"
+
+#: dashboard/Templates/platform_guide.html:466
+msgid ""
+"Refers to secondary and long-term consequences that arise as a result of the "
+"attack. Examples include reputation loss, long-term revenue decline, legal "
+"and regulatory penalties, and increased operational costs."
+msgstr ""
+"Refere-se a consequências secundárias e de longo prazo que surgem como "
+"resultado do ataque. Os exemplos incluem perda de reputação, declínio de "
+"receita a longo prazo, penalidades legais e regulatórias e aumento dos "
+"custos operacionais."
+
+#: dashboard/Templates/platform_guide.html:472
+msgid ""
+"The Economic Planning screen conducts simulations using the Gordon-Loeb "
+"model to determine the optimal investment levels for cybersecurity measures. "
+"These simulations take into account the probability of different types of "
+"cyberattacks and the expected loss value to assess the economic impact of "
+"potential threats."
+msgstr ""
+"A tela de Planejamento Econômico realiza simulações usando o modelo Gordon-"
+"Loeb para determinar os níveis ideais de investimento em medidas de "
+"cibersegurança. Essas simulações levam em conta a probabilidade de "
+"diferentes tipos de ciberataques e o valor de perda esperado para avaliar o "
+"impacto econômico de potenciais ameaças."
+
+#: dashboard/Templates/platform_guide.html:475
+msgid ""
+"The screen displays scenarios that compare current investments, optimal "
+"investments, and acceptable investments. It illustrates how changes in "
+"investment levels impact the EBIS and ENBIS scores, as well as the expected "
+"profit from these investments. Additionally, it provides guidance on how to "
+"adjust your investment for maximum profit."
+msgstr ""
+"A tela exibe cenários que comparam investimentos atuais, investimentos "
+"ótimos e investimentos aceitáveis. Ela ilustra como as mudanças nos níveis "
+"de investimento impactam as pontuações EBIS e ENBIS, bem como o lucro "
+"esperado desses investimentos. Além disso, fornece orientações sobre como "
+"ajustar seu investimento para maximizar o lucro."
+
+#: dashboard/Templates/platform_guide.html:481
+msgid "Simulation Charts"
+msgstr "Gráficos de Simulação"
+
+#: dashboard/Templates/platform_guide.html:483
+msgid ""
+"Each asset has associated charts that visualize the relationship between "
+"investment levels and the Economic Benefit Impact Score (EBIS). These charts "
+"help in understanding how different investment scenarios influence the "
+"economic outcomes of cybersecurity measures."
+msgstr ""
+"Cada ativo possui gráficos associados que visualizam a relação entre os "
+"níveis de investimento e a Pontuação de Impacto do Benefício Econômico "
+"(EBIS). Esses gráficos ajudam a entender como diferentes cenários de "
+"investimento influenciam os resultados econômicos das medidas de "
+"cibersegurança."
+
+#: dashboard/Templates/platform_guide.html:487
+msgid "Gordon-Loeb Simulations"
+msgstr "Simulações de Gordon-Loeb"
+
+#: dashboard/Templates/platform_guide.html:487
+msgid ""
+"Charts displaying the simulation results based on the Gordon-Loeb model, "
+"which presents optimal and acceptable investment window for cybersecurity, "
+"as well as the current investment."
+msgstr ""
+"Gráficos exibindo os resultados da simulação baseados no modelo Gordon-Loeb, "
+"que apresenta a janela de investimento ótimo e aceitável para "
+"cibersegurança, bem como o investimento atual."
+
+#: dashboard/Templates/platform_guide.html:495
+msgid "The risk data presented in the "
+msgstr "Os dados de risco apresentados na seção "
+
+#: dashboard/Templates/platform_guide.html:497
+msgid ""
+"section is utilized in the Economic Planning section. This integration "
+"ensures that economic impact simulations are informed by accurate and "
+"relevant risk assessments."
+msgstr ""
+" são utilizados na seção de Planejamento Econômico. Essa integração garante "
+"que as simulações de impacto econômico sejam informadas por avaliações de "
+"risco relevantes."
+
+#: dashboard/Templates/platform_guide.html:501
+msgid "Hypotitecal scenarios"
+msgstr "Cenários Hipotéticos"
+
+#: dashboard/Templates/platform_guide.html:503
+msgid ""
+"On the hypothetical scenarios page, the user can adjust the Damage, "
+"Probability, Current Investment, and alpha variables for each type of attack "
+"to simulate alternative scenarios and evaluate the resulting outcomes. These "
+"results can be saved and loaded as needed by the user."
+msgstr ""
+"Na página de cenários hipotéticos, o usuário pode ajustar as variáveis de "
+"Dano, Probabilidade, Investimento Atual e alfa para cada tipo de ataque para "
+"simular cenários alternativos e avaliar os resultados. Esses resultados "
+"podem ser salvos e carregados conforme necessário."
+
+#: dashboard/Templates/platform_guide.html:506
+msgid ""
+"The 'General'  Investment line allows users who may lack the specific "
+"expertise to determine the appropriate cybersecurity measures for a given "
+"asset to estimate outcomes based on investments in randomly selected "
+"security measures, offering a broad, high-level perspective on potential "
+"results."
+msgstr ""
+"A linha 'Geral' serve como um guia simplificado para usuários menos "
+"familiarizados com cibersegurança. Em vez de exigir conhecimentos técnicos "
+"específicos, ela oferece uma visão consolidada que simula investimentos em "
+"diversas medidas de proteção. Assim, mesmo sem expertise detalhada sobre o "
+"ativo em questão, é possível ter uma melhor noção dos resultados esperados e "
+"tomar decisões mais informadas sobre investimentos em segurança."
+
+#: dashboard/Templates/platform_guide.html:518
+msgid ""
+"Company Copies allow users (instructors and students) to create and manage "
+"personal copies of company profiles for analysis, comparison, and "
+"modification."
+msgstr ""
+"As Cópias de Empresa permitem que os usuários (instrutores e estudantes) "
+"criem e gerenciem cópias pessoais de perfis de empresas para análise, "
+"comparação e modificação."
+
+#: dashboard/Templates/platform_guide.html:521
+msgid "Creating a Company Copy"
+msgstr "Criando uma Cópia de Empresa"
+
+#: dashboard/Templates/platform_guide.html:523
+msgid "To create a copy of a company profile:"
+msgstr "Para criar uma cópia de um perfil de empresa:"
+
+#: dashboard/Templates/platform_guide.html:526
+msgid "Navigate to the Company Profiles section"
+msgstr "Navegue até a seção de Perfis de Empresa"
+
+#: dashboard/Templates/platform_guide.html:527
+msgid "Select the profile you want to copy"
+msgstr "Selecione o perfil que você deseja copiar"
+
+#: dashboard/Templates/platform_guide.html:528
+msgid "Click on 'Copy Profile'"
+msgstr "Clique em 'Copiar Perfil'"
+
+#: dashboard/Templates/platform_guide.html:529
+msgid ""
+"You will be redirected to the new copy (or to an existing copy if you've "
+"already created one for this company)"
+msgstr ""
+"Você será redirecionado para a nova cópia (ou para uma cópia existente se "
+"você já tiver criado uma para esta empresa)"
+
+#: dashboard/Templates/platform_guide.html:532
+msgid "Modifying Company Copies"
+msgstr "Modificando Cópias de Empresa"
+
+#: dashboard/Templates/platform_guide.html:534
+msgid ""
+"Once you have created a copy, you can modify all information related to the "
+"company. This includes:"
+msgstr ""
+"Depois de criar uma cópia, você pode modificar todas as informações "
+"relacionadas à empresa. Isso inclui:"
+
+#: dashboard/Templates/platform_guide.html:537
+msgid "Company details"
+msgstr "Detalhes da empresa"
+
+#: dashboard/Templates/platform_guide.html:538
+msgid "Financial information"
+msgstr "Informações financeiras"
+
+#: dashboard/Templates/platform_guide.html:539
+msgid "Operational data"
+msgstr "Dados operacionais"
+
+#: dashboard/Templates/platform_guide.html:540
+msgid "Any other relevant fields"
+msgstr "Quaisquer outros campos relevantes"
+
+#: dashboard/Templates/platform_guide.html:543
+msgid "Analyzing Changes"
+msgstr "Analisando Mudanças"
+
+#: dashboard/Templates/platform_guide.html:545
+msgid ""
+"As you modify the information in your company copy, you can observe the "
+"changes in:"
+msgstr ""
+"À medida que você modifica as informações na sua cópia da empresa, você pode "
+"observar as mudanças em:"
+
+#: dashboard/Templates/platform_guide.html:548
+msgid ""
+"Risk Analysis: See how your modifications affect the company's risk profile. "
+"For more details, refer to the "
+msgstr ""
+"Análise de Risco: Veja como suas modificações afetam o perfil de risco da "
+"empresa. Para mais detalhes, consulte a seção "
+
+#: dashboard/Templates/platform_guide.html:548
+#: dashboard/Templates/platform_guide.html:549
+msgid " section."
+msgstr "."
+
+#: dashboard/Templates/platform_guide.html:549
+msgid ""
+"Economic Planning: Understand the economic impact of your changes. For more "
+"information, check the "
+msgstr ""
+"Planejamento Econômico: Entenda o impacto econômico de suas mudanças. Para "
+"mais informações, verifique a seção "
+
+#: dashboard/Templates/platform_guide.html:552
+msgid "Access to Company Copies"
+msgstr "Acesso às Cópias de Empresa"
+
+#: dashboard/Templates/platform_guide.html:554
+msgid "Access to company copies is managed as follows:"
+msgstr "O acesso às cópias de empresa é gerenciado da seguinte forma:"
+
+#: dashboard/Templates/platform_guide.html:557
+msgid "Students: Can only access their own copies"
+msgstr "Estudantes: Podem acessar apenas suas próprias cópias"
+
+#: dashboard/Templates/platform_guide.html:558
+msgid ""
+"Instructors: Can access all copies through a link provided by the student"
+msgstr ""
+"Instrutores: Podem acessar todas as cópias através de um link fornecido pelo "
+"estudante"
+
+#: dashboard/Templates/platform_guide.html:561
+msgid "Sharing Copies (For Students)"
+msgstr "Compartilhando Cópias (Para Estudantes)"
+
+#: dashboard/Templates/platform_guide.html:563
+msgid "To share your company copy with an instructor:"
+msgstr "Para compartilhar sua cópia de empresa com um instrutor:"
+
+#: dashboard/Templates/platform_guide.html:566
+msgid "Navigate to your company copy"
+msgstr "Navegue até sua cópia de empresa"
+
+#: dashboard/Templates/platform_guide.html:567
+msgid "Copy the website complete URL"
+msgstr "Copie a URL completa do site"
+
+#: dashboard/Templates/platform_guide.html:568
+msgid ""
+"Send this link to your instructor through the approved communication channel"
+msgstr ""
+"Envie este link para seu instrutor através do canal de comunicação aprovado"
+
+#: dashboard/Templates/platform_guide.html:571
+msgid "Important Notes"
+msgstr "Notas Importantes"
+
+#: dashboard/Templates/platform_guide.html:573
+msgid "You cannot create a copy of an existing copy"
+msgstr "Você não pode criar uma cópia de uma cópia existente"
+
+#: dashboard/Templates/platform_guide.html:574
+msgid "You can only have one copy of each original company profile"
+msgstr "Você só pode ter uma cópia de cada perfil de empresa original"
+
+#: dashboard/Templates/platform_guide.html:575
+msgid "Changes made to copies do not affect the original company profile"
+msgstr "Mudanças feitas nas cópias não afetam o perfil de empresa original"
+
+#: dashboard/Templates/platform_guide.html:586
+msgid ""
+"The Data Source section serves as a monitoring tool for our database, "
+"providing average risk data for various cyber attacks across different "
+"regions and sectors. This information is directly sourced from our database "
+"and offers valuable insights into cybersecurity trends."
+msgstr ""
+"A seção Fonte de Dados serve como uma ferramenta de monitoramento para nosso "
+"banco de dados, fornecendo dados médios de risco para vários ataques "
+"cibernéticos em diferentes regiões e setores. Essa informação é obtida "
+"diretamente de nosso banco de dados e oferece insights valiosos sobre "
+"tendências de cibersegurança."
+
+#: dashboard/Templates/platform_guide.html:589
+msgid "Data Representation"
+msgstr "Representação de Dados"
+
+#: dashboard/Templates/platform_guide.html:591
+msgid ""
+"The charts display the probability (in percentage) of different types of "
+"cyber attacks for each region and sector. The four main types of attacks "
+"represented are:"
+msgstr ""
+"Os gráficos exibem a probabilidade (em porcentagem) de diferentes tipos de "
+"ataques cibernéticos para cada região e setor. Os quatro principais tipos de "
+"ataques representados são:"
+
+#: dashboard/Templates/platform_guide.html:594
+msgid "DDoS (Distributed Denial of Service)"
+msgstr "DDoS (Ataque Distribuído de Negação de Serviço)"
+
+#: dashboard/Templates/platform_guide.html:595 dashboard/models.py:244
+#: dashboard/models.py:263 dashboard/models.py:584 dashboard/models.py:843
+#: dashboard/report_database_analysis.py:9
+msgid "Malware"
+msgstr "Malware"
+
+#: dashboard/Templates/platform_guide.html:596 dashboard/models.py:245
+#: dashboard/models.py:264 dashboard/models.py:585 dashboard/models.py:844
+#: dashboard/report_database_analysis.py:10
+msgid "Phishing"
+msgstr "Phishing"
+
+#: dashboard/Templates/platform_guide.html:597
+#: dashboard/report_database_analysis.py:11
+msgid "Ransomware"
+msgstr "Ransomware"
+
+#: dashboard/Templates/platform_guide.html:600
+msgid "Regional Data"
+msgstr "Dados Regionais"
+
+#: dashboard/Templates/platform_guide.html:602
+msgid "The regional data is categorized into four main areas:"
+msgstr "Os dados regionais são categorizados em quatro áreas principais:"
+
+#: dashboard/Templates/platform_guide.html:605
+msgid "APAC (Asia-Pacific)"
+msgstr "APAC (Ásia-Pacífico)"
+
+#: dashboard/Templates/platform_guide.html:606
+msgid "LATAM (Latin America)"
+msgstr "LATAM (América Latina)"
+
+#: dashboard/Templates/platform_guide.html:607
+msgid "EMEA (Europe, Middle East, and Africa)"
+msgstr "EMEA (Europa, Oriente Médio e África)"
+
+#: dashboard/Templates/platform_guide.html:608
+msgid "NA (North America)"
+msgstr "NA (América do Norte)"
+
+#: dashboard/Templates/platform_guide.html:611
+msgid "Sector Data"
+msgstr "Dados dos Setores"
+
+#: dashboard/Templates/platform_guide.html:613
+msgid "The sector data covers various industries, including:"
+msgstr "Os dados dos setores abrangem várias indústrias, incluindo:"
+
+#: dashboard/Templates/platform_guide.html:616 dashboard/models.py:12
+#: dashboard/models.py:859
+msgid "Healthcare"
+msgstr "Saúde"
+
+#: dashboard/Templates/platform_guide.html:617 dashboard/models.py:13
+#: dashboard/models.py:860
+msgid "Government"
+msgstr "Governo"
+
+#: dashboard/Templates/platform_guide.html:618 dashboard/models.py:14
+#: dashboard/models.py:861
+msgid "Retail"
+msgstr "Varejo"
+
+#: dashboard/Templates/platform_guide.html:619 dashboard/models.py:15
+#: dashboard/models.py:862
+msgid "Finance"
+msgstr "Finanças"
+
+#: dashboard/Templates/platform_guide.html:620 dashboard/models.py:16
+#: dashboard/models.py:863
+msgid "Education"
+msgstr "Educação"
+
+#: dashboard/Templates/platform_guide.html:621 dashboard/models.py:17
+#: dashboard/models.py:864
+msgid "Entertainment"
+msgstr "Entretenimento"
+
+#: dashboard/Templates/platform_guide.html:622 dashboard/models.py:18
+#: dashboard/models.py:865
+msgid "Technology"
+msgstr "Tecnologia"
+
+#: dashboard/Templates/platform_guide.html:623 dashboard/models.py:19
+#: dashboard/models.py:866 dashboard/models.py:883
+msgid "Others"
+msgstr "Outros"
+
+#: dashboard/Templates/platform_guide.html:626
+msgid "Data Calculation"
+msgstr "Cálculo de Dados"
+
+#: dashboard/Templates/platform_guide.html:628
+msgid ""
+"Each data point represents an average risk level calculated from multiple "
+"entries in our database. The number of entries used for each calculation is "
+"also provided, ensuring transparency in our data representation. To view the "
+"number of entries used for a specific data point, hover your cursor over the "
+"corresponding bar in the chart."
+msgstr ""
+"Cada ponto de dados representa um nível médio de risco calculado a partir de "
+"múltiplas entradas em nosso banco de dados. O número de entradas usadas para "
+"cada cálculo também é fornecido, garantindo transparência em nossa "
+"representação de dados. Para ver o número de entradas usadas para um ponto "
+"de dados específico, passe o cursor sobre a barra correspondente no gráfico."
+
+#: dashboard/Templates/platform_guide.html:631
+msgid "Data Availability"
+msgstr "Disponibilidade de Dados"
+
+#: dashboard/Templates/platform_guide.html:633
+msgid ""
+"In some cases, you may see 'N/A' (Not Available) displayed for certain "
+"regions or sectors. This indicates that there is insufficient data available "
+"for that particular combination of attack type and region/sector."
+msgstr ""
+"Em alguns casos, você pode ver 'N/A' (Não Disponível) exibido para certas "
+"regiões ou setores. Isso indica que não há dados suficientes disponíveis "
+"para essa combinação específica de tipo de ataque e região/setor."
+
+#: dashboard/Templates/platform_guide.html:636
+msgid "Data Updates"
+msgstr "Atualizações de Dados"
+
+#: dashboard/Templates/platform_guide.html:638
+msgid ""
+"The data presented in these charts is dynamically updated from our database, "
+"ensuring that you always have access to the most current cyber attack risk "
+"assessments across different regions and sectors."
+msgstr ""
+"Os dados apresentados nestes gráficos são atualizados dinamicamente a partir "
+"de nosso banco de dados, garantindo que você sempre tenha acesso às "
+"avaliações de risco de ataques cibernéticos mais atuais em diferentes "
+"regiões e setores."
+
+#: dashboard/Templates/report_analysis_tests.html:75
+#: dashboard/Templates/report_analysis_tests.html:88
+#: dashboard/Templates/report_analysis_tests.html:110
+msgid "Database Overview"
+msgstr "Visão Geral do Banco de Dados"
+
+#: dashboard/Templates/report_analysis_tests.html:79
+#: dashboard/Templates/report_analysis_tests.html:101
+#: dashboard/Templates/report_analysis_tests.html:115
+msgid "Database Overview Documentation"
+msgstr "Documentação da Visão Geral do Banco de Dados"
+
+#: dashboard/Templates/report_analysis_tests.html:90
+msgid ""
+"The Database Overview presents a compilation of data collected from "
+"cybersecurity attack risk reports, divided by Region and Sector."
+msgstr ""
+"A Visão Geral do Banco de Dados apresenta uma compilação de dados coletados "
+"de relatórios de risco de ataques cibernéticos, divididos por Região e Setor."
+
+#: dashboard/Templates/user_company_copies.html:158
+msgid "My Company Profile Copies"
+msgstr "Minhas Cópias de Perfis de Empresas"
+
+#: dashboard/Templates/user_company_copies.html:191
+msgid "Copy of"
+msgstr "Cópia de"
+
+#: dashboard/Templates/user_company_copies.html:240
+msgid "Copied on"
+msgstr "Copiado em"
+
+#: dashboard/Templates/user_company_copies.html:268
+msgid "You don't have any company profile copies yet."
+msgstr "Você ainda não tem cópias de perfil de empresa."
+
+# Esse funciona
+#: dashboard/Templates/user_profile.html:7
+msgid "User Profile of "
+msgstr "Perfil de Usuário de "
+
+#: dashboard/Templates/user_profile.html:23
+msgid "Regular User"
+msgstr "Usuário Regular"
+
+#: dashboard/Templates/user_profile.html:70
+msgid "Edit Profile"
+msgstr "Editar Perfil"
+
+#: dashboard/admin.py:118
+msgid "Scopes"
+msgstr "Escopos"
+
+#: dashboard/admin.py:141
+msgid "Metadata"
+msgstr "Metadados"
+
+#: dashboard/forms.py:23
+msgid "Enter username"
+msgstr "username"
+
+#: dashboard/forms.py:24
+msgid "Full name"
+msgstr "Nome Completo"
+
+#: dashboard/forms.py:25
+msgid "Enter email address"
+msgstr "Endereço de email"
+
+#: dashboard/forms.py:26
+msgid "Enter institution"
+msgstr "Instituição"
+
+#: dashboard/forms.py:27
+msgid "Enter job title"
+msgstr "Digite o cargo"
+
+#: dashboard/forms.py:28
+msgid "Enter role"
+msgstr "Digite a função"
+
+#: dashboard/forms.py:34
+msgid "A user with that email already exists."
+msgstr "Já existe um usuário com esse e-mail."
+
+#: dashboard/forms.py:40
+msgid "A user with that username already exists."
+msgstr "Já existe um usuário com esse nome de usuário."
+
+#: dashboard/forms.py:124 dashboard/forms.py:145
+msgid "An entry for this year already exists."
+msgstr "Já existe um usuário com esse e-mail."
+
+#: dashboard/forms.py:166
+msgid "An entry for this item already exists."
+msgstr "Uma entrada com esse item já existe."
+
+#: dashboard/models.py:25
+msgid "Enter the full legal name of the company."
+msgstr "Digite o nome legal completo da empresa."
+
+#: dashboard/models.py:31
+msgid "Specify the country where the company's main headquarters is located."
+msgstr "Especifique o país onde a sede principal da empresa está localizada."
+
+#: dashboard/models.py:35
+msgid "Headquarters Country (English)"
+msgstr "País da Sede (Inglês)"
+
+#: dashboard/models.py:45
+msgid "Select the primary industry or sector in which the company operates."
+msgstr ""
+"Selecione o setor industrial principal ou segmento em que a empresa opera."
+
+#: dashboard/models.py:51
+msgid "Enter the total number of individuals employed by the company."
+msgstr "Informe o número total de indivíduos empregados pela empresa."
+
+#: dashboard/models.py:57
+msgid ""
+"Check this box if the company maintains an up-to-date inventory of all "
+"assets."
+msgstr ""
+"Marque esta caixa se a empresa mantém um inventário atualizado de todos os "
+"ativos."
+
+#: dashboard/models.py:63
+msgid ""
+"Check this box if the company maintains regular backups of critical data."
+msgstr ""
+"Marque esta caixa se a empresa mantém backups regulares de dados críticos."
+
+#: dashboard/models.py:69
+msgid ""
+"Check this box if the company actively prioritizes risks based on their "
+"potential impact and likelihood."
+msgstr ""
+"Marque esta caixa se a empresa prioriza ativamente os riscos com base em seu "
+"impacto potencial e probabilidade."
+
+#: dashboard/models.py:74 dashboard/models.py:115 dashboard/models.py:147
+#: dashboard/models.py:194 dashboard/models.py:958
+msgid "Data de Criação"
+msgstr "Data de Criação"
+
+#: dashboard/models.py:75 dashboard/models.py:116 dashboard/models.py:148
+#: dashboard/models.py:195 dashboard/models.py:959
+msgid "Data e hora de criação do registro"
+msgstr "Data e hora de criação do registro"
+
+#: dashboard/models.py:80 dashboard/models.py:121 dashboard/models.py:153
+#: dashboard/models.py:200 dashboard/models.py:964
+msgid "Data de Atualização"
+msgstr "Data de Atualização"
+
+#: dashboard/models.py:81 dashboard/models.py:122 dashboard/models.py:154
+#: dashboard/models.py:201 dashboard/models.py:965
+msgid "Data e hora da última atualização do registro"
+msgstr "Data e hora da última atualização do registro"
+
+#: dashboard/models.py:128
+msgid "Annual Revenues"
+msgstr "Receitas Anuais"
+
+#: dashboard/models.py:143 dashboard/models.py:159
+msgid "Cybersecurity Spending"
+msgstr "Gastos em Cibersegurança"
+
+#: dashboard/models.py:160
+msgid "Cybersecurity Spendings"
+msgstr "Gastos em Cibersegurança"
+
+#: dashboard/models.py:182
+msgid "Server"
+msgstr "Servidor"
+
+#: dashboard/models.py:183
+msgid "Database"
+msgstr "Banco de Dados"
+
+#: dashboard/models.py:184
+msgid "Website"
+msgstr "Website"
+
+#: dashboard/models.py:185
+msgid "Other"
+msgstr "Outro"
+
+#: dashboard/models.py:206
+msgid "Company Asset"
+msgstr "Ativo da Empresa"
+
+#: dashboard/models.py:246 dashboard/models.py:265 dashboard/models.py:586
+#: dashboard/models.py:845 dashboard/report_database_analysis.py:8
+msgid "DDoS"
+msgstr "DDoS"
+
+#: dashboard/models.py:247 dashboard/models.py:266
+msgid "Geral"
+msgstr ""
+
+#: dashboard/models.py:253 dashboard/models.py:254
+msgid "alpha"
+msgstr ""
+
+#: dashboard/models.py:271
+msgid "Medio"
+msgstr "Média"
+
+#: dashboard/models.py:275
+msgid "Direct_impact"
+msgstr ""
+
+#: dashboard/models.py:276
+msgid "Indirect_impact"
+msgstr ""
+
+#: dashboard/models.py:281
+msgid "Prob"
+msgstr ""
+
+#: dashboard/models.py:282
+msgid "Invested"
+msgstr "Investidos"
+
+#: dashboard/models.py:284
+msgid "Saved Value"
+msgstr "Valores salvos"
+
+#: dashboard/models.py:285
+msgid "Saved Prob"
+msgstr "Probabilidade Salva"
+
+#: dashboard/models.py:286
+msgid "Saved Invested"
+msgstr "Investimento salvo"
+
+#: dashboard/models.py:297
+msgid "Europe"
+msgstr "Europa"
+
+#: dashboard/models.py:298
+msgid "South America"
+msgstr "América do Sul"
+
+#: dashboard/models.py:299
+msgid "North America"
+msgstr "América do Norte"
+
+#: dashboard/models.py:300
+msgid "Africa"
+msgstr "África"
+
+#: dashboard/models.py:301
+msgid "Asia"
+msgstr "Ásia"
+
+#: dashboard/models.py:302
+msgid "Oceania"
+msgstr "Oceania"
+
+#: dashboard/models.py:308
+msgid "Enter the name of the region. Example: 'Brazil', 'Europe'"
+msgstr "Digite o nome da região. Exemplo: 'Brasil', 'Europa'"
+
+#: dashboard/models.py:312
+msgid "Country"
+msgstr "País"
+
+#: dashboard/models.py:313
+msgid "Select whether this region is a continent or a country"
+msgstr "Selecione se esta região é um continente ou um país"
+
+#: dashboard/models.py:320
+msgid ""
+"If this region is a country, select the continent it belongs to. Example: "
+"'Brazil' -> 'South America'"
+msgstr ""
+"Se esta região for um país, selecione o continente ao qual pertence. "
+"Exemplo: 'Brasil' -> 'América do Sul'"
+
+#: dashboard/models.py:333
+msgid "Small"
+msgstr "Pequena"
+
+#: dashboard/models.py:334
+msgid "Medium"
+msgstr "Média"
+
+#: dashboard/models.py:335
+msgid "Large"
+msgstr "Grande"
+
+#: dashboard/models.py:339
+msgid "LAN"
+msgstr "LAN"
+
+#: dashboard/models.py:340
+msgid "WAN"
+msgstr "WAN"
+
+#: dashboard/models.py:341
+msgid "None"
+msgstr "Nenhuma"
+
+#: dashboard/models.py:357
+msgid ""
+"Select the size of the company. Example: 'Small' (less than 50 employees), "
+"'Medium' (50-250 employees), 'Large' (more than 250 employees)"
+msgstr ""
+"Selecione o tamanho da empresa. Exemplo: 'Pequena' (menos de 50 "
+"funcionários), 'Média' (50-250 funcionários), 'Grande' (mais de 250 "
+"funcionários)"
+
+#: dashboard/models.py:361
+msgid ""
+"Enter the percentage of employees working remotely. Example: 20.5 for 20.5%"
+msgstr ""
+"Digite a porcentagem de funcionários que trabalham remotamente. Exemplo: "
+"20,5 para 20.5%"
+
+#: dashboard/models.py:366
+msgid "Indicate whether the company has a global presence or not"
+msgstr "Indique se a empresa tem presença global ou não"
+
+#: dashboard/models.py:372
+msgid ""
+"Enter the number of authentication factors used by the company. Example: 2 "
+"for two-factor authentication (2FA)"
+msgstr ""
+"Digite o número de fatores de autenticação usados pela empresa. Exemplo: 2 "
+"para autenticação de dois fatores (2FA)"
+
+#: dashboard/models.py:378
+msgid ""
+"Select the type of cloud solution used by the company. Example: 'LAN' for "
+"local area network, 'WAN' for wide area network, 'None' if no cloud solution "
+"is used"
+msgstr ""
+"Selecione o tipo de solução em nuvem utilizada pela empresa. Exemplo: 'LAN' "
+"para rede local, 'WAN' para rede de longa distância, 'Nenhuma' se nenhuma "
+"solução em nuvem for utilizada"
+
+#: dashboard/models.py:383
+msgid "Indicate whether the company has IT system monitoring in place"
+msgstr ""
+"Indique se a empresa possui monitoramento de sistemas de TI implementado"
+
+#: dashboard/models.py:388
+msgid "Indicate whether the company performs periodic system updates"
+msgstr "Indique se a empresa realiza atualizações periódicas do sistema"
+
+#: dashboard/models.py:393
+msgid "Indicate whether the company encrypts data at rest (in storage)"
+msgstr "Indique se a empresa criptografa dados em repouso (armazenados)"
+
+#: dashboard/models.py:398
+msgid ""
+"Indicate whether the company encrypts data in transit (during transmission)"
+msgstr ""
+"Indique se a empresa criptografa dados em trânsito (durante a transmissão)"
+
+#: dashboard/models.py:403
+msgid "Indicate whether the company uses a VPN for remote access"
+msgstr "Indique se a empresa usa uma VPN para acesso remoto"
+
+#: dashboard/models.py:408
+msgid ""
+"Indicate whether the company provides cybersecurity awareness and training"
+msgstr ""
+"Indique se a empresa oferece conscientização e treinamento em segurança "
+"cibernética"
+
+#: dashboard/models.py:413
+msgid "Indicate whether the company has a documented response plan"
+msgstr "Indique se a empresa possui um plano de resposta documentado"
+
+#: dashboard/models.py:418
+msgid "Indicate whether the company regularly updates its response plan"
+msgstr "Indique se a empresa atualiza regularmente seu plano de resposta"
+
+#: dashboard/models.py:423
+msgid "Indicate whether the company has operational recovery capacity"
+msgstr "Indique se a empresa possui capacidade de recuperação operacional"
+
+#: dashboard/models.py:428
+msgid "Indicate whether the company performs regular credentials maintenance"
+msgstr "Indique se a empresa realiza manutenção regular de credenciais"
+
+#: dashboard/models.py:433
+msgid ""
+"Indicate whether the company has a process for identifying vulnerabilities"
+msgstr ""
+"Indique se a empresa possui um processo para identificar vulnerabilidades"
+
+#: dashboard/models.py:438
+msgid "Indicate whether the company monitors network systems traffic"
+msgstr "Indique se a empresa monitora o tráfego dos sistemas de rede"
+
+# #: .\dashboard\models.py:307
+#: dashboard/models.py:443
+msgid "Indicate whether the company has a process for identifying threats"
+msgstr "Indique se a empresa possui um processo para identificar ameaças"
+
+#: dashboard/models.py:448
+msgid "Indicate whether the company maintains IT records"
+msgstr "Indique se a empresa mantém registros de TI"
+
+#: dashboard/models.py:453
+msgid "Indicate whether the company uses antivirus software"
+msgstr "Indique se a empresa utiliza software antivírus"
+
+#: dashboard/models.py:458
+msgid "Indicate whether the company uses a firewall"
+msgstr "Indique se a empresa utiliza um firewall"
+
+#: dashboard/models.py:463
+msgid "Indicate whether the company uses an intrusion detection system (IDS)"
+msgstr "Indique se a empresa utiliza um sistema de detecção de intrusão (IDS)"
+
+#: dashboard/models.py:468
+msgid ""
+"Indicate whether the company uses an endpoint detection and response (EDR) "
+"system"
+msgstr ""
+"Indique se a empresa utiliza um sistema de detecção e resposta de endpoint "
+"(EDR)"
+
+#: dashboard/models.py:473
+msgid "Indicate whether the company has a dedicated IT security team"
+msgstr "Indique se a empresa possui uma equipe dedicada de segurança de TI"
+
+#: dashboard/models.py:477
+msgid "Advanced Company Profile"
+msgstr "Perfil Avançado da Empresa"
+
+#: dashboard/models.py:587 dashboard/models.py:846
+msgid "Breach"
+msgstr "Violação de Dados"
+
+#: dashboard/models.py:594 dashboard/models.py:620
+msgid ""
+"Select the type of attack. Example: 'Malware', 'Phishing', 'DDoS', 'Breach'"
+msgstr ""
+"Selecione o tipo de ataque. Exemplo: 'Malware', 'Phishing', 'DDoS', "
+"'Violação de Dados'"
+
+#: dashboard/models.py:599
+msgid "Attack Types"
+msgstr "Tipos de Ataque"
+
+#: dashboard/models.py:614
+msgid "Select the company for which the attack history is being recorded"
+msgstr ""
+"Selecione a empresa para a qual o histórico de ataques está sendo registrado"
+
+#: dashboard/models.py:624
+msgid "Enter the year in which the attack occurred. Example: 2023"
+msgstr "Digite o ano em que o ataque ocorreu. Exemplo: 2023"
+
+#: dashboard/models.py:629
+msgid ""
+"Enter the number of attacks of this type that occurred in the specified "
+"year. Example: 3"
+msgstr ""
+"Digite o número de ataques deste tipo que ocorreram no ano especificado. "
+"Exemplo: 3"
+
+#: dashboard/models.py:635
+msgid "Attack Histories"
+msgstr "Históricos de Ataques"
+
+#: dashboard/models.py:657
+msgid "Profile Type of a Company"
+msgstr ""
+
+#: dashboard/models.py:659
+msgid "Enter the company's profile type"
+msgstr "Digite o tipo da empresa"
+
+#: dashboard/models.py:663
+msgid "Enter the final score"
+msgstr "Digite a pontuação final"
+
+#: dashboard/models.py:669
+msgid "Text Score"
+msgstr "Pontuação em texto"
+
+#: dashboard/models.py:671
+msgid "Write the text score"
+msgstr "Escreva a pontuação em texto"
+
+#: dashboard/models.py:675 dashboard/models.py:703 dashboard/models.py:731
+msgid "Region Value"
+msgstr "Valor da Região"
+
+#: dashboard/models.py:676
+msgid "Enter the malware region value"
+msgstr "Insira a taxa de sucesso de malware"
+
+#: dashboard/models.py:682 dashboard/models.py:710 dashboard/models.py:738
+msgid "Sector Value"
+msgstr "Dados dos Setores"
+
+#: dashboard/models.py:683
+msgid "Enter the malware sector value"
+msgstr "Insira a taxa de sucesso de malware do setor"
+
+#: dashboard/models.py:689 dashboard/models.py:717 dashboard/models.py:745
+msgid "Resilience Value"
+msgstr "Indicador de Resistência"
+
+#: dashboard/models.py:690
+msgid "Enter the malware resilience value"
+msgstr "Insira o valor de resiliência a malware"
+
+#: dashboard/models.py:696
+msgid "Malware Final Score"
+msgstr "Pontuação Final de Malware"
+
+#: dashboard/models.py:697
+msgid "Enter the malware final score"
+msgstr "Digite a pontuação final de malware"
+
+#: dashboard/models.py:704
+msgid "Enter the phishing region value"
+msgstr "Insira o valor regional de phishing"
+
+#: dashboard/models.py:711
+msgid "Enter the phishing sector value"
+msgstr "Insira o valor setorial de phishing"
+
+#: dashboard/models.py:718
+msgid "Enter the phishing resilience value"
+msgstr "Insira o valor de resiliência a phishing"
+
+#: dashboard/models.py:724
+msgid "Phishing Final Score"
+msgstr "Pontuação Final de phishing"
+
+#: dashboard/models.py:725
+msgid "Enter the phishing final score"
+msgstr "Digite a pontuação final de phishing"
+
+#: dashboard/models.py:732
+msgid "Enter the DDoS region value"
+msgstr "Insira o valor regional de DDoS"
+
+#: dashboard/models.py:739
+msgid "Enter the DDoS sector value"
+msgstr "Insira o valor setorial de DDoS"
+
+#: dashboard/models.py:746
+msgid "Enter the DDoS resilience value"
+msgstr "Insira o valor de resiliência a DDoS"
+
+#: dashboard/models.py:752
+msgid "DDoS Final Score"
+msgstr "Pontuação Final de DDOS"
+
+#: dashboard/models.py:753
+msgid "Enter the DDoS final score"
+msgstr "Digite a pontuação final de DDOS"
+
+#: dashboard/models.py:759
+msgid "Insights Positivos"
+msgstr "Insights Positivos"
+
+#: dashboard/models.py:764
+msgid "Insights Negativos"
+msgstr "Insights Negativos"
+
+#: dashboard/models.py:769
+msgid "Malware Success Rate"
+msgstr "Taxa de Sucesso de Malware"
+
+#: dashboard/models.py:770
+msgid "Enter the malware success rate"
+msgstr "Insira a taxa de sucesso de malware"
+
+#: dashboard/models.py:775
+msgid "Phishing Success Rate"
+msgstr "Taxa de Sucesso de Phishing"
+
+#: dashboard/models.py:776
+msgid "Enter the phishing success rate"
+msgstr "Insira a taxa de sucesso de phishing"
+
+#: dashboard/models.py:781
+msgid "DDoS Success Rate"
+msgstr "Taxa de Sucesso de DDoS"
+
+#: dashboard/models.py:782
+msgid "Enter the ddos success rate"
+msgstr "Insira a taxa de sucesso de DDoS"
+
+# Esse funciona
+#: dashboard/models.py:818
+msgid "Original Company Profile"
+msgstr "Perfil de Empresa Original"
+
+# Esse funciona
+#: dashboard/models.py:828
+msgid "User Company Copy"
+msgstr "Cópia de Empresa do Usuário"
+
+# Esse funciona
+#: dashboard/models.py:829
+msgid "User Company Copies"
+msgstr "Cópias de Empresa do Usuário"
+
+#: dashboard/models.py:848 dashboard/models.py:851
+msgid "Escopo"
+msgstr "Escopo"
+
+#: dashboard/models.py:852 dashboard/models.py:897
+msgid "Escopos"
+msgstr "Escopos"
+
+#: dashboard/models.py:868 dashboard/models.py:871
+msgid "Setor"
+msgstr "Setor"
+
+#: dashboard/models.py:872 dashboard/models.py:899
+msgid "Setores"
+msgstr "Setores"
+
+#: dashboard/models.py:879
+msgid "Real-world devices"
+msgstr "Dispositivos do mundo real"
+
+#: dashboard/models.py:880
+msgid "Real-world cases"
+msgstr "Casos do mundo real"
+
+#: dashboard/models.py:881
+msgid "Experts"
+msgstr "Especialistas"
+
+#: dashboard/models.py:882
+msgid "Organizations"
+msgstr "Organizações"
+
+#: dashboard/models.py:886
+msgid "Nome do Report"
+msgstr "Nome do Relatório"
+
+#: dashboard/models.py:887
+msgid "Ano"
+msgstr "Ano"
+
+#: dashboard/models.py:888
+msgid "Anos Cobertos"
+msgstr "Anos Cobertos"
+
+#: dashboard/models.py:889
+msgid "Empresa"
+msgstr "Empresa"
+
+#: dashboard/models.py:890
+msgid "Número de Participantes"
+msgstr "Número de Participantes"
+
+#: dashboard/models.py:895
+msgid "Perfil dos Participantes"
+msgstr "Perfil dos Participantes"
+
+#: dashboard/models.py:898
+msgid "Regiões Específicas"
+msgstr "Regiões Específicas"
+
+#: dashboard/models.py:903
+msgid "Reports"
+msgstr "Relatórios"
+
+#: dashboard/models.py:912
+msgid "Probabilidade A Priori"
+msgstr "Probabilidade A Priori"
+
+#: dashboard/models.py:913
+msgid "Tipo de ameaça ou evento de segurança"
+msgstr "Tipo de ameaça ou evento de segurança"
+
+#: dashboard/models.py:918
+msgid "Probabilidade Marginal"
+msgstr "Probabilidade Marginal"
+
+#: dashboard/models.py:919
+msgid "Contexto ou localização da ameaça"
+msgstr "Contexto ou localização da ameaça"
+
+#: dashboard/models.py:927
+msgid "P(A|B)"
+msgstr "P(A|B)"
+
+#: dashboard/models.py:928
+msgid "Probabilidade condicional de A dado B"
+msgstr "Probabilidade condicional de A dado B"
+
+#: dashboard/models.py:933
+msgid "C"
+msgstr "C"
+
+#: dashboard/models.py:934
+msgid "Descrição ou contexto adicional relacionado ao dado de cibersegurança"
+msgstr ""
+
+#: dashboard/models.py:944
+msgid "P(C|P(A|B))"
+msgstr "P(C|P(A|B))"
+
+#: dashboard/models.py:945
+msgid "Probabilidade condicional de C dado P(A|B)"
+msgstr "Probabilidade condicional de C dado P(A|B)"
+
+#: dashboard/models.py:953
+msgid "Report de origem desta informação"
+msgstr "Relatório de origem desta informação"
+
+#: dashboard/models.py:969
+msgid "Dado de Cibersegurança"
+msgstr "Dado de Cibersegurança"
+
+#: dashboard/models.py:970
+msgid "Dados de Cibersegurança"
+msgstr "Dados de Cibersegurança"
+
+#: dashboard/templatetags/custom_filters.py:57 dashboard/views.py:946
+msgid "Critical"
+msgstr "Crítico"
+
+#: dashboard/templatetags/custom_filters.py:59 dashboard/views.py:948
+msgid "Dangerous"
+msgstr "Perigoso"
+
+#: dashboard/templatetags/custom_filters.py:61 dashboard/views.py:950
+msgid "Caution"
+msgstr "Cuidado"
+
+#: dashboard/templatetags/custom_filters.py:63 dashboard/views.py:952
+msgid "Normal"
+msgstr "Normal"
+
+#: dashboard/templatetags/custom_filters.py:65 dashboard/views.py:954
+msgid "Healthy"
+msgstr "Saudável"
+
+#: dashboard/utils.py:236
+msgid ""
+"Invalid country name. Please enter a valid country. If you are using "
+"portuguese, please try to enter the country name in English if is not "
+"working correctly."
+msgstr ""
+"Nome de país inválido. Por favor, insira um país válido. Se você está usando "
+"português, tente inserir o nome do país em inglês se não estiver funcionando "
+"corretamente."
+
+#: dashboard/views.py:411
+msgid ""
+"Você não possui permissão para editar essa empresa. Tente criar uma cópia."
+msgstr ""
+
+#: dashboard/views.py:467
+msgid "Advanced company profile updated successfully."
+msgstr "Perfil da empresa avançado atualizado com sucesso."
+
+#: dashboard/views.py:470 dashboard/views.py:538
+msgid "An error occurred while saving: "
+msgstr "Um erro ocorreu ao salvar: "
+
+#: dashboard/views.py:472 dashboard/views.py:540
+msgid "Please correct the errors below."
+msgstr "Por favor corrija os erros abaixo"
+
+#: dashboard/views.py:535
+msgid "Company profile updated successfully."
+msgstr "Perfil da empresa atualizado com sucesso."
+
+#: dashboard/views.py:1053
+msgid "Empresa não encontrada."
+msgstr ""
+
+#: dashboard/views.py:1059
+msgid "Cálculo de risco não encontrado."
+msgstr ""
+
+#, fuzzy
+#~| msgid "Please explain why you want to change your role"
+#~ msgid ""
+#~ "Please explain why you want to change your role and how it will benefit "
+#~ "the platform..."
+#~ msgstr "Por favor, explique por que você deseja mudar sua função"
+
+#~ msgid "Advanced Company Profiles Documentation"
+#~ msgstr "Documentação dos Perfis Avançados de Empresa"
+
+#, python-format
+#~ msgid "Nível de Risco (%%)"
+#~ msgstr "Nível de Risco (%%)"
+
+#~ msgid "Recommendations"
+#~ msgstr "Recomendações"
+
+#~ msgid "Risk Analysis Overview Documentation"
+#~ msgstr "Documentação da Visão Geral da Análise de Risco"
+
+# Esse funciona
+#~ msgid "Company Report Documentation"
+#~ msgstr "Documentação do Relatório de Empresa"
+
+#~ msgid "Higher Risk is Worse"
+#~ msgstr "Quanto maior o risco, pior"
+
+#~ msgid "Higher Resilience is Better"
+#~ msgstr "Quanto maior a resiliência, melhor"
+
+#~ msgid "Intrusion Detection System"
+#~ msgstr "Sistema de Detecção de Intrusão"
+
+#, fuzzy
+#~| msgid "Sectors"
+#~ msgid "directory"
+#~ msgstr "Setores"
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgid "Syndication"
+#~ msgstr "Educação"
+
+#, fuzzy
+#~| msgid "Enter the malware region value"
+#~ msgid "Enter a valid value."
+#~ msgstr "Insira a taxa de sucesso de malware"
+
+#, fuzzy
+#~| msgid "Enter email address"
+#~ msgid "Enter a valid email address."
+#~ msgstr "Endereço de email"
+
+#, fuzzy, python-format
+#~| msgid "Enter email address"
+#~ msgid "Enter a valid %(protocol)s address."
+#~ msgstr "Endereço de email"
+
+#, fuzzy
+#~| msgid "Entertainment"
+#~ msgid "Enter a number."
+#~ msgstr "Entretenimento"
+
+#, fuzzy, python-format
+#~| msgid "A user with that email already exists."
+#~ msgid "%(model_name)s with this %(field_labels)s already exists."
+#~ msgstr "Já existe um usuário com esse e-mail."
+
+#, fuzzy, python-format
+#~| msgid "A user with that email already exists."
+#~ msgid "%(model_name)s with this %(field_label)s already exists."
+#~ msgstr "Já existe um usuário com esse e-mail."
+
+#, fuzzy
+#~| msgid "Education"
+#~ msgid "Duration"
+#~ msgstr "Educação"
+
+#, fuzzy
+#~| msgid "Enter email address"
+#~ msgid "Email address"
+#~ msgstr "Endereço de email"
+
+#, fuzzy
+#~| msgid "Integrity"
+#~ msgid "Integer"
+#~ msgstr "Integridade"
+
+#, fuzzy
+#~| msgid "Positive Insights"
+#~ msgid "Positive big integer"
+#~ msgstr "Insights Positivos"
+
+#, fuzzy
+#~| msgid "Positive Insights"
+#~ msgid "Positive integer"
+#~ msgstr "Insights Positivos"
+
+#, fuzzy
+#~| msgid "Positive Insights"
+#~ msgid "Positive small integer"
+#~ msgstr "Insights Positivos"
+
+#, fuzzy
+#~| msgid "Enter the number of employees."
+#~ msgid "Enter a whole number."
+#~ msgstr "Digite o número de funcionários"
+
+#, fuzzy
+#~| msgid "Enter email address"
+#~ msgid "Enter a valid date."
+#~ msgstr "Endereço de email"
+
+#, fuzzy
+#~| msgid "Enter institution"
+#~ msgid "Enter a valid duration."
+#~ msgstr "Instituição"
+
+#, fuzzy
+#~| msgid "Enter the malware sector value"
+#~ msgid "Enter a list of values."
+#~ msgstr "Insira a taxa de sucesso de malware do setor"
+
+#, fuzzy
+#~| msgid "Enter the malware region value"
+#~ msgid "Enter a complete value."
+#~ msgstr "Insira a taxa de sucesso de malware"
+
+#, fuzzy, python-format
+#~| msgid "Please correct the errors below."
+#~ msgid "Please correct the duplicate data for %(field)s."
+#~ msgstr "Por favor corrija os erros abaixo"
+
+#, fuzzy
+#~| msgid "Please correct the errors below."
+#~ msgid "Please correct the duplicate values below."
+#~ msgstr "Por favor corrija os erros abaixo"
+
+#, fuzzy
+#~| msgid "Save Changes"
+#~ msgid "Change"
+#~ msgstr "Salvar Alterações"
+
+#, fuzzy
+#~| msgid "Student"
+#~ msgid "Sun"
+#~ msgstr "Estudante"
+
+#, fuzzy
+#~| msgid "Remember"
+#~ msgid "September"
+#~ msgstr "Lembrar"
+
+#, fuzzy
+#~| msgid "Remember"
+#~ msgid "November"
+#~ msgstr "Lembrar"
+
+#, fuzzy
+#~| msgid "Remember"
+#~ msgid "December"
+#~ msgstr "Lembrar"
+
+#, fuzzy
+#~| msgid "Contact"
+#~ msgid "oct"
+#~ msgstr "Contato"
+
+#, fuzzy
+#~| msgid "Ano"
+#~ msgid "nov"
+#~ msgstr "Ano"
+
+#, fuzzy
+#~| msgid "Remember"
+#~ msgctxt "alt. month"
+#~ msgid "September"
+#~ msgstr "Lembrar"
+
+#, fuzzy
+#~| msgid "Remember"
+#~ msgctxt "alt. month"
+#~ msgid "November"
+#~ msgstr "Lembrar"
+
+#, fuzzy
+#~| msgid "Remember"
+#~ msgctxt "alt. month"
+#~ msgid "December"
+#~ msgstr "Lembrar"
+
+#~ msgid "Detailed Report"
+#~ msgstr "Relatório Detalhado"
+
+#~ msgid "Represents the monetary value associated with the company's assets."
+#~ msgstr "Representa o valor monetário associado aos ativos da empresa."
+
+#~ msgid ""
+#~ "The minimum investment level that is considered acceptable for "
+#~ "maintaining a certain risk level."
+#~ msgstr ""
+#~ "O nível mínimo de investimento considerado aceitável para manter um certo "
+#~ "nível de risco."
+
+#~ msgid "ENBIS Acceptable"
+#~ msgstr "ENBIS Aceitável"
+
+#~ msgid ""
+#~ "The Economic Net Benefit Impact Score corresponding to the acceptable "
+#~ "investment level."
+#~ msgstr ""
+#~ "A Pontuação de Impacto do Benefício Econômico Líquido correspondente ao "
+#~ "nível de investimento aceitável."
+
+# Esse funciona
+#~ msgid "View Company"
+#~ msgstr "Visualizar Empresa"
+
+# Esse funciona
+#~ msgid "Copy Profile"
+#~ msgstr "Copiar Perfil"
+
+#~ msgid ""
+#~ "Final Score Bubble: The large central bubble displays the company's "
+#~ "aggregated risk score. This score synthesizes all threat types to provide "
+#~ "an overall risk assessment."
+#~ msgstr ""
+#~ "Bolha de Pontuação Final: A bolha central grande exibe a pontuação de "
+#~ "risco agregada da empresa. Esta pontuação sintetiza todos os tipos de "
+#~ "ameaças para fornecer uma avaliação geral de risco."
+
+#~ msgid ""
+#~ "Color Coding: The color of the bubbles indicates the risk level, "
+#~ "following this scale: Healthy (low risk), Normal, Alert, Dangerous, "
+#~ "Critical (high risk)."
+#~ msgstr ""
+#~ "Código de Cores: A cor das bolhas indica o nível de risco, seguindo esta "
+#~ "escala: Saudável (baixo risco), Normal, Alerta, Perigoso, Crítico (alto "
+#~ "risco)."
+
+#~ msgid ""
+#~ "The legend below the bubbles explains the color coding for different risk "
+#~ "levels."
+#~ msgstr ""
+#~ "A legenda abaixo das bolhas explica o código de cores para diferentes "
+#~ "níveis de risco."
+
+#~ msgid "Aqui vai o texto da parte do relatório"
+#~ msgstr "Aqui vai o texto da parte do relatório"
+
+#~ msgid ""
+#~ "Select the regions where the company operates. Example: 'Brazil', 'United "
+#~ "States', 'Europe'"
+#~ msgstr ""
+#~ "Selecione as regiões onde a empresa opera. Exemplo: 'Brasil', 'Estados "
+#~ "Unidos', 'Europa'"
+
+#~ msgid "Region Comparison"
+#~ msgstr "Comparação por Região"
+
+#~ msgid "Sector Comparison"
+#~ msgstr "Comparação por Setor"
+
+# Esse funciona
+#~ msgid "Company Resilience"
+#~ msgstr "Resiliência da Empresa"
+
+#~ msgid "No positive insights available."
+#~ msgstr "Nenhum insight positivo disponível."
+
+#~ msgid "Negative Insights"
+#~ msgstr "Insights Negativos"
+
+#~ msgid "No negative insights available."
+#~ msgstr "Nenhum insight negativo disponível."
+
+#~ msgid "Dashboard"
+#~ msgstr "Dashboard"
+
+#~ msgid "Training Modules"
+#~ msgstr "Módulos de Treinamento"
+
+# Esse funciona
+#~ msgid "Impact Analysis"
+#~ msgstr "Análise de Impacto"
+
+#~ msgid "Explore economic consequences of cyber attacks."
+#~ msgstr "Explore os impactos econômicos dos ciberataques"
+
+#~ msgid "Resources"
+#~ msgstr "Recursos"
+
+#~ msgid "Access additional learning materials and tools."
+#~ msgstr "Acesse recursos adicionais com materiais e ferramentas educacionais"
+
+#~ msgid "Edit Profile of"
+#~ msgstr "Editar Perfil de"
+
+#~ msgid "Yes,No"
+#~ msgstr "Sim,não"
+
+# Esse funciona
+#~ msgid "Advanced Analysis"
+#~ msgstr "Análise Avançada"
+
+#~ msgid "Advanced Risk Dashboard of"
+#~ msgstr "Dashboard de Risco Avançada de"
+
+#~ msgid "million"
+#~ msgstr "milhão"
+
+#~ msgid "thousand"
+#~ msgstr "mil"
+
+#~ msgid "Financial Overview"
+#~ msgstr "Visão Geral Financeira"
+
+#~ msgid "Average Annual Revenue"
+#~ msgstr "Receita Anual Média"
+
+#~ msgid "Average Cybersecurity Spending"
+#~ msgstr "Gastos em Cibersegurança Médios"
+
+#~ msgid "Average Spending Percentage"
+#~ msgstr "Média do Percentual de Gastos"
+
+#~ msgid "Total Assets Value"
+#~ msgstr "Valor Total dos Ativos"
+
+#~ msgid "Security Overview"
+#~ msgstr "Equipe de Segurança de TI"
+
+#~ msgid "Total Attacks"
+#~ msgstr "Total de Ataques"
+
+#~ msgid "Cloud Solution"
+#~ msgstr "Tipo de Solução em Nuvem"
+
+#~ msgid "Percentage"
+#~ msgstr "Porcentagem"
+
+#~ msgid "No assets recorded"
+#~ msgstr "Nenhum ativo registrado"
+
+#~ msgid "No attack history recorded"
+#~ msgstr "Nenhum ciberataque no histórico"
+
+#~ msgid "Valor de C (uso específico a ser definido)"
+#~ msgstr "Valor de C (uso específico a ser definido)"
+
+#~ msgid "Business Analysis"
+#~ msgstr "Análise do Negócio"
+
+#~ msgid "Risk for companies in the"
+#~ msgstr "Risco para empresas no"
+
+#~ msgid "sector, located in"
+#~ msgstr "setor, localizadas em"
+
+#~ msgid "Estimated attacks for companies in the"
+#~ msgstr "Ataques estimados para empresas no"
+
+#~ msgid "Analysis based on historical data for companies in the"
+#~ msgstr "Análise estimada em dados históricos para empresas no"
+
+#~ msgid "Overview of"
+#~ msgstr "Visão geral de"
+
+# Esse funciona
+#~ msgid "Add New Company"
+#~ msgstr "Adicionar Nova Empresa"
+
+#~ msgid "Analysis of"
+#~ msgstr "Análise de"
+
+# Esse funciona
+#~ msgid "Company Analysis"
+#~ msgstr "Análise da Empresa"
+
+#~| msgid "Region"
+#~ msgid "Região"
+#~ msgstr "Região"
+
+#~| msgid "Register"
+#~ msgid "Regiões"
+#~ msgstr "Registrar-se"
+
+#~ msgid "Human Dimension"
+#~ msgstr "Dimensão Humana"
+
+#~ msgid "Visibility"
+#~ msgstr "Visibilidade Pública"
+
+#, python-format
+#~ msgid "Remote Work (%%)"
+#~ msgstr "Taxa de Trabalho Remoto (%%)"
+
+#, python-format
+#~ msgid "Growth Rate (%%)"
+#~ msgstr "Taxa de Crescimento (%%)"
+
+#~ msgid "Company has Global Presence"
+#~ msgstr "Empresa possui Presença Global"
+
+#~ msgid "Assets Value are Determined"
+#~ msgstr "Valor dos Ativos são Determinados"
+
+#~ msgid "Number of Authentication Factors"
+#~ msgstr "Número de Fatores de Autenticação."
+
+#~ msgid "Network Infrastructure"
+#~ msgstr "Infraestrutura de Rede"
+
+#~ msgid "Company has Updated Asset Inventory"
+#~ msgstr "Empresa Possui Inventário Atualizado"
+
+#~ msgid "Systems have Periodic System Updates"
+#~ msgstr "Atualizações Periódicas do Sistema"
+
+#~ msgid "IT System are Monitored"
+#~ msgstr "Sistemas de TI são Monitorados"
+
+#~ msgid "Regular Critical Information Backups"
+#~ msgstr "Backups Regulares de Informações Críticas"
+
+#~ msgid "Offsite Backups"
+#~ msgstr "Backups em Localizações Externas"
+
+#~ msgid "Regular Backup Checks"
+#~ msgstr "Checagem Regular de Backups"
+
+#~ msgid "Secure Data Disposal Process"
+#~ msgstr "Processo de Descarte Seguro de Dados"
+
+#~ msgid "Properly Configured IT Systems"
+#~ msgstr "Sistemas de TI Configurados Corretamente"
+
+#~ msgid "Continuous Vulnerability Identification"
+#~ msgstr "Identificação Contínua de Vulnerabilidades"
+
+#~ msgid "Cybersecurity Training"
+#~ msgstr "Treinamento em Segurança Cibernética"
+
+#~ msgid "Incident Reporting Procedures"
+#~ msgstr "Procedimentos para Relatar Incidentes"
+
+#~ msgid "Incident Report Awareness"
+#~ msgstr "Conscientização sobre Relatórios de Incidentes"
+
+#~ msgid "Response Plan is Updated"
+#~ msgstr "Plano de Resposta a Incidentes é Atualizado"
+
+#~ msgid "Continuous Credential Maintenance"
+#~ msgstr "Manutenção de Credenciais"
+
+#, python-format
+#~ msgid "Critical Supplier Dependency (%%)"
+#~ msgstr "Dependência de Fornecedores Críticos (%%)"
+
+#~ msgid "Risk Reassessment"
+#~ msgstr "Reavaliação de Riscos"
+
+#~ msgid "Network Systems have Traffic Monitoring"
+#~ msgstr "Monitoramento do Tráfego de Sistemas de Rede"
+
+#~ msgid "Metrics are Used for Comparison"
+#~ msgstr "Uso de Métricas para Comparação"
+
+#~ msgid "Updated Data Protection Policies"
+#~ msgstr "Políticas Atualizadas de Proteção de Dados"
+
+#~ msgid "Privacy Notifications Provision"
+#~ msgstr "Fornecimento de Notificações de Privacidade"
+
+#~ msgid "Data is Secure and is Deleted and Anonymized"
+#~ msgstr "Exclusão e Anonimização Segura de Dados"
+
+#~ msgid "Security Controls Implementation"
+#~ msgstr "Implementação de Controles de Segurança"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "        Welcome <b>%(name)s</b>!\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "        Bem vindo <b>%(name)s</b>!\n"
+#~ "    "
+
+#~ msgid "Publisher"
+#~ msgstr "Editora"
+
+#~ msgid "Cost"
+#~ msgstr "Custo"
+
+#~ msgid ""
+#~ "Mark this box if the company operates in multiple countries around the "
+#~ "world. GV.OC"
+#~ msgstr "Ative se a empresa opera em diversos países do mundo GV.OC"
+
+#~ msgid "Annual Revenue ($)"
+#~ msgstr "Receita Anual ($)"
+
+#~ msgid ""
+#~ "Specify the company's total annual revenue in U.S. dollars. Example: "
+#~ "500000 for $500,000. GV.OC"
+#~ msgstr ""
+#~ "Digite a receita anual da empresa em dólares. Exemplo: 500000 para "
+#~ "$500.000. GV.OC"
+
+#~ msgid "Size"
+#~ msgstr "Tamanho"
+
+#~ msgid "Micro"
+#~ msgstr "Micro"
+
+#~ msgid ""
+#~ "Choose the size category that best represents the company based on number "
+#~ "of employees or annual revenue. GV.OC"
+#~ msgstr ""
+#~ "Escolha a categoria de tamanho que melhor representa a empresa com base "
+#~ "no número de funcionários ou receita anual. GV.OC"
+
+#~ msgid "Growth Rate (%)"
+#~ msgstr "Taxa de Crescimento (%)"
+
+#~ msgid ""
+#~ "Enter the annual growth rate as a percentage. Example: Enter 10 for 10%. "
+#~ "GV.OC"
+#~ msgstr ""
+#~ "Digite a taxa de crescimento anual como uma porcentagem. Exemplo: Insira "
+#~ "10 para 10%. GV.OC"
+
+#~ msgid "Cybersecurity Spending ($)"
+#~ msgstr "Gastos em Cibersegurança ($)"
+
+#~ msgid ""
+#~ "Enter the annual amount spent on cybersecurity in U.S. dollars. Example: "
+#~ "100000 for $100,000. GV.RM"
+#~ msgstr ""
+#~ "Informe o valor anual gasto em cibersegurança em dólares americanos. "
+#~ "Exemplo: 100000 para $100.000.  GV.RM"
+
+#~ msgid ""
+#~ "Mark this box if the value of the company's assets includes tangible "
+#~ "items like hardware and software as well as intangibles like data and "
+#~ "intellectual property. ID.AM"
+#~ msgstr ""
+#~ "Marque esta caixa se o valor dos ativos da empresa incluir itens "
+#~ "tangíveis, como hardware e software, bem como intangíveis, como dados e "
+#~ "propriedade intelectual. ID.AM"
+
+#~ msgid ""
+#~ "Mark this if the company regularly updates its operating systems and "
+#~ "software to ensure security. ID.AM, PR.PS-02, PR.PS-03"
+#~ msgstr ""
+#~ "Marque isto se a empresa atualiza regularmente seus sistemas operacionais "
+#~ "e softwares para garantir a segurança. ID.AM, PR.PS-02, PR.PS-03"
+
+#~ msgid ""
+#~ "Check this box if the company's IT systems are continuously monitored for "
+#~ "any unusual activities or threats. PR.PS"
+#~ msgstr ""
+#~ "Marque esta caixa se os sistemas de TI da empresa são continuamente "
+#~ "monitorados para quaisquer atividades incomuns ou ameaças. PR.PS"
+
+#~ msgid ""
+#~ "Indicate here if the company regularly backs up essential data to prevent "
+#~ "loss in case of system failures. PR.DS-11"
+#~ msgstr ""
+#~ "Indique aqui se a empresa realiza regularmente backups de dados "
+#~ "essenciais para prevenir a perda em caso de falhas no sistema. PR.DS-11"
+
+#~ msgid ""
+#~ "Check this if backups are stored in a secure, remote location separate "
+#~ "from the main place of business. PR.DS-11"
+#~ msgstr ""
+#~ "Marque isto se os backups são armazenados em um local remoto e seguro, "
+#~ "separado do local principal de negócios. PR.DS-11"
+
+#~ msgid ""
+#~ "Mark this box if the company routinely checks backup integrity and "
+#~ "accessibility. PR.DS-11"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa verifica rotineiramente a integridade e a "
+#~ "acessibilidade dos backups. PR.DS-11"
+
+#~ msgid ""
+#~ "Indicate here if the company employs encryption to protect stored data "
+#~ "from unauthorized access. PR.DS-01"
+#~ msgstr ""
+#~ "Indique aqui se a empresa utiliza criptografia para proteger os dados "
+#~ "armazenados contra acesso não autorizado. PR.DS-01"
+
+#~ msgid ""
+#~ "Mark this if the company encrypts data during transmission to prevent "
+#~ "interception. PR.DS-02"
+#~ msgstr ""
+#~ "Marque isto se a empresa criptografa os dados durante a transmissão para "
+#~ "evitar interceptação. PR.DS-02"
+
+#~ msgid ""
+#~ "Check this box if the company follows a secure process for disposing of "
+#~ "or deleting data that is no longer needed. PR.DS"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa segue um processo seguro para descartar ou "
+#~ "deletar dados que não são mais necessários. PR.DS"
+
+#~ msgid ""
+#~ "Indicate here if the company ensures that all IT systems are properly set "
+#~ "up and configured for optimal security. PR.PS-01, PR.PS-02, PR.PS-03"
+#~ msgstr ""
+#~ "Indique aqui se a empresa garante que todos os sistemas de TI estão "
+#~ "devidamente configurados e ajustados para uma segurança ótima. PR.PS-01, "
+#~ "PR.PS-02, PR.PS-03"
+
+#~ msgid ""
+#~ "Enter the total number of authentication factors used for securing user "
+#~ "access. Common factors include passwords, security tokens, and "
+#~ "biometrics. PR.AA"
+#~ msgstr ""
+#~ "Digite o número total de fatores de autenticação usados para garantir o "
+#~ "acesso do usuário. Fatores comuns incluem senhas, tokens de segurança e "
+#~ "biometria. PR.AA"
+
+#~ msgid "Private"
+#~ msgstr "Privada"
+
+#~ msgid "Public"
+#~ msgstr "Pública"
+
+#~ msgid "Hybrid"
+#~ msgstr "Híbrida"
+
+#~ msgid ""
+#~ "Select the type of cloud solution your company uses. 'None' for no cloud "
+#~ "usage, 'Private' for internal cloud services, 'Public' for external cloud "
+#~ "services, and 'Hybrid' for a mix of both. PR.PS, PR.DS"
+#~ msgstr ""
+#~ "Selecione o tipo de solução em nuvem que sua empresa utiliza. 'Nenhum' "
+#~ "para não uso de nuvem, 'Privado' para serviços de nuvem internos, "
+#~ "'Público' para serviços de nuvem externos e 'Híbrido' para uma mistura de "
+#~ "ambos. PR.PS, PR.DS"
+
+#~ msgid ""
+#~ "Choose the primary network infrastructure type. 'LAN' for Local Area "
+#~ "Network typically used within a single building, 'WAN' for Wide Area "
+#~ "Network used for larger geographical areas. PR.PS, PR.DS"
+#~ msgstr ""
+#~ "Escolha o tipo principal de infraestrutura de rede. 'LAN' para Rede de "
+#~ "Área Local, tipicamente usada dentro de um único prédio, 'WAN' para Rede "
+#~ "de Área Ampla, usada para áreas geográficas maiores. PR.PS, PR.DS"
+
+#~ msgid ""
+#~ "Check this box if the company uses a Virtual Private Network (VPN) to "
+#~ "secure remote access to the company's network. PR.PS, PR.DS"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa utiliza uma Rede Privada Virtual (VPN) "
+#~ "para garantir o acesso remoto seguro à rede da empresa. PR.PS, PR.DS"
+
+#~ msgid ""
+#~ "Mark this box if the company actively promotes cybersecurity awareness "
+#~ "among all employees. PR.AT, GV.RR"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa promove ativamente a conscientização em "
+#~ "segurança cibernética entre todos os funcionários. PR.AT, GV.RR"
+
+#~ msgid ""
+#~ "Check this if the company provides regular cybersecurity training to "
+#~ "employees to enhance security practices. GV.PO, PR.AT"
+#~ msgstr ""
+#~ "Marque isto se a empresa oferece treinamento regular em segurança "
+#~ "cibernética aos funcionários para aprimorar as práticas de segurança. GV."
+#~ "PO, PR.AT"
+
+#~ msgid ""
+#~ "Check this if the company has formal procedures in place for employees to "
+#~ "report cybersecurity incidents. GV.PO"
+#~ msgstr ""
+#~ "Marque isto se a empresa possui procedimentos formais para que os "
+#~ "funcionários relatem incidentes de segurança cibernética. GV.PO"
+
+#~ msgid ""
+#~ "Mark this box if the company has a documented plan detailing steps to be "
+#~ "taken in response to cybersecurity incidents. GV.PO"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa possui um plano documentado detalhando as "
+#~ "etapas a serem tomadas em resposta a incidentes de segurança cibernética. "
+#~ "GV.PO"
+
+#~ msgid ""
+#~ "Check this if there is a company-wide understanding of the importance and "
+#~ "procedures for reporting cybersecurity incidents. GV.PO"
+#~ msgstr ""
+#~ "Marque isto se houver um entendimento em toda a empresa sobre a "
+#~ "importância e os procedimentos para relatar incidentes de segurança "
+#~ "cibernética. GV.PO"
+
+#~ msgid ""
+#~ "Mark this box if the company routinely reviews and updates its incident "
+#~ "response plan to adapt to new threats. GV.OV, GV.PO, ID.IM, RS.MA, RS.AN"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa revisa e atualiza rotineiramente seu plano "
+#~ "de resposta a incidentes para se adaptar a novas ameaças. GV.OV, GV.PO, "
+#~ "ID.IM, RS.MA, RS.AN"
+
+#~ msgid ""
+#~ "Check this if the company conducts simulated cybersecurity incidents to "
+#~ "test and improve its response strategies. ID.IM, RS.AN"
+#~ msgstr ""
+#~ "Marque isto se a empresa realiza simulações de incidentes de segurança "
+#~ "cibernética para testar e melhorar suas estratégias de resposta. ID.IM, "
+#~ "RS.AN"
+
+#~| msgid ""
+#~| "Mark this box if the company is equipped to quickly restore critical "
+#~| "functions and return to normal operations after a cyberattack. ID.IM, RS."
+#~| "AN"
+#~ msgid ""
+#~ "Mark this box if the company is equipped to quickly restore critical "
+#~ "functions and return to normal operations after a cyberattack. RC.RP, RC."
+#~ "CO"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa estiver equipada para restaurar "
+#~ "rapidamente as funções críticas e voltar às operações normais após um "
+#~ "ciberataque. ID.IM, RS.AN"
+
+#~ msgid ""
+#~ "Check this if the company actively maintains and updates system "
+#~ "credentials to ensure secure access. PR.AA, GV.RR"
+#~ msgstr ""
+#~ "Marque isto se a empresa mantém e atualiza ativamente as credenciais do "
+#~ "sistema para garantir acesso seguro. PR.AA, GV.RR"
+
+#~ msgid ""
+#~ "Mark this box if the company regularly reassesses its risks to account "
+#~ "for new developments or changes in the business environment. GV.RM, ID.RA"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa reavalia regularmente seus riscos para "
+#~ "levar em conta novos desenvolvimentos ou mudanças no ambiente de "
+#~ "negócios. GV.RM, ID.RA"
+
+#~ msgid ""
+#~ "Check this if the company has processes in place to continually identify "
+#~ "vulnerabilities in its IT infrastructure. DE.CM"
+#~ msgstr ""
+#~ "Marque isto se a empresa possui processos para identificar continuamente "
+#~ "vulnerabilidades em sua infraestrutura de TI. DE.CM"
+
+#~ msgid ""
+#~ "Indicate here if the company maintains comprehensive records and history "
+#~ "logs of all IT systems and activities. PR.PS-04"
+#~ msgstr ""
+#~ "Indique aqui se a empresa mantém registros abrangentes e históricos de "
+#~ "todos os sistemas e atividades de TI. PR.PS-04"
+
+#~ msgid ""
+#~ "Mark this box if there is ongoing monitoring of network and system "
+#~ "traffic to detect unusual patterns or potential breaches. DE.CM-01"
+#~ msgstr ""
+#~ "Marque esta caixa se há monitoramento contínuo do tráfego de rede e "
+#~ "sistemas para detectar padrões incomuns ou possíveis violações. DE.CM-01"
+
+#~ msgid ""
+#~ "Check this if the company employs a continuous process for the assessment "
+#~ "and identification of potential security threats. DE.CM"
+#~ msgstr ""
+#~ "Marque isto se a empresa emprega um processo contínuo para a avaliação e "
+#~ "identificação de possíveis ameaças de segurança. DE.CM"
+
+#~ msgid "Service Provider Risk (%)"
+#~ msgstr "Risco do Provedor de Serviços (%)"
+
+#~ msgid ""
+#~ "Enter the percentage representing the level of risk associated with the "
+#~ "company's service providers. Example: Enter 20 for 20%. GV.SC"
+#~ msgstr ""
+#~ "Digite a porcentagem que representa o nível de risco associado aos "
+#~ "provedores de serviços da empresa. Exemplo: Digite 20 para 20%. GV.SC"
+
+#~ msgid "Critical Supplier Dependency (%)"
+#~ msgstr "Dependência de Fornecedores Críticos (%)"
+
+#, python-format
+#~ msgid ""
+#~ "Specify the percentage that represents the company's dependency on "
+#~ "critical suppliers. Example: Enter 30 for 30% dependency. ID.RA-10, GV."
+#~ "RM-05"
+#~ msgstr ""
+#~ "Especifique a porcentagem que representa a dependência da empresa em "
+#~ "fornecedores críticos. Exemplo: Digite 30 para 30% de dependência. ID."
+#~ "RA-10, GV.RM-05"
+
+#~ msgid "Cybersecurity Investment ($)"
+#~ msgstr "Investimento em Cibersegurança ($)"
+
+#~ msgid ""
+#~ "Enter the annual dollar amount the company invests in cybersecurity "
+#~ "measures and technologies. Example: 50000 for $50,000. GV.OC"
+#~ msgstr ""
+#~ "Informe o valor anual em dólares que a empresa investe em medidas e "
+#~ "tecnologias de cibersegurança. Exemplo: 50000 para $50.000. GV.OC"
+
+#~ msgid ""
+#~ "Check this box if the company utilizes specific metrics to evaluate and "
+#~ "compare cybersecurity solutions for effective prioritization. ID.IM, ID.RA"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa utiliza métricas específicas para avaliar "
+#~ "e comparar soluções de cibersegurança para uma priorização eficaz. ID.IM, "
+#~ "ID.RA"
+
+#~ msgid ""
+#~ "Mark this box if the company maintains data protection policies that are "
+#~ "regularly reviewed and updated to stay aligned with current regulations. "
+#~ "GV.OV, PR.DS"
+#~ msgstr ""
+#~ "Marque esta caixa se a empresa mantém políticas de proteção de dados que "
+#~ "são regularmente revisadas e atualizadas para permanecerem alinhadas com "
+#~ "as regulamentações atuais. GV.OV, PR.DS"
+
+#~ msgid ""
+#~ "Indicate here if the company provides clear and understandable "
+#~ "notifications to users about data collection, usage, and sharing "
+#~ "practices. GV.OC-03"
+#~ msgstr ""
+#~ "Indique aqui se a empresa fornece notificações claras e compreensíveis "
+#~ "aos usuários sobre as práticas de coleta, uso e compartilhamento de "
+#~ "dados. GV.OC-03"
+
+#~ msgid ""
+#~ "Check this if the company practices data minimization by collecting, "
+#~ "processing, and storing only the essential amount of personal data "
+#~ "required for its operations. PR.DS, GV.OC-03"
+#~ msgstr ""
+#~ "Marque isto se a empresa pratica a minimização de dados coletando, "
+#~ "processando e armazenando apenas a quantidade essencial de dados pessoais "
+#~ "necessária para suas operações. PR.DS, GV.OC-03"
+
+#~ msgid "Data Secure Deletion and Anonymization"
+#~ msgstr "Exclusão e Anonimização Segura de Dados"
+
+#~ msgid ""
+#~ "Mark this box if there are established practices in place for the secure "
+#~ "deletion or anonymization of personal data when it is no longer "
+#~ "necessary. PR.DS, GV.OC-03"
+#~ msgstr ""
+#~ "Marque esta caixa se existirem práticas estabelecidas para a exclusão "
+#~ "segura ou anonimização de dados pessoais quando eles não forem mais "
+#~ "necessários. PR.DS, GV.OC-03"
+
+#~ msgid ""
+#~ "Indicate here if the company has implemented effective security controls "
+#~ "to safeguard personal information against unauthorized access or "
+#~ "breaches. GV.OC-03, PR.DS"
+#~ msgstr ""
+#~ "Indique aqui se a empresa implementou controles de segurança eficazes "
+#~ "para proteger informações pessoais contra acesso não autorizado ou "
+#~ "violações. OC-03, PR.DS"
+
+#~ msgid "Public Visibility"
+#~ msgstr "Visibilidade Pública"
+
+#~ msgid ""
+#~ "Determines if the company should be shared with other users or not. "
+#~ "Further implementation will be done for sharing with specific groups and "
+#~ "users."
+#~ msgstr ""
+#~ "Determina se a empresa deve ser compartilhada com outros usuários ou não. "
+#~ "Implementações futuras serão feitas para compartilhamento com grupos e "
+#~ "usuários específicos."
+
+#~ msgid "Reputation score of the publisher."
+#~ msgstr "Escore de reputação da editora"
+
+#~ msgid "Publishers"
+#~ msgstr "Editora"
+
+#~ msgid "Name of the report."
+#~ msgstr "Nome do report"
+
+#~ msgid "URL link to the report."
+#~ msgstr "URL link para o relatório"
+
+#~ msgid "Year the report was published."
+#~ msgstr "Ano em que o relatório foi publicado"
+
+#~ msgid "Periodicity"
+#~ msgstr "Periodicidade"
+
+#~ msgid "Coverage"
+#~ msgstr "Cobertura"
+
+#~ msgid "Research Methodology"
+#~ msgstr "Metodologia de Pesquisa"
+
+#~ msgid "Year the attack data was reported."
+#~ msgstr "Ano em que os dados do ataque foram relatados."
+
+#~ msgid "Type of attack covered in the report."
+#~ msgstr "Tipo de ataque abordado no relatório."
+
+#~ msgid "Condition"
+#~ msgstr "Condição"
+
+#~ msgid "Condition reported during the attacks."
+#~ msgstr "Condição relatada durante os ataques."
+
+#~ msgid "Size of the companies affected as reported."
+#~ msgstr "Tamanho das empresas afetadas conforme relatado."
+
+#~ msgid "Region where the attacks were reported to have occurred."
+#~ msgstr "Região onde os ataques foram relatados."
+
+#~ msgid "Countries covered in the attack data."
+#~ msgstr "Países abrangidos nos dados do ataque."
+
+#~ msgid "Sectors reported to be affected by the attacks."
+#~ msgstr "Setores relatados pelos ataques."
+
+#~ msgid "Cost associated with the attacks as reported."
+#~ msgstr "Custo associado aos ataques."
+
+#~ msgid "Cost Metric"
+#~ msgstr "Métrica de Custo"
+
+#~ msgid "Unit of the reported costs, such as USD or EUR."
+#~ msgstr "Unidade dos custos relatados, como USD ou EUR."
+
+#~ msgid "Year the impact data was reported."
+#~ msgstr "Ano em que os dados de impacto ocorreram."
+
+#~ msgid "Impact reported in the report."
+#~ msgstr "Impacto registrado no relatório."
+
+#~ msgid "Condition/Attack"
+#~ msgstr "Condição/Ataque"
+
+#~ msgid "Condition or attack associated with the impact."
+#~ msgstr "Condição ou ataque associado ao impacto."
+
+#~ msgid "Size of the company affected as reported."
+#~ msgstr "Tamanho da empresa afetada."
+
+#~ msgid "Region where the impact was reported."
+#~ msgstr "Região onde o impacto foi registrado."
+
+#~ msgid "Country where the impact was reported."
+#~ msgstr "País onde o impacto foi registrado."
+
+#~ msgid "Sector reported to be affected by the impact."
+#~ msgstr "Setor afetado pelo impacto."
+
+#~ msgid "Reported probability of the impact occurring."
+#~ msgstr "Probabilidade de ocorrência do impacto."
+
+#~ msgid "Year the sector data was reported."
+#~ msgstr "Ano em que os dados do setor foram reportados."
+
+#~ msgid "Sector reported to be affected."
+#~ msgstr "Setor reportado como afetado."
+
+#~ msgid "Size of the companies within the sector affected as reported."
+#~ msgstr "Tamanho das empresas dentro do setor reportado como afetadas."
+
+#~ msgid "Region where the sector was affected."
+#~ msgstr "Região onde o setor foi afetado."
+
+#~ msgid "Country where the sector was affected."
+#~ msgstr "País onde o setor foi afetado."
+
+#~ msgid "Reported probability of the attack occurring in the sector."
+#~ msgstr "Probabilidade reportada de ocorrência do ataque no setor."
+
+#~ msgid "Estimated cost associated with the impact on the sector."
+#~ msgstr "Custo estimado associado ao impacto no setor."
+
+#~ msgid "Year the location data was reported."
+#~ msgstr "Ano em que os dados de localização foram relatados."
+
+#~ msgid "Region or country where the data was reported."
+#~ msgstr "Região ou país onde os dados foram relatados."
+
+#~ msgid "Type of attack reported in the location."
+#~ msgstr "Tipo de ataque relatado na localização."
+
+#~ msgid "Size of the companies within the location affected as reported."
+#~ msgstr "Tamanho das empresas na localização afetadas conforme relatado."
+
+#~ msgid "Sector reported to be affected in the location."
+#~ msgstr "Setor relatado como afetado na localização."
+
+#~ msgid "Reported probability of the attack occurring in the location."
+#~ msgstr "Probabilidade relatada do ataque ocorrer na localização."
+
+#~ msgid "Estimated cost associated with the impact in the location."
+#~ msgstr "Custo estimado associado ao impacto na localização."
+
+#~ msgid "Location Data"
+#~ msgstr "Dados de Localização"
+
+#~ msgid "Technical Dimension Protection"
+#~ msgstr "Proteção da Dimensão Técnica"
+
+#~ msgid "Example"
+#~ msgstr "Exemplo"
+
+#~ msgid ""
+#~ "Check if the determined assets value including information, software, and "
+#~ "hardware."
+#~ msgstr ""
+#~ "Verifique se o valor dos ativos determinados inclui informações, software "
+#~ "e hardware."
+
+#~ msgid "Indicates if the asset inventory is regularly updated."
+#~ msgstr "Indica se o inventário de ativos é atualizado regularmente."
+
+#~ msgid "Indicates if IT systems are under continuous monitoring."
+#~ msgstr "Indica se os sistemas de TI estão sob monitoramento contínuo."
+
+#~ msgid "Indicates if regular backups of critical information are performed."
+#~ msgstr "Indica se são realizados backups regulares de informações críticas."
+
+#~ msgid "Indicates if backups are stored in a protected offsite location."
+#~ msgstr ""
+#~ "Indica se os backups são armazenados em uma localização externa protegida."
+
+#~ msgid "Indicates if regular checks of backups are conducted."
+#~ msgstr "Indica se são realizadas checagens regulares dos backups."
+
+#~ msgid "Indicates if data in transit is encrypted."
+#~ msgstr "Indica se os dados em trânsito são criptografados."
+
+#~ msgid "Indicates if IT systems are configured correctly."
+#~ msgstr "Indica se os sistemas de TI estão configurados corretamente."
+
+#~ msgid "Number of authentication factors."
+#~ msgstr "Número de fatores de autenticação."
+
+#~ msgid "Type of cloud solution implemented."
+#~ msgstr "Tipo de solução em nuvem implementada."
+
+#~ msgid "Type of network infrastructure."
+#~ msgstr "Tipo de infraestrutura de rede."
+
+#~ msgid "Indicates if vulnerabilities are continuously identified."
+#~ msgstr "Indica se as vulnerabilidades são continuamente identificadas."
+
+#~ msgid "Check if there is cybersecurity awareness within the company."
+#~ msgstr ""
+#~ "Verifique se existe conscientização em segurança cibernética dentro da "
+#~ "empresa."
+
+#~ msgid "Check if there is a documented plan for responding to incidents."
+#~ msgstr ""
+#~ "Verifique se existe um plano documentado para responder a incidentes."
+
+#~ msgid "Check if there is awareness about incident reporting in the company."
+#~ msgstr ""
+#~ "Verifique se existe conscientização sobre relatórios de incidentes na "
+#~ "empresa."
+
+#~ msgid "Check if the incident response plan is regularly updated."
+#~ msgstr ""
+#~ "Verifique se o plano de resposta a incidentes é atualizado regularmente."
+
+#~ msgid "Check if there is ongoing maintenance of credentials."
+#~ msgstr "Verifique se há manutenção contínua de credenciais."
+
+#~ msgid "Indicates if risks are prioritized based on their criticality."
+#~ msgstr "Indica se os riscos são priorizados com base em sua criticidade."
+
+#~ msgid ""
+#~ "Indicates if risks are reassessed in light of changes that could impact "
+#~ "them."
+#~ msgstr ""
+#~ "Indica se os riscos são reavaliados à luz de mudanças que podem impactá-"
+#~ "los."
+
+#~ msgid "Indicates if vulnerabilities are identified in the systems."
+#~ msgstr "Indica se vulnerabilidades são identificadas nos sistemas."
+
+#~ msgid "Enter the risk rate associated with service providers."
+#~ msgstr "Informe a taxa de risco associada aos provedores de serviços."
+
+#~ msgid "Enter the dependency rate on critical suppliers."
+#~ msgstr "Informe a taxa de dependência de fornecedores críticos."
+
+#~ msgid ""
+#~ "Indicates if metrics are used to compare potential cybersecurity "
+#~ "solutions and prioritize them."
+#~ msgstr ""
+#~ "Indica se métricas são usadas para comparar soluções potenciais de "
+#~ "cibersegurança e priorizá-las."
+
+#~ msgid ""
+#~ "Indicates if clear and updated data protection policies aligned with "
+#~ "relevant regulations are in place."
+#~ msgstr ""
+#~ "Indica se existem políticas claras e atualizadas de proteção de dados "
+#~ "alinhadas com regulamentações relevantes."
+
+#~ msgid ""
+#~ "Indicates if only the minimum necessary amount of personal data for "
+#~ "business operations is collected, processed, and stored."
+#~ msgstr ""
+#~ "Indica se apenas a quantidade mínima necessária de dados pessoais para "
+#~ "operações de negócios é coletada, processada e armazenada."
+
+#~ msgid ""
+#~ "Indicates if personal data is securely deleted or anonymized when no "
+#~ "longer needed for business purposes."
+#~ msgstr ""
+#~ "Indica se os dados pessoais são excluídos ou anonimizados de forma segura "
+#~ "quando não são mais necessários para fins comerciais."
+
+#~ msgid ""
+#~ "Indicates if appropriate security controls to protect personal "
+#~ "information are implemented."
+#~ msgstr ""
+#~ "Indica se controles de segurança apropriados para proteger informações "
+#~ "pessoais são implementados."
+
+#~ msgid "Growth Rate"
+#~ msgstr "Taxa de crescimento"
+
+#~ msgid "Service Provider Risk"
+#~ msgstr "Risco do Provedor de Serviços"
+
+#~ msgid "Critical Supplier Dependency"
+#~ msgstr "Dependência de Fornecedores Críticos"

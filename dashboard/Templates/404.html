@@ -1,0 +1,47 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n %}
+{% block page_content %}
+<style>
+    .card {
+        border: 1px solid var(--ct-border-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .feature-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #F77A3F;
+    }
+    .btn-primary {
+        background-color: #F77A3F;
+        border-color: #F77A3F;
+    }
+    .btn-primary:hover {
+        background-color: #e56a2f;
+        border-color: #e56a2f;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <i class="bi bi-question-circle feature-icon"></i>
+                    <h1 class="display-4 mb-4">{% trans "404 - Page Not Found" %}</h1>
+                    <p class="lead mb-4">
+                        {% trans "Oops! The page you're looking for doesn't exist." %}
+                    </p>
+                    <a href="{% url 'dashboard:index' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-house-door me-2"></i>{% trans "Return to Homepage" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

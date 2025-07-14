@@ -1,0 +1,416 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" data-menu-color="brand">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% trans "GT-IMPACTO - Simulation of Economic Aspects of Cybersecurity" %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="GT-IMPACTO." name="Plataforma para Simulação de Comportamentos Aspectos Econômicos de Cibersegurança" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href={% static "assets/images/favicon.ico" %}>
+
+        <!-- Plugins css -->
+        <link href={% static "assets/libs/flatpickr/flatpickr.min.css" %} rel="stylesheet" type="text/css" />
+        <link href={% static "assets/libs/selectize/css/selectize.bootstrap3.css" %} rel="stylesheet" type="text/css" />
+        
+        <!-- Theme Config Js -->
+        <script src={% static "assets/js/head.js" %}></script>
+
+        <!-- Bootstrap css -->
+        <link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+
+        <!-- App css -->
+        <link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+        <!-- Icons css -->
+        <link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+
+
+        <!-- Begin page -->
+        <div id="wrapper">
+            <!-- ========== Menu ========== -->
+            <div class="app-menu">  
+                <!-- Brand Logo -->
+                <div class="logo-box">
+                    <!-- Brand Logo Light -->
+                    <a href="{% if company %}{% url 'dashboard:index_company' pk=company.pk %}{% else %}/dashboard/{% endif %}" class="logo-light">
+                        <img src={% static "assets/images/logo-light.png" %} alt="logo" class="logo-lg">
+                        <img src={% static "assets/images/logo-sm.png" %} alt="small logo" class="logo-sm">
+                    </a>
+                </div>
+
+                <!-- menu-left -->
+                <div class="scrollbar">
+
+                    <!-- User box -->
+                    <div class="user-box text-center">
+                        <div class="dropdown">
+                            <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown">-</a>
+                            <div class="dropdown-menu user-pro-dropdown">
+                                <!-- item-->
+
+
+                                <!-- item-->
+                                <a href="/logout/" class="dropdown-item notify-item">
+                                    <i class="fe-log-out me-1"></i>
+                                    <span>{% trans "Log out" %}</span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <p class="text-muted mb-0">-</p>
+                    </div>
+                    <!--- Menu -->
+                    <ul class="menu">
+                        <li class="menu-title">{% trans "Menu" %}</li>
+
+                        <li class="menu-item">
+                            {% if company %}
+                            <a href="{% url 'dashboard:index_company' pk=company.pk %}" class="menu-link">
+                                <span class="menu-icon"><i data-feather="home"></i></span>
+                                <span class="menu-text">{% trans "Home" %}</span>
+                            </a>
+                            {% else %}
+                            <a href="{% url 'dashboard:index' %}" class="menu-link">
+                                <span class="menu-icon"><i data-feather="home"></i></span>
+                                <span class="menu-text">{% trans "Home" %}</span>
+                            </a>
+                            {% endif %}
+                        </li>
+
+                        <li class="menu-item">
+                            <a href="#menuCompanyProfile" data-bs-toggle="collapse" class="menu-link">
+                                <span class="menu-icon"><i data-feather="briefcase"></i></span>
+                                <span class="menu-text">{% trans "Company Profile" %}</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="menuCompanyProfile">
+                                <ul class="sub-menu">
+                                    <li class="menu-item">
+                                        <a href="{% url 'dashboard:company_profile_list' %}" class="menu-link">
+                                            <span class="menu-text">{% trans "View Companies" %}</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="{% url 'dashboard:user_company_copies' %}" class="menu-link">
+                                            <span class="menu-text">{% trans "My Company Copies" %}</span>
+                                        </a>
+                                    </li>
+                                    {% if is_instructor %}
+                                    <li class="menu-item">
+                                        <a href="{% url 'dashboard:add_company_profile' %}" class="menu-link">
+                                            <span class="menu-text">{% trans "Add Basic Profile" %}</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="{% url 'dashboard:add_advanced_company_profile' %}" class="menu-link">
+                                            <span class="menu-text">{% trans "Add Advanced Profile" %}</span>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </li>
+                        {% if company %}
+                        <li class="menu-item">
+                            <a href="#menuCurrentCompany" data-bs-toggle="collapse" class="menu-link">
+                                <span class="menu-icon"><i data-feather="box"></i></span>
+                                <span class="menu-text">{{ company.name|truncatechars:20 }}</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="menuCurrentCompany">
+                                <ul class="sub-menu company-submenu">
+                                    <li class="menu-item">
+                                        <a href="{% url 'dashboard:company_profile_detail' pk=company.pk %}" class="menu-link">
+                                            <span class="menu-icon"><i data-feather="eye"></i></span>
+                                            <span class="menu-text">{% trans "Company Profile" %}</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#menuRiskAnalysis" data-bs-toggle="collapse" class="menu-link">
+                                            <span class="menu-icon"><i data-feather="activity"></i></span>
+                                            <span class="menu-text">{% trans "Risk Analysis" %}</span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <div class="collapse" id="menuRiskAnalysis">
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="{% url 'dashboard:company_analysis' pk=company.pk %}" class="menu-link">
+                                                        <span class="menu-icon"><i data-feather="pie-chart"></i></span>
+                                                        <span class="menu-text">{% trans "Overview" %}</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="{% url 'dashboard:company_analysis_pro' pk=company.pk %}" class="menu-link">
+                                                        <span class="menu-icon"><i data-feather="trending-up"></i></span>
+                                                        <span class="menu-text">{% trans "Report" %}</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="{% url 'dashboard:economic_planning' pk=company.pk %}" class="menu-link">
+                                            <span class="menu-icon"><i data-feather="bar-chart-2"></i></span>
+                                            <span class="menu-text">{% trans "Economic Planning" %}</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="menu-item">
+                                        <a href="{% url 'dashboard:edit_company_profile' pk=company.pk %}" class="menu-link">
+                                            <span class="menu-icon"><i data-feather="edit-2"></i></span>
+                                            <span class="menu-text">{% trans "Edit Company" %}</span>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                        {% endif %}
+
+                        <li class="menu-item">
+                            <a href="#menuDataSource" data-bs-toggle="collapse" class="menu-link">
+                                <span class="menu-icon"><i data-feather="database"></i></span>
+                                <span class="menu-text">{% trans "Data Source" %}</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="menuDataSource">
+                                <ul class="sub-menu">
+                                    <li class="menu-item">
+                                        {% if company %}
+                                        <a href="{% url 'dashboard:report_analysis_tests_company' pk=company.pk %}" class="menu-link">
+                                            <span class="menu-text">{% trans "Reports Analysis" %}</span>
+                                        </a>
+                                        {% else %}
+                                        <a href="{% url 'dashboard:report_analysis_tests' %}" class="menu-link">
+                                            <span class="menu-text">{% trans "Reports Analysis" %}</span>
+                                        </a>
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <style>
+                        .company-submenu {
+                            padding-left: 20px; /* Ajuste este valor conforme necessário */
+                        }
+                        .company-submenu .menu-item .menu-link {
+                            padding-left: 30px; /* Ajuste este valor conforme necessário */
+                        }
+                        .company-submenu .menu-icon {
+                            margin-right: 10px; /* Espaço entre o ícone e o texto */
+                        }
+                    </style>
+                </ul>
+                <!--- End Menu -->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- ========== Left menu End ========== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+
+                <!-- ========== Topbar Start ========== -->
+                <div class="navbar-custom">
+                    <div class="topbar">
+                        <div class="topbar-menu d-flex align-items-center gap-1">
+
+                            <!-- Topbar Brand Logo -->
+                            <div class="logo-box">
+                                <!-- Brand Logo Light -->
+                                <a href="{% if company %}{% url 'dashboard:index_company' pk=company.pk %}{% else %}/dashboard/{% endif %}" class="logo-light">
+                                    <img src={% static "assets/images/logo-light.png" %} alt="logo" class="logo-lg">
+                                    <img src={% static "assets/images/logo-sm.png" %} alt="small logo" class="logo-sm">
+                                </a>
+                            </div>
+
+                            <!-- Sidebar Menu Toggle Button -->
+                            <button class="button-toggle-menu">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+
+                            
+                        </div>
+
+                        <ul class="topbar-menu d-flex align-items-center">
+    
+                            <!-- Language flag dropdown -->
+                            <li class="dropdown d-none d-md-inline-block">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    {% if request.LANGUAGE_CODE == 'en' %}
+                                        <img src="{% static 'assets/images/flags/gb.png' %}" alt="English" class="me-2" height="12">
+                                    {% else %}
+                                        <img src="{% static 'assets/images/flags/br.png' %}" alt="Português" class="me-1" height="12">
+                                    {% endif %}
+                                    <span class="align-middle"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <form action="{% url 'set_language' %}" method="post" class="form-inline">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="language" value="{{ language.code }}">
+                                            <input type="hidden" name="next" value="{{ request.path }}">
+                                            <button type="submit" class="dropdown-item {% if LANGUAGE_CODE == language.code %} active {% endif %}" style="background: none; border: none; padding: 0;">
+                                                {% if language.code == 'en' %}
+                                                    <img src="{% static 'assets/images/flags/gb.png' %}" alt="English" class="me-1" height="12">
+                                                {% else %}
+                                                    <img src="{% static 'assets/images/flags/br.png' %}" alt="Português" class="me-1" height="12">
+                                                {% endif %}
+                                                {{ language.name_local }}
+                                            </button>
+                                        </form>
+                                    {% endfor %}
+                                </div>
+                            </li>
+
+                            <!-- User Dropdown -->
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span class="ms-1 d-none d-md-inline-block">
+                                        {{ user.name }} <i class="mdi mdi-chevron-down"></i>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                                    <!-- item-->
+                                    <a href="{% if company %} {% url 'dashboard:user_profile_company' pk=company.pk %} {% else %}{% url 'dashboard:user_profile' %}{% endif %}" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>{% trans "My account" %}</span>
+                                    </a>
+
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <form action="{% url 'logout' %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="dropdown-item notify-item">
+                                            <i class="fe-log-out me-1"></i>
+                                            <span>{% trans "Log out" %}</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </li>
+
+                           
+                        </ul>
+                    </div>
+                </div>
+                <!-- ========== Topbar End ========== -->
+
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        
+                                    </div>
+                                    <h4 class="page-title"><!--Dashboard--></h4>
+                                </div>
+                            </div>
+                        </div>     
+<!-- ========== Start Django content ========== -->
+                    <!-- Mensagens -->
+                    {% if messages %}
+                    <div class="container mt-3">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% block page_content %}
+                    {% endblock %}
+ <!-- ========== End Django content ========== -->                      
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div>
+                                    <script>document.write(new Date().getFullYear())</script> © GT-IMPACTO by 
+                                    <a href="https://inf.ufrgs.br/" target="_blank">INF@UFRGS</a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end footer-links">
+                                    <a href="https://www.inf.ufrgs.br/gt-impacto/">{% trans "About" %}</a>
+                                    <a href="https://www.inf.ufrgs.br/gt-impacto/index.php/projeto/">{% trans "Project" %}</a>
+                                    <a href="https://www.inf.ufrgs.br/gt-impacto/index.php/equipe/">{% trans "Team" %}</a>
+                                    <a href="https://www.inf.ufrgs.br/gt-impacto/index.php/contact/">{% trans "Contact" %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+        </div>
+        <!-- END wrapper -->
+               
+        <!-- Vendor js -->
+        <script src={% static "assets/js/vendor.min.js" %}></script>
+        <!-- App js -->
+        <script src={% static "assets/js/app.min.js" %}></script>
+        
+        <!-- Plugins js-->
+        <script src={% static "assets/libs/flatpickr/flatpickr.min.js" %}></script>
+        <script src={% static "assets/libs/apexcharts/apexcharts.min.js" %}></script>
+        <script src={% static "assets/libs/selectize/js/standalone/selectize.min.js" %}></script>
+
+        <!-- Dashboar 1 init js-->
+        <script src={% static "assets/js/pages/dashboard-1.init.js" %}></script>
+
+        <!-- Incluindo jQuery -->
+        <!-- adicionado para a pagfina de analise -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Incluindo jQuery Knob -->
+        <!-- adicionado para a pagfina de analise -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
+
+
+        <!-- inicializar os popovers -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('[data-bs-toggle="popover"]').popover(); 
+            });
+        </script>  
+
+        <!-- adicionado para a pagfina de analise -->
+        <script>
+            $(document).ready(function(){
+                $(".knob").knob();
+            });
+        </script>     
+
+    </body>
+</html>

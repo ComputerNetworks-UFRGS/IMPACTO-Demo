@@ -1,0 +1,753 @@
+[1mdiff --git a/accounts/__pycache__/__init__.cpython-312.pyc b/accounts/__pycache__/__init__.cpython-312.pyc[m
+[1mindex 1d26eef..b0e72d7 100644[m
+Binary files a/accounts/__pycache__/__init__.cpython-312.pyc and b/accounts/__pycache__/__init__.cpython-312.pyc differ
+[1mdiff --git a/accounts/__pycache__/admin.cpython-312.pyc b/accounts/__pycache__/admin.cpython-312.pyc[m
+[1mindex ceb22fa..267242c 100644[m
+Binary files a/accounts/__pycache__/admin.cpython-312.pyc and b/accounts/__pycache__/admin.cpython-312.pyc differ
+[1mdiff --git a/accounts/__pycache__/apps.cpython-312.pyc b/accounts/__pycache__/apps.cpython-312.pyc[m
+[1mindex 75b2014..f977443 100644[m
+Binary files a/accounts/__pycache__/apps.cpython-312.pyc and b/accounts/__pycache__/apps.cpython-312.pyc differ
+[1mdiff --git a/accounts/__pycache__/backends.cpython-312.pyc b/accounts/__pycache__/backends.cpython-312.pyc[m
+[1mindex fa9fdfa..2ccd608 100644[m
+Binary files a/accounts/__pycache__/backends.cpython-312.pyc and b/accounts/__pycache__/backends.cpython-312.pyc differ
+[1mdiff --git a/accounts/__pycache__/forms.cpython-312.pyc b/accounts/__pycache__/forms.cpython-312.pyc[m
+[1mindex 62d059b..2238171 100644[m
+Binary files a/accounts/__pycache__/forms.cpython-312.pyc and b/accounts/__pycache__/forms.cpython-312.pyc differ
+[1mdiff --git a/accounts/__pycache__/models.cpython-312.pyc b/accounts/__pycache__/models.cpython-312.pyc[m
+[1mindex 29ce407..0eba089 100644[m
+Binary files a/accounts/__pycache__/models.cpython-312.pyc and b/accounts/__pycache__/models.cpython-312.pyc differ
+[1mdiff --git a/accounts/__pycache__/views.cpython-312.pyc b/accounts/__pycache__/views.cpython-312.pyc[m
+[1mindex 2ecf543..1e58f24 100644[m
+Binary files a/accounts/__pycache__/views.cpython-312.pyc and b/accounts/__pycache__/views.cpython-312.pyc differ
+[1mdiff --git a/accounts/migrations/__pycache__/0001_initial.cpython-312.pyc b/accounts/migrations/__pycache__/0001_initial.cpython-312.pyc[m
+[1mindex fff9f31..67ef0a1 100644[m
+Binary files a/accounts/migrations/__pycache__/0001_initial.cpython-312.pyc and b/accounts/migrations/__pycache__/0001_initial.cpython-312.pyc differ
+[1mdiff --git a/accounts/migrations/__pycache__/0002_remove_user_avatar.cpython-312.pyc b/accounts/migrations/__pycache__/0002_remove_user_avatar.cpython-312.pyc[m
+[1mindex 8f0c536..edcd574 100644[m
+Binary files a/accounts/migrations/__pycache__/0002_remove_user_avatar.cpython-312.pyc and b/accounts/migrations/__pycache__/0002_remove_user_avatar.cpython-312.pyc differ
+[1mdiff --git a/accounts/migrations/__pycache__/__init__.cpython-312.pyc b/accounts/migrations/__pycache__/__init__.cpython-312.pyc[m
+[1mindex 231c137..6f1355e 100644[m
+Binary files a/accounts/migrations/__pycache__/__init__.cpython-312.pyc and b/accounts/migrations/__pycache__/__init__.cpython-312.pyc differ
+[1mdiff --git a/api/api.py b/api/api.py[m
+[1mindex a62b4a6..8f9da5e 100644[m
+[1m--- a/api/api.py[m
+[1m+++ b/api/api.py[m
+[36m@@ -49,6 +49,8 @@[m [mdef gordon_loeb_optimal():[m
+         case _:[m
+             z = 0[m
+             ebis = 0[m
+[32m+[m[32m    if ebis < 0:[m[41m[m
+[32m+[m[32m        ebis = 0[m[41m[m
+     enbis = ebis - z[m
+ [m
+     ###calcular intervalo invariável[m
+[36m@@ -57,11 +59,15 @@[m [mdef gordon_loeb_optimal():[m
+     b = (0.5 - prob/alpha + seg_enbis/(value*alpha))[m
+     c = (prob*value + seg_enbis)/2[m
+     delta = b**2 - 4*a*c[m
+[32m+[m[32m    if delta < 0:[m[41m[m
+[32m+[m[32m        delta = 0[m[41m[m
+     seg_min = (-b - delta**(1/2)) / (2*a)[m
+     seg_max = (-b + delta**(1/2)) / (2*a)[m
+     b = 0.5 - prob / alpha[m
+     c = prob * value / 2[m
+     delta = b**2 - 4*a*c[m
+[32m+[m[32m    if delta < 0:[m[41m[m
+[32m+[m[32m        delta = 0[m[41m[m
+     zero_graph = (-b - delta**(1/2)) / (2*a)[m
+     ###calcular intervalo invariável[m
+     maximo = value*prob[m
+[36m@@ -97,6 +103,8 @@[m [mdef gordon_loeb():[m
+             ebis = (prob-prob/(0.5+z/(value*alpha)))*value[m
+         case _:[m
+             ebis = 0[m
+[32m+[m[32m    if ebis < 0:[m[41m[m
+[32m+[m[32m        ebis = 0[m[41m[m
+     enbis = ebis - z[m
+     maximo = value*prob[m
+     efetividade = enbis/maximo[m
+[1mdiff --git a/core/__pycache__/__init__.cpython-312.pyc b/core/__pycache__/__init__.cpython-312.pyc[m
+[1mindex fcf0244..406bb19 100644[m
+Binary files a/core/__pycache__/__init__.cpython-312.pyc and b/core/__pycache__/__init__.cpython-312.pyc differ
+[1mdiff --git a/core/__pycache__/settings.cpython-312.pyc b/core/__pycache__/settings.cpython-312.pyc[m
+[1mindex a44b19d..ce3792b 100644[m
+Binary files a/core/__pycache__/settings.cpython-312.pyc and b/core/__pycache__/settings.cpython-312.pyc differ
+[1mdiff --git a/core/__pycache__/urls.cpython-312.pyc b/core/__pycache__/urls.cpython-312.pyc[m
+[1mindex 2593ef8..6057ac1 100644[m
+Binary files a/core/__pycache__/urls.cpython-312.pyc and b/core/__pycache__/urls.cpython-312.pyc differ
+[1mdiff --git a/core/__pycache__/views.cpython-312.pyc b/core/__pycache__/views.cpython-312.pyc[m
+[1mindex 344271a..bf77f75 100644[m
+Binary files a/core/__pycache__/views.cpython-312.pyc and b/core/__pycache__/views.cpython-312.pyc differ
+[1mdiff --git a/core/__pycache__/wsgi.cpython-312.pyc b/core/__pycache__/wsgi.cpython-312.pyc[m
+[1mindex 4f7d26b..804860c 100644[m
+Binary files a/core/__pycache__/wsgi.cpython-312.pyc and b/core/__pycache__/wsgi.cpython-312.pyc differ
+[1mdiff --git a/dashboard/Templates/company_economic_planning.html b/dashboard/Templates/company_economic_planning.html[m
+[1mindex b2938fb..c3a127f 100644[m
+[1m--- a/dashboard/Templates/company_economic_planning.html[m
+[1m+++ b/dashboard/Templates/company_economic_planning.html[m
+[36m@@ -42,11 +42,25 @@[m
+ </style>[m
+ [m
+ <div class="container-fluid">[m
+[31m-    <div class="row mb-3">[m
+[31m-        <div class="col-12">[m
+[32m+[m[32m    <div class="row mb-3 d-flex justify-content-between align-items-center">[m
+[32m+[m[32m        <div class="col-6">[m
+             <h2>{% trans "Economic Dashboard of" %} <span class="theme-color">{{ company.name }}</span></h2>[m
+         </div>[m
+[32m+[m[32m        <div class="col-6 text-end">[m
+[32m+[m[32m            {% if sandboxprof.is_on %}[m
+[32m+[m[32m                <form method="GET" action="">[m
+[32m+[m[32m                    <input type="hidden" name="sandbox" value="false">[m
+[32m+[m[32m                    <button type="submit" class="btn btn-success">Ir para Simulação Real</button>[m
+[32m+[m[32m                </form>[m
+[32m+[m[32m            {% else %}[m
+[32m+[m[32m                <form method="GET" action="">[m
+[32m+[m[32m                    <input type="hidden" name="sandbox" value="true">[m
+[32m+[m[32m                    <button type="submit" class="btn btn-primary">Ir para Cenários Hipotéticos</button>[m
+[32m+[m[32m                </form>[m
+[32m+[m[32m            {% endif %}[m
+[32m+[m[32m        </div>[m
+     </div>[m
+[32m+[m[41m    [m
+ [m
+     <div class="row mb-3">[m
+         <div class="col-12">[m
+[36m@@ -65,14 +79,91 @@[m
+             </a>[m
+         </div>[m
+     </div>[m
+[31m-[m
+[32m+[m[41m    [m
+     {% for asset in assets %}[m
+     <div class="row mb-4">[m
+         <div class="col-12">[m
+             <div class="card">[m
+                 <div class="card-body">[m
+[32m+[m[32m                    {% if sandboxprof.is_on %}[m
+[32m+[m[32m                        <form method="GET" action="">[m
+[32m+[m[32m                            <input type="hidden" name="asset_id" value="{{ asset.asset.id }}">[m
+[32m+[m[32m                            <h4 class="header-title mb-3">[m
+[32m+[m[32m                                <i class="mdi mdi-cash-register me-1"></i>[m
+[32m+[m[32m                                Simulações de Gordon-Loeb - {{ asset.asset.item }} - Alpha =[m[41m [m
+[32m+[m[32m                                <input type="text" name="alpha" value="{{ alpha }}" size="5">[m
+[32m+[m[32m                            </h4>[m
+[32m+[m[32m                            <div class="table-responsive">[m
+[32m+[m[32m                                <table class="table table-sm table-centered table-nowrap mb-0">[m
+[32m+[m[32m                                    <thead>[m
+[32m+[m[32m                                        <tr>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Status do Investimento">Status</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Tipo de Ataque">Tipo</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Valor da Ação">Valor</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Probabilidade de Ataque com Sucesso">Probabilidade</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Valor Investido">Invest. Atual</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Investimento Ótimo">Invest. Ótimo</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Investimento Aceitável">Invest. Aceitável</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="EBIS Atual">EBIS Atual</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="EBIS Ótimo">EBIS Ótimo</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="ENBIS Atual">ENBIS Atual</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="ENBIS Ótimo">ENBIS Ótimo</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="ENBIS Aceitável">ENBIS Aceitável</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Ajuste em Investimento">Ajuste</th>[m
+[32m+[m[32m                                            <th data-toggle="tooltip" title="Lucro Após Ajuste">Lucro</th>[m
+[32m+[m[32m                                        </tr>[m
+[32m+[m[32m                                    </thead>[m
+[32m+[m[32m                                    <tbody>[m
+[32m+[m[32m                                        {% for attack in asset.ataques %}[m
+[32m+[m[32m                                        <tr>[m
+[32m+[m[32m                                            <td>[m
+[32m+[m[32m                                                <span id="emoji-{{ asset.asset.id }}-{{ forloop.counter }}"[m
+[32m+[m[32m                                                    class="emoji"></span>[m
+[32m+[m[32m                                                <span id="value-{{ asset.asset.id }}-{{ forloop.counter }}"[m
+[32m+[m[32m                                                    data-invest="{{ attack.investido }}"[m
+[32m+[m[32m                                                    data-seg-min="{{ attack.otimo.seg_min }}"[m
+[32m+[m[32m                                                    data-seg-max="{{ attack.otimo.seg_max }}" style="display: none;"></span>[m
+[32m+[m[32m                                            </td>[m
+[32m+[m[32m                                            <td>{{ attack.type }}</td>[m
+[32m+[m[32m                                                <td>[m
+[32m+[m[32m                                                    $<input type="text" name="attack_valor_{{ attack.type }}" value="{{ attack.valor|floatformat:2 }}" size = 5>[m
+[32m+[m[32m                                                </td>[m
+[32m+[m[32m                                                <td>[m
+[32m+[m[32m                                                    <input type="text" name="prob_value_{{ attack.type }}"" value="{{ attack.prob|floatformat:2 }}" size = 3>%[m
+[32m+[m[32m                                                </td>[m
+[32m+[m[32m                                                <td title="${{ asset.investido|floatformat:2 }}">[m
+[32m+[m[32m                                                    $<input type="text" name="investido_value_{{ attack.type }}" value="{{ attack.investido }}" size = 4>[m
+[32m+[m[32m                                                </td>[m
+[32m+[m[32m                                            <td class="text-success" title="${{ attack.otimo.z|floatformat:2 }}">[m
+[32m+[m[32m                                                ${{attack.otimo.z|format_large_number }}</td>[m
+[32m+[m[32m                                            <td[m
+[32m+[m[32m                                                title="${{ attack.otimo.seg_min|floatformat:2 }} - ${{ attack.otimo.seg_max|floatformat:2 }}">[m
+[32m+[m[32m                                                ${{ attack.otimo.seg_min|format_large_number }} - ${{ attack.otimo.seg_max|format_large_number }}[m
+[32m+[m[32m                                            </td>[m
+[32m+[m
+[32m+[m[32m                                            <td title="${{ attack.atual.ebis|floatformat:2 }}">${{ attack.atual.ebis|format_large_number }}</td>[m
+[32m+[m[32m                                            <td title="${{ attack.otimo.ebis|floatformat:2 }}">${{ attack.otimo.ebis|format_large_number }}</td>[m
+[32m+[m[32m                                            <td title="${{ attack.atual.enbis|floatformat:2 }}">${{ attack.atual.enbis|format_large_number }}</td>[m
+[32m+[m[32m                                            <td title="${{ attack.otimo.enbis|floatformat:2 }}">${{ attack.otimo.enbis|format_large_number }}</td>[m
+[32m+[m[32m                                            <td title="${{ attack.otimo.seg_enbis|floatformat:2 }}">${{ attack.otimo.seg_enbis|format_large_number }}</td>[m
+[32m+[m[32m                                            <td class="{% if attack.falta > 0 %}text-danger{% else %}text-success{% endif %}"[m
+[32m+[m[32m                                                title="${{ attack.falta|floatformat:2 }}">[m
+[32m+[m[32m                                                ${{ attack.falta|format_large_number }}[m
+[32m+[m[32m                                            </td>[m
+[32m+[m[32m                                            <td class="{% if attack.retorno > 0 %}text-success{% else %}text-danger{% endif %}"[m
+[32m+[m[32m                                                title="${{ attack.retorno|floatformat:2 }}">[m
+[32m+[m[32m                                                ${{ attack.retorno|format_large_number }}[m
+[32m+[m[32m                                            </td>[m
+[32m+[m[32m                                        </tr>[m
+[32m+[m[32m                                        {% endfor %}[m
+[32m+[m[32m                                    </tbody>[m
+[32m+[m[32m                                </table>[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                            <button type="submit" class="btn btn-success">Calcular</button>[m
+[32m+[m[32m                        </form>[m
+[32m+[m[32m                    {% else %}[m
+                     <h4 class="header-title mb-3"><i class="mdi mdi-cash-register me-1"></i>Simulações de Gordon-Loeb -[m
+[31m-                        {{ asset.asset.item }} em {{ year }}</h4>[m
+[32m+[m[32m                        {{ asset.asset.item }}</h4>[m
+                     <div class="table-responsive">[m
+                         <table class="table table-sm table-centered table-nowrap mb-0">[m
+                             <thead>[m
+[36m@@ -81,7 +172,7 @@[m
+                                     <th data-toggle="tooltip" title="Tipo de Ataque">Tipo</th>[m
+                                     <th data-toggle="tooltip" title="Valor da Ação">Valor</th>[m
+                                     <th data-toggle="tooltip" title="Probabilidade de Ataque com Sucesso">Probabilidade</th>[m
+[31m-                                    <th data-toggle="tooltip" title="Valor Investido">Invest.</th>[m
+[32m+[m[32m                                    <th data-toggle="tooltip" title="Valor Investido">Invest. Atual</th>[m
+                                     <th data-toggle="tooltip" title="Investimento Ótimo">Invest. Ótimo</th>[m
+                                     <th data-toggle="tooltip" title="Investimento Aceitável">Invest. Aceitável</th>[m
+                                     <th data-toggle="tooltip" title="EBIS Atual">EBIS Atual</th>[m
+[36m@@ -100,40 +191,44 @@[m
+                                         <span id="emoji-{{ asset.asset.id }}-{{ forloop.counter }}"[m
+                                             class="emoji"></span>[m
+                                         <span id="value-{{ asset.asset.id }}-{{ forloop.counter }}"[m
+[31m-                                            data-investido="{{ asset.investido }}"[m
+[32m+[m[32m                                            data-invest="{{ attack.investido }}"[m
+                                             data-seg-min="{{ attack.otimo.seg_min }}"[m
+                                             data-seg-max="{{ attack.otimo.seg_max }}" style="display: none;"></span>[m
+                                     </td>[m
+                                     <td>{{ attack.type }}</td>[m
+[31m-                                    <td title="${{ asset.asset.value|floatformat:2 }}">{{ asset.asset.value|format_large_number }}</td>[m
+[31m-                                    <td>{{ attack.prob|floatformat:2 }}%</td>[m
+[31m-                                    <td class="{% if attack.atual.z > attack.otimo.seg_max or attack.atual.z < attack.otimo.seg_min %} text-danger{% else %}text-success{% endif %}"[m
+[31m-                                        title="${{ asset.investido|floatformat:2 }}">{{ asset.investido|format_large_number }}</td>[m
+[32m+[m[32m                                        <td title="${{ asset.asset.value|floatformat:2 }}">${{ attack.valor|format_large_number }}</td>[m
+[32m+[m[32m                                        <td>{{ attack.prob|floatformat:2 }}%</td>[m
+[32m+[m[32m                                        <td class="{% if attack.atual.z > attack.otimo.seg_max or attack.atual.z < attack.otimo.seg_min %} text-danger{% else %}text-success{% endif %}"[m
+[32m+[m[32m                                            title="${{ asset.investido|floatformat:2 }}">${{ attack.investido|format_large_number }}</td>[m
+                                     <td class="text-success" title="${{ attack.otimo.z|floatformat:2 }}">[m
+[31m-                                        {{attack.otimo.z|format_large_number }}</td>[m
+[32m+[m[32m                                        ${{attack.otimo.z|format_large_number }}</td>[m
+                                     <td[m
+                                         title="${{ attack.otimo.seg_min|floatformat:2 }} - ${{ attack.otimo.seg_max|floatformat:2 }}">[m
+[31m-                                        {{ attack.otimo.seg_min|format_large_number }} - {{ attack.otimo.seg_max|format_large_number }}[m
+[32m+[m[32m                                        ${{ attack.otimo.seg_min|format_large_number }} - ${{ attack.otimo.seg_max|format_large_number }}[m
+                                     </td>[m
+ [m
+[31m-                                    <td title="${{ attack.atual.ebis|floatformat:2 }}">{{ attack.atual.ebis|format_large_number }}</td>[m
+[31m-                                    <td title="${{ attack.otimo.ebis|floatformat:2 }}">{{ attack.otimo.ebis|format_large_number }}</td>[m
+[31m-                                    <td title="${{ attack.atual.enbis|floatformat:2 }}">{{ attack.atual.enbis|format_large_number }}</td>[m
+[31m-                                    <td title="${{ attack.otimo.enbis|floatformat:2 }}">{{ attack.otimo.enbis|format_large_number }}</td>[m
+[31m-                                    <td title="${{ attack.otimo.seg_enbis|floatformat:2 }}">{{ attack.otimo.seg_enbis|format_large_number }}</td>[m
+[32m+[m[32m                                    <td title="${{ attack.atual.ebis|floatformat:2 }}">${{ attack.atual.ebis|format_large_number }}</td>[m
+[32m+[m[32m                                    <td title="${{ attack.otimo.ebis|floatformat:2 }}">${{ attack.otimo.ebis|format_large_number }}</td>[m
+[32m+[m[32m                                    <td title="${{ attack.atual.enbis|floatformat:2 }}">${{ attack.atual.enbis|format_large_number }}</td>[m
+[32m+[m[32m                                    <td title="${{ attack.otimo.enbis|floatformat:2 }}">${{ attack.otimo.enbis|format_large_number }}</td>[m
+[32m+[m[32m                                    <td title="${{ attack.otimo.seg_enbis|floatformat:2 }}">${{ attack.otimo.seg_enbis|format_large_number }}</td>[m
+                                     <td class="{% if attack.falta > 0 %}text-danger{% else %}text-success{% endif %}"[m
+                                         title="${{ attack.falta|floatformat:2 }}">[m
+[31m-                                        {{ attack.falta|format_large_number }}[m
+[32m+[m[32m                                        ${{ attack.falta|format_large_number }}[m
+                                     </td>[m
+                                     <td class="{% if attack.retorno > 0 %}text-success{% else %}text-danger{% endif %}"[m
+                                         title="${{ attack.retorno|floatformat:2 }}">[m
+[31m-                                        {{ attack.retorno|format_large_number }}[m
+[32m+[m[32m                                        ${{ attack.retorno|format_large_number }}[m
+                                     </td>[m
+                                 </tr>[m
+                                 {% endfor %}[m
+                             </tbody>[m
+                         </table>[m
+                     </div>[m
+[32m+[m[32m                    {% endif %}[m
+[32m+[m
+[32m+[m
+[32m+[m
+                 </div>[m
+             </div>[m
+         </div>[m
+[36m@@ -142,20 +237,55 @@[m
+         <div class="col-12">[m
+             <div class="card">[m
+                 <div class="card-body">[m
+[31m-                    {% with last_attack=asset.ataques|last %}[m
+[31m-                    <h5 class="card-title mb-3"><i class="mdi mdi-chart-line me-1"></i>{{ asset.asset.item }} - Gráfico do EBIS para ataque tipo {{ last_attack.type }} e Flutuação Discreta = {{ last_attack.otimo.seg}}% e Alpha = {{ alpha }}</h5>[m
+[31m-                    <div class="chart-container" style="position: relative; height:30vh; width:100%;">[m
+[31m-                        <canvas id="myChart-{{ forloop.counter }}"></canvas>[m
+[31m-                    </div>[m
+[31m-                    <div class="chart-params" data-func="{{ last_attack.func }}"[m
+[31m-                        data-enbis="{{ last_attack.otimo.enbis }}" data-inic="{{ last_attack.min }}"[m
+[31m-                        data-fim="{{ last_attack.max }}" data-otimo="{{ last_attack.otimo.z }}"[m
+[31m-                        data-value="{{ asset.asset.value }}" data-prob="{{ last_attack.prob }}"[m
+[31m-                        data-atual="{{ last_attack.atual.z }}" data-seg-min="{{ last_attack.otimo.seg_min }}"[m
+[31m-                        data-seg-max="{{ last_attack.otimo.seg_max }}" data-divisions="100"[m
+[31m-                        data-zero="{{last_attack.otimo.zero_graph}}">[m
+[32m+[m[32m                    <h5 class="card-title mb-3">[m
+[32m+[m[32m                        <i class="mdi mdi-chart-line me-1"></i>{{ asset.asset.item }} - Gráfico do EBIS para ataque selecionado[m
+[32m+[m[32m                    </Sh5>[m
+[32m+[m[41m                    [m
+[32m+[m[32m                    <!-- Caixa de seleção para escolher o ataque -->[m
+[32m+[m[32m                    <label for="attackSelector-{{ forloop.counter }}"></label>[m
+[32m+[m[32m                    <div>[m
+[32m+[m[32m                        <form method="GET" action="{% url 'dashboard:economic_planning' company.pk %}">[m
+[32m+[m[32m                            <column>[m
+[32m+[m[32m                                <!-- Campo oculto para passar o ID do asset -->[m
+[32m+[m[32m                                <input type="hidden" name="asset_id" value="{{ asset.asset.id }}">[m
+[32m+[m[32m                                <select id="attackSelector-{{ forloop.counter }}" name="selected_attack" class="form-select attack-selector">[m
+[32m+[m[32m                                    {% for ataque in asset.ataques %}[m
+[32m+[m[32m                                        <option value="{{ forloop.counter }}" {% if forloop.counter|stringformat:"d" == selected_attack %}selected{% endif %}>[m
+[32m+[m[32m                                            {{ ataque.type }} - Flutuação Discreta: {{ ataque.otimo.seg }}% - Alpha: {{ alpha }}[m
+[32m+[m[32m                                        </option>[m
+[32m+[m[32m                                    {% endfor %}[m
+[32m+[m[32m                                </select>[m
+[32m+[m[32m                                <button type="submit" class="btn btn-success">Atualizar Gráfico</button>[m
+[32m+[m[32m                            </column>[m
+[32m+[m[32m                        </form>[m
+                     </div>[m
+[31m-                    {% endwith %}[m
+[32m+[m[32m                    {% for ataque in asset.ataques %}[m
+[32m+[m[32m                        <!-- Verifique se o ataque atual é o selecionado -->[m
+[32m+[m[32m                        {% if forloop.counter|stringformat:"d" == selected_attack %}[m
+[32m+[m[32m                            <!-- Gráfico -->[m
+[32m+[m[32m                            <div class="chart-container mt-3" style="position: relative; height:30vh; width:100%;">[m
+[32m+[m[32m                                <canvas id="myChart-{{ forloop.parentloop.counter }}-{{ forloop.counter }}"></canvas>[m
+[32m+[m[32m                            </div>[m
+[32m+[m
+[32m+[m[32m                            <!-- Dados do gráfico -->[m
+[32m+[m[32m                            <div class="chart-params attack-{{ forloop.parentloop.counter }}-{{ forloop.counter }}"[m[41m [m
+[32m+[m[32m                                data-func="{{ ataque.func }}"[m
+[32m+[m[32m                                data-enbis="{{ ataque.otimo.enbis }}"[m[41m [m
+[32m+[m[32m                                data-inic="{{ ataque.min }}"[m
+[32m+[m[32m                                data-fim="{{ ataque.max }}"[m[41m [m
+[32m+[m[32m                                data-otimo="{{ ataque.otimo.z }}"[m[41m [m
+[32m+[m[32m                                data-value="{{ ataque.valor }}"[m
+[32m+[m[32m                                data-prob="{{ ataque.prob }}"[m[41m [m
+[32m+[m[32m                                data-atual="{{ ataque.atual.z }}"[m[41m [m
+[32m+[m[32m                                data-seg-min="{{ ataque.otimo.seg_min }}"[m
+[32m+[m[32m                                data-seg-max="{{ ataque.otimo.seg_max }}"[m[41m [m
+[32m+[m[32m                                data-divisions="100"[m[41m [m
+[32m+[m[32m                                data-zero="{{ ataque.otimo.zero_graph }}"[m
+[32m+[m[32m                                style="display:none;">[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                        {% endif %}[m
+[32m+[m[32m                    {% endfor %}[m
+[32m+[m
+ [m
+                 </div>[m
+             </div>[m
+[36m@@ -165,9 +295,10 @@[m
+ </div>[m
+ <script>[m
+ [m
+[31m-    function stringToBoolean(str) {[m
+[32m+[m[32mfunction stringToBoolean(str) {[m
+         return str.toLowerCase() === 'true';[m
+     }[m
+[32m+[m
+     // Função para obter o valor de um atributo data-*[m
+     function getDataAttribute(element, attribute) {[m
+         return element.getAttribute(`data-${attribute}`);[m
+[36m@@ -180,13 +311,13 @@[m
+         return num.toFixed(2);[m
+     }[m
+ [m
+[31m-[m
+     // Função para criar gráficos[m
+     function createChart(canvasId, paramsElement) {[m
+         const otimo = parseFloat(getDataAttribute(paramsElement, 'otimo'));[m
+         const atual = parseFloat(getDataAttribute(paramsElement, 'atual'));[m
+         const enbis = parseFloat(getDataAttribute(paramsElement, 'enbis'));[m
+         const value = parseFloat(getDataAttribute(paramsElement, 'value'));[m
+[32m+[m[32m        console.log(value)[m
+         const prob = parseFloat(getDataAttribute(paramsElement, 'prob'));[m
+         const inic = parseFloat(getDataAttribute(paramsElement, 'zero')) || 0;[m
+         const fim = parseFloat(getDataAttribute(paramsElement, 'fim')) || 0;[m
+[36m@@ -201,6 +332,9 @@[m
+ [m
+         // Avalia a função passada como string[m
+         const func = new Function('x', `return ${funcString};`);[m
+[32m+[m
+[32m+[m[32m        // Logs para verificar dados[m
+[32m+[m
+         // Configuração dos dados[m
+         const data = {[m
+             labels: labels,[m
+[36m@@ -214,7 +348,11 @@[m
+             },[m
+             {[m
+                 label: 'EBIS',[m
+[31m-                data: labels.map(func),  // Aplica a função a cada valor de x[m
+[32m+[m[32m                data: labels.map(x =>[m[41m [m
+[32m+[m[32m                func(x) < 0[m
+[32m+[m[32m                        ? 0[m
+[32m+[m[32m                        : func(x)[m
+[32m+[m[32m                ),  // Aplica a função a cada valor de x[m
+                 borderColor: 'rgba(255, 90, 8, 1)',[m
+                 backgroundColor: 'rgba(255, 90, 8, 0.2)',[m
+                 fill: false,[m
+[36m@@ -245,8 +383,6 @@[m
+                         const x0 = ctx.p0.parsed.x;[m
+                         const x1 = ctx.p1.parsed.x;[m
+ [m
+[31m-                        //console.log(`Segment points: x0 = ${x0}, x1 = ${x1}`);[m
+[31m-[m
+                         // Cor verde se ambos os pontos do segmento estão dentro do intervalo seg_min a seg_max[m
+                         if (x0 >= seg_min && x0 <= seg_max && x1 >= seg_min && x1 <= seg_max) {[m
+                             return 'rgba(13, 216, 0, 1)';[m
+[36m@@ -291,7 +427,7 @@[m
+                         max: labels[labels.length - 1],  // Fim do eixo x no último elemento de labels[m
+                         title: {[m
+                             display: true,[m
+[31m-                            text: 'Investimento',  // Substitua pelo rótulo desejado[m
+[32m+[m[32m                            text: 'Investimento',[m
+                             font: {[m
+                                 size: 14,  // Tamanho da fonte opcional[m
+                             },[m
+[36m@@ -307,7 +443,7 @@[m
+                         beginAtZero: true,[m
+                         title: {[m
+                             display: true,[m
+[31m-                            text: 'Benefício do investimento',  // Substitua pelo rótulo desejado[m
+[32m+[m[32m                            text: 'Benefício do investimento',[m
+                             font: {[m
+                                 size: 14,  // Tamanho da fonte opcional[m
+                             },[m
+[36m@@ -334,7 +470,6 @@[m
+                                     hidden: false,[m
+                                     index: 2, // define a posição da legenda[m
+                                 });[m
+[31m-                                // Adicionando o item verde manualmente[m
+                                 return original;[m
+                             }[m
+                         }[m
+[36m@@ -362,12 +497,17 @@[m
+         );[m
+     }[m
+ [m
+[32m+[m[32m    // Inicializa gráficos para cada elemento canvas[m
+[32m+[m[32m    document.querySelectorAll('.chart-params').forEach((paramsElement) => {[m
+[32m+[m[32m        const canvasId = `myChart-${paramsElement.classList[1].split('-').slice(1).join('-')}`;[m
+[32m+[m[32m        createChart(canvasId, paramsElement);[m
+[32m+[m[32m    });[m
+[32m+[m
+     // Inicializa gráficos para cada elemento canvas[m
+     document.querySelectorAll('.chart-params').forEach((paramsElement, index) => {[m
+         const canvasId = `myChart-${index + 1}`;[m
+         createChart(canvasId, paramsElement);[m
+     });[m
+[31m-[m
+ </script>[m
+ [m
+ <script>[m
+[36m@@ -376,7 +516,7 @@[m
+             const [_, assetId, attackIndex] = emojiElement.id.split('-');[m
+             const valueElement = document.getElementById(`value-${assetId}-${attackIndex}`);[m
+ [m
+[31m-            const investido = parseFloat(valueElement.getAttribute('data-investido'));[m
+[32m+[m[32m            const investido = parseFloat(valueElement.getAttribute('data-invest'));[m
+             const segMin = parseFloat(valueElement.getAttribute('data-seg-min'));[m
+             const segMax = parseFloat(valueElement.getAttribute('data-seg-max'));[m
+ [m
+[1mdiff --git a/dashboard/__pycache__/__init__.cpython-312.pyc b/dashboard/__pycache__/__init__.cpython-312.pyc[m
+[1mindex 92dd096..9e9e594 100644[m
+Binary files a/dashboard/__pycache__/__init__.cpython-312.pyc and b/dashboard/__pycache__/__init__.cpython-312.pyc differ
+[1mdiff --git a/dashboard/__pycache__/admin.cpython-312.pyc b/dashboard/__pycache__/admin.cpython-312.pyc[m
+[1mindex f1aede6..5b9ed8c 100644[m
+Binary files a/dashboard/__pycache__/admin.cpython-312.pyc and b/dashboard/__pycache__/admin.cpython-312.pyc differ
+[1mdiff --git a/dashboard/__pycache__/apps.cpython-312.pyc b/dashboard/__pycache__/apps.cpython-312.pyc[m
+[1mindex 6512430..0c46b7f 100644[m
+Binary files a/dashboard/__pycache__/apps.cpython-312.pyc and b/dashboard/__pycache__/apps.cpython-312.pyc differ
+[1mdiff --git a/dashboard/__pycache__/models.cpython-312.pyc b/dashboard/__pycache__/models.cpython-312.pyc[m
+[1mindex 238dd00..cc585df 100644[m
+Binary files a/dashboard/__pycache__/models.cpython-312.pyc and b/dashboard/__pycache__/models.cpython-312.pyc differ
+[1mdiff --git a/dashboard/__pycache__/urls.cpython-312.pyc b/dashboard/__pycache__/urls.cpython-312.pyc[m
+[1mindex cf3f974..395e168 100644[m
+Binary files a/dashboard/__pycache__/urls.cpython-312.pyc and b/dashboard/__pycache__/urls.cpython-312.pyc differ
+[1mdiff --git a/dashboard/__pycache__/views.cpython-312.pyc b/dashboard/__pycache__/views.cpython-312.pyc[m
+[1mindex 378ca49..87b6ac6 100644[m
+Binary files a/dashboard/__pycache__/views.cpython-312.pyc and b/dashboard/__pycache__/views.cpython-312.pyc differ
+[1mdiff --git a/dashboard/admin.py b/dashboard/admin.py[m
+[1mindex d27bd4f..625c90c 100644[m
+[1m--- a/dashboard/admin.py[m
+[1m+++ b/dashboard/admin.py[m
+[36m@@ -1,7 +1,7 @@[m
+ from django.contrib import admin[m
+ from django.utils.html import format_html[m
+ from django.utils.translation import gettext_lazy as _[m
+[31m-from .models import CompanyProfile, AnnualRevenue, CybersecuritySpending, CompanyAssets, AdvancedCompanyProfile, Region, AttackType, AttackHistory, RiskAndEconomic[m
+[32m+[m[32mfrom .models import CompanyProfile, AnnualRevenue, CybersecuritySpending, CompanyAssets, AdvancedCompanyProfile, Region, AttackType, AttackHistory, RiskAndEconomic, SandboxCompany, SandboxAsset, SandboxAttack[m
+ from django.urls import reverse[m
+ from .models import Scope, Region, Sector, Report, CyberSecurityData[m
+ [m
+[36m@@ -143,3 +143,19 @@[m [mclass CyberSecurityDataAdmin(admin.ModelAdmin):[m
+             'classes': ('collapse',)[m
+         }),[m
+     )[m
+[32m+[m
+[32m+[m
+[32m+[m[32m@admin.register(SandboxCompany)[m
+[32m+[m[32mclass SandboxCompanyAdmin(admin.ModelAdmin):[m
+[32m+[m[32m    list_display = ('company', 'is_on', 'alpha')  # Campos que você quer mostrar na lista[m
+[32m+[m[32m    search_fields = ('company__name',)  # Campos para pesquisa[m
+[32m+[m
+[32m+[m[32m@admin.register(SandboxAsset)[m
+[32m+[m[32mclass SandboxAssetAdmin(admin.ModelAdmin):[m
+[32m+[m[32m    list_display = ('sandbox_company', 'asset')  # Campos a mostrar[m
+[32m+[m[32m    search_fields = ('asset__name',)  # Campos para pesquisa[m
+[32m+[m
+[32m+[m[32m@admin.register(SandboxAttack)[m
+[32m+[m[32mclass SandboxAttackAdmin(admin.ModelAdmin):[m
+[32m+[m[32m    list_display = ('asset', 'name', 'value', 'prob', 'invest')  # Campos a mostrar[m
+[32m+[m[32m    search_fields = ('name',)  # Campos para pesquisa[m
+\ No newline at end of file[m
+[1mdiff --git a/dashboard/migrations/__pycache__/0001_initial.cpython-312.pyc b/dashboard/migrations/__pycache__/0001_initial.cpython-312.pyc[m
+[1mindex aa482f3..1864338 100644[m
+Binary files a/dashboard/migrations/__pycache__/0001_initial.cpython-312.pyc and b/dashboard/migrations/__pycache__/0001_initial.cpython-312.pyc differ
+[1mdiff --git a/dashboard/migrations/__pycache__/0002_remove_empresa_inventario_ativos_and_more.cpython-312.pyc b/dashboard/migrations/__pycache__/0002_remove_empresa_inventario_ativos_and_more.cpython-312.pyc[m
+[1mindex ca4898e..57eab4c 100644[m
+Binary files a/dashboard/migrations/__pycache__/0002_remove_empresa_inventario_ativos_and_more.cpython-312.pyc and b/dashboard/migrations/__pycache__/0002_remove_empresa_inventario_ativos_and_more.cpython-312.pyc differ
+[1mdiff --git a/dashboard/migrations/__pycache__/0003_rename_descarte_seguro_empresa_descarte_seguro_dos_dados_and_more.cpython-312.pyc b/dashboard/migrations/__pycache__/0003_rename_descarte_seguro_empresa_descarte_seguro_dos_dados_and_more.cpython-312.pyc[m
+[1mindex 566820c..dcedc7a 100644[m
+Binary files a/dashboard/migrations/__pycache__/0003_rename_descarte_seguro_empresa_descarte_seguro_dos_dados_and_more.cpython-312.pyc and b/dashboard/migrations/__pycache__/0003_rename_descarte_seguro_empresa_descarte_seguro_dos_dados_and_more.cpython-312.pyc differ
+[1mdiff --git a/dashboard/migrations/__pycache__/0004_rename_criptografia_armazenada_empresa_criptografia_dados_armazenados_and_more.cpython-312.pyc b/dashboard/migrations/__pycache__/0004_rename_criptografia_armazenada_empresa_criptografia_dados_armazenados_and_more.cpython-312.pyc[m
+[1mindex c79a2d4..ca725a5 100644[m
+Binary files a/dashboard/migrations/__pycache__/0004_rename_criptografia_armazenada_empresa_criptografia_dados_armazenados_and_more.cpython-312.pyc and b/dashboard/migrations/__pycache__/0004_rename_criptografia_armazenada_empresa_criptografia_dados_armazenados_and_more.cpython-312.pyc differ
+[1mdiff --git a/dashboard/migrations/__pycache__/0005_remove_empresa_atualizacao_plano_resposta_incidentes_and_more.cpython-312.pyc b/dashboard/migrations/__pycache__/0005_remove_empresa_atualizacao_plano_resposta_incidentes_and_more.cpython-312.pyc[m
+[1mindex 4e0a1fc..4f2cf5d 100644[m
+Binary files a/dashboard/migrations/__pycache__/0005_remove_empresa_atualizacao_plano_resposta_incidentes_and_more.cpython-312.pyc and b/dashboard/migrations/__pycache__/0005_remove_empresa_atualizacao_plano_resposta_incidentes_and_more.cpython-312.pyc differ
+[1mdiff --git a/dashboard/migrations/__pycache__/0006_rename_empresa_companyprofile_and_more.cpython-312.pyc b/dashboard/migrations/__pycache__/0006_rename_empresa_companyprofile_and_more.cpython-312.pyc[m
+[1mindex adeadf3..57b4123 100644[m
+Binary files a/dashboard/migrations/__pycache__/0006_rename_empresa_companyprofile_and_more.cpython-312.pyc and b/dashboard/migrations/__pycache__/0006_rename_empresa_companyprofile_and_more.cpython-312.pyc differ
+[1mdiff --git a/dashboard/migrations/__pycache__/__init__.cpython-312.pyc b/dashboard/migrations/__pycache__/__init__.cpython-312.pyc[m
+[1mindex 681e14c..0e8ac17 100644[m
+Binary files a/dashboard/migrations/__pycache__/__init__.cpython-312.pyc and b/dashboard/migrations/__pycache__/__init__.cpython-312.pyc differ
+[1mdiff --git a/dashboard/models.py b/dashboard/models.py[m
+[1mindex 1a1cfcb..ab681ae 100644[m
+[1m--- a/dashboard/models.py[m
+[1m+++ b/dashboard/models.py[m
+[36m@@ -171,6 +171,7 @@[m [mclass CybersecuritySpending(models.Model):[m
+             'data_atualizacao': self.data_atualizacao,[m
+         }[m
+ [m
+[32m+[m
+ class CompanyAssets(models.Model):[m
+     SERVER = 'Server'[m
+     DATABASE = 'database'[m
+[36m@@ -216,7 +217,41 @@[m [mclass CompanyAssets(models.Model):[m
+             'data_criacao': self.data_criacao,[m
+             'data_atualizacao': self.data_atualizacao,[m
+         }[m
+[31m-    [m
+[32m+[m
+[32m+[m[32m######################################[m
+[32m+[m[32m# Simulacoes econômicas Sandbox[m
+[32m+[m[32m######################################[m
+[32m+[m
+[32m+[m[32mclass SandboxCompany(models.Model):[m
+[32m+[m[32m    company = models.ForeignKey(CompanyProfile, on_delete=models.CASCADE, related_name='sandbox_profile')[m
+[32m+[m[32m    is_on = models.BooleanField(default = False)[m
+[32m+[m[32m    alpha = models.DecimalField(_("alpha"), max_digits=14, decimal_places=8, default = 0.001)[m
+[32m+[m
+[32m+[m[32mclass SandboxAsset(models.Model):[m
+[32m+[m[32m    sandbox_company = models.ForeignKey(SandboxCompany, on_delete=models.CASCADE, related_name='sandbox_profile')[m
+[32m+[m[32m    asset = models.ForeignKey(CompanyAssets, on_delete=models.CASCADE, related_name='company_assets')[m
+[32m+[m
+[32m+[m[32mclass SandboxAttack(models.Model):[m
+[32m+[m[32m    MALWARE = 'malware'[m
+[32m+[m[32m    PHISHING = 'phishing'[m
+[32m+[m[32m    DDOS = 'ddos'[m
+[32m+[m[32m    GERAL = 'geral'[m
+[32m+[m
+[32m+[m[32m    ITEM_CHOICES = [[m
+[32m+[m[32m        (MALWARE, _("Malware")),[m
+[32m+[m[32m        (PHISHING, _("Phishing")),[m
+[32m+[m[32m        (DDOS, _("DDoS")),[m
+[32m+[m[32m        (GERAL, _("Geral")),[m
+[32m+[m[32m    ][m
+[32m+[m
+[32m+[m[32m    asset = models.ForeignKey(SandboxAsset, on_delete=models.CASCADE, related_name='sandbox_asset')[m
+[32m+[m[32m    name = models.CharField(_("Name"), max_length=255, choices=ITEM_CHOICES, default = '')[m
+[32m+[m[32m    value = models.IntegerField(_("Value"), default = 0)[m
+[32m+[m[32m    prob = models.DecimalField(_("Prob"), max_digits=14, decimal_places=2, default = 0)[m
+[32m+[m[32m    invest = models.IntegerField(_("Invested"), default = 0)[m
+[32m+[m
+[32m+[m
+[32m+[m
+ ######################################[m
+ # company profile avançado[m
+ ######################################[m
+[1mdiff --git a/dashboard/views.py b/dashboard/views.py[m
+[1mindex 207b76c..5d4d5e3 100644[m
+[1m--- a/dashboard/views.py[m
+[1m+++ b/dashboard/views.py[m
+[36m@@ -10,7 +10,7 @@[m [mfrom django.views.decorators.http import require_http_methods[m
+ from django.views.generic import TemplateView[m
+ from django.forms.models import inlineformset_factory[m
+ from django.db import transaction[m
+[31m-from .models import CompanyProfile, CompanyAssets, AnnualRevenue, CybersecuritySpending, AdvancedCompanyProfile, AttackHistory, CyberSecurityData, Region, RiskAndEconomic, UserCompanyCopy[m
+[32m+[m[32mfrom .models import CompanyProfile, CompanyAssets, AnnualRevenue, CybersecuritySpending, AdvancedCompanyProfile, AttackHistory, CyberSecurityData, SandboxCompany, SandboxAsset, SandboxAttack, Region, RiskAndEconomic, UserCompanyCopy[m
+ from .report_database_analysis import calcular_media_probabilidades_por_ataque_e_continente, calcular_media_probabilidades_por_ataque_e_setor[m
+ from django.forms import modelformset_factory[m
+ from .forms import CompanyProfileForm, AnnualRevenueForm, CybersecuritySpendingForm, CompanyAssetsForm[m
+[36m@@ -948,7 +948,8 @@[m [murl_poisson = 'http://localhost:5000/poisson/' #parametros: probabilidade -> ret[m
+ @login_required[m
+ def economic_planning(request, pk):[m
+     company = get_object_or_404(CompanyProfile, pk=pk)[m
+[31m-[m
+[32m+[m[32m    selected_attack = request.GET.get('selected_attack', "1")[m
+[32m+[m[32m    asset_id = request.GET.get('asset_id', None) ## para atualizar gráfico específico[m
+     ## Testa RiskAndEconomic[m
+     try:[m
+         riskandeconomic = RiskAndEconomic.objects.get(company=company)[m
+[36m@@ -973,47 +974,118 @@[m [mdef economic_planning(request, pk):[m
+     cybersecurity_spendings = sum(float(spending.amount) for spending in CybersecuritySpending.objects.filter(company=company, year=years[0]).order_by('-year'))[m
+     company_assets = CompanyAssets.objects.filter(company=company)[m
+     probs = {[m
+[31m-        'Malware': riskandeconomic.malware_succ/100,[m
+[31m-        'Phishing': riskandeconomic.phishing_succ/100,[m
+[31m-        'DDoS': riskandeconomic.ddos_succ/100,[m
+[32m+[m[32m        'Malware': riskandeconomic.malware_succ / 100,[m
+[32m+[m[32m        'Phishing': riskandeconomic.phishing_succ / 100,[m
+[32m+[m[32m        'DDoS': riskandeconomic.ddos_succ / 100,[m
+     }[m
+     no_attack_prob = 1[m
+     for prob in probs.values():[m
+[31m-        no_attack_prob *= (1-prob)[m
+[32m+[m[32m        no_attack_prob *= (1 - prob)[m
+     probs['Geral'] = 1 - no_attack_prob[m
+[32m+[m[41m    [m
+[32m+[m[32m    ##Sandbox[m[41m [m
+[32m+[m[32m    sand_profile, sand_created = SandboxCompany.objects.get_or_create(company=company)[m
+[32m+[m[32m    sandbox_on_request = request.GET.get('sandbox', None)[m
+[32m+[m[41m    [m
+[32m+[m[32m    if sandbox_on_request is not None:[m
+[32m+[m[32m        sand_profile.is_on = sandbox_on_request == 'true'[m
+ [m
+[32m+[m[32m    for asset in company_assets:[m
+[32m+[m[32m        sand_asset, sand_asset_created = SandboxAsset.objects.get_or_create(sandbox_company = sand_profile, asset = asset)[m
+[32m+[m[32m        for attack, prob in probs.items():[m
+[32m+[m[32m            sand_attack, sand_attack_created = SandboxAttack.objects.get_or_create(asset = sand_asset, name = attack)[m
+[32m+[m[32m            if not sand_profile.is_on:[m
+[32m+[m[32m                sand_attack.name = attack[m
+[32m+[m[32m                sand_attack.prob = prob[m
+[32m+[m[32m                sand_attack.value = asset.value[m
+[32m+[m[32m                sand_attack.invest = to_float(cybersecurity_spendings)[m
+[32m+[m[32m            sand_attack.save()[m
+[32m+[m[32m        sand_asset.save()[m
+[32m+[m
+[32m+[m[32m    if sand_profile.is_on and 'asset_id' in request.GET:[m
+[32m+[m[32m        asset_id = request.GET.get('asset_id')[m
+[32m+[m[32m        change_sand_asset = SandboxAsset.objects.get(asset = CompanyAssets.objects.get(id = asset_id))[m
+[32m+[m[32m        sand_profile.alpha = float(request.GET.get('alpha', None).replace(",", ".")) if 'alpha' in request.GET else sand_profile.alpha[m
+[32m+[m[32m        for attack in probs.keys():[m
+[32m+[m[32m            try:[m
+[32m+[m[32m                change_sand_attack = SandboxAttack.objects.get(asset = change_sand_asset, name = attack)[m
+[32m+[m[32m                change_sand_attack.value = float(request.GET.get(f'attack_valor_{attack}').replace(",", "."))[m
+[32m+[m[32m                change_sand_attack.prob = float(request.GET.get(f'prob_value_{attack}').replace(",", "."))/100[m
+[32m+[m[32m                change_sand_attack.invest = float(request.GET.get(f'investido_value_{attack}').replace(",", "."))[m
+[32m+[m[32m                print(change_sand_attack.name, change_sand_attack.value, change_sand_attack.prob, change_sand_attack.invest)[m
+[32m+[m[32m                change_sand_attack.save()[m
+[32m+[m[32m            except:[m
+[32m+[m[32m                pass[m
+[32m+[m
+[32m+[m[32m    alpha = sand_profile.alpha = sand_profile.alpha if sand_profile.is_on else 0.001[m
+[32m+[m
+[32m+[m[32m    sandbox_on_request = request.GET.get('sandbox', None)[m
+[32m+[m[32m    if sandbox_on_request is not None:[m
+[32m+[m[32m        sand_profile.is_on = sandbox_on_request == 'true'[m
+[32m+[m
+[32m+[m[32m    sand_profile.save()[m
+[32m+[m
+[32m+[m[32m    ##Finalizar envio para html[m
+     assets_gordon_loeb = [][m
+     flutuation = 0.01[m
+[31m-    alpha = 0.001[m
+[32m+[m[41m    [m
+     for asset in company_assets:[m
+         block = {}[m
+         asset.item = asset.item.capitalize()[m
+         block['asset'] = asset[m
+         block['investido'] = to_float(cybersecurity_spendings)[m
+         block['ataques'] = [][m
+[32m+[m[32m        sand_asset = SandboxAsset.objects.get(asset = asset)[m
+         for attack in probs.keys():[m
+             if(probs[attack] != 0 ):[m
+[31m-                otimo = requests.post(url_gordon_loeb_optimal, json=[probs[attack], to_float(asset.value), 2, flutuation, alpha]).json()[m
+[31m-                atual = requests.post(url_gordon_loeb, json=[probs[attack], to_float(asset.value), to_float(cybersecurity_spendings), 2, alpha]).json()[m
+[31m-                data_attack = {[m
+[31m-                    'type': attack,[m
+[31m-                    'prob': probs[attack] * 100,[m
+[31m-                    'atual': atual,[m
+[31m-                    'otimo': otimo,[m
+[31m-                    'falta': otimo['z'] - to_float(cybersecurity_spendings),[m
+[31m-                    'retorno': otimo['enbis'] - atual['enbis'],[m
+[31m-                    'func':  requests.post(url_enbis_function, json=[probs[attack], to_float(asset.value), alpha]).json(),[m
+[31m-                    'min': otimo['z'] * 0.05,[m
+[31m-                    'max': otimo['z'] * 3 if otimo['z'] * 3 > atual['z'] else atual['z'] * 1.05 ,[m
+[31m-                    'efet': otimo['seg_enbis'] < atual['enbis'][m
+[31m-                }[m
+[31m-                block['ataques'].append(deepcopy(data_attack))[m
+[32m+[m[32m                if sand_profile.is_on:[m
+[32m+[m[32m                    sand_attack = SandboxAttack.objects.get(asset = sand_asset, name = attack)[m
+[32m+[m[32m                    prob_sand = sand_attack.prob[m
+[32m+[m[32m                    value_sand = sand_attack.value[m
+[32m+[m[32m                    invest_sand = sand_attack.invest[m
+[32m+[m[32m                    otimo = requests.post(url_gordon_loeb_optimal, json=[prob_sand, value_sand, 2, flutuation, sand_profile.alpha]).json()[m
+[32m+[m[32m                    atual = requests.post(url_gordon_loeb, json=[prob_sand, value_sand, invest_sand, 2, sand_profile.alpha]).json()[m
+[32m+[m[32m                    data_attack = {[m
+[32m+[m[32m                        'investido': invest_sand,[m
+[32m+[m[32m                        'valor': value_sand,[m
+[32m+[m[32m                        'type': attack,[m
+[32m+[m[32m                        'prob': prob_sand * 100,[m
+[32m+[m[32m                        'atual': atual,[m
+[32m+[m[32m                        'otimo': otimo,[m
+[32m+[m[32m                        'falta': otimo['z'] - invest_sand,[m
+[32m+[m[32m                        'retorno': otimo['enbis'] - atual['enbis'],[m
+[32m+[m[32m                        'func':  requests.post(url_enbis_function, json=[prob_sand, value_sand, sand_profile.alpha]).json(),[m
+[32m+[m[32m                        'min': otimo['z'] * 0.05,[m
+[32m+[m[32m                        'max': otimo['z'] * 3 if otimo['z'] * 3 > atual['z'] else atual['z'] * 1.05 ,[m
+[32m+[m[32m                        'efet': otimo['seg_enbis'] < atual['enbis'][m
+[32m+[m[32m                    }[m
+[32m+[m[32m                    block['ataques'].append(deepcopy(data_attack))[m
+[32m+[m[32m                else:[m[41m [m
+[32m+[m[32m                    otimo = requests.post(url_gordon_loeb_optimal, json=[probs[attack], to_float(asset.value), 2, flutuation, alpha]).json()[m
+[32m+[m[32m                    atual = requests.post(url_gordon_loeb, json=[probs[attack], to_float(asset.value), to_float(cybersecurity_spendings), 2, alpha]).json()[m
+[32m+[m[32m                    data_attack = {[m
+[32m+[m[32m                        'investido': block['investido'],[m
+[32m+[m[32m                        'valor': to_float(block['asset'].value),[m
+[32m+[m[32m                        'type': attack,[m
+[32m+[m[32m                        'prob': probs[attack] * 100,[m
+[32m+[m[32m                        'atual': atual,[m
+[32m+[m[32m                        'otimo': otimo,[m
+[32m+[m[32m                        'falta': otimo['z'] - to_float(cybersecurity_spendings),[m
+[32m+[m[32m                        'retorno': otimo['enbis'] - atual['enbis'],[m
+[32m+[m[32m                        'func':  requests.post(url_enbis_function, json=[probs[attack], to_float(asset.value), alpha]).json(),[m
+[32m+[m[32m                        'min': otimo['z'] * 0.05,[m
+[32m+[m[32m                        'max': otimo['z'] * 3 if otimo['z'] * 3 > atual['z'] else atual['z'] * 1.05 ,[m
+[32m+[m[32m                        'efet': otimo['seg_enbis'] < atual['enbis'][m
+[32m+[m[32m                    }[m
+[32m+[m[32m                    block['ataques'].append(deepcopy(data_attack))[m
+         assets_gordon_loeb.append(deepcopy(block))[m
+     context = {[m
+[32m+[m[32m        'sandboxprof': sand_profile,[m
+         'company': company,[m
+         'assets': assets_gordon_loeb,[m
+         'year': years[0],[m
+[31m-        'alpha': alpha[m
+[32m+[m[32m        'alpha': sand_profile.alpha if sand_profile.is_on else alpha,[m
+[32m+[m[32m        'selected_attack': selected_attack,[m
+     }[m
+     return render(request, current_dir + 'company_economic_planning.html', context)[m
+ [m
+[1mdiff --git a/db.sqlite3 b/db.sqlite3[m
+[1mindex abcada7..a408566 100644[m
+Binary files a/db.sqlite3 and b/db.sqlite3 differ

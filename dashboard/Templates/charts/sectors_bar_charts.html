@@ -1,0 +1,163 @@
+{% load i18n %}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title mb-3">
+                {% trans "Cyber Attack Risk Levels by Sector" %}
+                <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="{% trans 'Data Source' %}" data-bs-content="{% trans 'Data obtained and analyzed from cybersecurity reports.' %}">
+                    <i class="fas fa-database" style="color: #F36A2A;"></i>
+                </a>
+            </h4>
+            <div id="sector-bar-chart" style="height: 400px;" dir="ltr"></div>
+        </div>
+    </div>
+</div>
+
+{% for sector, data in attack_data.items %}
+<div class="col-xl-6 mb-4">
+    <h3>{{ sector }}</h3>
+    <pre>
+        Dados para {{ sector }}:
+        Attack Types: {{ data.attack_types|safe }}
+        Risks: {{ data.risks|safe }}
+        Counts: {{ data.counts|safe }}
+    </pre>
+</div>
+{% endfor %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var attack_data = {{ attack_data|safe }};
+    
+    console.log("Sector Attack Data:", attack_data);  // Para depuração
+
+    var sectors = Object.keys(attack_data);
+    var attack_types = attack_data[sectors[0]].attack_types;
+    
+    var series = attack_types.map(function(attack_type, index) {
+        return {
+            name: attack_type,
+            data: sectors.map(function(sector) {
+                var risk = attack_data[sector].risks[index];
+                return risk !== null ? risk : 0;
+            })
+        };
+    });
+
+    console.log("Sector Series:", series);  // Para depuração
+
+    var options = {
+        chart: {
+            type: 'bar',
+            height: 400,
+            toolbar: {
+                show: true,
+                tools: {
+                    download: true,
+                    selection: false,
+                    zoom: false,
+                    zoomin: false,
+                    zoomout: false,
+                    pan: false,
+                    reset: false
+                },
+            }
+        },
+        series: series,
+        xaxis: {
+            categories: sectors,
+            title: {
+                text: '{% trans "Sectors" %}',
+                offsetY: 5,
+            },
+            labels: {
+                rotate: -45,
+                rotateAlways: false,
+                hideOverlappingLabels: true
+            }
+        },
+        yaxis: {
+            title: {
+                text: '{% trans "Probability (%)" %}'
+            },
+            max: 100,
+            tickAmount: 5,
+            labels: {
+                formatter: function(val) {
+                    return val.toFixed(0) + "%";
+                }
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function(val, { seriesIndex, dataPointIndex, w }) {
+                    var sector = sectors[dataPointIndex];
+                    var attack_type = attack_types[seriesIndex];
+                    var count = attack_data[sector].counts[seriesIndex];
+                    if (val === 0) {
+                        return "{% trans 'Insufficient data' %}";
+                    }
+                    return val.toFixed(2) + "% (Count: " + count + ")";
+                }
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '80%',
+                endingShape: 'flat',
+                dataLabels: {
+                    position: 'top',
+                },
+            },
+        },
+        dataLabels: {
+            enabled: true,
+            formatter: function (val, { seriesIndex, dataPointIndex, w }) {
+                if (val === 0) {
+                    return "N/A";
+                }
+                return val.toFixed(1) + "%";
+            },
+            offsetY: -20,
+            style: {
+                fontSize: '10px',
+                colors: ["#304758"]
+            }
+        },
+        legend: {
+            position: 'bottom',
+            offsetY: 0,
+            height: 40,
+            fontSize: '11px',
+            itemMargin: {
+                horizontal: 8,
+                vertical: 2 
+            }
+        },
+        colors: ['#4a81d4', '#1abc9c', '#ff6b6b', '#ffa600'],
+        grid: {
+            padding: {
+                top: 40,
+                bottom: 20
+            }
+        }
+    };
+
+    console.log("Sector Chart options:", options);  // Para depuração
+
+    try {
+        var chart = new ApexCharts(document.querySelector("#sector-bar-chart"), options);
+        chart.render();
+    } catch (error) {
+        console.error("Error rendering sector chart:", error);
+    }
+
+    // Inicializar os popovers do Bootstrap
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    });
+});
+</script>

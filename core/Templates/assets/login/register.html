@@ -1,0 +1,162 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" data-menu-color="brand">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>{% trans "GT-IMPACTO - Simulation of Economic Aspects of Cybersecurity" %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="GT-IMPACTO - Plataforma de Simulação de Aspectos Econômicos de Cibersegurança" name="description" />
+        <meta content="GT-IMPACTO" name="author" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href={% static "assets/images/favicon.ico" %}>
+
+        <!-- Plugins css -->
+        <link href={% static "assets/libs/flatpickr/flatpickr.min.css" %} rel="stylesheet" type="text/css" />
+        <link href={% static "assets/libs/selectize/css/selectize.bootstrap3.css" %} rel="stylesheet" type="text/css" />
+        
+        <!-- Theme Config Js -->
+        <script src={% static "assets/js/head.js" %}></script>
+
+        <!-- Bootstrap css -->
+        <link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+
+        <!-- App css -->
+        <link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+        <!-- Icons css -->
+        <link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+    </head>
+
+    <body class="auth-fluid-pages pb-0">
+
+        <div class="auth-fluid">
+            <!--Auth fluid left content -->
+            <div class="auth-fluid-form-box">
+                <div class="align-items-center d-flex h-100">
+                    <div class="p-3">
+                        <!-- Logo -->
+                        <div class="auth-brand text-center text-lg-start">
+                            <div class="auth-brand">
+                                <a class="logo logo-light text-center">
+                                    <span class="logo-lg">
+                                        <img src="assets/images/logo-light.png" alt="" height="22">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- title-->
+                        <h4 class="mt-0">{% trans "Register in the platform"%}</h4>
+                        <p class="text-muted mb-4">{% trans "Don't have an account to access the platform? Create one now. It's quick :)"%}</p>
+
+                        <!-- No seu template HTML -->
+                        <form action="{% url 'register' %}" method="post" class="text-left mt-5">
+                            {% csrf_token %}
+
+                            <!-- Exibir erros que não estão ligados a um campo específico -->
+                            {% for error in formup.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {% trans error %}
+                                </div>
+                            {% endfor %}
+
+                            <!-- Campo Username -->
+                            <div class="form-group">
+                                <label for="{{ formup.username.id_for_label }}">{{ formup.username.label }}</label>
+                                {{ formup.username }}
+                                {% for error in formup.username.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Campo Nome -->
+                            <div class="form-group">
+                                <label for="{{ formup.name.id_for_label }}">{{ formup.name.label }}</label>
+                                {{ formup.name }}
+                                {% for error in formup.name.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Campo E-mail -->
+                            <div class="form-group">
+                                <label for="{{ formup.email.id_for_label }}">{{ formup.email.label }}</label>
+                                {{ formup.email }}
+                                {% for error in formup.email.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Campo Instituição -->
+                            <div class="form-group">
+                                <label for="{{ formup.institution.id_for_label }}">{{ formup.institution.label }}</label>
+                                {{ formup.institution }}
+                                {% for error in formup.institution.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Campo Cargo -->
+                            <div class="form-group">
+                                <label for="{{ formup.job.id_for_label }}">{{ formup.job.label }}</label>
+                                {{ formup.job }}
+                                {% for error in formup.job.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Campos de Senha -->
+                            <div class="form-group">
+                                <label for="{{ formup.password1.id_for_label }}">{{ formup.password1.label }}</label>
+                                {{ formup.password1 }}
+                                {% for error in formup.password1.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ formup.password2.id_for_label }}">{{ formup.password2.label }}</label>
+                                {{ formup.password2 }}
+                                <small class="form-text text-muted">{{ formup.password2.help_text }}</small>
+                                {% for error in formup.password2.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <!-- Botão de envio -->
+                            <div class="text-center d-grid">
+                                <button class="btn btn-primary waves-effect waves-light" type="submit">{% trans "Create account" %}</button>
+                            </div>
+                        </form>
+
+                    <!-- Footer -->
+                    <footer class="footer footer-alt">
+                        <p class="text-muted">
+                            {% trans "Already have an account?" %}
+                            <a href="{% url 'login' %}" class="text-muted ms-1">
+                                <b>{% trans "Login" %}</b>
+                            </a>
+                        </p>
+                    </footer>
+
+                    </div> <!-- end .card-body -->
+                </div> <!-- end .align-items-center.d-flex.h-100-->
+            </div>
+            <!-- end auth-fluid-form-box-->
+
+            <!-- Auth fluid right content -->
+            <div class="auth-fluid-right text-center">
+				<img src="assets/images/logo-sm-light.png" alt="" height="150">
+            </div>
+            <!-- end Auth fluid right content -->
+        </div>
+        <!-- end auth-fluid-->
+
+        <!-- Authentication js -->
+        <script src={% static "assets/js/pages/authentication.init.js" %} ></script>
+
+    </body>
+</html>

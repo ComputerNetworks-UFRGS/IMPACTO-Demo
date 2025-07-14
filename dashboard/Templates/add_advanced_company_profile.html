@@ -1,0 +1,340 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load form_tags %}
+{% load i18n %}
+
+{% block page_content %}
+<style>
+    .page-title-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .documentation-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--ct-primary);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .documentation-btn:hover {
+        background-color: var(--ct-primary-lighten-10);
+        color: var(--ct-primary-darken-10);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .documentation-btn i {
+        font-size: 20px;
+    }
+    .tooltip-inner {
+        max-width: 200px;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    .modal {
+        display: none; /* Esconde o modal por padrão */
+        position: fixed; 
+        z-index: 9999; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); 
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        text-align: center;
+        border-radius: 8px;
+    }
+    .close {
+        position: absolute;
+        top: 10px; 
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12 page-title-box d-flex justify-content-between align-items-center">
+            <h4 class="page-title">{% trans "Add Advanced Company Profile" %}</h4>
+            <a onclick="openModaldoc()" class="documentation-btn">
+                <i class="mdi mdi-help-circle-outline"
+                data-bs-toggle="tooltip" 
+                   data-bs-placement="left" title="{% trans 'Risk Dashboard' %}"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="meuModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModaldoc()">&times;</span>
+          <h2>{% trans "Company Profiles" %}</h2>
+          <h5 style="max-width: 450px; margin: 0 auto; margin-top: 20px; text-align: justify; font-weight: normal;">
+            {% trans "The Company Profiles screen presents the companies that were registered on the platform for consultation, which can be Basic or Advanced profile. To edit a company, create a copy." %}
+          </h5>
+      
+          <a href="{% url 'dashboard:platform_guide'%}#{% if is_copy %}company-copies{% else %}company-profiles{% endif %}" 
+             class="btn btn-primary"
+             style="max-width: 300px; display: block; margin: 0 auto; margin-top: 20px;"
+             title="{% trans 'Company Profile Documentation' %}">
+             {% trans "View Documentation" %}
+          </a>
+        </div>
+      </div>
+
+
+    <a href="{% url 'dashboard:add_company_profile' %}" class="btn btn-primary mb-3">
+        {% trans "Switch to Standard Company Profile" %}
+    </a>
+
+    <p class="text-muted">
+        {% trans "The extra fields in the Advanced Company Profile enable a greater range of calculations and inferences." %}
+    </p>
+
+    <form method="post" class="form" id="advanced-company-profile-form">
+        {% csrf_token %}
+
+        <div class="row">
+            <!-- Business Dimension -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">{% trans "Business Dimension" %}</h4>
+
+                        {% for field in form %}
+                            {% if field.name in 'name,headquarters_country,industry_type,employee_count' %}
+                                <div class="mb-3">
+                                    <label for="{{ field.id_for_label }}" class="form-label">
+                                        {{ field.label }}
+                                        <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ field.label }}" data-bs-content="{{ field.help_text }}">
+                                            <i class="fas fa-question-circle"></i>
+                                        </a>
+                                    </label>
+                                    {% if field.is_hidden %}
+                                        {{ field }}
+                                    {% else %}
+                                        {{ field|add_class:'form-control' }}
+                                    {% endif %}
+                                    {% if field.errors %}
+                                        <div class="text-danger">{{ field.errors.as_text }}</div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        <!--{% include "dashboard/Templates/components/company_locations_component.html" %}-->
+
+                        <div class="mb-3">
+                            <label for="{{ form.company_size.id_for_label }}" class="form-label">
+                                {{ form.company_size.label }}
+                                <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ form.company_size.label }}" data-bs-content="{{ form.company_size.help_text }}">
+                                    <i class="fas fa-question-circle"></i>
+                                </a>
+                            </label>
+                            {% if form.company_size.is_hidden %}
+                                {{ form.company_size }}
+                            {% else %}
+                                {{ form.company_size|add_class:'form-control' }}
+                            {% endif %}
+                            {% if form.company_size.errors %}
+                                <div class="text-danger">{{ form.company_size.errors.as_text }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.remote_work_rate.id_for_label }}" class="form-label">
+                                {{ form.remote_work_rate.label }}
+                                <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ form.remote_work_rate.label }}" data-bs-content="{{ form.remote_work_rate.help_text }}">
+                                    <i class="fas fa-question-circle"></i>
+                                </a>
+                            </label>
+                            {% if form.remote_work_rate.is_hidden %}
+                                {{ form.remote_work_rate }}
+                            {% else %}
+                                {{ form.remote_work_rate|add_class:'form-control' }}
+                            {% endif %}
+                            {% if form.remote_work_rate.errors %}
+                                <div class="text-danger">{{ form.remote_work_rate.errors.as_text }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-check form-switch mb-3">
+                            {{ form.global_presence|add_class:'form-check-input' }}
+                            <label for="{{ form.global_presence.id_for_label }}" class="form-check-label">
+                                {{ form.global_presence.label }}
+                                <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ form.global_presence.label }}" data-bs-content="{{ form.global_presence.help_text }}">
+                                    <i class="fas fa-question-circle"></i>
+                                </a>
+                            </label>
+                            {% if form.global_presence.errors %}
+                                <div class="text-danger">{{ form.global_presence.errors.as_text }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Dimension -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">{% trans "Technical Dimension" %}</h4>
+
+                        <div class="mb-3">
+                            <label for="{{ form.authentication_factors.id_for_label }}" class="form-label">
+                                {{ form.authentication_factors.label }}
+                                <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ form.authentication_factors.label }}" data-bs-content="{{ form.authentication_factors.help_text }}">
+                                    <i class="fas fa-question-circle"></i>
+                                </a>
+                            </label>
+                            {% if form.authentication_factors.is_hidden %}
+                                {{ form.authentication_factors }}
+                            {% else %}
+                                {{ form.authentication_factors|add_class:'form-control' }}
+                            {% endif %}
+                            {% if form.authentication_factors.errors %}
+                                <div class="text-danger">{{ form.authentication_factors.errors.as_text }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.cloud_solution_type.id_for_label }}" class="form-label">
+                                {{ form.cloud_solution_type.label }}
+                                <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ form.cloud_solution_type.label }}" data-bs-content="{{ form.cloud_solution_type.help_text }}">
+                                    <i class="fas fa-question-circle"></i>
+                                </a>
+                            </label>
+                            {% if form.cloud_solution_type.is_hidden %}
+                                {{ form.cloud_solution_type }}
+                            {% else %}
+                                {{ form.cloud_solution_type|add_class:'form-control' }}
+                            {% endif %}
+                            {% if form.cloud_solution_type.errors %}
+                                <div class="text-danger">{{ form.cloud_solution_type.errors.as_text }}</div>
+                            {% endif %}
+                        </div>
+
+                        {% for field in form %}
+                            {% if field.name in 'updated_inventory,backup_maintenance,risk_prioritization,it_system_monitoring,periodic_system_updates,data_encryption_in_storage,data_encryption_in_transit,vpn_for_remote_access,cybersecurity_awareness_and_training,documented_response_plan,response_plan_update,operational_recovery_capacity,credentials_maintenance,vulnerability_identification,network_systems_traffic_monitoring,threat_identification_process,it_records_presence,antivirus,firewall,intrusion_detection_system,endpoint_detection_and_response,it_security_team' %}
+                                <div class="form-check form-switch mb-3">
+                                    {{ field|add_class:'form-check-input' }}
+                                    <label for="{{ field.id_for_label }}" class="form-check-label">
+                                        {{ field.label }}
+                                        <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover" title="{{ field.label }}" data-bs-content="{{ field.help_text }}">
+                                            <i class="fas fa-question-circle"></i>
+                                        </a>
+                                    </label>
+                                    {% if field.errors %}
+                                        <div class="text-danger">{{ field.errors.as_text }}</div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Economic Dimension -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">{% trans "Economic Dimension" %}</h4>
+
+                        {% include "dashboard/Templates/components/annual_revenue_component.html" with formset=revenue_formset %}
+                        {% include "dashboard/Templates/components/cybersecurity_spending_component.html" with formset=spending_formset %}
+                        {% include "dashboard/Templates/components/company_assets_component.html" with formset=assets_formset %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attack History -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">{% trans "Attack History" %}</h4>
+                        {% include "dashboard/Templates/components/attack_history_field.html" with formset=attack_history_formset pode_deletar=pode_deletar %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">{% trans "Save" %}</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('advanced-company-profile-form');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+            
+            const formData = new FormData(form);
+
+            // Envia a requisição usando fetch
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest', // Define que é uma requisição AJAX
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.redirect_url) {
+                    // Redireciona para a URL especificada na resposta
+                    window.location.href = data.redirect_url;
+                } else {
+                    console.error('Erro no envio do formulário:', data);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+            });
+        });
+    });
+</script>
+
+<script>
+    function openModaldoc() {
+        document.getElementById("meuModal").style.display = "block";
+    }
+    
+    function closeModaldoc() {
+        document.getElementById("meuModal").style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById("meuModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+
+{% endblock %}

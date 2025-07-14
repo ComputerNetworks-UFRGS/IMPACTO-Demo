@@ -1,0 +1,157 @@
+{% load static %}
+{% load i18n %}
+{% load form_tags %}
+
+<!DOCTYPE html>
+<html lang="en" data-menu-color="brand">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>{% trans "GT-IMPACTO - Simulation of Economic Aspects of Cybersecurity" %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="GT-IMPACTO." name="Plataforma para Simulação de Comportamentos Aspectos Econômicos de Cibersegurança" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href={% static "assets/images/favicon.ico" %}>
+
+        <!-- Plugins css -->
+        <link href={% static "assets/libs/flatpickr/flatpickr.min.css" %} rel="stylesheet" type="text/css" />
+        <link href={% static "assets/libs/selectize/css/selectize.bootstrap3.css" %} rel="stylesheet" type="text/css" />
+        
+        <!-- Theme Config Js -->
+        <script src={% static "assets/js/head.js" %}></script>
+
+        <!-- Bootstrap css -->
+        <link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+
+        <!-- App css -->
+        <link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+        <!-- Icons css -->
+        <link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+        
+       <style>
+			a:link {
+			  color: white;
+			  background-color: transparent;
+			  text-decoration: none;
+			}
+
+			a:visited {
+			  color: gray;
+			  background-color: transparent;
+			  text-decoration: none;
+			}
+
+			a:hover {
+			  color: #373737;
+			  background-color: transparent;
+			  text-decoration: underline;
+			}
+
+			a:active {
+			  color: yellow;
+			  background-color: transparent;
+			  text-decoration: underline;
+			}
+		</style> 
+    </head>
+
+
+    <body class="auth-fluid-pages pb-0">
+
+        <div class="auth-fluid">
+            <!--Auth fluid left content -->
+            <div class="auth-fluid-form-box">
+                <div class="align-items-center d-flex h-100">
+                    <div class="p-3">
+
+                        <!-- Logo -->
+                        <div class="auth-brand text-center text-lg-start">
+                            <div class="auth-brand">
+                                <a class="logo logo-dark text-center">
+                                    <span class="logo-lg">
+                                        <img src={% static "assets/images/logo-dark.png" %} alt="GT-IMPACTO" height="240">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Language flag dropdown  -->
+                                     
+                                        {% get_current_language as LANGUAGE_CODE %}
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% get_language_info_list for LANGUAGES as languages %}
+                                        {% for language in languages %} 
+                                        <a> {{ get_current_language }}</a>                                   
+                                 
+                                        {% endfor %}
+
+                        <!-- title-->
+                        <h4 class="mt-0">{% trans "Entrar"%}</h4>
+                        <p class="text-muted mb-4">{% trans "Type your username and password to access the platform" %}</p>
+
+
+                        <!-- form -->
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <!-- Creates the form with the fields needed -->
+                                {% for field in form %}
+                                    <label for="{{ field.id_for_label }}" class="form-label">{% trans field.label %}:</label>
+                                    {{ field|add_class:'form-control' }} <br> 
+                                    {% if field.errors %}
+                                        <small>{{ field.errors|striptags }}</small> 
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="checkbox-signin">
+                                    <label class="form-check-label" for="checkbox-signin">{% trans "Remember" %}</label>
+                                </div>
+                            </div>
+                            <div class="text-center d-grid">
+                                <button class="btn btn-primary" type="submit">{% trans "Enter" %} </button>
+                            </div>
+
+                        <!-- Footer -->
+                        <footer class="footer footer-alt">
+                            <p class="text-muted">
+                                {% trans "Don't have an account?" %}
+                                <a href="{% url 'register' %}" class="text-muted ms-1">
+                                    <b>{% trans "Register" %}</b>
+                                </a>
+                            </p>
+                        </footer>
+
+                    </div> <!-- end .card-body -->
+                </div> <!-- end .align-items-center.d-flex.h-100-->
+            </div>
+            <!-- end auth-fluid-form-box-->
+
+            <!-- Auth fluid right content -->
+            <div class="auth-fluid-right text-center">
+                 <div class="row">
+                            <div class="col-md-6">
+                            </div>
+                            
+                  </div>
+           
+                  <div class="center">
+				  <br><br><br><br><br><br><br><br><br><br>
+                 <img src={% static "assets/images/logo-ufrgs.png" %} alt="Universidade Federal do Rio Grande do Sul (UFRGS)" height="100">
+                 <img src={% static "assets/images/logo-hackers.png" %} alt="Programa Hackers do Bem" height="100">
+                 <img src={% static "assets/images/logo-rnp.png" %} alt="Rede Nacional de Pesquisa (RNP)" height="100">
+
+                  </div>
+            </div>
+            <!-- end Auth fluid right content -->
+        </div>
+        <!-- end auth-fluid-->
+
+        <!-- Authentication js -->
+        <script src={% static "assets/js/pages/authentication.init.js" %}></script>
+
+    </body>
+</html>

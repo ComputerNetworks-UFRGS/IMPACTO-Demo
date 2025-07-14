@@ -1,0 +1,316 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" data-menu-color="brand">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>{% trans "GT-IMPACTO - Simulation of Economic Aspects of Cybersecurity" %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="GT-IMPACTO - Plataforma de Simulação de Aspectos Econômicos de Cibersegurança" name="description" />
+        <meta content="GT-IMPACTO" name="author" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href={% static "assets/images/favicon.ico" %}>
+
+        <!-- Plugins css -->
+        <link href={% static "assets/libs/flatpickr/flatpickr.min.css" %} rel="stylesheet" type="text/css" />
+        <link href={% static "assets/libs/selectize/css/selectize.bootstrap3.css" %} rel="stylesheet" type="text/css" />
+        
+        <!-- Theme Config Js -->
+        <script src={% static "assets/js/head.js" %}></script>
+
+        <!-- Bootstrap css -->
+        <link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+
+        <!-- App css -->
+        <link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+        <!-- Icons css -->
+        <link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+        
+        <style>
+            a:link {
+              color: white;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:visited {
+              color: gray;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:hover {
+              color: #373737;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+
+            a:active {
+              color: yellow;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+            
+            .auth-fluid-right {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              padding: 2rem 0;
+              box-sizing: border-box;
+            }
+            
+            .logos-container {
+              background-color: white;
+              padding: 20px;
+              border-radius: 8px;
+              display: inline-flex;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              margin: 0 auto;
+              box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+              width: auto;
+              max-width: 90%;
+            }
+            
+            .logos-container img {
+              height: 80px;
+              object-fit: contain;
+            }
+            
+            .main-logo {
+              margin-bottom: 60px;
+            }
+            
+            .video-container {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: 30px;
+            }
+            
+            .video-container iframe {
+              max-width: 90%;
+              max-height: 60vh;
+            }
+            
+            /* Mobile adjustments */
+            @media (max-width: 768px) {
+              .auth-fluid {
+                flex-direction: column;
+              }
+              
+              .auth-fluid-right, .auth-fluid-form-box {
+                width: 100%;
+                max-width: 100%;
+                padding: 20px 10px;
+              }
+              
+              .auth-fluid-right {
+                height: auto;
+                min-height: auto;
+                padding: 30px 15px;
+                order: 2; /* Coloca o conteúdo da direita abaixo do formulário */
+              }
+              
+              .auth-fluid-form-box {
+                order: 1; /* Coloca o formulário acima */
+              }
+              
+              .logos-container {
+                flex-wrap: wrap;
+                padding: 15px;
+                margin-top: 20px;
+                justify-content: center;
+              }
+              
+              .logos-container img {
+                height: 50px;
+                margin: 5px;
+              }
+              
+              .video-container {
+                margin-bottom: 20px;
+                width: 100%;
+              }
+              
+              .video-container iframe {
+                width: 100%;
+                height: 215px;
+              }
+              
+              .form-group {
+                margin-bottom: 1rem;
+              }
+              
+              .auth-brand img {
+                height: 180px;
+              }
+            }
+            
+            /* Pequenos dispositivos móveis */
+            @media (max-width: 480px) {
+              .logos-container img {
+                height: 40px;
+              }
+              
+              .video-container iframe {
+                height: 180px;
+              }
+            }
+        </style>
+    </head>
+
+    <body class="auth-fluid-pages pb-0">
+
+        <div class="auth-fluid">
+            <div class="auth-fluid-form-box">
+                <div class="align-items-center d-flex h-100">
+                    <div class="p-3">
+                        <div class="auth-brand text-center text-lg-start">
+                            <div class="auth-brand">
+                                <a class="logo logo-dark text-center">
+                                    <span class="logo-lg">
+                                        <img src={% static "assets/images/logo-dark.png" %} alt="GT-IMPACTO" height="240">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Language flags - simplified version -->
+                        <div class="mb-3 text-center">
+                            <div class="language-selector d-inline-flex justify-content-center">
+                                <form action="{% url 'set_language' %}" method="post" class="mx-2">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="language" value="en">
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    <button type="submit" class="btn btn-link p-0" style="{% if request.LANGUAGE_CODE == 'en' %}opacity: 1{% else %}opacity: 0.6{% endif %}">
+                                        <img src="{% static 'assets/images/flags/gb.png' %}" alt="English" height="24">
+                                    </button>
+                                </form>
+                                <form action="{% url 'set_language' %}" method="post" class="mx-2">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="language" value="pt-br">
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    <button type="submit" class="btn btn-link p-0" style="{% if request.LANGUAGE_CODE == 'pt-br' %}opacity: 1{% else %}opacity: 0.6{% endif %}">
+                                        <img src="{% static 'assets/images/flags/br.png' %}" alt="Português" height="24">
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-0">{% trans "Register in the platform"%}</h4>
+                        <p class="text-muted mb-4">{% trans "Don't have an account to access the platform? Create one now. It's quick :)"%}</p>
+
+                        <form action="{% url 'register' %}" method="post" class="text-left mt-5">
+                            {% csrf_token %}
+
+                            {% for error in formup.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    {% trans error %}
+                                </div>
+                            {% endfor %}
+
+                            <div class="form-group">
+                                <label for="{{ formup.username.id_for_label }}">{{ formup.username.label }}</label>
+                                {{ formup.username }}
+                                {% for error in formup.username.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ formup.name.id_for_label }}">{{ formup.name.label }}</label>
+                                {{ formup.name }}
+                                {% for error in formup.name.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ formup.email.id_for_label }}">{{ formup.email.label }}</label>
+                                {{ formup.email }}
+                                {% for error in formup.email.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ formup.institution.id_for_label }}">{{ formup.institution.label }}</label>
+                                {{ formup.institution }}
+                                {% for error in formup.institution.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ formup.job.id_for_label }}">{{ formup.job.label }}</label>
+                                {{ formup.job }}
+                                {% for error in formup.job.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ formup.password1.id_for_label }}">{{ formup.password1.label }}</label>
+                                {{ formup.password1 }}
+                                {% for error in formup.password1.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ formup.password2.id_for_label }}">{{ formup.password2.label }}</label>
+                                {{ formup.password2 }}
+                                <small class="form-text text-muted">{{ formup.password2.help_text }}</small>
+                                {% for error in formup.password2.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+
+                            <div class="text-center d-grid">
+                                <button class="btn btn-primary waves-effect waves-light" type="submit">{% trans "Create account" %}</button>
+                            </div>
+                        </form>
+
+                        <footer class="footer footer-alt">
+                            <p class="text-muted">
+                                {% trans "Already have an account?" %}
+                                <a href="{% url 'login' %}" class="text-muted ms-1">
+                                    <b>{% trans "Login" %}</b>
+                                </a>
+                            </p>
+                        </footer>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-fluid-right text-center">
+                <div class="video-container">
+                    <iframe width="860" height="485" 
+                            src="https://www.youtube.com/embed/xUUlH8CGrjs" 
+                            title="Tutorial da plataforma" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <div class="logos-container">
+                    <img src={% static "assets/images/logo-ufrgs.png" %} alt="Universidade Federal do Rio Grande do Sul (UFRGS)">
+                    <img src={% static "assets/images/logo-hackers.png" %} alt="Programa Hackers do Bem">
+                    <img src={% static "assets/images/logo-rnp.png" %} alt="Rede Nacional de Pesquisa (RNP)">
+                </div>
+            </div>
+        </div>
+
+        <script src={% static "assets/js/pages/authentication.init.js" %} ></script>
+
+    </body>
+</html>

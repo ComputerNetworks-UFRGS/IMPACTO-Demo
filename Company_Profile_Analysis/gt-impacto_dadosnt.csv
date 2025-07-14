@@ -1,0 +1,88 @@
+PROB A PRIORI,PROB MARGINAL,P(A|B),C,P(C|P(A|B)),FONTE
+DDoS,United Kingdom,7.00,,,Acronis Cyberthreats Report H1 2023
+malware,United Kingdom,15.00,,,Acronis Cyberthreats Report H1 2023
+phishing,United Kingdom,79.00,,,Acronis Cyberthreats Report H1 2023
+DDoS,-,11.00,,,DDoS Threat Landscape Report 2023
+phishing,Healthcare,50.70,,,Healthcare Industry Was the Most Common Victim of Third-Party Breaches in 2022
+DDoS,Retail,10.14,,,Retail Cybersecurity Statistics Not To Be Ignored
+malware,Retail,21.74,,,Retail Cybersecurity Statistics Not To Be Ignored
+ransomware,Retail,13.04,,,Retail Cybersecurity Statistics Not To Be Ignored
+DDoS,EMEA,17.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,NA,46.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,APAC,45.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,LATAM,31.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,EMEA,50.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,Finance,38.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,Retail,50.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,Healthcare,29.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,EMEA,30.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,NA,27.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,APAC,36.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,LATAM,22.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,Finance,28.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,Retail,29.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,Healthcare,20.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,EMEA,26.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,APAC,17.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,LATAM,31.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,Finance,25.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,Retail,26.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,APAC,18.00,,,M-Trends 2024 Special Report
+phishing,EMEA,16.00,,,M-Trends 2024 Special Report
+phishing,LATAM,18.00,,,M-Trends 2024 Special Report
+ransomware,APAC,33.00,,,M-Trends 2024 Special Report
+ransomware,EMEA,22.00,,,M-Trends 2024 Special Report
+DDoS,Brazil,1.75,,,2022 in review: DDoS attack trends and insights
+DDoS,United States,45.02,,,2022 in review: DDoS attack trends and insights
+DDoS,India,13.22,,,2022 in review: DDoS attack trends and insights
+DDoS,EMEA,10.49,,,2022 in review: DDoS attack trends and insights
+DDoS,Asia,11.25,,,2022 in review: DDoS attack trends and insights
+DDoS,Korea,4.22,,,2022 in review: DDoS attack trends and insights
+DDoS,United Kingdom,2.23,,,2022 in review: DDoS attack trends and insights
+DDoS,Australia,2.02,,,2022 in review: DDoS attack trends and insights
+phishing,Retail,26.00,,,2023 State of the Phish
+phishing,Finance,30.00,,,2023 State of the Phish
+phishing,Healthcare,26.00,,,2023 State of the Phish
+DDoS,Finance,52.60,,,2022 Global Threat Analysis Report
+DDoS,Retail,6.00,,,2022 Global Threat Analysis Report
+DDoS,Healthcare,10.50,,,2022 Global Threat Analysis Report
+DDoS,Education,2.80,,,2022 Global Threat Analysis Report
+DDoS,LATAM,-,Finance,31.50,2022 Global Threat Analysis Report
+DDoS,LATAM,-,Healthcare,23.90,2022 Global Threat Analysis Report
+DDoS,EMEA,-,Finance,70.60,2022 Global Threat Analysis Report
+DDoS,EMEA,-,Healthcare,3.32,2022 Global Threat Analysis Report
+DDoS,EMEA,-,Education,1.28,2022 Global Threat Analysis Report
+DDoS,APAC,-,Finance,9.35,2022 Global Threat Analysis Report
+DDoS,APAC,-,Healthcare,2.61,2022 Global Threat Analysis Report
+DDoS,APAC,-,Education,4.11,2022 Global Threat Analysis Report
+DDoS,APAC,-,Healthcare,2.61,2022 Global Threat Analysis Report
+ransomware,Finance,64.00,,,The State of Ransomware in Financial Services 2023
+DDoS,Finance,34.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Retail,17.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Healthcare,1.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Entertainment,12.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Education,2.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,United States,18.30,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,China,10.70,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,India,9.20,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Russia,8.40,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,England,7.20,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Germany,6.80,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,France,5.30,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Japan,4.70,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Ukraine,4.50,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Brazil,4.20,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Finance,60.57,,,2024 Data Breach Investigations Report
+DDoS,Healthcare,3.18,,,2024 Data Breach Investigations Report
+DDoS,Retail,35.73,,,2024 Data Breach Investigations Report
+DDoS,APAC,23.45,,,2024 Data Breach Investigations Report
+DDoS,EMEA,22.98,,,2024 Data Breach Investigations Report
+DDoS,LATAM,70.75,,,2024 Data Breach Investigations Report
+DDoS,NA,80.28,,,2024 Data Breach Investigations Report
+malware,Finance,13.27,,,2024 Data Breach Investigations Report
+malware,Healthcare,16.18,,,2024 Data Breach Investigations Report
+malware,Retail,28.76,,,2024 Data Breach Investigations Report
+malware,APAC,16.50,,,2024 Data Breach Investigations Report
+malware,EMEA,17.77,,,2024 Data Breach Investigations Report
+malware,LATAM,14.85,,,2024 Data Breach Investigations Report
+malware,NA,10.03,,,2024 Data Breach Investigations Report

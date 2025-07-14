@@ -1,0 +1,92 @@
+{% load i18n %}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title mb-0">
+            {% trans "Region Risks" %}
+            <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="{% trans 'Region Risks' %}" data-bs-content="{% trans 'This chart shows the estimated risk levels for different types of attacks in the region.' %}">
+                <i class="fas fa-question-circle"></i>
+            </a>
+        </h4>
+        <div id="cardCollapseRegion" class="collapse show" dir="ltr">
+            <div id="regionRiskChart" class="apex-charts pt-3" data-colors="#F36A2A"></div>
+        </div>
+        <p class="theme-text">
+            {% blocktrans %}
+            Risk analysis for companies in the <span class="theme-color">{{ region }}</span> region based on historical data obtained from cybersecurity reports.
+            {% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var options = {
+        chart: {
+            type: 'bar',
+            height: 380,
+            toolbar: {
+                show: false
+            }
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                endingShape: 'rounded',
+                dataLabels: {
+                    position: 'top',
+                },
+            },
+        },
+        dataLabels: {
+            enabled: true,
+            formatter: function (val) {
+                return val === 0 ? "N/A" : val.toFixed(2) + "%";
+            },
+            offsetY: -20,
+            style: {
+                fontSize: '12px',
+                colors: ["#304758"]
+            }
+        },
+        series: [{
+            name: '{% trans "Risk Level" %}',
+            data: {{ region_bar_data.values|safe }}
+        }],
+        colors: ['#F36A2A'],
+        xaxis: {
+            categories: {{ region_bar_data.labels|safe }},
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            }
+        },
+        yaxis: {
+            title: {
+                text: '{% trans "Risk Level (%)" %}'
+            },
+            min: 0,
+            max: 100,
+            tickAmount: 5,
+            labels: {
+                formatter: function (val) {
+                    return val.toFixed(0) + "%";
+                }
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val === 0 ? "N/A" : val.toFixed(2) + "%";
+                }
+            }
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#regionRiskChart"), options);
+    chart.render();
+});
+</script>

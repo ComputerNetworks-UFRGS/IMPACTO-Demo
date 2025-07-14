@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<!-- cyber_attack_risks.html -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title mb-0">
+            {% trans "Cyber Attack Risk Levels" %}
+            <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="{% trans 'Cyber Attack Risk Levels' %}" data-bs-content="{% trans 'This chart shows the risk level for different types of cyber attacks.' %}">
+                <i class="fas fa-question-circle"></i>
+            </a>
+        </h4>
+        <div id="apex-bar-2" class="apex-charts pt-3"></div>
+        <p class="theme-text">
+            {% blocktrans with industry=industry_type country=headquarters_country %}
+            Risk for companies in the <span class="theme-color">{{ industry }}</span> sector, located in <span class="theme-color">{{ country }}</span>.
+            {% endblocktrans %}
+        </p>    </div>
+</div>

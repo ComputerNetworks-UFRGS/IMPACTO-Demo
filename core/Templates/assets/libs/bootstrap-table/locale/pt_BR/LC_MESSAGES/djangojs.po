@@ -1,0 +1,25 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: core/Templates/assets/libs/bootstrap-table/bootstrap-table.min.js:10
+#: core/Templates/assets/libs/bootstrap-table/extensions/cookie/bootstrap-table-cookie.min.js:10
+#: core/Templates/assets/libs/bootstrap-table/themes/bulma/bootstrap-table-bulma.min.js:10
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-22 14:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: core/Templates/assets/libs/bootstrap-table/extensions/filter-control/utils.min.js:10
+msgid "Can't call method on "
+msgstr ""

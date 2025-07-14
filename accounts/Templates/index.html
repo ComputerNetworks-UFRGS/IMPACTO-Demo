@@ -1,0 +1,77 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n %}
+{% block title %}{{ block.super }} | Account{% endblock %}
+
+{% block breadcrumb %}
+{{ block.super }}
+<li class="breadcrumb-item"><a href="{% url 'accounts:index' %}">{% trans "My Account" %}</a></li>
+{% endblock %}
+
+{% block page_content %}
+<!-- CONTENT -->
+<div class="col-md-12">
+    <h2 class="text-uppercase">{% trans "Welcome"%} {{ user.get_short_name }}</h2>
+</div>
+<div class="col-md-3">
+    <div class="list-group">
+        <a href="{% url 'accounts:index' %}"
+        class="list-group-item {% block my_account %}active{% endblock %}">{% trans "My Account" %}</a>
+        {% if user.user_type == 'student' %}
+        <a href="{% url 'accounts:request_role_change' %}"
+        class="list-group-item">{% trans "Request Role Change" %}</a>
+        {% endif %}
+        {% if user.is_staff %}
+        <a href="{% url 'accounts:manage_role_requests' %}"
+        class="list-group-item">{% trans "Manage Role Requests" %}</a>
+        {% endif %}
+    </div>
+</div>
+<div class="col-md-9">
+    <div class="row mx-5">
+        {% block accounts_container %}
+        <div class="col-md-6">
+            <h2>{% trans "Change Profile"%}</h2>
+            <form class="form-horizontal" action="" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    {% for field in profile_form %}
+                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                        <label for="{{ field.auto_id }}" class="control-label font-weight-bold">{{ field.label }}</label>
+                        {{ field }}
+                        {% for error in field.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <div class="float-right">
+                        <button type="submit" name="profile" value="True" class="btn btn-primary">Salvar</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>{% trans "Change Password"%}</h2>
+            <form class="form-horizontal" action="" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    {% for field in password_form %}
+                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                        <label for="{{ field.auto_id }}" class="control-label font-weight-bold">{{ field.label }}</label>
+                        <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.auto_id }}" class="form-control" value="{{ field.value|default_if_none:'' }}">
+                        {% for error in field.errors %}
+                        <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <div class="float-right">
+                        <button type="submit" name="password" value="True" class="btn btn-primary w-100">{% trans "Save"%}</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        {% endblock %}
+    </div>
+</div>
+<!-- ENDCONTENT -->
+{% endblock %}
+

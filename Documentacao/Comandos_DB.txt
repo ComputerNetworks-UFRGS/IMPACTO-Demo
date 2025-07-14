@@ -1,0 +1,18 @@
+para deletar os dados dos reports:
+
+python .\data_populator\delete_sectors_and_reports.py
+
+para adicionar os dados dos reports (pasta /data na raiz) - Importante seguir a ordem:
+
+python .\data_populator\import_reports.py
+python .\data_populator\import_cyber_security_data.py
+
+----
+
+para limpar o banco de dados dos perfis de empresa:
+
+python manage.py clear_db
+
+para preencher com as empresas padrão:
+
+python manage.py populate_db

@@ -1,0 +1,927 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load form_tags i18n static humanize custom_filters %}
+
+{% block page_content %}
+
+    {% include 'dashboard/Templates/includes/styles_charts.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+        
+    <style>
+        .emoji {
+            font-size: 10px;
+        }
+    
+        .green {
+            color: green;
+        }
+    
+        .red {
+            color: red;
+        }
+    
+        .table-responsive {
+            overflow-x: auto;
+        }
+    
+        .table th,
+        .table td {
+            white-space: nowrap;
+            padding: 0.3rem;
+            font-size: 0.8rem;
+        }
+    
+        .tooltip-header {
+            text-decoration: underline dotted;
+            cursor: help;
+        }
+    
+        .chart-container {
+            position: relative;
+            height: 50vh;
+            width: 100%;
+        }
+
+        .modal {
+        display: none; /* Esconde o modal por padrão */
+        position: fixed; 
+        z-index: 9999; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+        position: relative;
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        text-align: center;
+        border-radius: 8px;
+        }
+        .close {
+        position: absolute;
+        top: 10px; 
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .page-title-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .documentation-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--ct-primary);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .documentation-btn:hover {
+        background-color: var(--ct-primary-lighten-10);
+        color: var(--ct-primary-darken-10);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .documentation-btn i {
+        font-size: 20px;
+    }
+        
+        .tooltip-inner {
+            max-width: 200px;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+    
+    </style>
+
+        
+    <!-- Botão para abrir o modal, com ID único -->
+     <div class="row mb-3">
+        <div class="col-12 page-title-box d-flex justify-content-between align-items-center">
+            <h2>{% trans "Economic Dashboard of" %} <span class="theme-color">{{ company.name }}</span></h2>
+            <a onclick="openModaldoc()"
+                class="documentation-btn"
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
+                title="{% trans 'Economic Dashboard Documentation' %}">
+                <i class="mdi mdi-help-circle-outline"></i>
+                </a>
+
+        </div>
+    </div>
+
+<!-- Modal -->
+<div id="meuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModaldoc()">&times;</span>
+      <h2>{% trans "Gestão Econômica" %}</h2>
+      <h5 style="max-width: 450px; margin: 0 auto; margin-top: 20px; text-align: justify; font-weight: normal;">
+        {% trans "A Dashboard de Gestão Econômica simula os cenários de investimentos em cibersegurança utilizando dados de relatórios reais para prever quais os possíveis danos causados por ciberataques e orientar sobre quais as melhores abordagens de investimento." %}
+      </h5>
+
+      <a href="{% url 'dashboard:platform_guide_company' pk=company.pk %}#economic-planning" 
+         class="btn btn-primary"
+         style="max-width: 300px; display: block; margin: 0 auto; margin-top: 20px;"
+         title="{% trans 'Economic Dashboard Documentation' %}">
+         {% trans "Ir para Documentação" %}
+      </a>
+    </div>
+</div>
+        
+        <div class="row mb-3 align-items-center">
+    <!-- Parte esquerda com botões e grupo de ações -->
+    <div class="col-8">
+        <div class="d-flex">
+            <!-- Botão de Perfil -->
+            <a href="{% url 'dashboard:company_profile_detail' pk=company.pk %}" 
+               class="btn btn-soft-primary waves-effect waves-light me-2 {% if request.resolver_match.url_name == 'company_profile_detail' %}active{% endif %}">
+                <i class="mdi mdi-office-building-outline font-16 me-1"></i>
+                {% trans "Company Profile" %}
+            </a>
+
+            <!-- Dropdown de Análise de Risco -->
+            <div class="btn-group me-2">
+                <button type="button" 
+                        class="btn btn-soft-primary dropdown-toggle waves-effect waves-light {% if 'analysis' in request.resolver_match.url_name %}active{% endif %}"
+                        data-bs-toggle="dropdown" 
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                    <i class="mdi mdi-chart-line font-16 me-1"></i>
+                    {% trans "Risk Analysis" %}
+                    <i class="mdi mdi-chevron-down ms-1"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'dashboard:company_analysis' pk=company.pk %}">
+                        <i class="mdi mdi-chart-line font-16 me-1"></i>
+                        {% trans "Overview" %}
+                    </a>
+                    <a class="dropdown-item" href="{% url 'dashboard:company_analysis_pro' pk=company.pk %}">
+                        <i class="mdi mdi-chart-bar font-16 me-1"></i>
+                        {% trans "Report" %}
+                    </a>
+                </div>
+            </div>
+
+            <!-- Botão de Planejamento Econômico -->
+            <a href="{% url 'dashboard:economic_planning' pk=company.pk %}" 
+               class="btn btn-soft-primary waves-effect waves-light me-2 {% if request.resolver_match.url_name == 'economic_planning' %}active{% endif %}">
+                <i class="mdi mdi-cash-multiple font-16 me-1"></i>
+                {% trans "Economic Planning" %}
+            </a>
+
+            <!-- Grupo de Ações -->
+            <div>
+                <a href="{% url 'dashboard:edit_company_profile' pk=company.pk %}" 
+                   class="btn btn-soft-info waves-effect waves-light me-2">
+                    <i class="mdi mdi-pencil font-16 me-1"></i>
+                    {% trans "Edit" %}
+                </a>
+
+                {% if not is_copy %}
+                <form action="{% url 'dashboard:copy_company_profile' company.pk %}" 
+                      method="post" 
+                      class="d-inline-block">
+                    {% csrf_token %}
+                    <button type="submit" 
+                            class="btn btn-soft-secondary waves-effect waves-light">
+                        <i class="mdi mdi-content-copy font-16 me-1"></i>
+                        {% trans "Copy" %}
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Parte direita com o botão de simulação -->
+    <div class="col-4 d-flex justify-content-end">
+        {% if sandboxprof.is_on %}
+            <form method="GET" action="">
+                <input type="hidden" name="asset_id" value="{{ asset_id }}">
+                <input type="hidden" name="sandbox" value="false">
+                <button type="submit" class="btn btn-success">{% trans "Ir para Simulação Básica" %}</button>
+            </form>
+        {% else %}
+            <form method="GET" action="">
+                <input type="hidden" name="asset_id" value="{{ asset_id }}">
+                <input type="hidden" name="sandbox" value="true">
+                <button type="submit" class="btn btn-primary">{% trans "Ir para Simulação Avançada" %}</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+        
+        <style>
+        .button-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .btn-soft-primary.active {
+            background-color: var(--ct-primary) !important;
+            color: #fff !important;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+        }
+        
+        .dropdown-item i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .button-group {
+                flex-direction: column;
+                width: 100%;
+            }
+        
+            .button-group .btn,
+            .button-group .btn-group {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        
+            .float-end {
+                float: none !important;
+                width: 100%;
+                display: flex;
+                gap: 0.5rem;
+            }
+        
+            .float-end .btn,
+            .float-end form {
+                flex: 1;
+            }
+        }
+        </style>
+
+
+<form method="get">
+    {% csrf_token %}
+    <label for="assetSelector">{% trans "Selecione o Asset:" %}</label>
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+        <select id="assetSelector" name="asset_id" class="form-select" style="width: 500px; margin-top: 10px;">
+            {% for asset in assets %}
+            <option value="{{ asset.asset.id }}"
+                    {% if asset.asset.id == asset_id %}
+                        selected
+                    {% endif %}
+                >{{ asset.asset.item }} - {{ asset.asset.value }}</option>
+            {% endfor %}
+        </select>
+        <button style="margin-top: 10px;" type="submit" class="btn btn-success">{% trans "Selecionar Asset" %}</button>
+    </div>
+</form>
+
+
+{% for asset in assets %}
+    {% if asset.asset.id == asset_id %}
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {% if sandboxprof.is_on %}
+                            <form method="GET" action="">
+                                <input type="hidden" name="asset_id" value="{{ asset.asset.id }}">
+                                <input type="hidden" name="recalcular" value="{{ true }}">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h4 class="header-title mb-3">
+                                        <i class="mdi mdi-cash-register me-1"></i>
+                                        {% trans "Gordon-Loeb" %} {% trans "Simulations" %} - {{ asset.asset.item }} - {% trans "Alpha" %} = 
+                                        <input type="text" name="alpha" value="{{ asset.alpha }}" size="5">
+                                    </h4>
+                                    
+                                    <!-- Form para os botões Carregar e Salvar -->
+                                    <div>
+                                            {% csrf_token %}
+                                            <button type="submit" name="action" value="salvar" class="btn btn-primary">{% trans "Save" %}</button>
+                                            <button type="submit" name="action" value="carregar" class="btn btn-secondary me-2">{% trans "Load" %}</button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-centered table-nowrap mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th data-toggle="tooltip" title="{% trans 'Status do investimento' %}">{% trans 'Status' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Tipo de ataque' %}">{% trans 'Type' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Dano de ataque com sucesso' %}">{% trans 'Damage' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Probabilidade de ataque com sucesso' %}">{% trans 'Probability' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Perda estimada pelo ataque sem segurança' %}">{% trans 'Expected loss' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Valor investido' %}">{% trans 'Current invest.' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Investimento ótimo' %}">{% trans 'Invest. ótimo' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Investimento aceitável' %}">{% trans 'Invest. aceitável' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'EBIS atual - efetividade atual na redução dos danos' %}">{% trans 'EBIS atual' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'EBIS ótimo - efetividade do investimento ótimo na redução dos danos' %}">{% trans 'EBIS ótimo' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'ENBIS atual' %}">{% trans 'ENBIS atual' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'ENBIS ótimo' %}">{% trans 'ENBIS ótimo' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Eficiência do investimento atual em relação ao ótimo' %}">{% trans 'Eficiência' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Ajuste em investimento' %}">{% trans 'Ajuste' %}</th>
+                                                <th data-toggle="tooltip" title="{% trans 'Lucro após ajuste' %}">{% trans 'Lucro' %}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for attack in asset.ataques %}
+                                            <tr>
+                                                <td>
+                                                    <span id="emoji-{{ asset.asset.id }}-{{ forloop.counter }}"
+                                                        class="emoji"></span>
+                                                    <span id="value-{{ asset.asset.id }}-{{ forloop.counter }}"
+                                                        data-invest="{{ attack.investido }}"
+                                                        data-seg-min="{{ attack.otimo.seg_min }}"
+                                                        data-seg-max="{{ attack.otimo.seg_max }}" style="display: none;"></span>
+                                                </td>
+                                                <td>{% if attack.type == "Geral" %}Total{% else %}{{ attack.type }}{% endif %}</td>
+                                                        {% if attack.type == "Geral" %}
+                                                            <td>-</td>
+                                                            <td title="{{ attack.prob|floatformat:2 }}%">{{ attack.prob|floatformat:2 }}%</td>
+                                                        {% else %}
+                                                            <td>
+                                                                $<input type="text" name="attack_valor_{{ attack.type }}" value="{{ attack.valor|floatformat:2 }}" size = 5>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" name="prob_value_{{ attack.type }}" value="{{ attack.prob|floatformat:2 }}" size = 1>%
+                                                            </td>
+                                                            {% endif %}
+                                                    <td title="${{ attack.exp_damage|floatformat:2 }}">${{ attack.exp_damage|format_large_number }}</td>
+                                                    <td>
+                                                        $<input type="text" name="investido_value_{{ attack.type }}" value="{{ attack.investido }}" size = 4>
+                                                    </td>
+                                                <td class="text-success" title="${{ attack.otimo.z|floatformat:2 }}">
+                                                    ${{attack.otimo.z|format_large_number }}</td>
+                                                <td
+                                                    title="${{ attack.otimo.seg_min|floatformat:2 }} - ${{ attack.otimo.seg_max|floatformat:2 }}">
+                                                    ${{ attack.otimo.seg_min|format_large_number }} - ${{ attack.otimo.seg_max|format_large_number }}
+                                                </td>
+    
+                                                <td title="${{ attack.atual.ebis|floatformat:2 }} - {{ attack.porc_efet_atual|floatformat:2 }}%">${{ attack.atual.ebis|format_large_number }} - {{ attack.porc_efet_atual|floatformat:2 }}%</td>
+                                                <td title="${{ attack.otimo.ebis|floatformat:2 }} - {{ attack.porc_efet_otimo|floatformat:2 }}%">${{ attack.otimo.ebis|format_large_number }} - {{ attack.porc_efet_otimo|floatformat:2 }}%</td>
+                                                <td title="${{ attack.atual.enbis|floatformat:2 }}">${{ attack.atual.enbis|format_large_number }}</td>
+                                                <td title="${{ attack.otimo.enbis|floatformat:2 }}">${{ attack.otimo.enbis|format_large_number }}</td>
+                                                <td class="{% if attack.porc_efici < eficiencia_aceitavel %}text-danger{% else %}text-success{% endif %}" title="{{ attack.porc_efici|floatformat:2 }}%">{{ attack.porc_efici|format_large_number }}%</td>
+                                                <td title="${{ attack.falta|floatformat:2 }}"> ${{ attack.falta|format_large_number }}</td>
+                                                <td title="${{ attack.retorno|floatformat:2 }}">${{ attack.retorno|format_large_number }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button type="submit" name="action" style="margin-top: 10px" value="calcular" class="btn btn-success">{% trans "Calcular" %}</button>
+                            </form>
+                        {% else %}
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="header-title mb-3"><i class="mdi mdi-cash-register me-1"></i>{% trans 'Simulações de Gordon-Loeb ' %}- {{ asset.asset.item }} - ${{ asset.asset.value }}</h4>                            
+                            <!-- Botão para abrir o modal, com ID único -->
+                            <button id="openModalBtn-{{ forloop.counter }}" class="btn btn-secondary" onclick="openModal({{ forloop.counter }})">{% trans "Impactos" %}</button>
+                        </div>
+                        
+                        <!-- Modal com ID único -->
+                        <div id="configModal-{{ forloop.counter }}" class="modal">
+                            <div class="modal-content">
+                                <span class="close" onclick="closeModal({{ forloop.counter }})">&times;</span>
+    
+                                <h2>{% trans "Configurar Impactos" %}</h2>
+                                <h3>{{ asset.asset.item }}</h3>
+                        
+                                <!-- Formulário com select e método GET -->
+                                <form id="configForm-{{ forloop.counter }}" action="{% url 'dashboard:economic_planning' company.pk %}" method="GET">
+                                    <input type="hidden" name="action" value="impacto">
+                                    <input type="hidden" name="asset_id" value="{{ asset.asset.id }}">
+                                    
+                                    {% for attack in asset.ataques %}
+                                        {% if attack.type != "Geral" %}
+                                            <h4>{{ attack.type }}</h4>
+                                            <div>
+                                                <label for="config-select">{% trans "Diretos:" %}</label>
+                                                <select id="config-select" name="config_direto_{{ attack.type }}">
+                                                    <option value="Alto" {% if attack.impacto_d == 'Alto' %}selected{% endif %}>{% trans "Alto" %}</option>
+                                                    <option value="Medio" {% if attack.impacto_d == 'Medio' %}selected{% endif %}>{% trans "Médio" %}</option>
+                                                    <option value="Baixo" {% if attack.impacto_d == 'Baixo' %}selected{% endif %}>{% trans "Baixo" %}</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="config-select">{% trans "Indiretos:" %}</label>
+                                                <select id="config-select" name="config_indireto_{{ attack.type }}">
+                                                    <option value="Alto" {% if attack.impacto_i == 'Alto' %}selected{% endif %}>{% trans "Alto" %}</option>
+                                                    <option value="Medio" {% if attack.impacto_i == 'Medio' %}selected{% endif %}>{% trans "Médio" %}</option>
+                                                    <option value="Baixo" {% if attack.impacto_i == 'Baixo' %}selected{% endif %}>{% trans "Baixo" %}</option>
+                                                </select>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <br><br>
+                                    <button type="submit" class="btn btn-primary">{% trans "Calcular Impactos" %}</button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-sm table-centered table-nowrap mb-0">
+                                <thead>
+                                    <tr>
+                                        <th data-toggle="tooltip" title="{% trans 'Status do investimento' %}">{% trans 'Status' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Tipo de ataque' %}">{% trans 'Tipo' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Dano de ataque com sucesso' %}">{% trans 'Possível dano' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Probabilidade de ataque com sucesso' %}">{% trans 'Probabilidade' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Perda estimada pelo ataque sem segurança' %}">{% trans 'Perda estimada' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Valor investido' %}">{% trans 'Invest. atual' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Investimento ótimo' %}">{% trans 'Invest. ótimo' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Investimento aceitável' %}">{% trans 'Invest. aceitável' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Ajuste em investimento' %}">{% trans 'Ajuste' %}</th>
+                                        <th data-toggle="tooltip" title="{% trans 'Lucro após ajuste' %}">{% trans 'Lucro' %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for attack in asset.ataques %}
+                                    <tr> 
+                                        {% if attack.type == "Geral" %}
+                                            <td>
+                                                <span id="emoji-{{ asset.asset.id }}-{{ forloop.counter }}"
+                                                    class="emoji"></span>
+                
+                                                <span id="value-{{ asset.asset.id }}-{{ forloop.counter }}"
+                                                    data-invest="{{ attack.investido }}"
+                                                    data-seg-min="{{ attack.otimo.seg_min }}"
+                                                    data-seg-max="{{ attack.otimo.seg_max }}" style="display: none;"></span>
+                                            </td>
+                                        {% else %}
+                                            <td>-</td>
+                                        {% endif %}
+                                        <td>{% if attack.type == "Geral" %}Total{% else %}{{ attack.type }}{% endif %}</td>
+                                        <td title="${{ attack.valor|floatformat:2 }}">${{ attack.valor|format_large_number }}</td>
+                                        <td>{{ attack.prob|floatformat:2 }}%</td>
+                                        <td title="${{ attack.exp_damage|floatformat:2 }}">${{ attack.exp_damage|format_large_number }}</td>
+                                        {% if attack.type == "Geral" %}
+                                            <td class="{% if attack.atual.z > attack.otimo.seg_max or attack.atual.z < attack.otimo.seg_min %} text-danger{% else %}text-success{% endif %}"
+                                                title="${{ asset.investido|floatformat:2 }}">${{ attack.investido|format_large_number }}</td>
+                                        {% else %}
+                                            <td>-</td>
+                                        {% endif %}    
+                                        <td class="text-success" title="${{ attack.otimo.z|floatformat:2 }}">
+                                            ${{attack.otimo.z|format_large_number }}</td>
+                                        <td
+                                            title="${{ attack.otimo.seg_min|floatformat:2 }} - ${{ attack.otimo.seg_max|floatformat:2 }}">
+                                            ${{ attack.otimo.seg_min|format_large_number }} - ${{ attack.otimo.seg_max|format_large_number }}
+                                        </td>
+                                        {% if attack.type == "Geral" %}
+                                            <td title="${{ attack.falta|floatformat:2 }}"> ${{ attack.falta|format_large_number }}</td>
+                                            <td title="${{ attack.retorno|floatformat:2 }}">${{ attack.retorno|format_large_number }}</td>
+                                        {% else %}
+                                            <td>-</td>
+                                            <td>-</td>
+                                        {% endif %}    
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="GET" action="{% url 'dashboard:economic_planning' company.pk %}">
+                            <h5 class="card-title mb-3">
+                                <i class="mdi mdi-chart-line me-1"></i>{{ asset.asset.item }} - {% trans "Gráfico do EBIS para ataque selecionado" %}
+                                <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="{% trans 'EBIS (Expected Benefit of Information Security)' %}" data-bs-content="{% trans 'The financial benefit derived from investing in cybersecurity measures.' %}">
+                                    <i class="fas fa-question-circle"></i>
+                                </a>
+                            </h5>
+                            
+                            <!-- Caixa de seleção para escolher o ataque -->
+                            <!-- <label for="attackSelector-{{ forloop.counter }}"></label>-->
+                            <div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <!-- Campo oculto para passar o ID do asset -->
+                                        <input type="hidden" name="asset_id" value="{{ asset.asset.id }}">
+                                        <select id="attackSelector-{{ forloop.counter }}" name="selected_attack" class="form-select attack-selector" style="width: 500px; margin-top: 10px;">
+                                            {% for ataque in asset.ataques %}
+                                            <option value="{{ ataque.type }}" {% if ataque.type == asset.grafico %}selected{% endif %}>
+                                                {% if ataque.type == "Geral" %}Total{% elif ataque.type == "Total" %}Total{% else %}{{ ataque.type }}{% endif %} - {% trans "Eficiência aceitável:" %} {{ eficiencia_aceitavel }}% - Alpha: {{ asset.alpha }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                       
+                                        </div>
+                                
+                            </div>
+                        </form>
+                        {% for ataque in asset.ataques %}
+
+                                
+                                <div class="chart-container mt-3" data-type="{{ forloop.counter }}" style="position: relative; max-height:30vh; width:100%;">
+                                    <canvas id="myChart-{{ forloop.parentloop.counter }}-{{ forloop.counter }}"></canvas>
+                                </div>
+                                
+                                <!-- Dados do gráfico -->
+                                <div class="chart-params attack-{{ forloop.parentloop.counter }}-{{ forloop.counter }}" 
+                                    data-func="{{ ataque.func }}"
+                                    data-enbis="{{ ataque.otimo.enbis }}" 
+                                    data-inic="{{ ataque.min }}"
+                                    data-fim="{{ ataque.max }}" 
+                                    data-otimo="{{ ataque.otimo.z }}" 
+                                    data-value="{{ ataque.valor }}"
+                                    data-prob="{{ ataque.prob }}" 
+                                    data-atual="{{ ataque.atual.z }}"  
+                                    data-seg-min="{{ ataque.otimo.seg_min }}"
+                                    data-seg-max="{{ ataque.otimo.seg_max }}" 
+                                    data-divisions="100" 
+                                    data-zero="{{ ataque.otimo.zero_graph }}"
+                                    style="display:none;">
+                                </div>
+                                
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+
+    <script>
+    
+    function newConfig(paramsElement) {
+        const otimo = parseFloat(getDataAttribute(paramsElement, 'otimo'));
+            const atual = parseFloat(getDataAttribute(paramsElement, 'atual'));
+            const enbis = parseFloat(getDataAttribute(paramsElement, 'enbis'));
+            const value = parseFloat(getDataAttribute(paramsElement, 'value'));
+            const prob = parseFloat(getDataAttribute(paramsElement, 'prob').replace(',', '.'));
+            const inic = parseFloat(getDataAttribute(paramsElement, 'zero')) || 0;
+            const fim = parseFloat(getDataAttribute(paramsElement, 'fim')) || 0;
+            const divisions = 10000;
+    
+            const funcString = getDataAttribute(paramsElement, 'func');
+            const seg_min = parseFloat(getDataAttribute(paramsElement, 'seg-min'));
+            const seg_max = parseFloat(getDataAttribute(paramsElement, 'seg-max'));
+    
+            const size = (fim - inic) / (divisions - 1);
+            const labels = Array.from({ length: divisions }, (_, i) => Math.round(inic + i * size));  // Gera uma lista de valores entre inic e fim
+    
+            // Avalia a função passada como string
+            const func = new Function('x', `return ${funcString};`);
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: '{% trans "Investimento" %}',
+                    data: labels.map(x => x),  // Aqui a função y = x
+                    borderColor: 'rgba(0, 0, 255, 1)',  // Cor da linha y = x
+                    borderWidth: 1.5,
+                    fill: false,
+                    pointRadius: 0,  // Não queremos pontos, só a linha
+                },
+                {
+                    label: '{% trans "EBIS" %}',
+                    data: labels.map(x => 
+                    func(x) < 0
+                            ? 0
+                            : func(x)
+                    ),  // Aplica a função a cada valor de x
+                    borderColor: 'rgba(255, 90, 8, 1)',
+                    backgroundColor: 'rgba(255, 90, 8, 0.2)',
+                    fill: false,
+                    tension: 0.1,
+                    pointBackgroundColor: labels.map(x =>
+                        x >= atual - size / 2 && x <= atual + size / 2
+                            ? 'rgba(255, 20, 0, 0.5)'
+                            : x >= seg_min && x <= seg_max
+                                ? 'rgba(13, 216, 0, 0.5)'
+                                : 'rgba(255, 90, 8, 0.5)'
+                    ),  // Cor do ponto
+                    pointBorderColor: labels.map(x =>
+                        x >= atual - size / 2 && x <= atual + size / 2
+                            ? 'rgba(255, 20, 0, 1)'
+                            : x >= seg_min && x <= seg_max
+                                ? 'rgba(13, 216, 0, 1)'
+                                : 'rgba(255, 90, 8, 1)'
+                    ),  // Cor da borda do ponto
+                    pointRadius: labels.map(x =>
+                        x >= otimo - size / 2 && x <= otimo + size / 2
+                            ? 8
+                            : x >= atual - size / 2 && x <= atual + size / 2
+                                ? 5
+                                : 0
+                    ),  // Tamanho do ponto
+                    segment: {
+                        borderColor: ctx => {
+                            const x0 = ctx.p0.parsed.x;
+                            const x1 = ctx.p1.parsed.x;
+    
+                            // Cor verde se ambos os pontos do segmento estão dentro do intervalo seg_min a seg_max
+                            if (x0 >= seg_min && x0 <= seg_max && x1 >= seg_min && x1 <= seg_max) {
+                                return 'rgba(13, 216, 0, 1)';
+                            }
+                            return 'rgba(255, 90, 8, 1)';
+                        }
+                    }
+                },
+    
+                {
+                    label: '{% trans "Linha de eficiência marginal" %}',
+                    data: labels.map(x => x + enbis),  // Aqui a função y = x
+                    borderColor: 'rgba(0, 0, 255, 0.5)',  // Cor da linha y = x
+                    borderWidth: 1.5,
+                    fill: false,
+                    pointRadius: 0,
+                    borderDash: [5, 5],  // Linha tracejada para diferenciar
+                },
+                {
+                    label: '{% trans "Prejuízo esperado" %}',
+                    data: labels.map(x => value * prob / 100),  // Aqui a função y = x
+                    borderColor: 'rgba(0, 0, 0, 1)',  // Cor da linha y = x
+                    borderWidth: 1.5,
+                    fill: false,
+                    pointRadius: 0,
+                    borderDash: [5, 5],  // Linha tracejada para diferenciar
+                },
+                ]
+            };
+    
+    
+    const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            min: labels[0],  // Início do eixo x no primeiro elemento de labels
+                            max: labels[labels.length - 1],  // Fim do eixo x no último elemento de labels
+                            title: {
+                                display: true,
+                                text: '{% trans "Investimento" %}',
+                                font: {
+                                    size: 14,  // Tamanho da fonte opcional
+                                },
+                                padding: { top: 10 }  // Espaçamento opcional acima do rótulo
+                            },
+                            ticks: {
+                                callback: function (value, index, values) {
+                                    return formatLargeNumber(value);
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '{% trans "Benefício do investimento" %}',
+                                font: {
+                                    size: 14,  // Tamanho da fonte opcional
+                                },
+                                padding: { bottom: 10 }  // Espaçamento opcional abaixo do rótulo
+                            },
+                            ticks: {
+                                callback: function (value, index, values) {
+                                    return formatLargeNumber(value);
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                generateLabels: function (chart) {
+                                    const original = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+    
+                                    original.splice(2, 0, {
+                                        text: '{% trans "EBIS com investimento aceitável" %}',
+                                        fillStyle: 'rgba(13, 216, 0, 0.2)',  // Cor verde usada no gráfico
+                                        strokeStyle: 'rgba(13, 216, 0, 1)',
+                                        lineWidth: 2,
+                                        hidden: false,
+                                        index: 2, // define a posição da legenda
+                                    });
+                                    return original;
+                                }
+                            }
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var label = data.datasets[tooltipItem.datasetIndex].label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    label += formatLargeNumber(tooltipItem.yLabel);
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            return config;
+        }
+
+    let grafico = null;
+    document.querySelectorAll('.chart-params').forEach((paramsElement) => {
+        const canvasId = `myChart-${paramsElement.classList[1].split('-').slice(1).join('-')}`;
+        const chartParamsIndex = parseInt(paramsElement.classList[1].split('-').slice(1)[1]);
+
+        const selectedAttack = document.querySelector('.attack-selector').selectedIndex + 1; // Obtém o índice do ataque selecionado 
+        if(parseInt(selectedAttack) === chartParamsIndex)
+        {
+            document.querySelectorAll('.chart-container').forEach(container => {
+                const type = parseInt(container.getAttribute('data-type'));
+                if (type != chartParamsIndex){
+                    container.style.display = 'none';
+                }
+                else{
+                    container.style.display = 'block';
+                }
+            });
+            grafico = new Chart(document.getElementById(canvasId), newConfig(paramsElement));
+        }
+    });
+    
+    grafico.update();
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.attack-selector').forEach(function(select) {
+            select.addEventListener('change', function () {
+                document.querySelectorAll('.chart-params').forEach((paramsElement) => {
+                    
+                    
+                    const selectedIndex = this.selectedIndex + 1;
+                    const parentAsset = this.id.split('-')[1];
+
+                    const chartParamsIndex = parseInt(paramsElement.classList[1].split('-').slice(1)[1]);
+                    
+                    canvasId = `myChart-${parentAsset}-${chartParamsIndex}`;
+
+                    
+                    if (selectedIndex === chartParamsIndex) {
+                        document.querySelectorAll('.chart-container').forEach(container => {
+                            const type = parseInt(container.getAttribute('data-type'));
+                            if (type === chartParamsIndex)
+                                container.style.display = 'block';
+                        });
+                        grafico = new Chart(document.getElementById(canvasId), newConfig(paramsElement));
+                        grafico.update();
+                    }
+                    else
+                    {
+                        const oldChart = Chart.getChart(canvasId);
+                        if (oldChart) 
+                        {   
+                            oldChart.destroy();
+                        }
+                        document.querySelectorAll('.chart-container').forEach(container => {
+                            const type = parseInt(container.getAttribute('data-type'));
+                            if (type === chartParamsIndex)
+                                container.style.display = 'none';
+                        });
+                    }
+                });
+            });
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    function stringToBoolean(str) {
+            return str.toLowerCase() === 'true';
+        }
+    
+        // Função para obter o valor de um atributo data-*
+        function getDataAttribute(element, attribute) {
+            return element.getAttribute(`data-${attribute}`);
+        }
+    
+        function formatLargeNumber(num) {
+            if (num >= 1e9) return (num / 1e9).toFixed(1) + 'B';
+            if (num >= 1e6) return (num / 1e6).toFixed(1) + 'M';
+            if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
+            return num.toFixed(2);
+        }
+
+
+    
+
+        function updateEmojis() {
+            document.querySelectorAll('[id^="emoji-"]').forEach(emojiElement => {
+                const [_, assetId, attackIndex] = emojiElement.id.split('-');
+                const valueElement = document.getElementById(`value-${assetId}-${attackIndex}`);
+    
+                const investido = parseFloat(valueElement.getAttribute('data-invest'));
+                const segMin = parseFloat(valueElement.getAttribute('data-seg-min'));
+                const segMax = parseFloat(valueElement.getAttribute('data-seg-max'));
+    
+    
+                const isEffective = investido >= segMin && investido <= segMax;
+    
+                const emoji = isEffective ? '&#x1F7E2;' : '&#x1F534;'; // Verde ou vermelho
+                emojiElement.innerHTML = emoji;
+                emojiElement.className = 'emoji ' + (isEffective ? 'green' : 'red');
+            });
+        }
+    
+        // Chama a função para atualizar os emojis quando a página carrega
+        document.addEventListener('DOMContentLoaded', updateEmojis);
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+        });
+
+        function openModal(counter) {
+        var modal = document.getElementById('configModal-' + counter);
+        modal.style.display = 'block';
+    }
+    
+    function closeModal(counter) {
+        var modal = document.getElementById('configModal-' + counter);
+        modal.style.display = 'none';
+    }
+    
+    // Fecha o modal quando clicar fora dele
+    window.onclick = function(event) {
+        var modals = document.getElementsByClassName('modal');
+        for (var i = 0; i < modals.length; i++) {
+            if (event.target == modals[i]) {
+                modals[i].style.display = 'none';
+            }
+        }
+    }
+    
+    
+
+
+
+
+
+function openModaldoc() {
+    document.getElementById("meuModal").style.display = "block";
+}
+
+function closeModaldoc() {
+    document.getElementById("meuModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById("meuModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+
+        // Aguarde o DOM estar completamente carregado
+        
+
+        
+    </script>
+</style>
+{% endblock %}

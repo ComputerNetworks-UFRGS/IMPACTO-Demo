@@ -1,0 +1,171 @@
+PROB A PRIORI,PROB MARGINAL,P(A|B),C,P(C|P(A|B)),FONTE
+DDoS,United Kingdom,7.00,,,Acronis Mid-Year Cyberthreats Report 2023
+malware,United Kingdom,15.00,,,Acronis Mid-Year Cyberthreats Report 2023
+phishing,United Kingdom,79.00,,,Acronis Mid-Year Cyberthreats Report 2023
+phishing,Healthcare,50.70,,,Healthcare Industry Was the Most Common Victim of Third-Party Breaches in 2022
+DDoS,Retail,10.14,,,Retail Cybersecurity Statistics Not To Be Ignored
+malware,Retail,21.74,,,Retail Cybersecurity Statistics Not To Be Ignored
+ransomware,Retail,13.04,,,Retail Cybersecurity Statistics Not To Be Ignored
+DDoS,EMEA,17.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,NA,46.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,APAC,45.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,LATAM,31.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,EMEA,50.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,Finance,38.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,Retail,50.00,,,IBM X-Force Threat Intelligence Index 2024
+malware,Healthcare,29.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,EMEA,30.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,NA,27.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,APAC,36.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,LATAM,22.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,Finance,28.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,Retail,29.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,Healthcare,20.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,EMEA,26.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,APAC,17.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,LATAM,31.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,Finance,25.00,,,IBM X-Force Threat Intelligence Index 2024
+ransomware,Retail,26.00,,,IBM X-Force Threat Intelligence Index 2024
+phishing,APAC,18.00,,,M-Trends 2024 Special Report
+phishing,EMEA,16.00,,,M-Trends 2024 Special Report
+phishing,LATAM,18.00,,,M-Trends 2024 Special Report
+ransomware,APAC,33.00,,,M-Trends 2024 Special Report
+ransomware,EMEA,22.00,,,M-Trends 2024 Special Report
+DDoS,Brazil,1.75,,,2022 in review: DDoS attack trends and insights
+DDoS,United States,45.02,,,2022 in review: DDoS attack trends and insights
+DDoS,India,13.22,,,2022 in review: DDoS attack trends and insights
+DDoS,EMEA,10.49,,,2022 in review: DDoS attack trends and insights
+DDoS,Asia,11.25,,,2022 in review: DDoS attack trends and insights
+DDoS,Korea,4.22,,,2022 in review: DDoS attack trends and insights
+DDoS,United Kingdom,2.23,,,2022 in review: DDoS attack trends and insights
+DDoS,Australia,2.02,,,2022 in review: DDoS attack trends and insights
+phishing,Retail,26.00,,,2023 State of the Phish
+phishing,Finance,30.00,,,2023 State of the Phish
+phishing,Healthcare,26.00,,,2023 State of the Phish
+DDoS,Finance,52.60,,,2022 Global Threat Analysis Report
+DDoS,Retail,6.00,,,2022 Global Threat Analysis Report
+DDoS,Healthcare,10.50,,,2022 Global Threat Analysis Report
+DDoS,Education,2.80,,,2022 Global Threat Analysis Report
+DDoS,LATAM,-,Finance,31.50,2022 Global Threat Analysis Report
+DDoS,LATAM,-,Healthcare,23.90,2022 Global Threat Analysis Report
+DDoS,EMEA,-,Finance,70.60,2022 Global Threat Analysis Report
+DDoS,EMEA,-,Healthcare,3.32,2022 Global Threat Analysis Report
+DDoS,EMEA,-,Education,1.28,2022 Global Threat Analysis Report
+DDoS,APAC,-,Finance,9.35,2022 Global Threat Analysis Report
+DDoS,APAC,-,Healthcare,2.61,2022 Global Threat Analysis Report
+DDoS,APAC,-,Education,4.11,2022 Global Threat Analysis Report
+DDoS,APAC,-,Healthcare,2.61,2022 Global Threat Analysis Report
+ransomware,Finance,64.00,,,The State of Ransomware in Financial Services 2023
+DDoS,Finance,34.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Retail,17.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Healthcare,1.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Entertainment,12.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Education,2.00,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,United States,18.30,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,China,10.70,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,India,9.20,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Russia,8.40,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,England,7.20,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Germany,6.80,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,France,5.30,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Japan,4.70,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Ukraine,4.50,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Brazil,4.20,,,2022: DDoS Year-in-Review Report by StormWall
+DDoS,Finance,60.57,,,2024 Data Breach Investigations Report
+DDoS,Healthcare,3.18,,,2024 Data Breach Investigations Report
+DDoS,Retail,35.73,,,2024 Data Breach Investigations Report
+DDoS,APAC,23.45,,,2024 Data Breach Investigations Report
+DDoS,EMEA,22.98,,,2024 Data Breach Investigations Report
+DDoS,LATAM,70.75,,,2024 Data Breach Investigations Report
+DDoS,NA,80.28,,,2024 Data Breach Investigations Report
+malware,Finance,13.27,,,2024 Data Breach Investigations Report
+malware,Healthcare,16.18,,,2024 Data Breach Investigations Report
+malware,Retail,28.76,,,2024 Data Breach Investigations Report
+malware,APAC,16.50,,,2024 Data Breach Investigations Report
+malware,EMEA,17.77,,,2024 Data Breach Investigations Report
+malware,LATAM,14.85,,,2024 Data Breach Investigations Report
+malware,NA,10.03,,,2024 Data Breach Investigations Report
+cyberattack,Technology,44.44,,,Blackpoint Cyber Annual Threat Report 2024
+cyberattack,Healthcare,4.64,,,Blackpoint Cyber Annual Threat Report 2024
+cyberattack,Finance,4.41,,,Blackpoint Cyber Annual Threat Report 2024
+cyberattack,Retail,2.42,,,Blackpoint Cyber Annual Threat Report 2024
+cyberattack,Others,4.65,,,Blackpoint Cyber Annual Threat Report 2024
+ransomware,LATAM,9,,,Checkpoint Cybersecurity Report 2024
+ransomware,NA,9,,,Checkpoint Cybersecurity Report 2024
+ransomware,EMEA,10,,,Checkpoint Cybersecurity Report 2024
+ransomware,APAC,11,,,Checkpoint Cybersecurity Report 2024
+cyberattack,Education,11.75,,,Checkpoint Cybersecurity Report 2024
+cyberattack,Government,9.17,,,Checkpoint Cybersecurity Report 2024
+cyberattack,Finance,6.67,,,Checkpoint Cybersecurity Report 2024
+cyberattack,Retail,6.1,,,Checkpoint Cybersecurity Report 2024
+cyberattack,Healthcare,8.61,,,Checkpoint Cybersecurity Report 2024
+cyberattack,Others,5.25,,,Checkpoint Cybersecurity Report 2024
+ransomware,United States,45,,,Checkpoint Cybersecurity Report 2024
+ransomware,United Kingdom,7,,,Checkpoint Cybersecurity Report 2024
+ransomware,Canada,4,,,Checkpoint Cybersecurity Report 2024
+ransomware,Germany,4,,,Checkpoint Cybersecurity Report 2024
+ransomware,Italy,4,,,Checkpoint Cybersecurity Report 2024
+ransomware,France,3,,,Checkpoint Cybersecurity Report 2024
+ransomware,Australia,2,,,Checkpoint Cybersecurity Report 2024
+ransomware,Brazil,2,,,Checkpoint Cybersecurity Report 2024
+ransomware,India,2,,,Checkpoint Cybersecurity Report 2024
+ransomware,Russia,1,,,Checkpoint Cybersecurity Report 2024
+ransomware,Retail,10,,,Checkpoint Cybersecurity Report 2024
+ransomware,Healthcare,8,,,Checkpoint Cybersecurity Report 2024
+ransomware,Education,7,,,Checkpoint Cybersecurity Report 2024
+ransomware,Finance,6,,,Checkpoint Cybersecurity Report 2024
+ransomware,Government,4,,,Checkpoint Cybersecurity Report 2024
+ransomware,Others,6.56,,,Checkpoint Cybersecurity Report 2024
+ransomware,Healthcare,4,,,Deepwatch Annual Threat Report 2024
+ransomware,Technology,25.12,,,Flashpoint Midyear CTI Index 2024
+ransomware,Retail,13.75,,,Flashpoint Midyear CTI Index 2024
+ransomware,Healthcare,10.89,,,Flashpoint Midyear CTI Index 2024
+ransomware,Finance,6.96,,,Flashpoint Midyear CTI Index 2024
+ransomware,Education,5.15,,,Flashpoint Midyear CTI Index 2024
+ransomware,Others,5.15,,,Flashpoint Midyear CTI Index 2024
+DDoS,Australia,12.1,,,Ensign Cyber Threat Landscape Report 2024
+phishing,China,9.2,,,Ensign Cyber Threat Landscape Report 2024
+cyberattack,Technology,14.8,,,Expel Annual Threat Report 2024
+cyberattack,Finance,11,,,Expel Annual Threat Report 2024
+cyberattack,Retail,9.2,,,Expel Annual Threat Report 2024
+cyberattack,Healthcare,4.7,,,Expel Annual Threat Report 2024
+cyberattack,Finance,9,,,ENISA Threat Landscape 2024
+cyberattack,Healthcare,4,,,ENISA Threat Landscape 2024
+cyberattack,Retail,3,,,ENISA Threat Landscape 2024
+cyberattack,Education,3,,,ENISA Threat Landscape 2024
+malware,Government,9.4,,,ENISA Threat Landscape 2024
+malware,Finance,5.95,,,ENISA Threat Landscape 2024
+malware,Education,2.88,,,ENISA Threat Landscape 2024
+malware,Healthcare,0.58,,,ENISA Threat Landscape 2024
+malware,Retail,0.35,,,ENISA Threat Landscape 2024
+DDoS,Government,33.24,,,ENISA Threat Landscape 2024
+DDoS,Finance,12.49,,,ENISA Threat Landscape 2024
+DDoS,Education,2.06,,,ENISA Threat Landscape 2024
+ransomware,United States,51.53,,,Guidepoint Ransomware Annual Report 2024
+ransomware,United Kingdom,4.97,,,Guidepoint Ransomware Annual Report 2024
+ransomware,Canada,4.95,,,Guidepoint Ransomware Annual Report 2024
+ransomware,Germany,3.01,,,Guidepoint Ransomware Annual Report 2024
+ransomware,Italy,2.52,,,Guidepoint Ransomware Annual Report 2024
+ransomware,France,2.48,,,Guidepoint Ransomware Annual Report 2024
+ransomware,India,2.33,,,Guidepoint Ransomware Annual Report 2024
+ransomware,Brazil,2.12,,,Guidepoint Ransomware Annual Report 2024
+ransomware,Australia,1.71,,,Guidepoint Ransomware Annual Report 2024
+cyberattack,Technology,24,,,Microsoft Digital Defense Report 2024
+cyberattack,Education,21,,,Microsoft Digital Defense Report 2024
+cyberattack,Government,12,,,Microsoft Digital Defense Report 2024
+cyberattack,Retail,5,,,Microsoft Digital Defense Report 2024
+cyberattack,Finance,5,,,Microsoft Digital Defense Report 2024
+malware,EMEA,14.71,,,WatchGuard Threat Report 2024
+malware,APAC,62.76,,,WatchGuard Threat Report 2024
+malware,NA,22.5,,,WatchGuard Threat Report 2024
+malware,LATAM,22.5,,,WatchGuard Threat Report 2024
+ransomware,Canada,3.51,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,United States,49.95,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,Brazil,1.56,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,France,3.26,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,United Kingdom,5.92,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,Germany,4.09,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,Italy,3.24,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,India,1.65,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,Japan,1.15,,,Zscaler ThreatLabz 2024 Ransomware Report 2024
+ransomware,Australia,2,,,Zscaler ThreatLabz 2024 Ransomware Report 2024

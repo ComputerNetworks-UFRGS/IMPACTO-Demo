@@ -1,0 +1,64 @@
+Guia de Instalação GT-IMPACTO
+
+Requisitos
+- Linux
+- Python 3.11.x
+- Git
+
+Instalação
+
+1. Clone o repositório:
+
+git clone <repository>
+cd IMPACTO
+
+2. Execute o script de instalação pela primeira vez para criar os arquivos de configuração:
+
+chmod +x run.sh
+./run.sh
+
+3. Modifique os arquivos criados:
+
+.env:
+
+# Altere estas linhas:
+DB_PASSWORD=sua_senha_segura
+ADMIN_USERNAME=nome_login_admin
+ADMIN_PASSWORD=sua_senha_segura
+ADMIN_EMAIL=email_login_admin@email.com
+
+postgres_setup.sql:
+
+# Altere a senha nesta linha:
+CREATE USER gt_impacto WITH PASSWORD 'sua_senha_segura';
+
+reset_db.sql:
+
+# Altere a senha nesta linha:
+CREATE USER gt_impacto WITH PASSWORD 'sua_senha_segura';
+
+IMPORTANTE: Use a mesma senha em todos os arquivos!
+
+4. Execute o script novamente para instalar:
+
+./run.sh
+
+--------------------------
+
+Iniciando a Plataforma (depois de rodar pela primeira vez)
+Para iniciar a plataforma após a instalação:
+
+chmod +x start.sh
+./start.sh
+
+Acesso
+- URL: http://localhost:8000/admin
+- Usuário: usuáro que voce configurou no .env 
+- Senha: a mesma que você configurou nos arquivos
+
+Notas
+- O run.sh só precisa ser executado na instalação inicial
+- Para uso diário, utilize o start.sh
+- Mantenha os outros campos dos arquivos inalterados
+- Os arquivos de configuração são ignorados pelo git por segurança
+

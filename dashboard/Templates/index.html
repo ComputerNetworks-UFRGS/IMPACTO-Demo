@@ -1,0 +1,239 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block page_content %}
+<style>
+    .container-fluid {
+        padding: 2rem;
+    }
+    .card {
+        border: 1px solid var(--ct-border-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 300px;
+        padding: 2rem;
+    }
+    .header-content {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    .logo-text-wrapper {
+        display: flex;
+        align-items: center;
+    }
+    .header-logo {
+        width: 70px;
+        height: auto;
+        margin-right: 1rem;
+    }
+    .header-title {
+        font-size: 3rem;
+        margin: 0;
+        color: #333;
+        font-weight: bold;
+    }
+    .lead {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+    }
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #F77A3F;
+    }
+    .btn-custom {
+        background-color: #F77A3F;
+        border-color: #F77A3F;
+        color: white;
+        transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+    }
+    .btn-custom:hover {
+        background-color: #E66A2E;
+        border-color: #E66A2E;
+        color: white;
+    }
+    .card-title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: #333;
+    }
+    .card-text {
+        margin-bottom: 1.5rem;
+        color: #555;
+    }
+    .list-unstyled {
+        text-align: left;
+        width: 100%;
+        padding-left: 1rem;
+    }
+    .list-unstyled li {
+        margin-bottom: 0.5rem;
+        color: #555;
+    }
+    @media (max-width: 768px) {
+        .header-title {
+            font-size: 2.5rem;
+        }
+        .lead {
+            font-size: 1rem;
+        }
+        .card-body {
+            min-height: 250px;
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="header-content">
+                        <div class="logo-text-wrapper">
+                            <img src="{% static "assets/images/logo-sm-no-bg.png" %}" alt="GT-IMPACTO Logo" class="header-logo">
+                            <h1 class="header-title">GT-IMPACTO</h1>
+                        </div>
+                    </div>
+                    <p class="lead">
+                        {% trans "Plataforma de Capacitação em Cibersegurança Baseada em Modelagem e Simulação de Aspectos e Impactos Econômicos de Ciberataques" %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    {% if user.is_student %}
+                        <i class="fas fa-user-graduate feature-icon"></i>
+                        <h4 class="card-title">{% trans "Student" %}</h4>
+                    {% elif user.is_instructor %}
+                        <i class="fas fa-chalkboard-teacher feature-icon"></i>
+                        <h4 class="card-title">{% trans "Instructor" %}</h4>
+                    {% else %}
+                        <i class="fas fa-user feature-icon"></i>
+                        <h4 class="card-title">{% trans "User" %}</h4>
+                    {% endif %}
+                    <h5 class="mt-3">{% trans "Welcome" %}, {{ user.name }}!</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">{% trans "Your Capabilities" %}</h4>
+                    <ul class="list-unstyled">
+                        {% if user.is_student or user.is_instructor %}
+                            <li><i class="fas fa-check-circle text-success me-2"></i>{% trans "View and analyze company profiles" %}</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>{% trans "Create local copies of company profiles" %}</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>{% trans "Edit and analyze your copied profiles" %}</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>{% trans "Access risk analysis reports" %}</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>{% trans "Use the economic management tools" %}</li>
+                        {% endif %}
+                        {% if user.is_instructor %}
+                            <li><i class="fas fa-check-circle text-success me-2"></i>{% trans "Create base company profiles for all users" %}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-building feature-icon"></i>
+                    <h4 class="card-title">{% trans "Company Profiles" %}</h4>
+                    <p class="card-text">{% trans "Create, view, and analyze company cybersecurity profiles." %}</p>
+                    <a href="{% url 'dashboard:company_profile_list' %}" class="btn btn-custom">{% trans "Explore Profiles" %}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h4 class="card-title">{% trans "Risk Analysis" %}</h4>
+                    <p class="card-text">{% trans "Generate reports on cybersecurity risks and get recommendations." %}</p>
+                    <a href="{% if company %}{% url 'dashboard:company_analysis' pk=company.pk %}{% else %}{% url 'dashboard:company_profile_list_redirect' 'analyse' %}{% endif %}" class="btn btn-custom">{% trans "Analyze Risks" %}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-calculator feature-icon"></i>
+                    <h4 class="card-title">{% trans "Economic Management" %}</h4>
+                    <p class="card-text">{% trans "Optimize investments using Gordon-Loeb model and risk assessments." %}</p>
+                    <a href="{% if company %}{% url 'dashboard:economic_planning' pk=company.pk %}{% else %}{% url 'dashboard:company_profile_list_redirect' 'economic' %}{% endif %}" class="btn btn-custom">{% trans "Manage Economics" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if user.is_student or user.is_instructor %}
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-copy feature-icon"></i>
+                    <h4 class="card-title">{% trans "My Company Copies" %}</h4>
+                    <p class="card-text">{% trans "Access and manage your personal copies of company profiles." %}</p>
+                    <a href="{% url 'dashboard:user_company_copies' %}" class="btn btn-custom">{% trans "View My Copies" %}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-book feature-icon"></i>
+                    <h4 class="card-title">{% trans "Platform Guide" %}</h4>
+                    <p class="card-text">{% trans "Learn how to use all features of the GT-IMPACTO platform effectively." %}</p>
+                    <a href="{% if company %}{% url 'dashboard:platform_guide_company' pk=company.pk %}{% else %}{% url 'dashboard:platform_guide' %}{% endif %}#getting-started" class="btn btn-custom">{% trans "View Guide" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <i class="fas fa-book feature-icon"></i>
+                    <h4 class="card-title">{% trans "Platform Guide" %}</h4>
+                    <p class="card-text">{% trans "Learn how to use all features of the GT-IMPACTO platform effectively." %}</p>
+                    <a href="{% if company %}{% url 'dashboard:platform_guide_company' pk=company.pk %}{% else %}{% url 'dashboard:platform_guide' %}{% endif %}#getting-started" class="btn btn-custom">{% trans "View Guide" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

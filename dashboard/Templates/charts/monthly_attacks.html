@@ -1,0 +1,28 @@
+{% load i18n %}
+
+<!-- monthly_attacks.html -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title mb-0">
+            {% trans "Estimated attacks per month" %}
+            <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="{% trans 'Estimated attacks per month' %}" data-bs-content="{% trans 'This chart displays the estimated number of cyber attacks each month.' %}">
+                <i class="fas fa-question-circle"></i>
+            </a>
+        </h4>
+        <div id="cardCollapse8" class="collapse show" dir="ltr">
+            <div id="apex-bar-1" class="apex-charts pt-3" data-colors="#1abc9c"></div>
+        </div>
+        <p class="theme-text">
+            {% blocktrans with industry=industry_type country=headquarters_country %}
+            Estimated attacks for companies in the <span class="theme-color">{{ industry }}</span> sector, located in <span class="theme-color">{{ country }}</span>.
+            {% endblocktrans %}
+        </p>    </div>
+</div>
+
+
+
+
+<!-- para utilizar esse gráfico em uma página, utilize o template abaixo -->
+<div class="col-xl-6">
+    {% include 'dashboard/Templates/charts/monthly_attacks.html' with bar_chart_data=bar_chart_data %}
+</div>

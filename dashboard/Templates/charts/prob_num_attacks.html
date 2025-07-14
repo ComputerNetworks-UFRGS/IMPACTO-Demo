@@ -1,0 +1,25 @@
+{% load i18n %}
+
+<!-- prob_num_attacks.html -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="header-title mb-0">
+            {% trans "Probability of Number of Attacks" %}
+            <a tabindex="0" class="text-muted" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="{% trans 'Probability of Number of Attacks' %}" data-bs-content="{% trans 'This chart displays the estimated probabilities of the number of attacks.' %}">
+                <i class="fas fa-question-circle"></i>
+            </a>
+        </h4>
+        <div id="prob-num-ataques" class="apex-charts pt-3"></div>
+        <p class="theme-text">
+            {% blocktrans with industry=industry_type country=headquarters_country %}
+            Analysis based on historical data for companies in the <span class="theme-color">{{ industry }}</span> sector, located in <span class="theme-color">{{ country }}</span>.
+            {% endblocktrans %}
+        </p>    </div>
+</div>
+
+
+<!-- para utilizar esse gráfico em uma página, utilize o template abaixo -->
+
+<div class="col-12">
+    {% include 'dashboard/Templates/charts/prob_num_attacks.html' with prob_num_attacks_data=prob_num_attacks_data %}
+</div>

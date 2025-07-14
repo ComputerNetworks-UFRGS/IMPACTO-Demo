@@ -1,0 +1,119 @@
+{% load form_tags %}
+{% load i18n %}
+
+<div class="mb-3">
+    <label class="form-label">{% trans "Annual Revenue" %}</label>
+    {{ formset.management_form }}
+    <div id="annual-revenue-container">
+        {% for form in formset %}
+            <div class="annual-revenue-entry mb-2 d-flex align-items-center">
+                {% if form.instance.pk %}{{ form.id }}{% endif %}
+                <span class="me-1">{% trans "Year" %}:</span>
+                {{ form.year|add_class:'form-control me-2' }}
+                <span class="me-1">{% trans "Amount" %}:</span>
+                {{ form.amount|add_class:'form-control me-2' }}
+                {% if pode_deletar == 0 %}
+                    <button type="button" class="btn btn-danger remove-entry" {% if forloop.first %}style="display: none;"{% endif %}>{% trans "Remove" %}</button>
+                {% endif %}
+                {% if form.non_field_errors %}
+                    <div class="text-danger">{{ form.non_field_errors }}</div>
+                {% endif %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        <div class="text-danger">{{ field.errors }}</div>
+                    {% endif %}
+                {% endfor %}
+                {% if formset.can_delete and pode_deletar == 1 %}
+                <div class="form-check">
+                    {{ form.DELETE }}
+                    <label class="form-check-label" for="{{ form.DELETE.id_for_label }}">
+                        {% trans "Delete" %}
+                    </label>
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn-success mt-2" id="add-annual-revenue">{% trans "Add Annual Revenue" %}</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('annual-revenue-container');
+        const addButton = document.getElementById('add-annual-revenue');
+        const prefix = 'annual_revenue';
+        const podeDeletar = {% if pode_deletar == 1 %}true{% else %}false{% endif %};
+        const emptyForm = `
+            <div class="annual-revenue-entry mb-2 d-flex align-items-center">
+                <span class="me-1">{% trans "Year" %}:</span>
+                {{ formset.empty_form.year|add_class:'form-control me-2' }}
+                <span class="me-1">{% trans "Amount" %}:</span>
+                {{ formset.empty_form.amount|add_class:'form-control me-2' }}
+                {% if pode_deletar == 0 %}
+                    <button type="button" class="btn btn-danger remove-entry">{% trans "Remove" %}</button>
+                {% endif %}
+                {% if formset.can_delete and pode_deletar == 1 %}
+                    {{ formset.empty_form.DELETE|add_class:'d-none' }}
+                {% endif %}
+            </div>
+        `;
+
+        function addEntry() {
+            const formCount = container.children.length;
+            const totalForms = document.getElementById('id_' + prefix + '-TOTAL_FORMS');
+            
+            let newForm = document.createElement('div');
+            newForm.innerHTML = emptyForm;
+            newForm = newForm.firstElementChild;
+            
+            newForm.innerHTML = newForm.innerHTML.replace(new RegExp(prefix + '-__prefix__-', 'g'), prefix + '-' + formCount + '-');
+            newForm.innerHTML = newForm.innerHTML.replace(new RegExp('id_' + prefix + '-__prefix__-', 'g'), 'id_' + prefix + '-' + formCount + '-');
+            
+            container.appendChild(newForm);
+            
+            totalForms.value = parseInt(totalForms.value) + 1;
+
+            updateRemoveButtons();
+        }
+
+        function updateRemoveButtons() {
+            const removeButtons = container.querySelectorAll('.remove-entry');
+            removeButtons.forEach((button, index) => {
+                button.style.display = (index === 0 && container.children.length === 1) || podeDeletar ? 'none' : '';
+            });
+        }
+    
+        addButton.addEventListener('click', addEntry);
+    
+        container.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-entry')) {
+                const entry = e.target.closest('.annual-revenue-entry');
+                if (container.children.length > 1) {
+                    if (podeDeletar) {
+                        const deleteCheckbox = entry.querySelector('input[name$="-DELETE"]');
+                        if (deleteCheckbox) {
+                            deleteCheckbox.checked = true;
+                            entry.style.display = 'none';
+                        }
+                    } else {
+                        container.removeChild(entry);
+                    }
+                    updateRemoveButtons();
+                } else {
+                    alert("{% trans "You can't remove the last entry. Clear the fields instead." %}");
+                    entry.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+                        if (!input.name.includes('id')) {
+                            input.value = '';
+                        }
+                    });
+                }
+            }
+        });
+
+        if (container.children.length === 0) {
+            addEntry();
+        } else {
+            updateRemoveButtons();
+        }
+    });
+</script>

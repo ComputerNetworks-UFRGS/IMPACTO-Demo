@@ -1,0 +1,50 @@
+Tarefas do projeto: https://gt-impacto.atlassian.net
+Template auxiliar para features (Bootstrap + Javascript): https://www.dropbox.com/scl/fi/voixl330xqys86wvf8vo0/Template-Theme.zip?rlkey=k31t6pib97nr34gu4fk3ngfo4&dl=0
+
+Branches: git branch <nome>
+- main: Produção, é o que estará rodando no https://inf.ufrgs.br/gt-impacto
+- dev: Branch que utilizaremos para manter a versão de desenvolvimento/testes
+
+Links:
+localhost:8000/register -> Registra um novo usuário
+localhost:8000/login -> Página de boas-vindas e login
+localhost:8000/dashboard - Plataforma
+localhost:8000/admin - Sistema de administração do Django
+
+[core]
+-> Templates -> login: Página inicial, login e registros
+-> Templates -> Assets: CSS, Imagens e demais conteúdo estáticos usados para todo o projeto
+ - views.py: Funções de login e redirecionamento para a dashboard do projeto
+ - urls.py: Arquivo de urls que apontam para os diferents apps do projeto. URLs principal.
+ - settings.py: Arquivo de configurações de todo o projeto
+ 
+ [dashboard] -> Onde será desenvolvido a plataforma
+ -> Templates/base.html: O arquivo "base.html" fornece toda a interface Web que pode ser estendido por outros arquivos html para preencher o {% block page_content %}
+-> Templates/index.html: Arquivo de exemplo que estende a base e adiciona conteúdo na página. Esse será o estilo que iremos utilizar para todo o projeto
+-> urls.py: Caminhos e URLs da plataforma. Aqui poderemos criar subaplicações para o dashboard.
+-> views.py: Conterá todas as funções para processamento, manipulação e criação das páginas Web necessárias para a plataforma
+-> models.py: Iremos utilizar para criação do banco de dados para a plataforma
+
+[accounts] -> Core onde está implementado o sistema de logins
+models.py: Definição das informações dos usuários da plataforma
+* Os demais arquivos estão pré-prontos para criarmos uma interface de alteração de conta pelos usuários.
+
+
+Comandos úteis:
+
+python3 manage.py collectstatic -> Comando que precisa ser executado sempre que novos arquivos estáticos (Imagens, assets, etc)
+
+
+python3 manage.py migrate
+python3 manage.py makemigrations -> Ambos os comandos devem ser executados para recriar o banco de dados. Precisam ser utilizados sempre que tivermos alterações nos models.py
+
+python3 manage.py runserver <port> -> Inicia o servidor Web para acessar a plataforma
+
+
+
+pacotes necessários (não tenho certeza se 100% estão listados)
+pip install Django
+pip install pycontry
+pip install numpy 
+pip install requests
+pip install flask

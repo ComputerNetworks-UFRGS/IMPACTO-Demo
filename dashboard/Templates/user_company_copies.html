@@ -1,0 +1,302 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load form_tags i18n static humanize custom_filters %}
+
+{% block page_content %}
+<style>
+    .company-card {
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+        cursor: pointer;
+    }
+    .company-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.1);
+    }
+    .company-card .card-title a {
+        color: var(--ct-menu-item-active-color);
+        text-decoration: none;
+    }
+    .company-card .card-title a:hover {
+        text-decoration: underline;
+    }
+    .company-info {
+        font-size: 0.9rem;
+    }
+    .company-features i {
+        color: var(--ct-primary);
+    }
+    .advanced-profile-indicator {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 10px;
+        padding: 2px 8px;
+        background-color: var(--ct-primary);
+        color: white;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: bold;
+    }
+    .advanced-profile-indicator i {
+        margin-right: 4px;
+    }
+    .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    .info-item i {
+        width: 20px;
+        margin-right: 8px;
+    }
+    .original-company-badge {
+        background-color: var(--ct-info);
+        color: white;
+        font-size: 0.8rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-left: 10px;
+    }
+    .page-title-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .documentation-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--ct-primary);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    .documentation-btn:hover {
+        background-color: var(--ct-primary-lighten-10);
+        color: var(--ct-primary-darken-10);
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .documentation-btn i {
+        font-size: 20px;
+    }
+    .tooltip-inner {
+        max-width: 200px;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .modal {
+        display: none; /* Esconde o modal por padrão */
+        position: fixed; 
+        z-index: 9999; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); 
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+        text-align: center;
+        border-radius: 8px;
+    }
+    .close {
+        position: absolute;
+        top: 10px; 
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="row mb-3">
+            <div class="col-12 page-title-box d-flex justify-content-between align-items-center">
+                <h2>{% trans "Company Copies" %}</h2>
+                <a onclick="openModaldoc()" class="documentation-btn">
+                    <i class="mdi mdi-help-circle-outline"
+                    data-bs-toggle="tooltip" 
+                       data-bs-placement="left" title="{% trans 'Risk Dashboard' %}"></i>
+                </a>
+            </div>
+        </div>
+    
+        <div id="meuModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModaldoc()">&times;</span>
+              <h2>{% trans "Company Copies" %}</h2>
+              <h5 style="max-width: 450px; margin: 0 auto; margin-top: 20px; text-align: justify; font-weight: normal;">
+                A tela de Cópias de Empresas apresenta as empresas cópias geradas pelo usuário a partir das empresas que foram cadastradas na plataforma para consulta, podendo ser perfil Básico ou Avançado. Essas empresas podem ser editadas.
+                </h5>
+              <a href="{% url 'dashboard:platform_guide' %}#company-profiles"  
+                 class="btn btn-primary"
+                 style="max-width: 300px; display: block; margin: 0 auto;"
+                 title="{% trans 'Risk Analysis Overview' %}">
+                 Ir para Documentação
+              </a>
+            </div>
+          </div>
+        <!--
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">{% trans "My Company Profile Copies" %}</h4>
+                <a href="{% url 'dashboard:platform_guide' %}#company-copies" 
+                   class="documentation-btn" 
+                   data-bs-toggle="tooltip" 
+                   data-bs-placement="left" 
+                   title="{% trans 'Company Copies Documentation' %}">
+                    <i class="mdi mdi-help-circle-outline"></i>
+                </a>
+            </div>
+        </div>-->
+
+
+
+    </div>
+    <div class="row">
+        {% for copy in copied_companies %}
+            <div class="col-xl-4 col-lg-6 col-md-6 mb-4">
+                <div class="card h-100 company-card" onclick="window.location.href='{% url 'dashboard:company_profile_detail' pk=copy.company.pk %}'">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">
+                            <a href="{% url 'dashboard:company_profile_detail' pk=copy.company.pk %}">
+                                {{ copy.company.name }}
+                            </a>
+                            {% if copy.is_advanced %}
+                                <span class="advanced-profile-indicator" data-bs-toggle="tooltip" title="{% trans 'Advanced profile with more detailed information' %}">
+                                    <i class="mdi mdi-layers"></i>
+                                    {% trans "Advanced" %}
+                                </span>
+                            {% endif %}
+                        </h5>
+                        <div class="company-info">
+                            <div class="info-item">
+                                <i class="mdi mdi-content-copy"></i>
+                                <span>{% trans "Copy of" %}: {{ copy.original_company.name }}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="mdi mdi-map-marker-outline"></i>
+                                <span>{{ copy.company.localized_country }}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="mdi mdi-domain"></i>
+                                <span>{{ copy.company.get_industry_type_display }}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="mdi mdi-account-group-outline"></i>
+                                <span>{{ copy.company.employee_count|intcomma }} {% trans "employees" %}</span>
+                            </div>
+              
+                            {% with latest_revenue=copy.company.annual_revenues.last %}
+                                {% if latest_revenue %}
+                                    <div class="info-item">
+                                        <i class="mdi mdi-currency-usd"></i>
+                                        <span>
+                                            {% if latest_revenue.amount >= 1000000000 %}
+                                                ${{ latest_revenue.amount|intword }}
+                                            {% elif latest_revenue.amount >= 1000000 %}
+                                                ${{ latest_revenue.amount|intword }}
+                                            {% else %}
+                                                ${{ latest_revenue.amount|intcomma }}
+                                            {% endif %}
+                                            ({{ latest_revenue.year }})
+                                        </span>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                            
+                            {% with latest_spending=copy.company.cybersecurity_spendings.last %}
+                                {% if latest_spending %}
+                                    <div class="info-item">
+                                        <i class="mdi mdi-shield-outline"></i>
+                                        <span>
+                                            {% if latest_spending.amount >= 1000000 %}
+                                                ${{ latest_spending.amount|intword }}
+                                            {% else %}
+                                                ${{ latest_spending.amount|intcomma }}
+                                            {% endif %}
+                                            ({{ latest_spending.year }})
+                                        </span>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                            <div class="info-item">
+                                <i class="mdi mdi-calendar-clock"></i> {% trans "Copied on" %}: {{ copy.created_at|date:"d/m/Y" }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-light">
+                        <div class="company-features">
+                            {% if copy.company.updated_inventory %}
+                                <span class="badge bg-soft-success text-success me-1 mb-1">
+                                    <i class="mdi mdi-check-circle-outline me-1"></i>{% trans "Updated Inventory" %}
+                                </span>
+                            {% endif %}
+                            {% if copy.company.backup_maintenance %}
+                                <span class="badge bg-soft-info text-info me-1 mb-1">
+                                    <i class="mdi mdi-cloud-check-outline me-1"></i>{% trans "Backup Maintenance" %}
+                                </span>
+                            {% endif %}
+                            {% if copy.company.risk_prioritization %}
+                                <span class="badge bg-soft-warning text-warning me-1 mb-1">
+                                    <i class="mdi mdi-shield-check-outline me-1"></i>{% trans "Risk Prioritization" %}
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <i class="mdi mdi-information-outline me-2"></i>{% trans "You don't have any company profile copies yet." %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    });
+</script>
+
+<script>
+    function openModaldoc() {
+        document.getElementById("meuModal").style.display = "block";
+    }
+    
+    function closeModaldoc() {
+        document.getElementById("meuModal").style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById("meuModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+</script>
+{% endblock %}

@@ -1,0 +1,151 @@
+{% load form_tags %}
+{% load i18n %}
+
+<div class="mb-3">
+    <label class="form-label">{% trans "Company Assets" %}</label>
+    {{ formset.management_form }}
+    <div id="company-assets-container">
+        {% for form in formset %}
+            <div class="company-assets-entry mb-2 d-flex align-items-center">
+                {% if form.instance.pk %}{{ form.id }}{% endif %}
+                <span class="me-1">{% trans "Item" %}:</span>
+                {{ form.item|add_class:'form-control me-2' }}
+                <span class="me-1">{% trans "Value" %}:</span>
+                {{ form.value|add_class:'form-control me-2' }}
+                {% if pode_deletar == 0 %}
+                    <button type="button" class="btn btn-danger remove-entry" {% if forloop.first %}style="display: none;"{% endif %}>{% trans "Remove" %}</button>
+                {% endif %}
+                {% if form.non_field_errors %}
+                    <div class="text-danger">{{ form.non_field_errors }}</div>
+                {% endif %}
+                {% for field in form %}
+                    {% if field.errors %}
+                        <div class="text-danger">{{ field.errors }}</div>
+                    {% endif %}
+                {% endfor %}
+                {% if formset.can_delete and pode_deletar == 1 %}
+                <div class="form-check">
+                    {{ form.DELETE }}
+                    <label class="form-check-label" for="{{ form.DELETE.id_for_label }}">
+                        {% trans "Delete" %}
+                    </label>
+                </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <div class="company-assets-entry mb-2 d-flex align-items-center">
+                <span class="me-1">{% trans "Item" %}:</span>
+                {{ formset.empty_form.item|add_class:'form-control me-2' }}
+                <span class="me-1">{% trans "Value" %}:</span>
+                {{ formset.empty_form.value|add_class:'form-control me-2' }}
+                {% if pode_deletar == 0 %}
+                    <button type="button" class="btn btn-danger remove-entry" style="display: none;">{% trans "Remove" %}</button>
+                {% endif %}
+                {% if formset.can_delete and pode_deletar == 1 %}
+                    {{ formset.empty_form.DELETE|add_class:'d-none' }}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <button type="button" class="btn btn-success mt-2" id="add-company-assets">{% trans "Add Company Assets" %}</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('company-assets-container');
+        const addButton = document.getElementById('add-company-assets');
+        const prefix = 'company_assets';
+        const podeDeletar = {% if pode_deletar == 1 %}true{% else %}false{% endif %};
+
+        function addEntry() {
+            const formCount = container.children.length;
+            const totalForms = document.getElementById('id_' + prefix + '-TOTAL_FORMS');
+            
+            // Clone the first form in the container
+            const newForm = container.children[0].cloneNode(true);
+            
+            // Update the index in the form
+            newForm.innerHTML = newForm.innerHTML.replace(new RegExp(prefix + '-\\d+-', 'g'), prefix + '-' + formCount + '-');
+            newForm.innerHTML = newForm.innerHTML.replace(new RegExp('id_' + prefix + '-\\d+-', 'g'), 'id_' + prefix + '-' + formCount + '-');
+            
+            // Clear the values in the new form
+            newForm.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+                input.value = '';
+            });
+            
+            // Remove any error messages
+            newForm.querySelectorAll('.text-danger').forEach(el => el.remove());
+            
+            if (!podeDeletar) {
+                // Show the remove button
+                const removeButton = newForm.querySelector('.remove-entry');
+                if (removeButton) {
+                    removeButton.style.display = '';
+                }
+            }
+            
+            // Add the new form to the container
+            container.appendChild(newForm);
+            
+            // Update the total number of forms
+            totalForms.value = parseInt(totalForms.value) + 1;
+
+            if (!podeDeletar) {
+                updateRemoveButtons();
+            }
+        }
+    
+        function updateFormIndices() {
+            const forms = container.children;
+            for (let i = 0; i < forms.length; i++) {
+                forms[i].innerHTML = forms[i].innerHTML.replace(new RegExp(prefix + '-\\d+-', 'g'), prefix + '-' + i + '-');
+                forms[i].innerHTML = forms[i].innerHTML.replace(new RegExp('id_' + prefix + '-\\d+-', 'g'), 'id_' + prefix + '-' + i + '-');
+            }
+            const totalForms = document.getElementById('id_' + prefix + '-TOTAL_FORMS');
+            if (totalForms) {
+                totalForms.value = forms.length;
+            }
+        }
+
+        function updateRemoveButtons() {
+            if (!podeDeletar) {
+                const removeButtons = container.querySelectorAll('.remove-entry');
+                removeButtons.forEach((button, index) => {
+                    button.style.display = index === 0 && container.children.length === 1 ? 'none' : '';
+                });
+            }
+        }
+    
+        addButton.addEventListener('click', addEntry);
+    
+        container.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-entry')) {
+                const entry = e.target.closest('.company-assets-entry');
+                if (container.children.length > 1) {
+                    if (podeDeletar) {
+                        entry.querySelector('input[name$="-DELETE"]').checked = true;
+                        entry.style.display = 'none';
+                    } else {
+                        container.removeChild(entry);
+                        updateFormIndices();
+                    }
+                    updateRemoveButtons();
+                } else {
+                    alert("{% trans "You can't remove the last entry. Clear the fields instead." %}");
+                    entry.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+                        if (!input.name.includes('id')) {
+                            input.value = '';
+                        }
+                    });
+                }
+            }
+        });
+
+        // Initialize: ensure there's at least one entry and update remove buttons
+        if (container.children.length === 0) {
+            addEntry();
+        } else {
+            updateRemoveButtons();
+        }
+    });
+</script>

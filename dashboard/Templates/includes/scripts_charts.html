@@ -1,0 +1,145 @@
+<!-- scripts.html -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    function getThemeColors() {
+        const style = getComputedStyle(document.documentElement);
+        return {
+            chartColor: style.getPropertyValue('--ct-menu-item-active-color') || '#1abc9c',
+            highRiskColor: '#B22222' // Cor para riscos altos
+        };
+    }
+
+    const themeColors = getThemeColors();
+
+    function createChart(options) {
+        var chart = new ApexCharts(document.querySelector(options.chartId), options.settings);
+        chart.render();
+        return chart;
+    }
+
+    // Gráfico de ataques por mês com condição de cor aplicada diretamente na série
+    var monthlyData = {{ bar_chart_data.values|safe }};
+    var monthlyLabels = {{ bar_chart_data.labels|safe }};
+    var monthlySeriesData = monthlyData.map((value, index) => ({
+        x: monthlyLabels[index],
+        y: value,
+        fillColor: value > 50 ? themeColors.highRiskColor : themeColors.chartColor
+    }));
+
+    var monthlyPerformanceOptions = {
+        chartId: "#apex-bar-1",
+        settings: {
+            chart: {
+                type: 'bar',
+                toolbar: {
+                    tools: {
+                        download: true
+                    }
+                }
+            },
+            series: [{
+                name: 'Attacks',
+                data: monthlySeriesData
+            }],
+            xaxis: {
+                categories: monthlyLabels
+            },
+            colors: monthlySeriesData.map(data => data.fillColor) // Mapeia as cores diretamente dos dados da série
+        }
+    };
+
+    createChart(monthlyPerformanceOptions);
+
+    // Gráfico de risco de ataques cibernéticos com condição de cor
+    var attackTypes = {{ attack_types|safe }};
+    var risks = {{ risks|safe }};
+    var riskChartOptions = {
+        chartId: "#apex-bar-2",
+        settings: {
+            chart: {
+                type: 'bar',
+                toolbar: {
+                    tools: {
+                        download: true
+                    }
+                }
+            },
+            series: [{
+                name: 'Risk Level',
+                data: risks.map((risk, index) => ({
+                    x: attackTypes[index],
+                    y: risk,
+                    fillColor: risk > 30 ? themeColors.highRiskColor : themeColors.chartColor
+                }))
+            }],
+            xaxis: {
+                categories: attackTypes
+            },
+        }
+    };
+    createChart(riskChartOptions);
+
+
+    // Configuração para o gráfico de linha com marcadores
+    var probNumAtaquesData = {{ prob_num_attacks_data.probabilities|safe }};
+    var probNumAtaquesLabels = {{ prob_num_attacks_data.labels|safe }};
+
+    var optionsProbNumAtaques = {
+        chart: {
+            type: 'line',
+            height: 350,
+            toolbar: {
+                show: true
+            },
+        },
+        series: [{
+            name: 'Probability',
+            data: probNumAtaquesData
+        }],
+        xaxis: {
+            categories: probNumAtaquesLabels
+        },
+        colors: ['#F36A2A', '#B22222'], // Gradiente de cores
+        stroke: {
+            curve: 'smooth',
+            width: 4 // Espessura da linha
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+                shadeIntensity: 1,
+                type: 'horizontal',
+                opacityFrom: 0.7,
+                opacityTo: 0.9,
+                stops: [0, 100],
+                colorStops: [
+                    {
+                        offset: 0,
+                        color: '#F36A2A',
+                        opacity: 1
+                    },
+                    {
+                        offset: 100,
+                        color: '#B22222',
+                        opacity: 1
+                    }
+                ]
+            }
+        },
+        markers: {
+            size: 5,
+            colors: ['#ffffff'], // Cor do centro dos marcadores
+            strokeColors: '#F36A2A',
+            strokeWidth: 3,
+            hover: {
+                size: 7,
+                sizeOffset: 3
+            }
+        }
+    };
+
+    var chartProbNumAtaques = new ApexCharts(document.querySelector("#prob-num-ataques"), optionsProbNumAtaques);
+    chartProbNumAtaques.render();
+});
+</script>

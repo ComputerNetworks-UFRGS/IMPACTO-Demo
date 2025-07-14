@@ -1,0 +1,721 @@
+{% extends "dashboard/Templates/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block page_content %}
+<style>
+    .container-fluid {
+        padding: 2rem;
+    }
+    .card {
+        border: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .card-body {
+        padding: 2rem;
+    }
+    .header-content {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    .logo-text-wrapper {
+        display: flex;
+        align-items: center;
+    }
+    .header-logo {
+        width: 70px;
+        height: auto;
+        margin-right: 1rem;
+    }
+    .header-title {
+        font-size: 2.5rem;
+        margin: 0;
+        color: #333;
+        font-weight: bold;
+    }
+    .lead {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+    }
+    .section-title {
+        font-size: 1.8rem;
+        color: #F77A3F;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        scroll-margin-top: 90px; /* Ajustado para a altura do header */
+    }
+    .section-title:hover {
+        color: #E56A2F;
+    }
+    .section-title::after {
+        content: '\25BC';
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+    }
+    .section-title.collapsed::after {
+        transform: rotate(-90deg);
+    }
+    .subsection-title {
+        font-size: 1.4rem;
+        color: #333;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .doc-text {
+        color: #555;
+        line-height: 1.6;
+    }
+    .doc-list {
+        padding-left: 1.5rem;
+    }
+    .doc-list li {
+        margin-bottom: 0.5rem;
+    }
+    #table-of-contents {
+        position: sticky;
+        top: 90px; /* Ajuste conforme a altura real do header */
+        max-height: calc(100vh - 100px); /* Espaço para evitar overflow */
+        overflow-y: auto;
+    }
+    #table-of-contents ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    #table-of-contents ul li {
+        margin-bottom: 0.5rem;
+    }
+    #table-of-contents ul li a {
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    #table-of-contents ul li a:hover {
+        color: #F77A3F;
+    }
+    .section-content {
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .header-title {
+            font-size: 2rem;
+        }
+        .lead {
+            font-size: 1rem;
+        }
+        #table-of-contents {
+            position: static;
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="header-content">
+                        <div class="logo-text-wrapper">
+                            <img src="{% static 'assets/images/logo-sm-no-bg.png' %}" alt="GT-IMPACTO Logo" class="header-logo">
+                            <h1 class="header-title">{% trans "GT-IMPACTO Documentation" %}</h1>
+                        </div>
+                    </div>
+                    <p class="lead">
+                        {% trans "Welcome to the GT-IMPACTO Platform, your resource for cybersecurity training focused on modeling and simulating the economic impacts of cyberattacks. Find guides and explanations organized by category in this page." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!-- TOC: Mantido Sticky -->
+        <div class="col-md-3">
+            <div id="table-of-contents" class="card">
+                <div class="card-body">
+                    <h3>{% trans "Table of Contents" %}</h3>
+                    <ul>
+                        <li><a href="#getting-started">{% trans "Getting Started" %}</a></li>
+                        <li><a href="#company-profiles">{% trans "Company Profiles" %}</a></li>
+                        <li><a href="#risk-analysis-overview">{% trans "Risk Analysis Overview" %}</a></li>
+                        <li><a href="#risk-analysis-report">{% trans "Risk Analysis Report" %}</a></li>
+                        <li><a href="#economic-planning">{% trans "Economic Planning" %}</a></li>
+                        <li><a href="#company-copies">{% trans "Company Copies" %}</a></li>
+                        <li><a href="#data-source"> {% trans "Data Source" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="col-md-9">
+            <!-- Getting Started Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 id="getting-started" class="section-title collapsed">{% trans "Getting Started" %}</h2>
+                    <div class="section-content">
+                        <p class="doc-text">
+                            {% trans "Welcome to GT-IMPACTO, a platform dedicated to enhancing cybersecurity skills through the simulation of cyberattack impacts. Discover tools and features that aid in analyzing risks, optimizing economic investments, and managing company profiles efficiently." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "Students and Instructors are assigned distinct roles, each with specific capabilities to maximize the platform's effectiveness:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>
+                                <strong>{% trans "Students" %}</strong> - {% trans "Can view and analyze company profiles, create local copies for personal analysis, access risk analysis reports, and utilize economic management tools." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Instructors" %}</strong> - {% trans "Have all the capabilities of students and can additionally create base company profiles that can be accessed by all users." %}
+                            </li>
+                        </ul>
+                        <h3 class="subsection-title">{% trans "Navigating the Sidebar" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The sidebar is designed to streamline your interaction with GT-IMPACTO's features. Follow these steps to navigate effectively:" %}
+                        </p>
+                        <ol class="doc-list">
+                            <li>{% trans "Identify the section you wish to access from the sidebar menu." %}</li>
+                            <li>{% trans "Click on the desired section to expand and view available options." %}</li>
+                            <li>{% trans "Select a specific function or tool within the expanded section to begin utilizing it." %}</li>
+                        </ol>
+                        <p class="doc-text">
+                            {% trans "Efficient use of the sidebar will enhance your overall navigation experience, enabling you to fully leverage all features GT-IMPACTO has to offer." %}
+                        </p>
+                        <h3 class="subsection-title">{% trans "Is this your first time on the platform?" %}</h3>
+
+                        <p class="doc-text">
+                            {% trans "We recommend starting by exploring the Company Profiles available in the sidebar. Navigate to the 'Company Profiles' section and select one that interests you. There, you'll find detailed information about the company's cybersecurity posture and can access its risk and economic analyses." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "If you're curious about the provided modeling or want to see how changes in cybersecurity strategies could impact the data, feel free to create a copy of that profile. With your own copy, you can modify parameters and explore the outcomes as you wish!" %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "Additionally, when you modify the data of modeled companies, the changes are reflected in real-time within the economic and risk modules. This dynamic interaction allows you to instantly assess the implications of your adjustments, facilitating informed decision-making and comprehensive analysis." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Profiles Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 id="company-profiles" class="section-title collapsed">{% trans "Company Profiles" %}</h2>
+                    <div class="section-content">
+                        <p class="doc-text">
+                            {% trans "Company Profiles are central to the GT-IMPACTO platform, providing detailed information about organizations' cybersecurity postures. These profiles are categorized into two types: Basic and Advanced. Each type serves different purposes and offers varying levels of detail to support comprehensive risk assessments and economic impact simulations." %}
+                        </p>
+                        
+                        <!-- Basic Company Profile Subsection -->
+                        <h3 class="subsection-title">{% trans "Basic Company Profiles" %}</h3>
+                        <p class="doc-text">
+                            {% trans "Basic Company Profiles capture essential data about a company, forming the foundation for initial cybersecurity risk assessments and economic analyses. Only Instructors have the permission to create and add new Basic Company Profiles to the platform." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "Key Features of Basic Company Profiles:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>
+                                <strong>{% trans "Company Information" %}</strong> - {% trans "Includes the company's name, headquarters country, industry type, and employee count." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Cybersecurity Practices" %}</strong> - {% trans "Details about the company's inventory management, backup maintenance, and risk prioritization practices." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Economic Data" %}</strong> - {% trans "Basic financial metrics like annual revenue and cybersecurity spending." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Assets" %}</strong> - {% trans "Information about the company's key assets such as servers, databases, and websites." %}
+                            </li>
+                        </ul>
+                        <p class="doc-text">
+                            {% trans "These elements are crucial as they provide the necessary data points for evaluating the company's cybersecurity risks and economic resilience against potential cyberattacks." %}
+                        </p>
+
+                        <!-- Advanced Company Profile Subsection -->
+                        <h3 class="subsection-title">{% trans "Advanced Company Profiles" %}</h3>
+                        <p class="doc-text">
+                            {% trans "Advanced Company Profiles build upon the foundational data in Basic profiles by incorporating additional dimensions that offer a more in-depth analysis of an organization's cybersecurity stance. These profiles are exclusively created by Instructors and include comprehensive data to enhance risk assessment accuracy and economic impact projections." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "Additional Features of Advanced Company Profiles:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>
+                                <strong>{% trans "Business Dimension" %}</strong> - {% trans "Includes detailed information about company locations, size, remote work rates, and global presence." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Technical Dimension" %}</strong> - {% trans "Encompasses advanced cybersecurity measures such as authentication factors, cloud solution types, IT system monitoring, and data encryption practices." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Attack History" %}</strong> - {% trans "Records of past cyberattacks, including types of attacks, years they occurred, and their frequency." %}
+                            </li>
+
+                        </ul>
+                        <p class="doc-text">
+                            {% trans "The enriched data in Advanced Company Profiles allows for more precise risk scoring and economic impact simulations, taking into account both historical attack data and current cybersecurity investments. This depth of information facilitates a nuanced understanding of a company's vulnerability and resilience against cyber threats." %}
+                        </p>
+
+
+                        <!-- Permissions and Editing -->
+                        <p class="doc-text">
+                            {% trans "Only Instructors have the authority to create and manage both Basic and Advanced Company Profiles. Students who wish to edit existing profiles must create a copy through the " %}
+                            <a href="#company-copies" class="doc-text-link">{% trans "Company Copies" %}</a>
+                            {% trans " section. This ensures that the original profiles remain intact while allowing Students to customize and analyze data based on their specific needs." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "Creating a copy enables Students to alter data points and observe real-time changes in risk and economic modules, fostering a hands-on learning environment where decision-making and analysis can be conducted safely and effectively." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis Overview Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 id="risk-analysis-overview" class="section-title collapsed">{% trans "Risk Analysis Overview" %}</h2>
+                    <div class="section-content">
+                        <p class="doc-text">
+                            {% trans "The Risk Analysis section within the GT-IMPACTO platform provides comprehensive data visualization tools to assess annual cyberattack risks. This section includes various graphs that categorize risks by sector, by the company's specific region, and by a combination of sector and country." %}
+                        </p>
+                        
+                        <!-- Risk Graphs by Sector -->
+                        <h3 class="subsection-title">{% trans "Risk Graphs by Sector" %}</h3>
+                        <p class="doc-text">
+                            {% trans "These graphs display the annual risk probabilities of cyberattacks within each industry sector. They show the frequency and likelihood of different types of attacks such as Malware, Phishing, and DDoS within each sector." %}
+                        </p>
+                        
+                        <!-- Risk Graphs by Region -->
+                        <h3 class="subsection-title">{% trans "Risk Graphs by Region" %}</h3>
+                        <p class="doc-text">
+                            {% trans "These graphs illustrate the annual risk probabilities of cyberattacks within the company's specific geographical region. They provide insights into how cyberattack risks are distributed within the designated region." %}
+                        </p>
+                        
+                        <!-- Risk Graphs by Sector and Country -->
+                        <h3 class="subsection-title">{% trans "Risk Graphs by Sector and Country" %}</h3>
+                        <p class="doc-text">
+                            {% trans "These graphs offer a detailed analysis by combining sector and country data. They show how risks are associated with specific sectors within particular countries, allowing for a more nuanced understanding of cyberattack risks." %}
+                        </p>
+                        
+                        <!-- Data Integration -->
+                        <h3 class="subsection-title">{% trans "Data Integration" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The risk data presented in the Risk Analysis section is utilized in the " %}
+                            <a href="#economic-planning" class="doc-text-link">{% trans "Economic Planning" %}</a>
+                            {% trans " section. This integration ensures that economic impact simulations are informed by accurate and relevant risk assessments." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis Report Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 id="risk-analysis-report" class="section-title collapsed">{% trans "Risk Analysis Report" %}</h2>
+                    <div class="section-content">
+                        <p class="doc-text">
+                            {% trans "The Risk Analysis Report provides a evaluation of the company's exposure to various cyber threats. It combines data on regional and sector-specific risks with the company's own resilience measures to present a risk profile." %}
+                        </p>
+                        
+                        <!-- Risk Analysis Table Section -->
+                        <h3 class="subsection-title">{% trans "Risk Analysis Table" %}</h3>
+                        <p class="doc-text">
+                            {% trans "This table displays the risk levels associated with different types of cyber threats, categorized into Region Risk, Sector Risk, and Company Resilience. Each threat (Malware, Phishing and DDoS) is evaluated across these dimensions to provide a understanding of the risk landscape." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "The risk levels are visualized using risk bars, which are color-coded indicators showing the degree of risk from 'Excellent' to 'Poor'. For Region Risk and Sector Risk, the bars are inverted, indicating that lower values represent lower risk. For Company Resilience, higher values indicate stronger resilience against threats." %}
+                        </p>
+                        
+                        <!-- How to Interpret the Risk Bars -->
+                        <h4 class="subsubsection-title">{% trans "Interpreting the Risk Bars" %}</h4>
+                        <ul class="doc-list">
+                            <li>{% trans "Region Risk and Sector Risk: The bars indicate the inherent risk associated with the company's geographical region and industry sector, respectively. A bar leaning towards 'Poor' signifies a higher inherent risk in that category." %}</li>
+                            <li>{% trans "Company Resilience: This bar reflects the company's own measures to withstand cyber threats. A bar towards 'Excellent' indicates strong resilience due to effective security measures." %}</li>
+                        </ul>
+                        
+                        <!-- Risk Score Visualization Section -->
+                        <h3 class="subsection-title">{% trans "Risk Score Visualization" %}</h3>
+                        <p class="doc-text">
+                            {% trans "This section features a displat of the risk scores for each threat type, alongside a final consolidated risk score. The colors and values indicate the level of risk, ranging from 'Healthy' to 'Critical'." %}
+                        </p>
+                        
+                        <!-- Understanding the Risk Indicators -->
+                        <h4 class="subsubsection-title">{% trans "Understanding the Risk Indicators" %}</h4>
+                        <ul class="doc-list">
+                            <li>{% trans "Color Score Indicators: Three circular indicators show the risk score for each threat type (Malware, Phishing, DDoS). The score ranges from 0 to 10, with higher scores indicating higher risk." %}</li>
+                            <li>{% trans "Final Score Display: Below the color score system, a score card shows the company's overall risk assessment, combining all threat evaluations into a single metric." %}</li>
+                            <li>{% trans "Color Scale: The indicators use a consistent color scheme to represent risk levels:" %}
+                                <ul>
+                                    <li>{% trans "Red (Critical): Risk score >= 8.0" %}</li>
+                                    <li>{% trans "Orange (Dangerous): Risk score >= 6.0" %}</li>
+                                    <li>{% trans "Yellow (Alert): Risk score >= 4.0" %}</li>
+                                    <li>{% trans "Green (Normal): Risk score >= 2.0" %}</li>
+                                    <li>{% trans "Blue (Healthy): Risk score < 2.0" %}</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <!-- Technical Dimension Analysis Section (if applicable) -->
+                        <h3 class="subsection-title">{% trans "Technical Dimension Analysis" %}</h3>
+                        <p class="doc-text">
+                            {% trans "For advanced profiles, the report includes a Technical Dimension Analysis, which examines the company's security defenses in terms of the Confidentiality, Integrity, and Availability (CIA) triad. This analysis helps identify strengths and weaknesses in the company's technical security measures." %}
+                        </p>
+                        
+                        <!-- Understanding the Technical Dimension Table -->
+                        <h4 class="subsubsection-title">{% trans "Understanding the Technical Dimension Table" %}</h4>
+                        <p class="doc-text">
+                            {% trans "The table lists various security defenses and indicates their applicability and activation status across the CIA dimensions:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li><strong>{% trans "Confidentiality" %}</strong> - {% trans "Measures that prevent unauthorized access to sensitive information." %}</li>
+                            <li><strong>{% trans "Integrity" %}</strong> - {% trans "Measures that ensure data is accurate and unaltered by unauthorized parties." %}</li>
+                            <li><strong>{% trans "Availability" %}</strong> - {% trans "Measures that ensure reliable access to data and services when needed." %}</li>
+                        </ul>
+                        <p class="doc-text">
+                            {% trans "Icons are used to represent whether a defense is active and contributing to a particular security aspect:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>{% trans "Green checkmark (✔): The defense is active and contributing to that security aspect." %}</li>
+                            <li>{% trans "Red cross (✘): The defense is relevant but not currently active." %}</li>
+                            <li>{% trans "Empty cell: The defense is not applicable to that security aspect." %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economic Management Section  -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 id="economic-planning" class="section-title collapsed">{% trans "Economic Planning" %}</h2>
+                    <div class="section-content">
+                        <p class="doc-text">
+                            {% trans "The Economic Planning screen offers simulations and analyses to optimize cybersecurity investments and assess their economic impacts. This section includes interactive tables and charts that display investment scenarios and their effects on economic metrics." %}
+                        </p>
+                        
+                        <!-- Terminology Section -->
+                        <h3 class="subsection-title">{% trans "Understanding the Terms" %}</h3>
+                        <ul class="doc-list">
+                            <li>
+                                <strong>{% trans "Status" %}</strong> - {% trans "Indicates whether the investment amount is within the acceptable investment window." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Type" %}</strong> - {% trans "Indicates the type of cyberattack, such as Malware, Phishing, or DDoS." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Damage" %}</strong> - {% trans "Represents the expected monetary loss for a particular type of attack. Customizable through Impacts modal." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Probability" %}</strong> - {% trans "Shows the likelihood of a successful attack of a particular type." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Investment" %}</strong> - {% trans "The amount currently invested in cybersecurity measures for the asset against a certain type of attack." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Optimal Investment" %}</strong> - {% trans "The recommended investment level for maximizing cost-benefit." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Acceptable Investment" %}</strong> - {% trans "Ihe investment range where efficiency approaches optimal levels." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "EBIS Current" %}</strong> - {% trans "The current Economic Benefit Impact Score based on existing investments and its effectiveness on reducing damage." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "EBIS Optimal" %}</strong> - {% trans "The Economic Benefit Impact Score calculated after applying the optimal investment levels and its effectiveness on reducing damage." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "ENBIS Current" %}</strong> - {% trans "The current Economic Net Benefit Impact Score based on existing investments." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "ENBIS Optimal" %}</strong> - {% trans "The Economic Net Benefit Impact Score calculated after applying the optimal investment levels." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Efficiency" %}</strong> - {% trans "The current score of the investment compared to the optimal investment" %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Adjustment" %}</strong> - {% trans "The required adjustment to reach the optimal investment level." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Profit" %}</strong> - {% trans "The expected profit after making the investment adjustments." %}
+                            </li>
+                        </ul>
+                        <p class="doc-text">
+                            {% trans "In addition to the previously mentioned attacks, the 'General' line provides an overview that aggregates data from the other attacks. These values are calculated using data from the aforementioned attack types, offering a simplified view of the asset's cybersecurity investment status. All calculations utilize an alpha value of 0.001." %}
+                        </p>                        
+                        
+                        <!-- Impacts modal -->
+                        <h3 class="subsection-title">{% trans "Impacts modal" %}</h3>
+                        <p class="doc-text">
+                            {% trans "This tool is responsible for configuring the 'Damage' parameters, enabling the user to set both direct and indirect damage levels for the respective asset. Each can be categorized as Low, Medium, or High, based on the potential economic loss associated with various types of attacks affecting that asset." %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>
+                                <strong>{% trans "Direct" %}</strong> - {% trans "Represents the immediate and easily attributable damage that results directly from the attack. Examples include data loss, service disruption, recovery costs, and risks to data integrity." %}
+                            </li>
+                            <li>
+                                <strong>{% trans "Indirect" %}</strong> - {% trans "Refers to secondary and long-term consequences that arise as a result of the attack. Examples include reputation loss, long-term revenue decline, legal and regulatory penalties, and increased operational costs." %}
+                            </li>
+                        </ul>
+                        <!-- Simulations Section -->
+                        <h3 class="subsection-title">{% trans "Simulations" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The Economic Planning screen conducts simulations using the Gordon-Loeb model to determine the optimal investment levels for cybersecurity measures. These simulations take into account the probability of different types of cyberattacks and the expected loss value to assess the economic impact of potential threats." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "The screen displays scenarios that compare current investments, optimal investments, and acceptable investments. It illustrates how changes in investment levels impact the EBIS and ENBIS scores, as well as the expected profit from these investments. Additionally, it provides guidance on how to adjust your investment for maximum profit." %}
+                        </p>
+                
+
+                
+                        <!-- Charts Description -->
+                        <h3 class="subsection-title">{% trans "Simulation Charts" %}</h3>
+                        <p class="doc-text">
+                            {% trans "Each asset has associated charts that visualize the relationship between investment levels and the Economic Benefit Impact Score (EBIS). These charts help in understanding how different investment scenarios influence the economic outcomes of cybersecurity measures." %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>
+                                <strong>{% trans "Gordon-Loeb Simulations" %}</strong> - {% trans "Charts displaying the simulation results based on the Gordon-Loeb model, which presents optimal and acceptable investment window for cybersecurity, as well as the current investment." %}
+                            </li>
+
+                        </ul>
+                
+                        <!-- Data Integration -->
+                        <h3 class="subsection-title">{% trans "Data Integration" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The risk data presented in the " %}
+                            <a href="#risk-analysis-overview" class="doc-text-link">{% trans "Risk Analysis Overview" %}</a>
+                            {% trans "section is utilized in the Economic Planning section. This integration ensures that economic impact simulations are informed by accurate and relevant risk assessments." %}
+                        </p>
+
+                        <!-- Data Integration -->
+                        <h3 class="subsection-title">{% trans "Hypotitecal scenarios" %}</h3>
+                        <p class="doc-text">
+                            {% trans "On the hypothetical scenarios page, the user can adjust the Damage, Probability, Current Investment, and alpha variables for each type of attack to simulate alternative scenarios and evaluate the resulting outcomes. These results can be saved and loaded as needed by the user." %}
+                        </p>
+                        <p class="doc-text">
+                            {% trans "The 'General'  Investment line allows users who may lack the specific expertise to determine the appropriate cybersecurity measures for a given asset to estimate outcomes based on investments in randomly selected security measures, offering a broad, high-level perspective on potential results." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Copies Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 id="company-copies" class="section-title collapsed">{% trans "Company Copies" %}</h2>
+                    <div class="section-content">
+                        <p class="doc-text">
+                            {% trans "Company Copies allow users (instructors and students) to create and manage personal copies of company profiles for analysis, comparison, and modification." %}
+                        </p>
+
+                        <h3 class="subsection-title">{% trans "Creating a Company Copy" %}</h3>
+                        <p class="doc-text">
+                            {% trans "To create a copy of a company profile:" %}
+                        </p>
+                        <ol class="doc-list">
+                            <li>{% trans "Navigate to the Company Profiles section" %}</li>
+                            <li>{% trans "Select the profile you want to copy" %}</li>
+                            <li>{% trans "Click on 'Copy Profile'" %}</li>
+                            <li>{% trans "You will be redirected to the new copy (or to an existing copy if you've already created one for this company)" %}</li>
+                        </ol>
+
+                        <h3 class="subsection-title">{% trans "Modifying Company Copies" %}</h3>
+                        <p class="doc-text">
+                            {% trans "Once you have created a copy, you can modify all information related to the company. This includes:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>{% trans "Company details" %}</li>
+                            <li>{% trans "Financial information" %}</li>
+                            <li>{% trans "Operational data" %}</li>
+                            <li>{% trans "Any other relevant fields" %}</li>
+                        </ul>
+
+                        <h3 class="subsection-title">{% trans "Analyzing Changes" %}</h3>
+                        <p class="doc-text">
+                            {% trans "As you modify the information in your company copy, you can observe the changes in:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>{% trans "Risk Analysis: See how your modifications affect the company's risk profile. For more details, refer to the " %}<a href="#risk-analysis-overview">{% trans "Risk Analysis Overview" %}</a>{% trans " section." %}</li>
+                            <li>{% trans "Economic Planning: Understand the economic impact of your changes. For more information, check the " %}<a href="#economic-planning">{% trans "Economic Planning" %}</a>{% trans " section." %}</li>
+                        </ul>
+
+                        <h3 class="subsection-title">{% trans "Access to Company Copies" %}</h3>
+                        <p class="doc-text">
+                            {% trans "Access to company copies is managed as follows:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>{% trans "Students: Can only access their own copies" %}</li>
+                            <li>{% trans "Instructors: Can access all copies through a link provided by the student" %}</li>
+                        </ul>
+
+                        <h3 class="subsection-title">{% trans "Sharing Copies (For Students)" %}</h3>
+                        <p class="doc-text">
+                            {% trans "To share your company copy with an instructor:" %}
+                        </p>
+                        <ol class="doc-list">
+                            <li>{% trans "Navigate to your company copy" %}</li>
+                            <li>{% trans "Copy the website complete URL" %}</li>
+                            <li>{% trans "Send this link to your instructor through the approved communication channel" %}</li>
+                        </ol>
+
+                        <h3 class="subsection-title">{% trans "Important Notes" %}</h3>
+                        <ul class="doc-list">
+                            <li>{% trans "You cannot create a copy of an existing copy" %}</li>
+                            <li>{% trans "You can only have one copy of each original company profile" %}</li>
+                            <li>{% trans "Changes made to copies do not affect the original company profile" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Data Source Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h2 id="data-source" class="section-title collapsed">{% trans "Data Source" %}</h2>
+                    <div class="section-content">
+                        <p class="doc-text">
+                            {% trans "The Data Source section serves as a monitoring tool for our database, providing average risk data for various cyber attacks across different regions and sectors. This information is directly sourced from our database and offers valuable insights into cybersecurity trends." %}
+                        </p>
+            
+                        <h3 class="subsection-title">{% trans "Data Representation" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The charts display the probability (in percentage) of different types of cyber attacks for each region and sector. The four main types of attacks represented are:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>{% trans "DDoS (Distributed Denial of Service)" %}</li>
+                            <li>{% trans "Malware" %}</li>
+                            <li>{% trans "Phishing" %}</li>
+                            <li>{% trans "Ransomware" %}</li>
+                        </ul>
+            
+                        <h3 class="subsection-title">{% trans "Regional Data" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The regional data is categorized into four main areas:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>{% trans "APAC (Asia-Pacific)" %}</li>
+                            <li>{% trans "LATAM (Latin America)" %}</li>
+                            <li>{% trans "EMEA (Europe, Middle East, and Africa)" %}</li>
+                            <li>{% trans "NA (North America)" %}</li>
+                        </ul>
+            
+                        <h3 class="subsection-title">{% trans "Sector Data" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The sector data covers various industries, including:" %}
+                        </p>
+                        <ul class="doc-list">
+                            <li>{% trans "Healthcare" %}</li>
+                            <li>{% trans "Government" %}</li>
+                            <li>{% trans "Retail" %}</li>
+                            <li>{% trans "Finance" %}</li>
+                            <li>{% trans "Education" %}</li>
+                            <li>{% trans "Entertainment" %}</li>
+                            <li>{% trans "Technology" %}</li>
+                            <li>{% trans "Others" %}</li>
+                        </ul>
+            
+                        <h3 class="subsection-title">{% trans "Data Calculation" %}</h3>
+                        <p class="doc-text">
+                            {% trans "Each data point represents an average risk level calculated from multiple entries in our database. The number of entries used for each calculation is also provided, ensuring transparency in our data representation. To view the number of entries used for a specific data point, hover your cursor over the corresponding bar in the chart." %}
+                        </p>
+            
+                        <h3 class="subsection-title">{% trans "Data Availability" %}</h3>
+                        <p class="doc-text">
+                            {% trans "In some cases, you may see 'N/A' (Not Available) displayed for certain regions or sectors. This indicates that there is insufficient data available for that particular combination of attack type and region/sector." %}
+                        </p>
+            
+                        <h3 class="subsection-title">{% trans "Data Updates" %}</h3>
+                        <p class="doc-text">
+                            {% trans "The data presented in these charts is dynamically updated from our database, ensuring that you always have access to the most current cyber attack risk assessments across different regions and sectors." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Altura da barra fixa no base.html
+            const headerOffset = 80; // Ajuste conforme a altura real do header
+
+            // Função para alternar a visibilidade da seção
+            function toggleSection(sectionTitle) {
+                sectionTitle.classList.toggle('collapsed');
+                const content = sectionTitle.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            }
+
+            // Alternar seções ao clicar no título
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.addEventListener('click', function() {
+                    toggleSection(this);
+                });
+            });
+
+            // Rolagem suave para as seções do TOC e abertura delas
+            const tocLinks = document.querySelectorAll('#table-of-contents a');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetTitle = document.querySelector(targetId);
+                    if (targetTitle) {
+                        if (targetTitle.classList.contains('collapsed')) {
+                            toggleSection(targetTitle);
+                            // Espera a transição (ajuste o tempo conforme necessário)
+                            setTimeout(function() {
+                                const y = targetTitle.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                                window.scrollTo({top: y, behavior: 'smooth'});
+                            }, 300); // 300ms para corresponder à transição
+                        } else {
+                            const y = targetTitle.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                        }
+                    }
+                });
+            });
+
+            // Função para abrir seção com base no hash da URL
+            function openSectionFromHash() {
+                const hash = window.location.hash;
+                if (hash) {
+                    const targetTitle = document.querySelector(hash);
+                    if (targetTitle) {
+                        if (targetTitle.classList.contains('collapsed')) {
+                            toggleSection(targetTitle);
+                            // Espera a transição antes de rolar
+                            setTimeout(function() {
+                                const y = targetTitle.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                                window.scrollTo({top: y, behavior: 'smooth'});
+                            }, 300);
+                        } else {
+                            const y = targetTitle.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                        }
+                    }
+                }
+            }
+
+            // Abrir seção baseada no hash ao carregar a página
+            openSectionFromHash();
+
+            // Ouvir mudanças no hash
+            window.addEventListener('hashchange', openSectionFromHash);
+        });
+    </script>
+{% endblock %}
